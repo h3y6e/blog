@@ -1,18 +1,15 @@
-@def author = "Hiroya Kawase"
+<!-- global page variables -->
+@def author = "5ebec"
+@def date_format = "u dd, yyyy"
 @def mintoclevel = 2
 @def maxtoclevel = 3
-@def tag_page_path = "tags"
 @def ignore = ["node_modules/", "franklin", "franklin.pub"]
 @def prepath = "blog"
-
-<!--
-Add here global page variables to use throughout your
-website.
-The website_* must be defined for the RSS to work
--->
 @def website_title = "#a5ebec"
 @def website_descr = "heyhoe's pothooks"
 @def website_url   = "https://5ebec.github.io/blog/"
+@def tag_page_path = "tags"
+@def author_url = "https://a5e.be/c"
 
 <!--
 Add here global latex commands to use throughout your

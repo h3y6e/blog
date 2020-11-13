@@ -1,3 +1,12 @@
+using Dates
+
+"""
+  {{ year }}
+
+outputs the last updated year
+"""
+hfun_year() = year(now())
+
 function hfun_bar(vname)
   val = Meta.parse(vname[1])
   return round(sqrt(val), digits=2)
