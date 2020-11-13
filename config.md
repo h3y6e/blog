@@ -3,7 +3,7 @@
 @def date_format = "u dd, yyyy"
 @def mintoclevel = 2
 @def maxtoclevel = 3
-@def ignore = ["node_modules/", "franklin", "franklin.pub"]
+@def ignore = ["node_modules/", "theme/", "franklin", franklin.pub"]
 @def prepath = "blog"
 @def website_title = "#a5ebec"
 @def website_descr = "heyhoe's pothooks"
