@@ -1,9 +1,4 @@
-<!-- CONTENT ENDS HERE -->
-    {{ if hasmath }}
-        {{ insert foot_katex.html }}
-    {{ end }}
-    {{ if hascode }}
-        {{ insert foot_highlight.html }}
-    {{ end }}
-  </body>
+{{ if hasmath }} {{ insert foot/katex.html }} {{ end }}
+{{ if hascode }} {{ insert foot/highlight.html }} {{ end }}
+</body>
 </html>

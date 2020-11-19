@@ -1,0 +1,8 @@
+__site/
+_assets/
+_layout/head.html
+_layout/foot.html
+_libs/
+.git/
+node_modules/
+*.md

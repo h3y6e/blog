@@ -1,0 +1,25 @@
+{
+  "name": "blog",
+  "version": "0.1.0",
+  "description": "heyhoe's pothooks",
+  "main": "index.js",
+  "repository": "https://github.com/5ebec/blog",
+  "author": "5ebec <hash.a5ebec@gmail.com>",
+  "license": "MIT",
+  "browserslist": [
+    "last 2 versions",
+    ">1%",
+    "not dead"
+  ],
+  "private": true,
+  "scripts": {
+    "dev": "webpack --mode=depelopment --watch",
+    "build": "webpack --mode=production",
+    "format": "prettier --write . -u"
+  },
+  "devDependencies": {
+    "prettier": "2.1.2",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
