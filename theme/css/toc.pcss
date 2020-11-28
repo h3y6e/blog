@@ -1,0 +1,29 @@
+.franklin-toc {
+  --toc-color: color-mod(var(--accent) alpha(80%));
+  --border: 1px dotted var(--toc-color);
+  color: var(--toc-color);
+  font-size: 0.9rem;
+  border-top: var(--border);
+  border-bottom: var(--border);
+  margin: 0 2rem;
+
+  & li {
+    margin: 0.2rem 0;
+    & ol li:last-of-type {
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  &:before {
+    content: "TOC";
+    background: var(--background);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -0.7rem;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+}

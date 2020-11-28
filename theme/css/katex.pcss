@@ -1,0 +1,20 @@
+body {
+  counter-reset: eqnum;
+}
+
+.katex {
+  font-size: 1.2rem !important;
+}
+
+.katex-display .katex {
+  display: inline-block;
+}
+
+.katex-display::after {
+  counter-increment: eqnum;
+  content: "(" counter(eqnum) ")";
+  position: relative;
+  float: right;
+  padding-right: 10px;
+  font-size: 1rem;
+}

@@ -1,0 +1,18 @@
+.hljs-ln {
+  & .hljs-ln-line {
+    border: 0;
+  }
+  & .hljs-ln-numbers {
+    --ln-color: color-mod(var(--accent) alpha(80%));
+    user-select: none;
+    text-align: right;
+    vertical-align: top;
+    padding-right: 8px;
+    color: var(--ln-color);
+    border-right: 1px solid var(--ln-color);
+    width: 38px;
+  }
+  & .hljs-ln-code {
+    padding-left: 10px;
+  }
+}
