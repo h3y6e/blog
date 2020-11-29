@@ -1,14 +1,8 @@
-@def title = "Menu 3"
+@def title = "working with tags"
+@def rss = "A short description of the page which would serve as **blurb** in a `RSS` feed; you can use basic markdown here but the whole description string must be a single line (not a multiline string). Like this one for instance. Keep in mind that styling is minimal in RSS so for instance don't expect maths or fancy styling to work; images should be ok though: ![](https://upload.wikimedia.org/wikipedia/en/b/b0/Rick_and_Morty_characters.jpg)"
+@def date = Date(2020, 3, 21)
+@def tags = ["syntax", "code", "image"]
 
-# Working with tags
-
-**Example**:
-
-* page with tag [`syntax`](/tag/syntax/)
-* page with tag [`image`](/tag/image/)
-* page with tag [`code`](/tag/code/)
-
-\toc
 
 ## Indicating tags
 
