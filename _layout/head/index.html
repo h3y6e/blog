@@ -4,14 +4,12 @@
     name="viewport"
     content="width=device-width,initial-scale=1,maximum-scale=1"
   />
+  <meta name="author" content="{{ author }}" />
   <meta name="description" content="{{ website_descr }}" />
-  <link rel="stylesheet" href="/libs/katex/katex.min.css" />
-  <link rel="stylesheet" href="/libs/highlight/github.min.css" />
-  <link rel="stylesheet" href="/css/franklin.css" />
-  <link rel="stylesheet" href="/css/basic.css" />
-  <link rel="icon" href="/assets/favicon.ico" />
+  <meta name="theme-color" content="#a5ebec" />
+  {{ insert head/css.html }}
+  <link rel="icon" href="/assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />
   <!-- TODO: og data -->
-  {{ isdef title }}
-  <title>{{ fill title }}</title>
-  {{ end }}
+  <title>{{ title }}</title>
 </head>

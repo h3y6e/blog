@@ -1,11 +1,16 @@
 <header>
-  <div class="blog-name"><a href="">{{ website_title }}</a></div>
+  <div class="header-inner">
+    <div class="header-logo">
+      <a href="/"><div class="logo">{{ website_title }}</div></a>
+    </div>
+    <label for="trigger" class="menu">menu</label>
+  </div>
+  <input type="checkbox" id="trigger" />
   <nav>
     <ul>
-      <li><a href="/menu1/">Posts</a></li>
-      <li><a href="/menu2/">Tags</a></li>
-      <li><a href="/menu3/">About</a></li>
+      <li><a href="/">Posts</a></li>
+      <li><a href="/{{ tag_page_path }}">Tags</a></li>
+      <li><a href="/about">About</a></li>
     </ul>
-    <img src="/assets/hamburger.svg" id="menu-icon" />
   </nav>
 </header>
