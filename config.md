@@ -7,16 +7,18 @@ global page variables
 @def website_descr = "へいほぅの殴り書き"
 @def website_url = "https://5ebec.github.io/blog/"
 @def tag_page_path = "tags"
-@def date_format = "u dd, yyyy"
+@def date_format = "yyyy-mm-dd"
 @def mintoclevel = 2
 @def maxtoclevel = 3
+
 
 <!--
 Add here files or directories that should be ignored by Franklin, otherwise
 these files might be copied and, if markdown, processed by Franklin which
 you might not want. Indicate directories by ending the name with a `/`.
 -->
-@def ignore = ["node_modules/", ".prettierignore", "package.json", "prettierrc.yml", "yarn.lock", "franklin", "franklin.pub"]
+@def ignore = [".vscode/", "node_modules/", "theme/", ".prettierignore",
+    ".prettierrc.yml", "package.json", "postcss.config.js", "yarn.lock"]
 
 <!--
 Add here global latex commands to use throughout your
