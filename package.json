@@ -12,10 +12,12 @@
     "not dead"
   ],
   "scripts": {
-    "dev": "run-p serve css:dev",
-    "serve": "julia -e 'using Pkg;Pkg.activate(\".\");using Franklin;serve(clear=true)'",
-    "css:prod": "postcss theme/css/_style.pcss --dir _css --ext css --no-map",
-    "css:dev": "postcss theme/css/_style.pcss --dir _css --ext css -w",
+    "dev": "run-p dev:*",
+    "prod": "run-s prod:*",
+    "dev:css": "postcss theme/css/_style.pcss --dir _css --ext css -w",
+    "prod:css": "postcss theme/css/_style.pcss --dir _css --ext css --no-map",
+    "dev:franklin": "julia --project=. -e 'using Franklin;serve(clear=true)'",
+    "prod:franklin": "julia --project=. -e 'using Franklin;optimize()'",
     "format": "prettier --write . -u"
   },
   "devDependencies": {
@@ -28,9 +30,12 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "2.1.2"
   },
+  "dependencies": {
+    "highlight.js": "^10.4.0"
+  },
   "husky": {
     "hooks": {
-      "pre-push": "yarn format && yarn css:prod && git add . && git commit --amend --no-edit"
+      "pre-push": "yarn format && yarn prod:css && git add . && git commit --amend --no-edit"
     }
   }
 }

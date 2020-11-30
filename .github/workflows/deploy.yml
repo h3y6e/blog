@@ -12,11 +12,16 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+
+      - name: yarn install
+        run: yarn install --prod --pure-lockfile
+
       # NOTE: Python is necessary for the pre-rendering (minification) step
-      - name: Install python
+      - name: Install Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.8"
+
       # NOTE: Here you can install dependencies such as matplotlib if you use
       # packages such as PyPlot.
       # - run: pip install matplotlib
@@ -24,6 +29,7 @@ jobs:
         uses: julia-actions/setup-julia@v1
         with:
           version: 1.5
+
       # NOTE
       #   The steps below ensure that NodeJS and Franklin are loaded then it
       #   installs highlight.js which is needed for the prerendering step
@@ -35,9 +41,8 @@ jobs:
       - name: Activate and Instantiate
       - run: julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate();'
 
-      - run:
-          julia --project=. -e 'using NodeJS; run(`$(npm_cmd())
-          installhighlight.js`); using Franklin; optimize()'
+      - name: Generate site
+      - run: julia --project=. -e 'using Franklin; optimize()'
 
       - name: Build and Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
