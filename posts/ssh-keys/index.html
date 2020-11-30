@@ -1,0 +1,17 @@
+<!DOCTYPE html> <html lang=ja > <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=5ebec  /> <meta name=description  content="へいほぅの殴り書き" /> <meta name=theme-color  content="#a5ebec" /> <link rel=stylesheet  href="/css/_style.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <title>ssh keys</title> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >ssh keys</h1> <div class=date >2019-10-08</div> <span class=tags > <a href="/tags/ssh">#ssh</a> </span></div><div class=franklin-toc ><ol><li><a href="#クライアント側">クライアント側</a><li><a href="#サーバー側">サーバー側</a></ol></div><div class=franklin-content ><h2 id="クライアント側"><a href="#クライアント側">クライアント側</a></h2> <p><code>~/.ssh/</code> で</p> <pre><code class="shell hljs">ssh-keygen -t rsa -b 4096 -N [pass] -f [file_name] -C [comment(file_nameなど)]</code></pre>
+<h2 id="サーバー側"><a href="#サーバー側">サーバー側</a></h2>
+<p><code>authorized_keys</code> に <code>&#91;file_name&#93;.pub</code> をコピペ</p>
+<footer class=page-foot >
+  <div class=copyright >
+    <span>&copy; 2020 <a href="https://a5e.be/c">5ebec</a></span>
+    <span>::Powered py <a href="https://franklinjl.org/">Franklin.jl</a></span>
+  </div>
+</footer>
+</div>
+ <script src="/libs/highlight/highlight.min.js"></script>
+<script src="/libs/highlight/ln.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+  hljs.initLineNumbersOnLoad();
+  hljs.configure({ tabReplace: "    " });
+</script>

@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>#a5ebec</title>
+  <description><![CDATA[へいほぅの殴り書き
+]]></description>
+  <link>https://5ebec.github.io/blog/</link>
+  <atom:link href="https://5ebec.github.io/blog/tags/ssh/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>ssh keys</title>
+    <link>https://5ebec.github.io/blog/posts/ssh-keys/</link>
+    <description><![CDATA[何回やっても覚えられないので自分用に
+<br><a href="https://5ebec.github.io/blog/posts/ssh-keys/">Read more</a>]]></description>
+    <guid>https://5ebec.github.io/blog/posts/ssh-keys/</guid>
+    <pubDate>Tue, 8 Oct 2019 00:00:00 UT</pubDate>
+  </item>
+</channel>
+</rss>

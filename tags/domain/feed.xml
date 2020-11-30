@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>#a5ebec</title>
+  <description><![CDATA[へいほぅの殴り書き
+]]></description>
+  <link>https://5ebec.github.io/blog/</link>
+  <atom:link href="https://5ebec.github.io/blog/tags/domain/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>GitHub Pages + Netlify DNS でカスタムドメイン</title>
+    <link>https://5ebec.github.io/blog/posts/github-pages-netlify-managed-dns-custom-domain/</link>
+    <description><![CDATA[GitHub Pagesにもカスタムドメインを設定する
+<br><a href="https://5ebec.github.io/blog/posts/github-pages-netlify-managed-dns-custom-domain/">Read more</a>]]></description>
+    <guid>https://5ebec.github.io/blog/posts/github-pages-netlify-managed-dns-custom-domain/</guid>
+    <pubDate>Sun, 9 Jun 2019 00:00:00 UT</pubDate>
+  </item>
+  <item>
+    <title>Netlify でさくっとカスタムドメイン</title>
+    <link>https://5ebec.github.io/blog/posts/netlify-custom-domain/</link>
+    <description><![CDATA[院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く
+<br><a href="https://5ebec.github.io/blog/posts/netlify-custom-domain/">Read more</a>]]></description>
+    <guid>https://5ebec.github.io/blog/posts/netlify-custom-domain/</guid>
+    <pubDate>Sun, 9 Jun 2019 00:00:00 UT</pubDate>
+  </item>
+</channel>
+</rss>

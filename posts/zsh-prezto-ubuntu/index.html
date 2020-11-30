@@ -1,0 +1,44 @@
+<!DOCTYPE html> <html lang=ja > <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=5ebec  /> <meta name=description  content="へいほぅの殴り書き" /> <meta name=theme-color  content="#a5ebec" /> <link rel=stylesheet  href="/css/_style.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <title>Ubuntu,Debianにzsh+prezto導入&テーマ変更</title> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >Ubuntu,Debianにzsh+prezto導入&テーマ変更</h1> <div class=date >2019-05-25</div> <span class=tags > <a href="/tags/ubuntu">#ubuntu</a> <a href="/tags/debian">#debian</a> <a href="/tags/zsh">#zsh</a> <a href="/tags/prezto">#prezto</a> <a href="/tags/shell">#shell</a> </span></div><div class=franklin-toc ><ol><li><a href="#zshインストール">zshインストール</a><li><a href="#prezto導入">prezto導入</a><li><a href="#テーマ変更">テーマ変更</a></ol></div><div class=franklin-content > <blockquote class=twitter-tweet  data-lang=ja  data-theme=dark ><p lang=ja  dir=ltr >bashは`sudo apt install zsh`をする場所だと思っている</p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1115124604538744832?ref_src=twsrc%5Etfw">2019年4月8日</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset=utf-8 ></script> <h2 id="zshインストール"><a href="#zshインストール">zshインストール</a></h2> <p>UbuntuやDebianをインストールしたらまずターミナルを開いてこれを脳死で打つ。</p> <pre><code class="bash hljs">$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install zsh</code></pre> <h2 id="prezto導入"><a href="#prezto導入">prezto導入</a></h2> <p>以下でzshを起動</p> <pre><code class="bash hljs">$ zsh</code></pre>
+<p>設定画面が開く場合がありますが、preztoを導入する場合はこの設定は必要ないので<code>q</code>で抜ける。 bashはここまで、以下はzsh内で</p>
+<pre><code class="zsh hljs">git <span class=hljs-built_in >clone</span> --recursive https://github.com/sorin-ionescu/prezto.git <span class=hljs-string >&quot;<span class=hljs-variable >${ZDOTDIR:-<span class=hljs-variable >$HOME</span>}</span>/.zprezto&quot;</span>
+chsh -s /usr/bin/zsh</code></pre>
+<p>以下を実行</p>
+<pre><code class="zsh hljs">$ <span class=hljs-built_in >setopt</span> EXTENDED_GLOB  
+<span class=hljs-keyword >for</span> rcfile <span class=hljs-keyword >in</span> <span class=hljs-string >&quot;<span class=hljs-variable >${ZDOTDIR:-<span class=hljs-variable >$HOME</span>}</span>&quot;</span>/.zprezto/runcoms/^README.md(.N); <span class=hljs-keyword >do</span>  
+  ln -s <span class=hljs-string >&quot;<span class=hljs-variable >$rcfile</span>&quot;</span> <span class=hljs-string >&quot;<span class=hljs-variable >${ZDOTDIR:-<span class=hljs-variable >$HOME</span>}</span>/.<span class=hljs-variable >${rcfile:t}</span>&quot;</span>  
+<span class=hljs-keyword >done</span></code></pre>
+<p>再起動</p>
+<pre><code class="zsh hljs">sudo reboot</code></pre>
+<p>これでターミナルを開いたときにzshが起動されるはず。</p>
+<h2 id="テーマ変更"><a href="#テーマ変更">テーマ変更</a></h2>
+<p>このまま使用してもよいが、preztoでは沢山のテーマが利用できるので好きなものに変える。   ちなみにデフォルトは<code>sorin</code>というテーマ。</p>
+<p>以下ですべてのテーマをプレビューできる。</p>
+<pre><code class="zsh hljs">~ ❯❯❯ prompt -p</code></pre>
+<p>みんな大好きpowerlineもある。 ~~みんなpowerline使ってるけどあれ何がいいの？フォント限られるし無駄にカラフルだし横に長くて邪魔じゃね？~~</p>
+<p>テーマの設定は<code>.zpreztorc</code>ファイルの116行目に書かれている。   自分は<code>pure</code>が好きなので、<code>sorin</code>から<code>pure</code>に変更しました。</p>
+<pre><code class="vim hljs">zstyle <span class=hljs-string >&#x27;:prezto:module:prompt&#x27;</span> theme <span class=hljs-string >&#x27;pure&#x27;</span></code></pre>
+<p>vimで変更する場合は</p>
+<pre><code class="zsh hljs">~ ❯❯❯ vim .zpreztorc</code></pre>
+<pre><code class="julia hljs">// vimコマンド
+:%s/&#x27;sorin/&#x27;pure/
+:wq</code></pre>
+<p>こうやると楽。</p>
+<p>最後にシェルを再起動して完成。</p>
+<pre><code class="zsh hljs">~ ❯❯❯ <span class=hljs-built_in >exec</span> <span class=hljs-variable >$SHELL</span> -l</code></pre>
+<p>良いシェルライフを。</p>
+<footer class=page-foot >
+  <div class=copyright >
+    <span>&copy; 2020 <a href="https://a5e.be/c">5ebec</a></span>
+    <span>::Powered py <a href="https://franklinjl.org/">Franklin.jl</a></span>
+  </div>
+</footer>
+</div>
+ <script src="/libs/highlight/highlight.min.js"></script>
+<script src="/libs/highlight/ln.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+  hljs.initLineNumbersOnLoad();
+  hljs.configure({ tabReplace: "    " });
+</script>

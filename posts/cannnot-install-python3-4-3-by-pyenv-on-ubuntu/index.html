@@ -1,0 +1,32 @@
+<!DOCTYPE html> <html lang=ja > <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=5ebec  /> <meta name=description  content="へいほぅの殴り書き" /> <meta name=theme-color  content="#a5ebec" /> <link rel=stylesheet  href="/css/_style.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <title>pyenv で Python 3.4.3 がインストールできない (Ubuntu 18.04)</title> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >pyenv で Python 3.4.3 がインストールできない (Ubuntu 18.04)</h1> <div class=date >2019-06-28</div> <span class=tags > <a href="/tags/python">#python</a> <a href="/tags/pyenv">#pyenv</a> <a href="/tags/ubuntu">#ubuntu</a> </span></div><div class=franklin-content ><p>pyenvでPython 3.4.3をインストールしようとしたらこんなエラーが出た．</p> <pre><code class="shell hljs">Downloading Python-3.4.3.tar.xz...
+<span class=hljs-meta >-&gt;</span><span class=bash > https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz</span>
+Installing Python-3.4.3...
+ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib?
+
+Please consult to the Wiki page to fix the problem.
+https://github.com/pyenv/pyenv/wiki/Common-build-problems
+
+
+BUILD FAILED (Ubuntu 18.04 using python-build 1.2.12-2-geb68ec94)
+
+Inspect or clean up the working tree at /tmp/python-build.20190629080825.2203
+Results logged to /tmp/python-build.20190629080825.2203.log
+
+Last 10 log lines:
+(cd /home/5ebec/.anyenv/envs/pyenv/versions/3.4.3/share/man/man1; ln -s python3.4.1 python3.1)
+if test &quot;xupgrade&quot; != &quot;xno&quot;  ; then \
+	case upgrade in \
+		upgrade) ensurepip=&quot;--upgrade&quot; ;; \
+		install|*) ensurepip=&quot;&quot; ;; \
+	esac; \
+	 ./python -E -m ensurepip \
+<span class=hljs-meta >		$</span><span class=bash >ensurepip --root=/ ; \
+<span class=hljs-keyword >fi</span></span>
+Ignoring ensurepip failure: pip 6.0.8 requires SSL/TLS</code></pre> <p>エラーメッセージに書かれている https://github.com/pyenv/pyenv/wiki/common-build-problems にこんな項目があった．</p> <p><a href="https://github.com/pyenv/pyenv/wiki/common-build-problems#error-the-python-ssl-extension-was-not-compiled-missing-the-openssl-lib">ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib?</a></p> <blockquote> <p>If you&#39;re having trouble to get it to compile older python versions&#40;&lt;3.5&#41; even after installing the recommended packages on ubuntu, changing the openssl lib might help:</p> </blockquote> <pre><code class="shell hljs">sudo apt-get remove libssl-dev
+sudo apt-get update
+sudo apt-get install libssl1.0-dev</code></pre> <p>これっぽい．</p> <p>以下を実行</p> <pre><code class="shell hljs">sudo apt remove libssl-dev
+sudo apt update
+sudo apt install libssl1.0-dev</code></pre> <p>再び<code>pyenv install 3.4.3</code>をしてみる</p> <pre><code class="shell hljs">Downloading Python-3.4.3.tar.xz...
+<span class=hljs-meta >-&gt;</span><span class=bash > https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz</span>
+Installing Python-3.4.3...
+Installed Python-3.4.3 to /home/5ebec/.anyenv/envs/pyenv/versions/3.4.3</code></pre> <p>解決．</p> <footer class=page-foot > <div class=copyright > <span>&copy; 2020 <a href="https://a5e.be/c">5ebec</a></span> <span>::Powered py <a href="https://franklinjl.org/">Franklin.jl</a></span> </div> </footer> </div> <script src="/libs/highlight/highlight.min.js"></script> <script src="/libs/highlight/ln.min.js"></script> <script> hljs.initHighlightingOnLoad(); hljs.initLineNumbersOnLoad(); hljs.configure({ tabReplace: " " }); </script>

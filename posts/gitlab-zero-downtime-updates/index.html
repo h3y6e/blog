@@ -1,0 +1,82 @@
+<!DOCTYPE html> <html lang=ja > <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=5ebec  /> <meta name=description  content="へいほぅの殴り書き" /> <meta name=theme-color  content="#a5ebec" /> <link rel=stylesheet  href="/css/_style.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <title>GitLabのアップデート & Zero downtime updates & Slack通知</title> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >GitLabのアップデート & Zero downtime updates & Slack通知</h1> <div class=date >2020-05-08</div> <span class=tags > <a href="/tags/gitlab">#gitlab</a> <a href="/tags/slack">#slack</a> </span></div><div class=franklin-toc ><ol><li><a href="#新しいgpg_keyの入手">新しいGPG Keyの入手</a><li><a href="#zero_downtime_updates">Zero downtime updates</a></ol></div><div class=franklin-content ><p>バイト先でGitLabをGCP上にホスティングしているのだが，GitLabのアップデートが暫くされていなかったので，やった．</p> <p>ついでにZero downtime updates&#40;GitLabインスタンスをオフラインにすることなくGitLabを新しいバージョンにアップグレード出来る方法&#41;に対応したシェルスクリプトを書いた．</p> <h2 id="新しいgpg_keyの入手"><a href="#新しいgpg_keyの入手">新しいGPG Keyの入手</a></h2> <p>とりあえずLinuxインスタンスにSSH接続して以下を実行</p> <pre><code class="bash hljs">$ sudo apt-get update &amp;&amp; sudo apt-get install gitlab-ee</code></pre>
+<p>したがうまくいかなかった．</p>
+<p><a href="https://docs.gitlab.com/omnibus/update/package_signatures.html#fetching-new-keys-after-2020-04-06">2020/04/06にGitLab OmnibusのGPG Keyが更新されていた</a>ようなので新しい鍵を取得．</p>
+<pre><code class="bash hljs">$ curl https://packages.gitlab.com/gpg.key -o /tmp/omnibus_gitlab_gpg.key
+$ sudo apt-key add /tmp/omnibus_gitlab_gpg.key</code></pre>
+<p>再び<code>&#36; sudo apt-get install gitlab-ee</code>を実行したが<code>No space left on device</code>と言われたので</p>
+<pre><code class="bash hljs">$ sudo apt-get autoremove</code></pre>
+<p>を実行．</p>
+<h2 id=zero_downtime_updates ><a href="#zero_downtime_updates">Zero downtime updates</a></h2>
+<p>以下のシェルスクリプトを<code>gitlab-update.sh</code>に書いた．</p>
+<p>と言っても殆どこれを参考にしている↓   <a href="https://qiita.com/ynott/items/7e3d730d12a09e7fdd8b">【2019年版】GitLab CE/EEのゼロダウンタイムアップグレード</a></p>
+<pre><code class="bash hljs"><span class=hljs-meta >#!/bin/bash</span>
+
+<span class=hljs-built_in >export</span> LANG=en_US.UTF-8
+SLACK_WEBHOOK_API_URL=xxxxx
+
+<span class=hljs-comment ># check update</span>
+sudo apt update
+
+<span class=hljs-comment ># get versions</span>
+GITLAB_VERSIONS=$(apt-cache policy gitlab-ee | grep -1 Installed | sed -r <span class=hljs-string >&#x27;s/(^  )//&#x27;</span> | grep -v <span class=hljs-string >&quot;gitlab-ee:&quot;</span>)
+INSTALLED_VERSION=$(<span class=hljs-built_in >echo</span> <span class=hljs-variable >$GITLAB_VERSIONS</span> | sed -r <span class=hljs-string >&#x27;s/Installed: (.*?) Candidate: .*/\1/g&#x27;</span>)
+CANDIDATE_VERSION=$(<span class=hljs-built_in >echo</span> <span class=hljs-variable >$GITLAB_VERSIONS</span> | sed -r <span class=hljs-string >&#x27;s/Installed: .* Candidate: (.*?)/\1/g&#x27;</span>)
+
+<span class=hljs-comment ># check if you can upgrade</span>
+<span class=hljs-keyword >if</span> [ <span class=hljs-string >&quot;<span class=hljs-variable >$INSTALLED_VERSION</span>&quot;</span> = <span class=hljs-string >&quot;<span class=hljs-variable >$CANDIDATE_VERSION</span>&quot;</span> ];
+<span class=hljs-keyword >then</span>
+   <span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Installed: <span class=hljs-variable >$INSTALLED_VERSION</span> is equal Candidate: <span class=hljs-variable >$CANDIDATE_VERSION</span>&quot;</span>
+   <span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Exit&quot;</span>
+   <span class=hljs-built_in >exit</span> 0;
+<span class=hljs-keyword >fi</span>
+
+<span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Installed: <span class=hljs-variable >$INSTALLED_VERSION</span>&quot;</span>
+<span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Candidate: <span class=hljs-variable >$CANDIDATE_VERSION</span>&quot;</span>
+<span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Update version&quot;</span>
+
+sudo apt-get install gitlab-ee
+sudo apt-mark unhold gitlab-ee
+sudo SKIP_POST_DEPLOYMENT_MIGRATIONS=<span class=hljs-literal >true</span> sudo gitlab-ctl reconfigure
+sudo gitlab-rake db:migrate
+sudo gitlab-ctl hup puma
+sudo gitlab-ctl restart sidekiq
+MSG=<span class=hljs-string >&quot;{
+        \&quot;blocks\&quot;: [
+                {
+                        \&quot;type\&quot;: \&quot;section\&quot;,
+                        \&quot;text\&quot;: {
+                                \&quot;type\&quot;: \&quot;mrkdwn\&quot;,
+                                \&quot;text\&quot;: \&quot;*Update GitLab version* :tada: \&quot;
+                        }
+                },
+                {
+                        \&quot;type\&quot;: \&quot;section\&quot;,
+                        \&quot;text\&quot;: {
+                                \&quot;type\&quot;: \&quot;plain_text\&quot;,
+                                \&quot;text\&quot;: \&quot;<span class=hljs-variable >${INSTALLED_VERSION}</span> → <span class=hljs-variable >${CANDIDATE_VERSION}</span>\&quot;
+                        }
+                }
+        ]
+}&quot;</span>
+curl -X POST -H <span class=hljs-string >&#x27;Content-type: application/json&#x27;</span> --data <span class=hljs-string >&quot;<span class=hljs-variable >$MSG</span>&quot;</span> <span class=hljs-variable >$SLACK_WEBHOOK_API_URL</span>
+sudo apt-mark hold gitlab-ee</code></pre>
+<p>更新通知はSlackに飛ぶようにした．</p>
+<p>以下のコマンドを実行して完了</p>
+<pre><code class="bash hljs">$ chmod +x gitlab-update.sh</code></pre>
+<p>次回以降のアップデートは</p>
+<pre><code class="bash hljs">$ ./gitlab-update.sh</code></pre>
+<p>で完了する．</p>
+<footer class=page-foot >
+  <div class=copyright >
+    <span>&copy; 2020 <a href="https://a5e.be/c">5ebec</a></span>
+    <span>::Powered py <a href="https://franklinjl.org/">Franklin.jl</a></span>
+  </div>
+</footer>
+</div>
+ <script src="/libs/highlight/highlight.min.js"></script>
+<script src="/libs/highlight/ln.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+  hljs.initLineNumbersOnLoad();
+  hljs.configure({ tabReplace: "    " });
+</script>

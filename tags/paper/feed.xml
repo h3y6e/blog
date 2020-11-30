@@ -1,0 +1,33 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>#a5ebec</title>
+  <description><![CDATA[へいほぅの殴り書き
+]]></description>
+  <link>https://5ebec.github.io/blog/</link>
+  <atom:link href="https://5ebec.github.io/blog/tags/paper/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>[論文読み] How Do Humans Sketch Objects? </title>
+    <link>https://5ebec.github.io/blog/posts/how-do-humans-sketch-objects/</link>
+    <description><![CDATA[人間はどのように物体をスケッチするか
+<br><a href="https://5ebec.github.io/blog/posts/how-do-humans-sketch-objects/">Read more</a>]]></description>
+    <guid>https://5ebec.github.io/blog/posts/how-do-humans-sketch-objects/</guid>
+    <pubDate>Thu, 24 Oct 2019 00:00:00 UT</pubDate>
+  </item>
+  <item>
+    <title>[論文読み] Shape from Shading through Shape Evolution</title>
+    <link>https://5ebec.github.io/blog/posts/shape-from-shading-through-shape-evolution/</link>
+    <description><![CDATA[論文読み : 形状進化による 3D データを用いた Shape-from-Shading
+<br><a href="https://5ebec.github.io/blog/posts/shape-from-shading-through-shape-evolution/">Read more</a>]]></description>
+    <guid>https://5ebec.github.io/blog/posts/shape-from-shading-through-shape-evolution/</guid>
+    <pubDate>Thu, 29 Aug 2019 00:00:00 UT</pubDate>
+  </item>
+  <item>
+    <title>[論文読み] Neural Inverse Rendering of an Indoor Scene From a Single Image</title>
+    <link>https://5ebec.github.io/blog/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/</link>
+    <description><![CDATA[論文読み：単一画像からの屋内シーンのニューラルインバースレンダリング
+<br><a href="https://5ebec.github.io/blog/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/">Read more</a>]]></description>
+    <guid>https://5ebec.github.io/blog/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/</guid>
+    <pubDate>Fri, 17 May 2019 00:00:00 UT</pubDate>
+  </item>
+</channel>
+</rss>
