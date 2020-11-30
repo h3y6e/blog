@@ -1,0 +1,13 @@
+:root {
+  --accent: #a5ebec;
+  --background: color-mod(var(--accent) blend(#1d1e28 98%));
+  --color: white;
+  --border-color: rgba(255, 255, 255, 0.1);
+
+  --phoneWidth: (max-width: 684px);
+  --tabletWidth: (max-width: 900px);
+}
+
+@custom-media --phone (max-width: 684px);
+@custom-media --tablet (max-width: 900px);
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;

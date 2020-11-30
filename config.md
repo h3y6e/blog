@@ -1,15 +1,24 @@
-<!-- global page variables -->
+<!--
+global page variables
+-->
 @def author = "5ebec"
-@def date_format = "u dd, yyyy"
+@def author_url = "https://a5e.be/c"
+@def website_title = "#a5ebec"
+@def website_descr = "へいほぅの殴り書き"
+@def website_url = "https://5ebec.github.io/blog/"
+@def tag_page_path = "tags"
+@def date_format = "yyyy-mm-dd"
 @def mintoclevel = 2
 @def maxtoclevel = 3
-@def ignore = ["node_modules/", "franklin", "franklin.pub"]
-@def prepath = "blog"
-@def website_title = "#a5ebec"
-@def website_descr = "heyhoe's pothooks"
-@def website_url   = "https://5ebec.github.io/blog/"
-@def tag_page_path = "tags"
-@def author_url = "https://a5e.be/c"
+
+
+<!--
+Add here files or directories that should be ignored by Franklin, otherwise
+these files might be copied and, if markdown, processed by Franklin which
+you might not want. Indicate directories by ending the name with a `/`.
+-->
+@def ignore = [".vscode/", "node_modules/", "theme/", ".prettierignore",
+    ".prettierrc.yml", "package.json", "postcss.config.js", "yarn.lock"]
 
 <!--
 Add here global latex commands to use throughout your
@@ -19,19 +28,3 @@ For instance:
 -->
 \newcommand{\R}{\mathbb R}
 \newcommand{\scal}[1]{\langle #1 \rangle}
-\newcommand{\blurb}[1]{
-    ~~~
-    <span style="font-size:24px;font-weight:300;">!#1</span>
-    ~~~
-}
-\newcommand{\refblank}[2]{
-    ~~~
-    <a href="!#2" target="_blank" rel="noopener noreferrer">#1</a>
-    ~~~
-}
-\newcommand{\lineskip}{@@blank@@}
-\newcommand{\skipline}{\lineskip}
-\newcommand{\note}[1]{@@note @@title ⚠ Note@@ @@content #1 @@ @@}
-
-\newcommand{\smindent}[1]{\span{width:45px;text-align:right;color:slategray;}{#1}}
-\newcommand{\smnote}[1]{\style{font-size:85%;line-height:0em;}{#1}}
