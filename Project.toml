@@ -1,11 +1,8 @@
-name = "Blog"
-uuid = "69f3ff53-0153-48d1-acac-1575535b3c60"
 authors = ["5ebec <hash.a5ebec@gmail.com>"]
 version = "0.1.0"
 
 [deps]
 Franklin = "713c75ef-9fc9-4b05-94a9-213340da978e"
-NodeJS = "2bd173c7-0d6d-553b-b6af-13a54713934c"
 
 [compat]
 Franklin = "0.10.11"
