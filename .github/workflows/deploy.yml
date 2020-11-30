@@ -11,11 +11,16 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+
+      - name: yarn install & build
+        run: yarn install --prod --pure-lockfile && yarn prod:css
+
       # NOTE: Python is necessary for the pre-rendering (minification) step
-      - name: Install python
+      - name: Install Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.8"
+
       # NOTE: Here you can install dependencies such as matplotlib if you use
       # packages such as PyPlot.
       # - run: pip install matplotlib
@@ -23,6 +28,7 @@ jobs:
         uses: julia-actions/setup-julia@v1
         with:
           version: 1.5
+
       # NOTE
       #   The steps below ensure that NodeJS and Franklin are loaded then it
       #   installs highlight.js which is needed for the prerendering step
@@ -31,12 +37,12 @@ jobs:
       #   Julia packages which may be required to successfully build your site.
       #   The last line should be `optimize()` though you may want to give it
       #   specific arguments, see the documentation or ?optimize in the REPL.
-      - run: julia -e '
-          using Pkg; Pkg.add(["NodeJS", "Franklin"]);
-          using NodeJS; run(`$(npm_cmd()) install highlight.js`);
-          using Franklin;
-          Pkg.activate("."); Pkg.instantiate();
-          optimize()'
+      - name: Activate and Instantiate
+      - run: julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate();'
+
+      - name: Generate site
+      - run: julia --project=. -e 'using Franklin; optimize()'
+
       - name: Build and Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
