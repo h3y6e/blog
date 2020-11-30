@@ -1,5 +1,9 @@
-{{ insert head.html }}
-<body>
-  <div class="franklin-content">{{taglist}}</div>
-</body>
-{{ insert page_foot.html }} {{ insert foot.html }}
+<!DOCTYPE html>
+<html lang="ja">
+  {{ insert head/index.html }}
+  <body>
+    {{ insert head/header.html }}
+    <div class="franklin-content">{{taglist}}</div>
+  </body>
+  {{ insert page_foot.html }} {{ insert foot.html }}
+</html>

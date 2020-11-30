@@ -32,7 +32,7 @@ end
 hfun_year() = year(now())
 
 function hfun_headline()
-    "posts" ∈ splitpath(locvar(:fd_rpath)) || return ""
+    "posts" ∉ splitpath(locvar(:fd_rpath)) && return ""
 
     title = locvar(:title)
     date = locvar(:date)
@@ -49,11 +49,12 @@ function hfun_headline()
 end
 
 function hfun_allposts()
-    postlist = "posts" .* rstrip.(get_url.(readdir("posts")), '/')
-    bydate!(postlist)
+    posts = filter(endswith(".md"), readdir("posts"))
+    post_paths = "posts" .* rstrip.(get_url.(posts), '/')
+    bydate!(post_paths)
 
     io = IOBuffer()
-    for post in postlist
+    for post in post_paths
         title = pagevar(post, :title)
         date = pagevar(post, :date)
         tags = pagevar(post, :tags)
@@ -90,6 +91,30 @@ function hfun_taglist()
     return String(take!(io))
 end
 
-function hfun_tagpage()
-    return "WIP"
-end
+hfun_tagpage() = "WIP"
+
+hfun_blogcard(url) = """
+    <iframe
+    class="hatenablogcard"
+    style="width:100%;height:155px;max-width:500px;"
+    src="https://hatenablog-parts.com/embed?url=$url"
+    width="300"
+    height="150"
+    allowtransparency='true'
+    frameborder="0"
+    scrolling="no"
+    ></iframe>
+"""
+
+hfun_gslides(id) = """
+<div class="iframe-wrap">
+    <iframe
+      src="https://docs.google.com/presentation/d/$id/embed"
+      frameboader="0"
+      allowfullscreen="true"
+      mozallowfullscreen="true"
+      webkitallowfullscreen="true"
+    >
+    </iframe>
+</div>
+"""
