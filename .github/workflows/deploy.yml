@@ -12,8 +12,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: yarn install
-        run: yarn install --prod --pure-lockfile
+      - name: yarn install & build
+        run: yarn install --prod --pure-lockfile && yarn prod:css
 
       # NOTE: Python is necessary for the pre-rendering (minification) step
       - name: Install Python

@@ -7,6 +7,5 @@ module.exports = () => ({
         "color-mod-function": true,
       },
     }),
-    require("cssnano"),
   ],
 });
