@@ -3,30 +3,30 @@
   <title>#a5ebec</title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
-  <link>https://5ebec.github.io/blog/</link>
-  <atom:link href="https://5ebec.github.io/blog/tags/julia/feed.xml" rel="self" type="application/rss+xml" />
+  <link>https://blog.5ebec.dev/</link>
+  <atom:link href="https://blog.5ebec.dev/tags/julia/feed.xml" rel="self" type="application/rss+xml" />
   <item>
     <title>誰得なAtomのSyntax themeを作った</title>
-    <link>https://5ebec.github.io/blog/posts/light-owl-syntax-theme-for-atom/</link>
+    <link>https://blog.5ebec.dev/posts/light-owl-syntax-theme-for-atom/</link>
     <description><![CDATA[Atomは好きですか？ライトテーマは好きですか？Juliaは好きですか？
-<br><a href="https://5ebec.github.io/blog/posts/light-owl-syntax-theme-for-atom/">Read more</a>]]></description>
-    <guid>https://5ebec.github.io/blog/posts/light-owl-syntax-theme-for-atom/</guid>
+<br><a href="https://blog.5ebec.dev/posts/light-owl-syntax-theme-for-atom/">Read more</a>]]></description>
+    <guid>https://blog.5ebec.dev/posts/light-owl-syntax-theme-for-atom/</guid>
     <pubDate>Mon, 23 Dec 2019 00:00:00 UT</pubDate>
   </item>
   <item>
     <title>Eigenvectors from Eigenvalues を Julia で検証する</title>
-    <link>https://5ebec.github.io/blog/posts/eigenvectors-from-eigenvalues-julia/</link>
+    <link>https://blog.5ebec.dev/posts/eigenvectors-from-eigenvalues-julia/</link>
     <description><![CDATA[Twitter で話題になったり研究室の slack で話されたりしていたので Julia で書いてみた
-<br><a href="https://5ebec.github.io/blog/posts/eigenvectors-from-eigenvalues-julia/">Read more</a>]]></description>
-    <guid>https://5ebec.github.io/blog/posts/eigenvectors-from-eigenvalues-julia/</guid>
+<br><a href="https://blog.5ebec.dev/posts/eigenvectors-from-eigenvalues-julia/">Read more</a>]]></description>
+    <guid>https://blog.5ebec.dev/posts/eigenvectors-from-eigenvalues-julia/</guid>
     <pubDate>Tue, 19 Nov 2019 00:00:00 UT</pubDate>
   </item>
   <item>
     <title>セキュリティ・キャンプ2019参加記</title>
-    <link>https://5ebec.github.io/blog/posts/seccamp2019/</link>
+    <link>https://blog.5ebec.dev/posts/seccamp2019/</link>
     <description><![CDATA[セキュリティ・キャンプ全国大会2019に参加した話 本編
-<br><a href="https://5ebec.github.io/blog/posts/seccamp2019/">Read more</a>]]></description>
-    <guid>https://5ebec.github.io/blog/posts/seccamp2019/</guid>
+<br><a href="https://blog.5ebec.dev/posts/seccamp2019/">Read more</a>]]></description>
+    <guid>https://blog.5ebec.dev/posts/seccamp2019/</guid>
     <pubDate>Sat, 24 Aug 2019 00:00:00 UT</pubDate>
   </item>
 </channel>

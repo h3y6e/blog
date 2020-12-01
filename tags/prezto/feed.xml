@@ -3,14 +3,14 @@
   <title>#a5ebec</title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
-  <link>https://5ebec.github.io/blog/</link>
-  <atom:link href="https://5ebec.github.io/blog/tags/prezto/feed.xml" rel="self" type="application/rss+xml" />
+  <link>https://blog.5ebec.dev/</link>
+  <atom:link href="https://blog.5ebec.dev/tags/prezto/feed.xml" rel="self" type="application/rss+xml" />
   <item>
     <title>Ubuntu,Debianにzsh+prezto導入&テーマ変更</title>
-    <link>https://5ebec.github.io/blog/posts/zsh-prezto-ubuntu/</link>
+    <link>https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/</link>
     <description><![CDATA[ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした
-<br><a href="https://5ebec.github.io/blog/posts/zsh-prezto-ubuntu/">Read more</a>]]></description>
-    <guid>https://5ebec.github.io/blog/posts/zsh-prezto-ubuntu/</guid>
+<br><a href="https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/">Read more</a>]]></description>
+    <guid>https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/</guid>
     <pubDate>Sat, 25 May 2019 00:00:00 UT</pubDate>
   </item>
 </channel>

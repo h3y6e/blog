@@ -3,14 +3,14 @@
   <title>#a5ebec</title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
-  <link>https://5ebec.github.io/blog/</link>
-  <atom:link href="https://5ebec.github.io/blog/tags/setup/feed.xml" rel="self" type="application/rss+xml" />
+  <link>https://blog.5ebec.dev/</link>
+  <atom:link href="https://blog.5ebec.dev/tags/setup/feed.xml" rel="self" type="application/rss+xml" />
   <item>
     <title>macOSで初期状態からのセットアップ</title>
-    <link>https://5ebec.github.io/blog/posts/macos-setup/</link>
+    <link>https://blog.5ebec.dev/posts/macos-setup/</link>
     <description><![CDATA[新しいMacを買ったときとか，macOSをファクトリーリセットしたい衝動に駆られたときに
-<br><a href="https://5ebec.github.io/blog/posts/macos-setup/">Read more</a>]]></description>
-    <guid>https://5ebec.github.io/blog/posts/macos-setup/</guid>
+<br><a href="https://blog.5ebec.dev/posts/macos-setup/">Read more</a>]]></description>
+    <guid>https://blog.5ebec.dev/posts/macos-setup/</guid>
     <pubDate>Thu, 26 Sep 2019 00:00:00 UT</pubDate>
   </item>
 </channel>

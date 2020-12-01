@@ -3,14 +3,14 @@
   <title>#a5ebec</title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
-  <link>https://5ebec.github.io/blog/</link>
-  <atom:link href="https://5ebec.github.io/blog/tags/githubactions/feed.xml" rel="self" type="application/rss+xml" />
+  <link>https://blog.5ebec.dev/</link>
+  <atom:link href="https://blog.5ebec.dev/tags/githubactions/feed.xml" rel="self" type="application/rss+xml" />
   <item>
     <title>Netlify +  GitHub Actions で Hugo 製ブログの予約投稿</title>
-    <link>https://5ebec.github.io/blog/posts/netlify-github-timed-post/</link>
+    <link>https://blog.5ebec.dev/posts/netlify-github-timed-post/</link>
     <description><![CDATA[NetlifyでホスティングしているHugo製ブログで予約投稿したいなと思ってGitHub Actions使ったらめちゃ簡単だった．
-<br><a href="https://5ebec.github.io/blog/posts/netlify-github-timed-post/">Read more</a>]]></description>
-    <guid>https://5ebec.github.io/blog/posts/netlify-github-timed-post/</guid>
+<br><a href="https://blog.5ebec.dev/posts/netlify-github-timed-post/">Read more</a>]]></description>
+    <guid>https://blog.5ebec.dev/posts/netlify-github-timed-post/</guid>
     <pubDate>Sat, 7 Dec 2019 00:00:00 UT</pubDate>
   </item>
 </channel>

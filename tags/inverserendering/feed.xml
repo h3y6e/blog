@@ -3,14 +3,14 @@
   <title>#a5ebec</title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
-  <link>https://5ebec.github.io/blog/</link>
-  <atom:link href="https://5ebec.github.io/blog/tags/inverserendering/feed.xml" rel="self" type="application/rss+xml" />
+  <link>https://blog.5ebec.dev/</link>
+  <atom:link href="https://blog.5ebec.dev/tags/inverserendering/feed.xml" rel="self" type="application/rss+xml" />
   <item>
     <title>[論文読み] Neural Inverse Rendering of an Indoor Scene From a Single Image</title>
-    <link>https://5ebec.github.io/blog/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/</link>
+    <link>https://blog.5ebec.dev/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/</link>
     <description><![CDATA[論文読み：単一画像からの屋内シーンのニューラルインバースレンダリング
-<br><a href="https://5ebec.github.io/blog/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/">Read more</a>]]></description>
-    <guid>https://5ebec.github.io/blog/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/</guid>
+<br><a href="https://blog.5ebec.dev/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/">Read more</a>]]></description>
+    <guid>https://blog.5ebec.dev/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/</guid>
     <pubDate>Fri, 17 May 2019 00:00:00 UT</pubDate>
   </item>
 </channel>
