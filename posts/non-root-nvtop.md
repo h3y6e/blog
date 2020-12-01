@@ -3,7 +3,7 @@
 @def tags = ["memo"]
 @def rss = "nvtopを研究室のGPUサーバーにインストールした"
 
-htopのnvidia-smi版的なやつ [nvtop](https://github.com/Syllo/nvtop)   
+htopのnvidia-smi版的なやつ: [nvtop](https://github.com/Syllo/nvtop) \\
 いい感じになるのでオススメ
 
 ```bash

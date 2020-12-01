@@ -91,10 +91,10 @@ $ mackup backup
 * ショートカット
   * Launchpad を表示: Control+Shift+L
   * デスクトップ [Num] へ切り替え  
-  * 以下は Google Chrome をインストールしアカウントを追加した後  
-アプリケーション で Google Chrome を選択  
-メニュータイトルにアカウントの名前を正確に入力  
-キーボードショートカット: Control+Command+[Num]
+  * 以下は Google Chrome をインストールしアカウントを追加した後 \\
+    アプリケーション で Google Chrome を選択 \\
+    メニュータイトルにアカウントの名前を正確に入力 \\
+    キーボードショートカット: Control+Command+[Num]
 
 #### トラックパッド
 
@@ -163,6 +163,6 @@ $ brew bundle --global
 Launchpad から起動する
 
 ## ssh
-https://blog.5ebec.dev/posts/ssh-keys/
+[ssh keys](https://blog.5ebec.dev/posts/ssh-keys/)
 
 

@@ -12,7 +12,7 @@
 [![](https://img.youtube.com/vi/zMzprmtJ6Ck/0.jpg)](https://www.youtube.com/watch?v=zMzprmtJ6Ck)
 
 ## What it is about
-人間のスケッチのクラシフィケーション  
+人間のスケッチのクラシフィケーション \\
 ※ スケッチ = 熟練者が描いたものではない抽象的な絵(ピクトグラフ)
 
 ## Why it is worthy researching

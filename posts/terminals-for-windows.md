@@ -5,12 +5,12 @@
 
 自分が使ってきたTerminalを順にまとめていく。
 
-## 1. Windows標準コンソール
+## Windows標準コンソール
 論外。
 
 
-## 2. Alacritty
-https://github.com/jwilm/alacritty
+## Alacritty
+[jwilm/alacritty](https://github.com/jwilm/alacritty)
 
 #### pros
  - GPU-acceleratedで非常に高速
@@ -21,8 +21,8 @@ https://github.com/jwilm/alacritty
  - 最低限のデザイン
 
 
-## 3. Fluent Terminal
-https://github.com/felixse/FluentTerminal
+## Fluent Terminal
+[felixse/FluentTerminal](https://github.com/felixse/FluentTerminal)
 
 #### pros
  - WindowsのFluent Desginに合っていて良い
@@ -32,8 +32,8 @@ https://github.com/felixse/FluentTerminal
  - 入力切り替えできない
 
 
-## 4. Terminus
-https://github.com/Eugeny/terminus
+## Terminus
+[Eugeny/terminus](https://github.com/Eugeny/terminus)
 
 #### pros
  - タブ機能あり
@@ -47,8 +47,8 @@ https://github.com/Eugeny/terminus
  - タブを移動すると文字が見えなくなる（再度入力すると見えるようにはなる）
 
 
-## 5. Hyper
-https://github.com/zeit/hyper
+## Hyper
+[zeit/hyper](https://github.com/zeit/hyper)
 
 #### pros
  - デザインよい
