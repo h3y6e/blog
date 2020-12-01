@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>#a5ebec</title>
+  <description><![CDATA[へいほぅの殴り書き
+]]></description>
+  <link>https://blog.5ebec.dev/</link>
+  <atom:link href="https://blog.5ebec.dev/tags/display/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>Ubuntu で解像度の異なる複数のディスプレイを同時にいい感じに使いたい</title>
+    <link>https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/</link>
+    <description><![CDATA[研究室で与えられたディスプレイの解像度が異なっていて気持ち悪かったので修正した&#40;?&#41;ときのメモ。
+<br><a href="https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/">Read more</a>]]></description>
+    <guid>https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/</guid>
+    <pubDate>Mon, 20 May 2019 00:00:00 UT</pubDate>
+  </item>
+</channel>
+</rss>
