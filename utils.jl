@@ -50,11 +50,12 @@ end
 
 function hfun_allposts()
     posts = filter(endswith(".md"), readdir("posts"))
-    post_paths = "posts" .* rstrip.(get_url.(posts), '/')
-    bydate!(post_paths)
+    postpaths = "posts" .* rstrip.(get_url.(posts), '/')
+    bydate!(postpaths)
 
     io = IOBuffer()
-    for post in post_paths
+    for post in postpaths
+        write(io, "<div class=\"postlist\">")
         title = pagevar(post, :title)
         date = pagevar(post, :date)
         tags = pagevar(post, :tags)
@@ -62,8 +63,9 @@ function hfun_allposts()
         linktitle = "<a href=\"$post\">$title</a>"
         write(io, headline(linktitle, date, tags))
         write(io, """
-        $rss
+        <p>$rss</p>
         <a class="read-more" href="$post">Read more →</a>
+        </div>
         """)
     end
 
