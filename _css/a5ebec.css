@@ -1,7 +1,7 @@
 :root {
   --accent: #a5ebec;
   --background: rgb(32, 34, 44);
-  --color: white;
+  --color: rgb(250, 251, 251);
   --border-color: rgba(255, 255, 255, 0.1);
 
   --phoneWidth: (max-width: 684px);
@@ -42,7 +42,7 @@ body {
   font-size: 1rem;
   line-height: 1.75;
   letter-spacing: -0.03em;
-  color: white;
+  color: rgb(250, 251, 251);
   color: var(--color);
   background: rgb(32, 34, 44);
   background: var(--background);
@@ -231,12 +231,11 @@ pre code {
   }
 
 blockquote {
-  border-top: 1px solid #a5ebec;
-  border-top: 1px solid var(--accent);
-  border-bottom: 1px solid #a5ebec;
-  border-bottom: 1px solid var(--accent);
-  margin: 40px 0;
-  padding: 25px
+  font-style: italic;
+  color: rgba(250, 251, 251, 0.8);
+  color: rgba(250, 251, 251, 0.8);
+  margin: 0;
+  padding: 0 25px
 }
 
 @media (max-width: 684px) {
@@ -447,7 +446,7 @@ header input#trigger:checked + nav {
         position: absolute;
         background: rgb(32, 34, 44);
         background: var(--background);
-        color: white;
+        color: rgb(250, 251, 251);
         color: var(--color);
         border: 2px solid;
         margin: 0;
@@ -649,7 +648,7 @@ header .menu {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: -0.7rem;
+    margin-top: -0.8rem;
   }
 
 .franklin-toc a {
@@ -928,7 +927,7 @@ table.hljs-ln .hljs-ln-line {
   }
 
 table.hljs-ln .hljs-ln-numbers {
-    --ln-color: rgba(165, 235, 236, 0.8);
+    --ln-color: rgba(165, 235, 236, 0.5);
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
