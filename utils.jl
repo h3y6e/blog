@@ -29,6 +29,26 @@ function bydate!(pagelist)
     sort!(pagelist, by = sorter, rev = true)
 end
 
+function postlist(postpaths)
+    io = IOBuffer()
+    for post in postpaths
+        write(io, "<div class=\"postlist\">")
+        title = pagevar(post, :title)
+        date = pagevar(post, :date)
+        tags = pagevar(post, :tags)
+        rss = pagevar(post, :rss)
+        linktitle = "<a href=\"$post\">$title</a>"
+        write(io, headline(linktitle, date, tags))
+        write(io, """
+        <p>$rss</p>
+        <a class="read-more" href="$post">Read more →</a>
+        </div>
+        """)
+    end
+    return String(take!(io))
+end
+
+
 hfun_year() = year(now())
 
 function hfun_headline()
@@ -50,45 +70,14 @@ function hfun_allposts()
     posts = filter(endswith(".md"), readdir("posts"))
     postpaths = "posts" .* rstrip.(get_url.(posts), '/')
     bydate!(postpaths)
-
-    io = IOBuffer()
-    for post in postpaths
-        write(io, "<div class=\"postlist\">")
-        title = pagevar(post, :title)
-        date = pagevar(post, :date)
-        tags = pagevar(post, :tags)
-        rss = pagevar(post, :rss)
-        linktitle = "<a href=\"$post\">$title</a>"
-        write(io, headline(linktitle, date, tags))
-        write(io, """
-        <p>$rss</p>
-        <a class="read-more" href="$post">Read more →</a>
-        </div>
-        """)
-    end
-
-    return String(take!(io))
+    return postlist(postpaths)
 end
 
 function hfun_taglist()
     tag = locvar(:fd_tag)
-
     rpaths = globvar(:fd_tag_pages)[tag]
     bydate!(rpaths)
-
-    io = IOBuffer()
-    for rpath in rpaths
-        url = get_url(rpath)
-        title = pagevar(rpath, :title)
-        date = pagevar(rpath, :date)
-        tags = pagevar(rpath, :tags)
-        rss = pagevar(rpath, :rss)
-        linktitle = "<a href=\"$url\">$title</a>"
-        write(io, headline(linktitle, date, tags))
-        write(io, "$rss")
-    end
-
-    return String(take!(io))
+    return postlist(rpaths)
 end
 
 hfun_tagpage() = "WIP"
