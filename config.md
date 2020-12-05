@@ -5,7 +5,7 @@ global page variables
 @def author_url = "https://a5e.be/c"
 @def website_title = "#a5ebec"
 @def website_descr = "へいほぅの殴り書き"
-@def website_url = "https://blog.5ebec.dev/"
+@def website_url = "https://blog.5ebec.dev"
 @def tag_page_path = "tags"
 @def date_format = "yyyy-mm-dd"
 @def mintoclevel = 2
