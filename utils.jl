@@ -32,8 +32,6 @@ end
 hfun_year() = year(now())
 
 function hfun_headline()
-    "posts" ∉ splitpath(locvar(:fd_rpath)) && return ""
-
     title = locvar(:title)
     date = locvar(:date)
     tags = locvar(:tags)
