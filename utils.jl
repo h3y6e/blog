@@ -33,21 +33,21 @@ function postlist(postpaths)
     io = IOBuffer()
     for post in postpaths
         write(io, "<div class=\"postlist\">")
+        url = get_url(post)
         title = pagevar(post, :title)
         date = pagevar(post, :date)
         tags = pagevar(post, :tags)
         rss = pagevar(post, :rss)
-        linktitle = "<a href=\"$post\">$title</a>"
+        linktitle = "<a href=\"$url\">$title</a>"
         write(io, headline(linktitle, date, tags))
         write(io, """
         <p>$rss</p>
-        <a class="read-more" href="$post">Read more →</a>
+        <a class="read-more" href="$url">Read more →</a>
         </div>
         """)
     end
     return String(take!(io))
 end
-
 
 hfun_year() = year(now())
 
@@ -79,6 +79,8 @@ function hfun_taglist()
     bydate!(rpaths)
     return postlist(rpaths)
 end
+
+
 
 hfun_tagpage() = "WIP"
 
