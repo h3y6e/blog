@@ -1,4 +1,3 @@
 @def title = "Tags"
 
 {{ tagpage }}
-

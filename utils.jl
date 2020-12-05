@@ -1,4 +1,5 @@
 using Dates
+using DataStructures
 
 function headline(title, date, tags)
     tag_page = globvar(:tag_page_path)
@@ -29,9 +30,9 @@ function bydate!(pagelist)
     sort!(pagelist, by = sorter, rev = true)
 end
 
-function postlist(postpaths)
+function postlist(rpaths)
     io = IOBuffer()
-    for post in postpaths
+    for post in rpaths
         write(io, "<div class=\"postlist\">")
         url = get_url(post)
         title = pagevar(post, :title)
@@ -47,6 +48,11 @@ function postlist(postpaths)
         """)
     end
     return String(take!(io))
+end
+
+function getpostpaths(path = "posts")
+    posts = readdir(path)
+    return path .* rstrip.(get_url.(posts), '/')
 end
 
 hfun_year() = year(now())
@@ -67,10 +73,9 @@ function hfun_headline()
 end
 
 function hfun_allposts()
-    posts = filter(endswith(".md"), readdir("posts"))
-    postpaths = "posts" .* rstrip.(get_url.(posts), '/')
-    bydate!(postpaths)
-    return postlist(postpaths)
+    rpaths = getpostpaths()
+    bydate!(rpaths)
+    return postlist(rpaths)
 end
 
 function hfun_taglist()
@@ -80,9 +85,37 @@ function hfun_taglist()
     return postlist(rpaths)
 end
 
-
-
-hfun_tagpage() = "WIP"
+function hfun_tagpage()
+    rpaths = getpostpaths()
+    tags = Iterators.flatten(pagevar.(rpaths, :tags))
+    namesortedtags = collect(SortedDict(counter(tags)))
+    countsortedtags = sort(namesortedtags; by = x -> x[2], rev = true)
+    count = countsortedtags[1][2]
+    io = IOBuffer()
+    write(io, """
+    <table class="tagpage">
+    <tr><th>count</th><th>name</th></tr>
+    <tr>
+    <td class="count">$count</td>
+    <td class="block">
+    """)
+    for (tag, c) in countsortedtags
+        write(io, """
+            <a href="$tag/">#$tag</a>
+        """)
+        if c < count
+            write(io, """
+            </td></tr>
+            <tr>
+            <td class="count">$c</td>
+            <td class="block">
+            """)
+            count = c
+        end
+    end
+    write(io, "</tr></table>")
+    return String(take!(io))
+end
 
 hfun_blogcard(url) = """
     <iframe

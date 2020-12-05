@@ -268,23 +268,27 @@ blockquote p:last-of-type {
     }
 
 table {
-  table-layout: fixed;
+  table-layout: auto;
   border-collapse: collapse;
   width: 100%;
   margin: 20px 0;
+  border-top: 2px solid #a5ebec;
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid #a5ebec;
+  border-bottom: 2px solid var(--accent)
 }
 
-th,
-td {
-  border: 1px dashed #a5ebec;
-  border: 1px dashed var(--accent);
-  padding: 10px;
-}
+table th {
+    color: #a5ebec;
+    color: var(--accent);
+    padding: 10px;
+    border-bottom: 1px solid #a5ebec;
+    border-bottom: 1px solid var(--accent);
+  }
 
-th {
-  color: #a5ebec;
-  color: var(--accent);
-}
+table td {
+    padding: 10px;
+  }
 
 ul,
 ol {
@@ -590,6 +594,29 @@ header .menu {
   .franklin-content .bibref {
     color: #a5ecca;
   }
+
+.franklin-content table.tagpage {
+    border: none;
+    margin: 0
+  }
+
+.franklin-content table.tagpage .count {
+      text-align: center;
+      font-weight: bold;
+      color: #a5ebec;
+      color: var(--accent);
+    }
+
+.franklin-content table.tagpage .block a {
+        font-size: 105%;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.5)
+      }
+
+.franklin-content table.tagpage .block a:hover {
+          color: #a5ebec;
+          color: var(--accent);
+        }
 
 .franklin-content .framed {
     border: 1px solid #a5ebec;
@@ -920,12 +947,9 @@ SOFTWARE.
 table.hljs-ln {
   table-layout: auto;
   width: auto;
-  margin: 5px 0
+  margin: 5px 0;
+  border: none
 }
-
-table.hljs-ln .hljs-ln-line {
-    border: 0;
-  }
 
 table.hljs-ln .hljs-ln-numbers {
     --ln-color: rgba(165, 235, 236, 0.5);

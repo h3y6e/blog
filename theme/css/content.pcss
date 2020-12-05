@@ -41,6 +41,26 @@
     color: #a5ecca;
   }
 
+  & table.tagpage {
+    border: none;
+    margin: 0;
+    & .count {
+      text-align: center;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    & .block {
+      & a {
+        font-size: 105%;
+        text-decoration: none;
+        color: color-mod(white a(50%));
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
+  }
+
   & .framed {
     border: 1px solid var(--accent);
     padding: 20px;
