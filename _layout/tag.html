@@ -2,9 +2,12 @@
 <html lang="ja">
   {{ insert head/core.html }}
   <head>
-    <title>Tag :: #{{ fd_tag }}</title>
-    <meta name="description" content="{{ website_descr }}" />
-    <meta property="og:title" content="Tag :: #{{ fd_tag }}" />
+    <title>Tag: #{{ fd_tag }}</title>
+    <meta
+      name="description"
+      content="{{ website_descr }} :: {{ website_title }}"
+    />
+    <meta property="og:title" content="Tag: #{{ fd_tag }}" />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"

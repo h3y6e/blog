@@ -11,7 +11,10 @@
     property="og:type"
     content="{{ ispage posts/* }}article{{ else }}website{{ end }}"
   />
-  <meta property="og:title" content="{{ title }}" />
+  <meta
+    property="og:title"
+    content="{{ title }}{{ isnotpage index }} :: {{ website_title }}{{ end }}"
+  />
   <meta property="og:url" content="{{ website_url }}{{ fd_url }}" />
   <meta
     property="og:description"
