@@ -41,13 +41,14 @@ body {
   padding: 40px;
   font-size: 1rem;
   line-height: 1.75;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: rgb(250, 251, 251);
   color: var(--color);
   background: rgb(32, 34, 44);
   background: var(--background);
   text-rendering: optimizeLegibility;
-  font-family: "Fira Code", Monaco, Consolas, Ubuntu Mono, monospace;
+  font-family: "Fira Code", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
   font-feature-settings: "liga", "tnum", "case", "calt", "zero", "locl", "calt";
   font-variant-ligatures: contextual;
   -webkit-font-smoothing: antialiased;
