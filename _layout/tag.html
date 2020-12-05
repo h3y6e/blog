@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
-  {{ insert head/index.html }}
+  {{ insert head/core.html }}
+  <head>
+    <title>Tag :: #{{ fd_tag }}</title>
+    <meta name="description" content="{{ website_descr }}" />
+    <meta property="og:title" content="Tag :: #{{ fd_tag }}" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="{{ website_url }}/{{ tag_page_path }}/{{ fd_tag }}/index.html"
+    />
+    <meta property="og:description" content="{{ website_descr }}" />
+  </head>
   <body>
     {{ insert head/header.html }}
     <div class="franklin-content">{{taglist}}</div>
