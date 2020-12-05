@@ -1,6 +1,8 @@
 {{ insert head/core.html }}
 <head>
-  <title>{{ title }}</title>
+  <title>
+    {{ title }}{{ isnotpage index }} :: {{ website_title }}{{ end }}
+  </title>
   <meta
     name="description"
     content="{{ ispage posts/* }}{{ rss }}{{ else }}{{ website_descr }}{{ end }}"

@@ -1,4 +1,4 @@
-@def title = "About :: #a5ebec"
+@def title = "About"
 
 - [GitHub](https://github.com/5ebec)
 - [Twitter](https://twitter.com/5ebec)

@@ -1,4 +1,4 @@
-@def title = "Tags :: #a5ebec"
+@def title = "Tags"
 
 {{ tagpage }}
 
