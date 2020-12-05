@@ -6,9 +6,9 @@ function headline(title, date, tags)
     write(io, """
     <div class="franklin-headline">
     <h1 class="title">$title</h1>
-    <div class="date">$date</div>
-    <span class="tags">
     """)
+    date == Date(1) || write(io, "<div class=\"date\">$date</div>")
+    write(io, "<span class=\"tags\">")
     for tag in tags
         write(io, """
         <a href="/$tag_page/$tag">#$tag</a>
