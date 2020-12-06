@@ -8,7 +8,7 @@
   <item>
     <title>GitLabのアップデート & Zero downtime updates & Slack通知</title>
     <link>https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/</link>
-    <description><![CDATA[重い腰を上げてGitLabをアップデートした．そのついでにZero downtime updatesに対応させた．
+    <description><![CDATA[重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。
 <br><a href="https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/</guid>
     <pubDate>Fri, 8 May 2020 00:00:00 UT</pubDate>

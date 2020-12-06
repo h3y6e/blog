@@ -6,9 +6,9 @@
   <link>https://blog.5ebec.dev/</link>
   <atom:link href="https://blog.5ebec.dev/tags/pyenv/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>pyenv で Python 3.4.3 がインストールできない (Ubuntu 18.04)</title>
+    <title>pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）</title>
     <link>https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/</link>
-    <description><![CDATA[Ubuntu18.04 の pyenv で Python 3.4.3 がインストールできなかったのでその解決法
+    <description><![CDATA[Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。
 <br><a href="https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/</guid>
     <pubDate>Fri, 28 Jun 2019 00:00:00 UT</pubDate>

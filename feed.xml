@@ -8,7 +8,7 @@
   <item>
     <title>GitLabのアップデート & Zero downtime updates & Slack通知</title>
     <link>https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/</link>
-    <description><![CDATA[重い腰を上げてGitLabをアップデートした．そのついでにZero downtime updatesに対応させた．
+    <description><![CDATA[重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。
 <br><a href="https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/</guid>
     <pubDate>Fri, 8 May 2020 00:00:00 UT</pubDate>
@@ -16,7 +16,7 @@
   <item>
     <title>nvtopを非rootでインストール</title>
     <link>https://blog.5ebec.dev/posts/non-root-nvtop/</link>
-    <description><![CDATA[nvtopを研究室のGPUサーバーにインストールした
+    <description><![CDATA[nvtopを研究室のGPUサーバーにインストールした。
 <br><a href="https://blog.5ebec.dev/posts/non-root-nvtop/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/non-root-nvtop/</guid>
     <pubDate>Tue, 28 Jan 2020 00:00:00 UT</pubDate>
@@ -38,25 +38,25 @@
     <pubDate>Sun, 8 Dec 2019 00:00:00 UT</pubDate>
   </item>
   <item>
-    <title>Netlify +  GitHub Actions で Hugo 製ブログの予約投稿</title>
+    <title>Netlify +  GitHub ActionsでHugo製ブログの予約投稿</title>
     <link>https://blog.5ebec.dev/posts/netlify-github-timed-post/</link>
-    <description><![CDATA[NetlifyでホスティングしているHugo製ブログで予約投稿したいなと思ってGitHub Actions使ったらめちゃ簡単だった．
+    <description><![CDATA[NetlifyでホスティングしているHugo製ブログで予約投稿したいなと思ってGitHub Actions使ったらめちゃ簡単だった。
 <br><a href="https://blog.5ebec.dev/posts/netlify-github-timed-post/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/netlify-github-timed-post/</guid>
     <pubDate>Sat, 7 Dec 2019 00:00:00 UT</pubDate>
   </item>
   <item>
-    <title>Eigenvectors from Eigenvalues を Julia で検証する</title>
+    <title>Eigenvectors from EigenvaluesをJuliaで検証する</title>
     <link>https://blog.5ebec.dev/posts/eigenvectors-from-eigenvalues-julia/</link>
-    <description><![CDATA[Twitter で話題になったり研究室の slack で話されたりしていたので Julia で書いてみた
+    <description><![CDATA[Twitterで話題になったり、研究室のslackで話されたりしていたのでJuliaで書いてみた。
 <br><a href="https://blog.5ebec.dev/posts/eigenvectors-from-eigenvalues-julia/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/eigenvectors-from-eigenvalues-julia/</guid>
     <pubDate>Tue, 19 Nov 2019 00:00:00 UT</pubDate>
   </item>
   <item>
-    <title>webpack + typescript + three.js で GLSL (.frag|.vert) を外部モジュールとして import する</title>
+    <title>webpack + typescript + three.jsでGLSL (.frag|.vert) を外部モジュールとしてimportする</title>
     <link>https://blog.5ebec.dev/posts/webpack-ts-three-js-glsl/</link>
-    <description><![CDATA[typescript &#43; three.js で GLSL をいい感じに編集したい
+    <description><![CDATA[typescript &#43; three.jsでGLSLをいい感じに編集したい。
 <br><a href="https://blog.5ebec.dev/posts/webpack-ts-three-js-glsl/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/webpack-ts-three-js-glsl/</guid>
     <pubDate>Thu, 14 Nov 2019 00:00:00 UT</pubDate>
@@ -72,7 +72,7 @@
   <item>
     <title>ssh keys</title>
     <link>https://blog.5ebec.dev/posts/ssh-keys/</link>
-    <description><![CDATA[何回やっても覚えられないので自分用に
+    <description><![CDATA[何回やっても覚えられないので自分用に。
 <br><a href="https://blog.5ebec.dev/posts/ssh-keys/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/ssh-keys/</guid>
     <pubDate>Tue, 8 Oct 2019 00:00:00 UT</pubDate>
@@ -80,7 +80,7 @@
   <item>
     <title>macOSで初期状態からのセットアップ</title>
     <link>https://blog.5ebec.dev/posts/macos-setup/</link>
-    <description><![CDATA[新しいMacを買ったときとか，macOSをファクトリーリセットしたい衝動に駆られたときに
+    <description><![CDATA[新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。
 <br><a href="https://blog.5ebec.dev/posts/macos-setup/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/macos-setup/</guid>
     <pubDate>Thu, 26 Sep 2019 00:00:00 UT</pubDate>
@@ -88,7 +88,7 @@
   <item>
     <title>[論文読み] Shape from Shading through Shape Evolution</title>
     <link>https://blog.5ebec.dev/posts/shape-from-shading-through-shape-evolution/</link>
-    <description><![CDATA[論文読み : 形状進化による 3D データを用いた Shape-from-Shading
+    <description><![CDATA[論文読み : 形状進化による3Dデータを用いたShape-from-Shading
 <br><a href="https://blog.5ebec.dev/posts/shape-from-shading-through-shape-evolution/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/shape-from-shading-through-shape-evolution/</guid>
     <pubDate>Thu, 29 Aug 2019 00:00:00 UT</pubDate>
@@ -96,7 +96,7 @@
   <item>
     <title>セキュリティ・キャンプ2019参加記</title>
     <link>https://blog.5ebec.dev/posts/seccamp2019/</link>
-    <description><![CDATA[セキュリティ・キャンプ全国大会2019に参加した話 本編
+    <description><![CDATA[セキュリティ・キャンプ全国大会2019に参加した話本編
 <br><a href="https://blog.5ebec.dev/posts/seccamp2019/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/seccamp2019/</guid>
     <pubDate>Sat, 24 Aug 2019 00:00:00 UT</pubDate>
@@ -104,31 +104,31 @@
   <item>
     <title>セキュリティ・キャンプ2019起床記</title>
     <link>https://blog.5ebec.dev/posts/seccamp2019-wakeup/</link>
-    <description><![CDATA[セキュリティ・キャンプ全国大会2019に参加した話 起床編
+    <description><![CDATA[セキュリティ・キャンプ全国大会2019に参加した話起床編
 <br><a href="https://blog.5ebec.dev/posts/seccamp2019-wakeup/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/seccamp2019-wakeup/</guid>
     <pubDate>Sat, 17 Aug 2019 00:00:00 UT</pubDate>
   </item>
   <item>
-    <title>pyenv で Python 3.4.3 がインストールできない (Ubuntu 18.04)</title>
+    <title>pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）</title>
     <link>https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/</link>
-    <description><![CDATA[Ubuntu18.04 の pyenv で Python 3.4.3 がインストールできなかったのでその解決法
+    <description><![CDATA[Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。
 <br><a href="https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/</guid>
     <pubDate>Fri, 28 Jun 2019 00:00:00 UT</pubDate>
   </item>
   <item>
-    <title>GitHub Pages + Netlify DNS でカスタムドメイン</title>
+    <title>GitHub Pages + Netlify DNSでカスタムドメイン</title>
     <link>https://blog.5ebec.dev/posts/github-pages-netlify-managed-dns-custom-domain/</link>
-    <description><![CDATA[GitHub Pagesにもカスタムドメインを設定する
+    <description><![CDATA[GitHub Pagesにもカスタムドメインを設定する。
 <br><a href="https://blog.5ebec.dev/posts/github-pages-netlify-managed-dns-custom-domain/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/github-pages-netlify-managed-dns-custom-domain/</guid>
     <pubDate>Sun, 9 Jun 2019 00:00:00 UT</pubDate>
   </item>
   <item>
-    <title>Netlify でさくっとカスタムドメイン</title>
+    <title>Netlifyでさくっとカスタムドメイン</title>
     <link>https://blog.5ebec.dev/posts/netlify-custom-domain/</link>
-    <description><![CDATA[院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く
+    <description><![CDATA[院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く。
 <br><a href="https://blog.5ebec.dev/posts/netlify-custom-domain/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/netlify-custom-domain/</guid>
     <pubDate>Sun, 9 Jun 2019 00:00:00 UT</pubDate>
@@ -136,21 +136,21 @@
   <item>
     <title>Ubuntu,Debianにzsh+prezto導入&テーマ変更</title>
     <link>https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/</link>
-    <description><![CDATA[ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした
+    <description><![CDATA[ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。
 <br><a href="https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/</guid>
     <pubDate>Sat, 25 May 2019 00:00:00 UT</pubDate>
   </item>
   <item>
-    <title>Ubuntu で解像度の異なる複数のディスプレイを同時にいい感じに使いたい</title>
+    <title>Ubuntuで解像度の異なる複数のディスプレイを同時に、いい感じに使いたい</title>
     <link>https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/</link>
-    <description><![CDATA[研究室で与えられたディスプレイの解像度が異なっていて気持ち悪かったので修正した&#40;?&#41;ときのメモ。
+    <description><![CDATA[研究室で与えられたディスプレイの解像度が異なっていて気持ち悪かったので修正した（?&#41;ときのメモ。
 <br><a href="https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/">Read more</a>]]></description>
     <guid>https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/</guid>
     <pubDate>Mon, 20 May 2019 00:00:00 UT</pubDate>
   </item>
   <item>
-    <title>Windows 10 のための Terminal</title>
+    <title>Windows 10のためのTerminal</title>
     <link>https://blog.5ebec.dev/posts/terminals-for-windows/</link>
     <description><![CDATA[WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」
 <br><a href="https://blog.5ebec.dev/posts/terminals-for-windows/">Read more</a>]]></description>
