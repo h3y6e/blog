@@ -1,7 +1,9 @@
-@def title = "Ubuntu,Debianにzsh+prezto導入&テーマ変更"
-@def date = Date(2019,05,25)
-@def tags = ["ubuntu", "debian", "zsh", "prezto", "shell"]
-@def rss = "ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした"
++++
+title = "Ubuntu,Debianにzsh+prezto導入&テーマ変更"
+date = Date(2019,05,25)
+tags = ["ubuntu", "debian", "zsh", "prezto", "shell"]
+rss = "ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。"
++++
 
 ~~~
 <blockquote class="twitter-tweet" data-lang="ja" data-theme="dark"><p lang="ja" dir="ltr">bashは`sudo apt install zsh`をする場所だと思っている</p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1115124604538744832?ref_src=twsrc%5Etfw">2019年4月8日</a></blockquote>
@@ -23,7 +25,7 @@ $ sudo apt install zsh
 ```bash
 $ zsh
 ```
-設定画面が開く場合がありますが、preztoを導入する場合はこの設定は必要ないので`q`で抜ける。
+設定画面が開く場合がありますが、preztoを導入する場合、この設定は必要ないので`q`で抜ける。
 bashはここまで、以下はzsh内で
 
 ```zsh

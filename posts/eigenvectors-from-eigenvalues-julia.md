@@ -1,26 +1,28 @@
-@def title = "Eigenvectors from Eigenvalues を Julia で検証する"
-@def date = Date(2019, 11, 19)
-@def tags = ["julia"]
-@def rss = "Twitter で話題になったり研究室の slack で話されたりしていたので Julia で書いてみた"
++++
+title = "Eigenvectors from EigenvaluesをJuliaで検証する"
+date = Date(2019, 11, 19)
+tags = ["julia"]
+rss = "Twitterで話題になったり、研究室のslackで話されたりしていたのでJuliaで書いてみた。"
++++
 
  - [Eigenvectors from Eigenvalues](https://arxiv.org/pdf/1908.03795.pdf)
  - Peter B. Denton, Stephen J. Parke, Terence Tao, Xining Zhang
 
-$n$ 番煎じだと思うが， Julia で検証してみる．
+$n$ 番煎じだと思うが、 Juliaで検証してみる。
 
-この論文の重要な部分は **Lemma 2** である．
+この論文の重要な部分は **Lemma 2** である。
 
 $$
 |v_{i,j}|^2 \prod_{k = 1; k \neq i}^n{(\lambda_i(A) - \lambda_k(A))} = \prod_{k = 1}^{n-1}{(\lambda_i(A) - \lambda_k(M_j))}
 $$
 
-ただし，
+ただし、
  - $A$ : $n \times n$ のエルミート行列
  - $\lambda_i(A)$ : $A$ の $i$ 番目の固有値
  - $v_{i,j}$ : $\lambda_i(A)$ に対する固有ベクトル $v_i$ の $j$ 番目の要素
  - $M_j$ : $A$ から第 $j$ 行と第 $j$ 列を除去して得られた主小行列
 
-この関係式により，固有値(と主小行列固有値)から固有ベクトル(の成分の二乗ノルム)を計算する事が出来る．
+この関係式により、固有値（と主小行列固有値）から固有ベクトル（の成分の二乗ノルム）を計算する事が出来る。
 
 ## 実行環境
 ```julia
@@ -38,7 +40,7 @@ Platform Info:
 ```
 
 ## 準備
-行列をシンプルに表示するため，`printarr` 関数を作成しておく．
+行列をシンプルに表示するため、`printarr`関数を作成しておく。
 ```julia
 using Test
 using LinearAlgebra
@@ -47,7 +49,7 @@ printarr(arr) = Base.print_array(IOContext(stdout, :compact => true), arr)
 ```
 
 ## エルミート行列 $A$ を生成
-[JuliaMath/RandomMatrices.jl](https://github.com/JuliaMath/RandomMatrices.jl) パッケージの `GaussianHermite` を用いてランダムなエルミート行列を生成する．
+[JuliaMath/RandomMatrices.jl](https://github.com/JuliaMath/RandomMatrices.jl) パッケージの`GaussianHermite`を用いてランダムなエルミート行列を生成する。
 ```julia
 N = 3
 A = rand(GaussianHermite(2), N)
@@ -59,8 +61,8 @@ printarr(A)
  0.145503+0.673825im    0.517909+0.340381im  0.910566+0.0im   
 ```
 
-## $A$ の固有値, 固有ベクトルを求める
-固有値及び固有ベクトルは Standard Library である [LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) の `eigvals` 関数 と `eigvecs` 関数 で求められる．また，`eigen` 関数でも取得することが出来る．
+## $A$ の固有値、 固有ベクトルを求める
+固有値及び固有ベクトルはStandard Libraryである [LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) の`eigvals`関数と`eigvecs`関数で求められる。また、`eigen`関数でも取得することが出来る。
 ```julia
 println("固有値(eigvals)")
 λ = eigvals(A)
@@ -102,7 +104,7 @@ A[1:N .!= j, 1:N .!= j]
 ```julia
 A[setdiff(1:N, j), setdiff(1:N, j)]
 ```
-のように記述することで， $M_j$ を表現することができる．
+のように記述することで、 $M_j$ を表現することができる。
 ```julia
 M = zeros(Complex{Float64}, N-1, N-1, N)
 for j = 1:N
@@ -124,7 +126,7 @@ j = 3
  -0.33357+0.328261im  -0.0486213+0.0im   
 ```
 
-## Lemma 2 (再掲)
+## Lemma 2 (再掲）
 $$
 |v_{i,j}|^2 \prod_{k = 1; k \neq i}^n{(\lambda_i(A) - \lambda_k(A))} = \prod_{k = 1}^{n-1}{(\lambda_i(A) - \lambda_k(M_j))}
 $$
