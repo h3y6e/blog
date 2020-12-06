@@ -18,10 +18,16 @@
     "prod:css": "postcss theme/css/a5ebec.pcss --dir _css --ext css --no-map",
     "dev:franklin": "julia --project=. -e 'using Franklin;serve(clear=true)'",
     "prod:franklin": "julia --project=. -e 'using Franklin;optimize()'",
-    "format": "prettier --write . -u"
+    "format": "prettier --write . -u",
+    "lint": "textlint posts/*.md",
+    "lint:fix": "textlint --fix posts/*.md"
   },
   "devDependencies": {
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "textlint": "^11.7.6",
+    "textlint-rule-preset-ja-spacing": "^2.0.2",
+    "textlint-rule-preset-japanese": "^5.0.0",
+    "textlint-rule-preset-jtf-style": "^2.3.6"
   },
   "dependencies": {
     "highlight.js": "^10.4.0",

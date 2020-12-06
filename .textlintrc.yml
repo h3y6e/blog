@@ -1,0 +1,8 @@
+rules:
+  preset-ja-spacing:
+    ja-space-around-code: true
+  preset-japanese:
+    sentence-length: false
+    no-doubled-joshi: false
+  preset-jtf-style:
+    4.2.6.ハイフン(-): false
