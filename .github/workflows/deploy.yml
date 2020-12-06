@@ -12,8 +12,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: yarn install & build
-        run: yarn install --prod --pure-lockfile && yarn prod:css
+      - name: Install dependencies
+        run: yarn install --prod --pure-lockfile
 
       # NOTE: Python is necessary for the pre-rendering (minification) step
       - name: Install Python
@@ -40,10 +40,10 @@ jobs:
       - name: Activate and Instantiate
         run: julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate();'
 
-      - name: Generate site
-        run: julia --project=. -e 'using Franklin; optimize()'
+      - name: Build
+        run: yarn prod
 
-      - name: Build and Deploy
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
