@@ -1,9 +1,11 @@
-@def title = "pyenv で Python 3.4.3 がインストールできない (Ubuntu 18.04)"
-@def date = Date(2019,06,28)
-@def tags = ["python","pyenv","ubuntu"]
-@def rss = "Ubuntu18.04 の pyenv で Python 3.4.3 がインストールできなかったのでその解決法"
++++
+title = "pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）"
+date = Date(2019,06,28)
+tags = ["python","pyenv","ubuntu"]
+rss = "Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。"
++++
 
-pyenvでPython 3.4.3をインストールしようとしたらこんなエラーが出た．
+pyenvでPython 3.4.3をインストールしようとしたらこんなエラーが出た。
 ```shell
 Downloading Python-3.4.3.tar.xz...
 -> https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz
@@ -32,7 +34,7 @@ fi
 Ignoring ensurepip failure: pip 6.0.8 requires SSL/TLS
 ```
 エラーメッセージに書かれている https://github.com/pyenv/pyenv/wiki/common-build-problems 
-にこんな項目があった．
+にこんな項目があった。
 
 [ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib?](https://github.com/pyenv/pyenv/wiki/common-build-problems#error-the-python-ssl-extension-was-not-compiled-missing-the-openssl-lib)
 
@@ -43,7 +45,7 @@ sudo apt-get update
 sudo apt-get install libssl1.0-dev
 ```
 
-これっぽい．
+これっぽい。
 
 以下を実行
 
@@ -61,6 +63,4 @@ Installing Python-3.4.3...
 Installed Python-3.4.3 to /home/5ebec/.anyenv/envs/pyenv/versions/3.4.3
 ```
 
-解決．
-
-
+解決。

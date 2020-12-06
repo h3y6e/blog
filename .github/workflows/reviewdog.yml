@@ -1,0 +1,20 @@
+name: reviewdog
+on:
+  pull_request:
+    branches:
+      - "posts/**"
+jobs:
+  textlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Run action-textlint
+        uses: tsuyoshicho/action-textlint@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          textlint_flags: "posts/**"

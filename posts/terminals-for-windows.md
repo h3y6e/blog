@@ -1,7 +1,9 @@
-@def title = "Windows 10 のための Terminal"
-@def date = Date(2019,05,19)
-@def tags = ["windows", "terminal", "shell"]
-@def rss = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」"
++++
+title = "Windows 10のためのTerminal"
+date = Date(2019,05,19)
+tags = ["windows", "terminal", "shell"]
+rss = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」"
++++
 
 自分が使ってきたTerminalを順にまとめていく。
 
@@ -16,7 +18,7 @@
  - GPU-acceleratedで非常に高速
 
 #### cons
- - 日本語入力に難あり(入力窓が別のところに出てくるアレ)
+ - 日本語入力に難あり（入力窓が別のところに出てくるアレ）
  - タブ機能なし
  - 最低限のデザイン
 

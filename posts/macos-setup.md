@@ -1,7 +1,9 @@
-@def title = "macOSで初期状態からのセットアップ"
-@def date = Date(2019,09,26)
-@def tags = ["macos", "setup"]
-@def rss = "新しいMacを買ったときとか，macOSをファクトリーリセットしたい衝動に駆られたときに"
++++
+title = "macOSで初期状態からのセットアップ"
+date = Date(2019,09,26)
+tags = ["macos", "setup"]
+rss = "新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。"
++++
 
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">掃除出来ない人間はコマンド叩いた時の多少のエラーとかは動けば放置してしまうから、いっそ定期的にリストアするぞくらいの気持ちのほうが良い</p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1049345182955528197?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -11,10 +13,10 @@
 
 #### BetterTouchTool
 
-β版だが， 設定 > 同期 で \\
+β版だが、 設定 > 同期で \\
  - [x] 同期を有効にする
 
-#### mackup の cfg
+#### mackupのcfg
 
 `.mackup/nvim.cfg`
 
@@ -54,7 +56,7 @@ $ mackup backup
 
 #### 一般
 
-* スクロールバーのクリック時: クリックされた場所にジャンプ  
+* スクロールバーのクリック時： クリックされた場所にジャンプ  
 * 書類をとじるときに変更内容を保持するかどうかを確認  
 
 #### Dock
@@ -64,42 +66,42 @@ $ mackup backup
 #### セキュリティとプライバシー
 
 * 一般
-  * Apple Watch でこの Mac のロックを解除できるようにする
+  * Apple WatchでこのMacのロックを解除できるようにする
 * ファイアウォール
   * ファイアウォールをオンにする
 
-#### 内蔵 Retina ディスプレイ
+#### 内蔵Retinaディスプレイ
 
 * ディスプレイ
-  * 解像度: 変更 > スペースを拡大
+  * 解像度： 変更 > スペースを拡大
   * 輝度を自動調整
 
 #### 省エネルギー
 
 * バッテリー
-  * ディスプレイをオフにするまでの時間: 5分
+  * ディスプレイをオフにするまでの時間： 5分
 * 電源アダプタ
-  * 電源アダプタに接続中に Power Nap をオンにする
+  * 電源アダプタに接続中にPower Napをオンにする
 
 #### キーボード
 
 * キーボード
-  * キーのリピート: 最速
-  * リピート入力認識までの時間: 最短
+  * キーのリピート： 最速
+  * リピート入力認識までの時間： 最短
   * 環境光が暗い場合にキーボードの輝度を調整
-  * 修飾キー… > Caps Lock キー: Control
+  * 修飾キー… > Caps Lockキー: Control
 * ショートカット
-  * Launchpad を表示: Control+Shift+L
+  * Launchpadを表示： Control+Shift+L
   * デスクトップ [Num] へ切り替え  
-  * 以下は Google Chrome をインストールしアカウントを追加した後 \\
-    アプリケーション で Google Chrome を選択 \\
+  * 以下はGoogle Chromeをインストールしアカウントを追加した後 \\
+    アプリケーションでGoogle Chromeを選択 \\
     メニュータイトルにアカウントの名前を正確に入力 \\
-    キーボードショートカット: Control+Command+[Num]
+    キーボードショートカット： Control+Command+[Num]
 
 #### トラックパッド
 
-* クリック: 弱い
-* 起動の速さ: 中心から1つ右
+* クリック： 弱い
+* 起動の速さ： 中心から1つ右
 
 #### サウンド
 
@@ -107,11 +109,11 @@ $ mackup backup
 
 #### 共有
 
-* コンピュータ名: (変更する)
+* コンピュータ名： (変更する）
 
 #### Siri
 
-* メニューバーに Siri を表示
+* メニューバーにSiriを表示
 
 #### 日付と時刻
 
@@ -121,7 +123,7 @@ $ mackup backup
 #### Time Machine
 
 * バックアップを自動生成
-* Time Machine をメニューバーに表示
+* Time Machineをメニューバーに表示
 
 #### アクセスビリティ
 
@@ -136,7 +138,7 @@ $ mackup backup
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-#### Dropbox, mackup をインストール
+#### Dropbox, mackupをインストール
 
 ```shell
 $ brew install mackup
@@ -153,14 +155,14 @@ $ brew cask install dropbox
 $ mackup restore
 ```
 
-#### Homebrew Package のインストール
+#### Homebrew Packageのインストール
 
 ```shell
 $ brew bundle --global
 ```
 
 ## 各種App
-Launchpad から起動する
+Launchpadから起動する
 
 ## ssh
 [ssh keys](https://blog.5ebec.dev/posts/ssh-keys/)

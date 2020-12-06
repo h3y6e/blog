@@ -1,11 +1,13 @@
-@def title = "Netlify でさくっとカスタムドメイン"
-@def date = Date(2019,06,09)
-@def tags = ["netlify", "domain"]
-@def rss =  "院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く"
++++
+title = "Netlifyでさくっとカスタムドメイン"
+date = Date(2019,06,09)
+tags = ["netlify", "domain"]
+rss =  "院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く。"
++++
 
 ## カスタムドメインの購入
 
-[Google Domains](https://domains.google.com)で流行りの.devドメインを購入\
+[Google Domains](https://domains.google.com)で流行りの。devドメインを購入\
 日本語対応してるので簡単
 
 > Google Domains のサービスは、現在お住まいの国で営利目的または商用で使用する場合にのみご利用いただけます。
@@ -20,13 +22,13 @@
 
 このページで設定する  
 
-Add custom domain からお好きなカスタムドメインを追加
+Add custom domainからお好きなカスタムドメインを追加
 
 画像のように`blog`等のサブドメインも可能  
 
-Check DNS configration という警告が出るのでそれをクリックして出てきたメッセージに従う
+Check DNS configrationという警告が出るのでそれをクリックして出てきたメッセージに従う
 
-(ググってよく出てくるのはカスタムリソースレコードのCNAMEの設定だが、そんなことをしなくてもカスタムネームサーバーを使用すればNetlifyのManaged DNSが勝手に設定してくれる)
+(ググってよく出てくるのはカスタムリソースレコードのCNAMEの設定だが、そんなことをしなくてもカスタムネームサーバーを使用すればNetlifyのManaged DNSが勝手に設定してくれる）
 
 Netlifyに提示されたネームサーバーをGoogle DomainsのDNS > ネームサーバー に追加する  
 

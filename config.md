@@ -18,7 +18,8 @@ these files might be copied and, if markdown, processed by Franklin which
 you might not want. Indicate directories by ending the name with a `/`.
 -->
 @def ignore = [".vscode/", "node_modules/", "theme/", ".prettierignore",
-    ".prettierrc.yml", "package.json", "postcss.config.js", "yarn.lock"]
+    ".prettierrc.yml", ".textlintrc.yml", "package.json",
+    "postcss.config.js", "yarn.lock"]
 
 <!--
 Add here global latex commands to use throughout your

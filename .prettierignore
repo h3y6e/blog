@@ -1,5 +1,6 @@
 __site/
 _assets/
+_css/
 _layout/head.html
 _layout/foot.html
 _libs/

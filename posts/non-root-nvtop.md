@@ -1,9 +1,11 @@
-@def title = "nvtopを非rootでインストール"
-@def date = Date(2020,01,28)
-@def tags = ["memo"]
-@def rss = "nvtopを研究室のGPUサーバーにインストールした"
++++
+title = "nvtopを非rootでインストール"
+date = Date(2020,01,28)
+tags = ["memo"]
+rss = "nvtopを研究室のGPUサーバーにインストールした。"
++++
 
-htopのnvidia-smi版的なやつ: [nvtop](https://github.com/Syllo/nvtop) \\
+htopのnvidia-smi版的なやつ： [nvtop](https://github.com/Syllo/nvtop) \\
 いい感じになるのでオススメ
 
 ```bash

@@ -1,7 +1,9 @@
-@def title = "GitHub Pages + Netlify DNS でカスタムドメイン"
-@def date = Date(2019, 06, 09)
-@def tags = ["netlify", "domain", "githubpages"]
-@def rss =  "GitHub Pagesにもカスタムドメインを設定する"
++++
+title = "GitHub Pages + Netlify DNSでカスタムドメイン"
+date = Date(2019, 06, 09)
+tags = ["netlify", "domain", "githubpages"]
+rss =  "GitHub Pagesにもカスタムドメインを設定する。"
++++
 
 [これ](/netlify-custom-domain)の続き
 
@@ -21,6 +23,6 @@ Value: *USERNAME*.github.io
 
 ![netlify_dns_settings](/img/2019-06-09/netlify_dns_settings.png)
 
-GitHub Pagesのレポジトリのページから Setting > Options > GitHub Pages > Custom domain にカスタムドメインを書いてSave
+GitHub PagesのレポジトリのページからSetting > Options > GitHub Pages > Custom domainにカスタムドメインを書いてSave
 
 完成
