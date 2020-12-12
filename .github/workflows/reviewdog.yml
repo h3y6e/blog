@@ -6,8 +6,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup node/npm
+        uses: actions/setup-node@v1
         with:
-          persist-credentials: false
+          node-version: "15"
 
       - name: Run action-textlint
         uses: tsuyoshicho/action-textlint@v2
