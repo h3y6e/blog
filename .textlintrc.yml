@@ -6,3 +6,5 @@ rules:
     no-doubled-joshi: false
   preset-jtf-style:
     4.2.6.ハイフン(-): false
+filters:
+  comments: true
