@@ -1,8 +1,5 @@
 name: reviewdog
-on:
-  pull_request:
-    branches:
-      - "posts/**"
+on: pull_request
 jobs:
   textlint:
     runs-on: ubuntu-latest
