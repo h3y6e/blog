@@ -40,7 +40,7 @@ body {
   margin: 0 auto;
   padding: 40px;
   font-size: 1rem;
-  line-height: 1.75;
+  line-height: 1.8;
   letter-spacing: -0.02em;
   color: rgb(250, 251, 251);
   color: var(--color);
@@ -90,7 +90,7 @@ h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
 
 h1,
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 h3 {
@@ -107,22 +107,14 @@ h6 {
 }
 
 a {
-  color: inherit
+  color: inherit;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
+  -webkit-text-decoration-color: #a5ebec;
+          text-decoration-color: #a5ebec;
+  -webkit-text-decoration-color: var(--accent);
+          text-decoration-color: var(--accent);
 }
-
-a[\:has\(code\)] {
-    -webkit-text-decoration-color: #a5ebec;
-            text-decoration-color: #a5ebec;
-    -webkit-text-decoration-color: var(--accent);
-            text-decoration-color: var(--accent);
-  }
-
-a:has(code) {
-    -webkit-text-decoration-color: #a5ebec;
-            text-decoration-color: #a5ebec;
-    -webkit-text-decoration-color: var(--accent);
-            text-decoration-color: var(--accent);
-  }
 
 img {
   display: block;
@@ -566,19 +558,18 @@ header .menu {
   }
 
 .franklin-content table.fndef {
-    table-layout: auto;
-    margin: 0;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    border-top: 1px solid #a5ebec;
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid #a5ebec;
+    border-bottom: 1px solid var(--accent)
   }
 
 .franklin-content table.fndef td {
-      border: 0;
-      font-size: 80%
+      font-size: 90%
     }
 
 .franklin-content table.fndef td.fndef-backref {
-        border-left: 2px dotted #a5ebec;
-        border-left: 2px dotted var(--accent);
         vertical-align: top;
       }
 
