@@ -107,22 +107,14 @@ h6 {
 }
 
 a {
-  color: inherit
+  color: inherit;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
+  -webkit-text-decoration-color: #a5ebec;
+          text-decoration-color: #a5ebec;
+  -webkit-text-decoration-color: var(--accent);
+          text-decoration-color: var(--accent);
 }
-
-a[\:has\(code\)] {
-    -webkit-text-decoration-color: #a5ebec;
-            text-decoration-color: #a5ebec;
-    -webkit-text-decoration-color: var(--accent);
-            text-decoration-color: var(--accent);
-  }
-
-a:has(code) {
-    -webkit-text-decoration-color: #a5ebec;
-            text-decoration-color: #a5ebec;
-    -webkit-text-decoration-color: var(--accent);
-            text-decoration-color: var(--accent);
-  }
 
 img {
   display: block;
