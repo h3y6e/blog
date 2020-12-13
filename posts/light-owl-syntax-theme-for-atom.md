@@ -1,7 +1,7 @@
 +++
 title = "誰得なAtomのSyntax themeを作った"
 date = Date(2019, 12, 23)
-tags = ["adventcalendar", "atom", "vscode", "julia"]
+tags = ["camphor", "adventcalendar", "atom", "vscode", "julia"]
 rss = "Atomは好きですか？ライトテーマは好きですか？Juliaは好きですか？"
 +++
 
