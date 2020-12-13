@@ -116,29 +116,3 @@ function hfun_tagpage()
     write(io, "</tr></table>")
     return String(take!(io))
 end
-
-hfun_blogcard(url) = """
-    <iframe
-    class="hatenablogcard"
-    style="width:100%;height:155px;max-width:500px;"
-    src="https://hatenablog-parts.com/embed?url=$url"
-    width="300"
-    height="150"
-    allowtransparency='true'
-    frameborder="0"
-    scrolling="no"
-    ></iframe>
-"""
-
-hfun_gslides(id) = """
-<div class="iframe-wrap">
-    <iframe
-      src="https://docs.google.com/presentation/d/$id/embed"
-      frameboader="0"
-      allowfullscreen="true"
-      mozallowfullscreen="true"
-      webkitallowfullscreen="true"
-    >
-    </iframe>
-</div>
-"""
