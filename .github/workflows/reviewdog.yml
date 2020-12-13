@@ -11,6 +11,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "15"
+      - run: npm install
 
       - name: Run action-textlint
         uses: tsuyoshicho/action-textlint@v2
