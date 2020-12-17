@@ -119,13 +119,13 @@ p {
 
 img {
   display: block;
-  max-width: 90%;
+  max-width: 95%;
 }
 
 @media (max-width: 684px) {
 
 img {
-    max-width: 98%;
+    max-width: 100%;
 }
   }
 
@@ -138,13 +138,13 @@ figure {
 }
 
 figure figcaption {
-    max-width: 90%;
+    max-width: 95%;
   }
 
 @media (max-width: 684px) {
 
 figure figcaption {
-      max-width: 98%;
+      max-width: 100%;
   }
     }
 

@@ -9,14 +9,13 @@ cover = "/img/2020-12-18/rack.jpg"
 この記事は、[Kumano dorm. Advent Calendar 2020](https://adventar.org/calendars/4930)の18日目の記事です。
 
 こんにちは。A2に住んでいる者です。\\
-A2ネットを運営・管理しているのですが、今年は色々改善したので、その話をします。
+A2ネットを管理しているのですが、今年は色々改善したので、その話をします。
 
 ## A2ネットとは
 熊野寮のA2ブロックに所属する人が使用できるネットワーク（無線LAN及び有線LAN）です。
 1人の管理者がプロパイダと1回線を契約し、A2ネットの利用者が管理者へ利用料を払うという形式を取っています。
 
 談話室内での利用は無料としています[^談話室無料] が、居室・食堂・ロビー・事務室で利用するには利用料を徴収しており、現在の値段は**1人あたり3,500円/年**です。
-安いですね。
 <!-- お金についての詳細は後述します。 -->
 
 [^談話室無料]: これは談話室に人が集まり、ブロックの団結を強固なものにすることを願っているためです。\\今年は談話室にあまり集まれませんでしたが……
@@ -67,7 +66,8 @@ A2ネットはeo光で光回線を契約しているのですが、5/10Gbpsが�
 
 ### 機器を新しくした
 #### 無線LANルーター
-先述したように旧A2ネットでは居室には有線LANのみしか提供していなかったため、そもそもアクセスポイントが無い部屋もありました。そこで、アクセスポイントが無い部屋には新たに購入し設置しました。
+先述したように旧A2ネットでは居室には有線LANのみしか提供していなかったため、そもそもアクセスポイントが無い部屋もありました。
+そこで、アクセスポイントが無い部屋には新たに設置しました。
 
 大本となる談話室の無線LANルーターは、IPv6対応・Wi-Fi6対応・10GbEポートを搭載したものに変えました。
 
@@ -82,7 +82,7 @@ A2ネットはeo光で光回線を契約しているのですが、5/10Gbpsが�
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">my new gear... <a href="https://t.co/q3HrhkyQTC">pic.twitter.com/q3HrhkyQTC</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1278714547629461510?ref_src=twsrc%5Etfw">July 2, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
-配線後はこんな感じになりました[^電源]。コードいっぱいで可愛いですね。
+配線後はこんな感じになりました[^電源]。
 ~~~
 <figure>
   <img src="/img/2020-12-18/rack.jpg"/>
@@ -145,7 +145,7 @@ log-facility = /var/log/dnsmasq.log
 
 ![DHCPサーバ](/img/2020-12-18/dhcpserver_hub.jpg)
 
-### ドキュメント等をGitHub + Google Driveで管理
+### ドキュメント等をGitHub + Google Driveで管理するようにした
 おまけ。\\
 利用者のためのマニュアル、confファイル、各種ドキュメント等はGitHub Organizationを用いて管理しています。
 
