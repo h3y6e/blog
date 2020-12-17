@@ -3,7 +3,7 @@ title = "A2ネットを改善しよう"
 date = Date(2020, 12, 18)
 tags = ["kmnac", "adventcalendar"]
 rss = "寮のネットワークを改善している話。"
-cover = "/img/2020-12-18/a2net_new.png"
+cover = "/img/2020-12-18/rack.jpg"
 +++
 
 この記事は、[Kumano dorm. Advent Calendar 2020](https://adventar.org/calendars/4930)の18日目の記事です。
