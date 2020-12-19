@@ -56,14 +56,22 @@ Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrom
 テーマ回では、Web技術に関する特定のテーマについて深く掘り下げて議論しています。
 最新のテーマ回では[Semantic Web](https://mozaic.fm/episodes/73/semantic-web.html)について話されていました。
 
-過去のエピソードだと居酒屋で録音したもの（[ep7 REST](https://mozaic.fm/episodes/7/rest.html)）もあり、これはかなり面白かったです。
+過去のエピソードだと居酒屋で録音したもの（[ep7 REST](https://mozaic.fm/episodes/7/rest.html)）もあり、かなり面白かったです。
 
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://mozaic.fm" data-iframely-url="//cdn.iframe.ly/8iwlHIR"></a></div></div>
 ~~~
 
-### Fukabori.fm
-1エピソード約30分でテンポが良いです。
+### fukabori.fm
+何らかの分野に特化したゲストの話をひたすら"深掘り"していくPodcastです。
+
+最初は入門的な話を訊き、面白いところを技術的に掘り下げていくスタイル。
+故にその分野に明るくなくても理解する事が出来、自分の知らない分野であるほど楽しく聴くことが出来ます。
+
+1エピソードの長さも1時間弱くらいでテンポが良いので全て聴いてほしいのですが、
+印象に残っているものを1つ挙げるのであれば「[20. 技術力をいかに評価するか？インターンシップにおける採用・戦略とは？ w/ makoga](https://fukabori.fm/episode/20)」です。
+これを聴いてVOYAGE GROUPのインターンに興味を持ち、今年参加しました。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://fukabori.fm/" data-iframely-url="//cdn.iframe.ly/c6400vn?iframe=card-small"></a></div></div>
 ~~~
