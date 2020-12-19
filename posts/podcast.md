@@ -2,7 +2,8 @@
 title = "ITエンジニア志望の学生が聴くべきPodcast"
 date = Date(2020, 12, 20)
 tags = ["camphor", "adventcalendar", "podcast"]
-rss = "Podcastはいいぞ"
+rss = "おすすめのPodcast番組を紹介して皆んなとPodcastトークがしたい。"
+cover = "/img/2020-12-20/camphor-slack_podcast.png"
 +++
 
 ~~~
@@ -31,26 +32,18 @@ SCHOOL OF LOCK!、オールナイトニッポン、SUNDAY NIGHT DREAMER、wktk�
 
 [^配信プラットフォーム]: 例えばSpotifyは録音・編集・配信ができるPodcastサービスであるAnchorを買収したり、Google PodcastsにiOSアプリが登場したり、Amazon MusicでPodcastが利用可能になったりしています。
 
-<!-- ## 技術を知る
+
+---
+**TODO: 以下、紹介雑すぎるので朝までに完成させます**
+## 技術を知る
+
+
 
 ### Rebuild
-まずはこれ。
-
-技術系と言っても色々な
+もはや説明不要のこれ。hakさん回が好きです。
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://rebuild.fm/" data-iframely-url="//cdn.iframe.ly/AQ5ynQH"></a></div></div>
 ~~~
-
-hakさん回が好きです。
-
-これは
-面接などで
-
-
-最近気になっている技術はなんですか？
-
-
-Rebuildで話されていることを話したそうです。
 
 
 
@@ -69,85 +62,101 @@ Rebuildで話されていることを話したそうです。
 ~~~
 
 ### Misreading Chat
+
+コンピュータサイエンス周辺の論文を紹介するPodcastです。
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://misreading.chat/" data-iframely-url="//cdn.iframe.ly/l9IShjk"></a></div></div>
 ~~~
 
-コンピュータサイエンス周辺の論文を紹介するPodcastです。
 
 
 ### yatteiki.fm
-技術系という括りにはなると思いますが、殆ど雑談です。
-今年の10月末に、約2年ぶりに更新されてテンションが上がってるので書きました。
+技術系という括りにはなると思いますが、殆ど雑談系です。\\
+今年の10月末に約2年ぶりに更新されてテンションが上がってるのでここに載せました。
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://yatteiki.fm/" data-iframely-url="//cdn.iframe.ly/tYx8Fxx"></a></div></div>
 ~~~
 
 ### もぐラジオ
-これは完全に俺得ですが、
-VR/AR業界の
-Podcastです。
-動向をキャッチアップでき、
-
+VR/AR業界の動向をキャッチアップできるPodcastです。
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.moguravr.com/moguradio-2/" data-iframely-url="//cdn.iframe.ly/uhGvgBc"></a></div></div>
 ~~~
 
 ## 企業を知る
+技術系のPodcastですが、
+企業がオウンドメディアとして配信しているものです。\\
+その企業がどんな技術を用いて、どんな風に開発をしているかが分かります。
 
 ### UIT INSIDE
-LINE UIT室の開発者による「最新のフロントエンド」をキャッチアップできるPodcast
+LINE UIT室の開発者による最新のフロントエンド動向をキャッチアップできるPodcastです。
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://uit-inside.linecorp.com/" data-iframely-url="//cdn.iframe.ly/AYA9NDH?iframe=card-small"></a></div></div>
 ~~~
 
 ### ajitofm
+
+[VOYAGE GROUP](https://voyagegroup.com/)のAJITOという社内BARで録音されているPodcastです。
+基本的にはビール缶をプシュっとあける音から始まります。
+VOYAGE GRUOPやAJITOの雰囲気がわかるのでおすすめです。
+
+<!-- 
+（インターンに参加した時に訊きました）。
+
+（僕は気になってしまいます）
+
+
+酔って
+ちょっとテンションに差があるので
+課題をやっている時などに聴くのはおすすめしません笑 -->
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://ajito.fm/" data-iframely-url="//cdn.iframe.ly/yZ3b2EE"></a></div></div>
 ~~~
-その関係で最近更新はあまりされていませんが、雰囲気がわかるのでおすすめです。
+
 
 
 ### mercan.fm
-mercan.fmは、メルカリが運営するコンテンツプラットフォーム、mercan（メルカン）のPodcastです。メルカリのメンバーが仕事や会社について、日々の出来事についてゆるく語ります。
-
 [mercan](https://mercan.mercari.com/)のPodcast版です。
 
-棒読み感が凄い。
-
-ジングルの音量が大きい
-聴きづらさを感じるので改善を期待します。
-
+ジングルの音量がMCの声量に比べてかなり大きかったので聴きづらさを感じていましたが、最近は改善されました。
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://mercan.mercari.com/tags/mercan-fm/" data-iframely-url="//cdn.iframe.ly/ZgVvdsF?iframe=card-small"></a></div></div>
 ~~~
 
-
-## 英語学習
+## 英語を学ぶ
 
 ### バイリンガルニュース
+僕がPodcastを聞き始めるきっかけとなったもの。
+2013年のエピソード1からずっと聞き続けています。\\
+日本語と英語で交互に話すというスタイルなので、英語弱者でも話が分かります。
+宇宙に関する話が面白いです。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://bilingualnews.jp/" data-iframely-url="//cdn.iframe.ly/taWzMbx"></a></div></div>
 ~~~
 
-僕がPodcastを聞き始めるきっかけとなったもの。
-2013年の#1から現在に至るまでずっと聞き続けています。
-技術系ではないですが、面白くてずっと聴いているPodcastです。
+
 
 ### TED Talks Daily
+[TED Talks](https://www.ted.com/talks)のPodcastです。
+[TEDのPodcastは複数種類がある](https://www.ted.com/podcasts)のですが、このTED Talks Dailyは平日更新で1エピソード5〜20分くらいの長さなので、通学時に聴いています。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.ted.com/about/programs-initiatives/ted-talks/ted-talks-daily" data-iframely-url="//cdn.iframe.ly/WV8oKNM?iframe=card-small"></a></div></div>
 ~~~
 
+**TODO: 以上、紹介雑すぎるので朝までに完成させます**
 
-平日更新で、
-通学時間で -->
+---
 
 ## まとめ
-気になるPodcastはありましたでしょうか？
-興味は持ったけど何から聞いたらいいのか分からないという方や、もっと聴くべきPodcastがあるぞと言いたい方もいると思います。
+気になるPodcast番組はありましたでしょうか？
+興味は持ったけど何から聞いたらいいのか分からないという方や、もっと聴くべき番組があるぞと言いたい方もいると思います。
 
 そんなあなたに、CAMPHOR-のSlackには**#podcast**というチャンネルがあります！
 現在このチャンネルには10人しか入ってないので、普段からPodcast聞いてるよって人は勿論、聞いてなかったけど興味を持ったって人はぜひ入りましょう。\strike{僕が感想をコメントしていないのも原因の1つですが、}RSS Readerと化しているので寂しいです。
 
 Podcastトーク、一緒にしませんか？
+
+![CAMPHOR- Slack Podcast](/img/2020-12-20/camphor-slack_podcast.png)
