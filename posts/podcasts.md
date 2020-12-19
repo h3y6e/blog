@@ -35,6 +35,7 @@ SCHOOL OF LOCK!、オールナイトニッポン、SUNDAY NIGHT DREAMER、wktk�
 ## 技術を知る
 ### Rebuild
 技術系の話題について幅広く取り上げているPodcastです。
+1エピソード2時間以上の雑談系であるため、作業をしながら聴いたり通学時間で聴いたりするのが良いです。
 
 日本のエンジニア界隈でPodcastが流行るきっかけとなったPodcast番組でもあります。
 技術系Podcastではfmドメイン[^fmドメイン] を取る傾向にありますが、RebuildのWebサイトである[rebuild.fm](https://rebuild.fm/)に触発されているものも多いと考えられます。
@@ -77,16 +78,20 @@ Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrom
 ~~~
 
 ### Misreading Chat
-コンピュータサイエンス周辺の論文を紹介するPodcastです。
+コンピュータサイエンス系の論文を紹介するPodcastです。
+
+僕は紹介される論文の内容を理解しているかと言われれば必ずしもそうではないのですが、どちらかというと論文の読み方や纏め方、説明の仕方を知ることができるので有り難いです。これも1エピソード1時間弱なので聴きやすいです。
+
+あと[このエピソード](https://misreading.chat/2020/09/25/pre-81/)を聴いて、文献管理のために[Paperpile](https://paperpile.com/)というサービスを使い始めました。結構良いです。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://misreading.chat/" data-iframely-url="//cdn.iframe.ly/l9IShjk"></a></div></div>
 ~~~
 
-
-
 ### yatteiki.fm
 技術系という括りにはなると思いますが、殆ど雑談系です。\\
 今年の10月末に約2年ぶりに更新されてテンションが上がってるのでここに載せました。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://yatteiki.fm/" data-iframely-url="//cdn.iframe.ly/tYx8Fxx"></a></div></div>
 ~~~
