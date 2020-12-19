@@ -32,19 +32,20 @@ SCHOOL OF LOCK!、オールナイトニッポン、SUNDAY NIGHT DREAMER、wktk�
 
 [^配信プラットフォーム]: 例えばSpotifyは録音・編集・配信ができるPodcastサービスであるAnchorを買収したり、Google PodcastsにiOSアプリが登場したり、Amazon MusicでPodcastが利用可能になったりしています。
 
-
----
-**TODO: 以下、紹介が雑すぎるので朝までに完成させます**
-
-
 ## 技術を知る
 ### Rebuild
-もはや説明不要のこれ。hakさん回が好きです。
+技術系の話題について幅広く取り上げているPodcastです。
+
+日本のエンジニア界隈でPodcastが流行るきっかけとなったPodcast番組でもあります。
+技術系Podcastではfmドメイン[^fmドメイン] を取る傾向にありますが、RebuildのWebサイトである[rebuild.fm](https://rebuild.fm/)に触発されているものも多いと考えられます。
+
+僕はhakさん回が好きです。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://rebuild.fm/" data-iframely-url="//cdn.iframe.ly/AQ5ynQH"></a></div></div>
 ~~~
 
-
+[^fmドメイン]: 因みに、fmドメインは年1万円程するので、Podcastを継続して配信するハードルが高くなっている要因の1つになっています。別にfmドメインを取る必要は全く無く、良いマイクを買ったほうが良いと宮川さんは言っています（[#80](https://rebuild.fm/80/#t=00:39:17), [#264](https://rebuild.fm/264/#t=00:30:22)など）。
 
 ### mozaic.fm
 ブラウザの動向などを知ることが出来ます。
@@ -54,14 +55,12 @@ SCHOOL OF LOCK!、オールナイトニッポン、SUNDAY NIGHT DREAMER、wktk�
 ~~~
 
 ### Fukabori.fm
-
 1エピソード約30分でテンポが良いです。
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://fukabori.fm/" data-iframely-url="//cdn.iframe.ly/c6400vn?iframe=card-small"></a></div></div>
 ~~~
 
 ### Misreading Chat
-
 コンピュータサイエンス周辺の論文を紹介するPodcastです。
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://misreading.chat/" data-iframely-url="//cdn.iframe.ly/l9IShjk"></a></div></div>
@@ -93,8 +92,16 @@ LINE UIT室の開発者による最新のフロントエンド動向をキャッ
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://uit-inside.linecorp.com/" data-iframely-url="//cdn.iframe.ly/AYA9NDH?iframe=card-small"></a></div></div>
 ~~~
 
-### ajitofm
+### mercan.fm
+[mercan](https://mercan.mercari.com/)のPodcast版です。
 
+ジングルの音量がMCの声量に比べてかなり大きかったので聴きづらさを感じていましたが、最近は改善されました。
+~~~
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://mercan.mercari.com/tags/mercan-fm/" data-iframely-url="//cdn.iframe.ly/ZgVvdsF?iframe=card-small"></a></div></div>
+~~~
+
+### ajitofm
+これはオウンドメディアと言っていいのか微妙です。
 [VOYAGE GROUP](https://voyagegroup.com/)のAJITOという社内BARで録音されているPodcastです。
 基本的にはビール缶をプシュっとあける音から始まります。
 VOYAGE GRUOPやAJITOの雰囲気がわかるのでおすすめです。
@@ -113,22 +120,12 @@ VOYAGE GRUOPやAJITOの雰囲気がわかるのでおすすめです。
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://ajito.fm/" data-iframely-url="//cdn.iframe.ly/yZ3b2EE"></a></div></div>
 ~~~
 
-
-
-### mercan.fm
-[mercan](https://mercan.mercari.com/)のPodcast版です。
-
-ジングルの音量がMCの声量に比べてかなり大きかったので聴きづらさを感じていましたが、最近は改善されました。
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://mercan.mercari.com/tags/mercan-fm/" data-iframely-url="//cdn.iframe.ly/ZgVvdsF?iframe=card-small"></a></div></div>
-~~~
-
 ## 英語を学ぶ
 
 ### バイリンガルニュース
 僕がPodcastを聞き始めるきっかけとなったもの。
 2013年のエピソード1からずっと聞き続けています。\\
-日本語と英語で交互に話すというスタイルなので、英語弱者でも話が分かります。
+日本語と英語で交互に話すというスタイルなので、英語弱者でも内容を理解することが出来、英語を聞き取れている錯覚に陥ります。
 宇宙に関する話が面白いです。
 
 ~~~
