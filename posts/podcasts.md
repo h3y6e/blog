@@ -144,27 +144,27 @@ VOYAGE GROUPのAJITOという社内バーで録音されているPodcastです�
 
 ### バイリンガルニュース
 僕がPodcastを聞き始めるきっかけとなったもの。
-2013年のエピソード1からずっと聞き続けています。\\
-日本語と英語で交互に話すというスタイルなので、英語弱者でも内容を理解することが出来、英語を聞き取れている錯覚に陥ります。
-宇宙に関する話が面白いです。
+2013年のエピソード1からずっと聞き続けています。
+
+日本語と英語で交互に話すというスタイルなので、英語弱者でも英語を聞き取れている錯覚に陥ることが出来ます。
+また、ニュースの選択が独特なので英語学習とか関係無く普通に面白いです。
+宇宙に関する話題や、特別編で学者や宇宙産業従事者をゲストに招く回が好きです。
 
 ~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://bilingualnews.jp/" data-iframely-url="//cdn.iframe.ly/taWzMbx"></a></div></div>
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://bilingualnews.libsyn.com/" data-iframely-url="//cdn.iframe.ly/W6SzR0B"></a></div></div>
 ~~~
-
-
 
 ### TED Talks Daily
 [TED Talks](https://www.ted.com/talks)のPodcastです。
+
 [TEDのPodcastは複数種類がある](https://www.ted.com/podcasts)のですが、このTED Talks Dailyは平日更新で1エピソード5〜20分くらいの長さなので、通学時に聴いています。
 
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.ted.com/about/programs-initiatives/ted-talks/ted-talks-daily" data-iframely-url="//cdn.iframe.ly/WV8oKNM?iframe=card-small"></a></div></div>
 ~~~
 
-
 ## まとめ
-気になるPodcast番組はありましたでしょうか？
+気になるPodcast番組はありましたか？
 興味は持ったけど何から聞いたらいいのか分からないという方や、もっと聴くべき番組があるぞと言いたい方もいると思います。
 
 そんなあなたに、CAMPHOR-のSlackには**#podcast**というチャンネルがあります！
