@@ -34,11 +34,10 @@ SCHOOL OF LOCK!、オールナイトニッポン、SUNDAY NIGHT DREAMER、wktk�
 
 
 ---
-**TODO: 以下、紹介雑すぎるので朝までに完成させます**
+**TODO: 以下、紹介が雑すぎるので朝までに完成させます**
+
+
 ## 技術を知る
-
-
-
 ### Rebuild
 もはや説明不要のこれ。hakさん回が好きです。
 ~~~
@@ -146,7 +145,7 @@ VOYAGE GRUOPやAJITOの雰囲気がわかるのでおすすめです。
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.ted.com/about/programs-initiatives/ted-talks/ted-talks-daily" data-iframely-url="//cdn.iframe.ly/WV8oKNM?iframe=card-small"></a></div></div>
 ~~~
 
-**TODO: 以上、紹介雑すぎるので朝までに完成させます**
+**TODO: 以上、紹介が雑すぎるので朝までに完成させます**
 
 ---
 
