@@ -159,9 +159,6 @@ VOYAGE GRUOPやAJITOの雰囲気がわかるのでおすすめです。
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.ted.com/about/programs-initiatives/ted-talks/ted-talks-daily" data-iframely-url="//cdn.iframe.ly/WV8oKNM?iframe=card-small"></a></div></div>
 ~~~
 
-**TODO: 以上、紹介が雑すぎるので朝までに完成させます**
-
----
 
 ## まとめ
 気になるPodcast番組はありましたでしょうか？
