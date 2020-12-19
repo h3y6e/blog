@@ -88,16 +88,12 @@ Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrom
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://misreading.chat/" data-iframely-url="//cdn.iframe.ly/l9IShjk"></a></div></div>
 ~~~
 
-### yatteiki.fm
-技術系という括りにはなると思いますが、殆ど雑談系です。\\
-今年の10月末に約2年ぶりに更新されてテンションが上がってるのでここに載せました。
-
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://yatteiki.fm/" data-iframely-url="//cdn.iframe.ly/tYx8Fxx"></a></div></div>
-~~~
-
 ### もぐラジオ
-VR/AR業界の動向をキャッチアップできるPodcastです。
+[Mogura VR](https://www.moguravr.com/)というVR/AR専門メディアによるPodcastです。
+VR/AR業界に関する毎週の動向について、その紹介と解説を音声で聴くことが出来ます。
+
+単純に僕はAR/VRガジェットが好きなのでそういう話が聴けるだけでも楽しいのですが、教授とのミーティング時にここで得た最新情報を話して盛り上がることができるので良いです。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.moguravr.com/moguradio-2/" data-iframely-url="//cdn.iframe.ly/uhGvgBc"></a></div></div>
 ~~~
