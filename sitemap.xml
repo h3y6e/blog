@@ -110,6 +110,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://blog.5ebec.dev/posts/podcasts/index.html</loc>
+    <lastmod>2020-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/index.html</loc>
     <lastmod>2020-12-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -129,12 +135,6 @@
 </url>
 <url>
     <loc>https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/index.html</loc>
-    <lastmod>2020-12-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://blog.5ebec.dev/posts/podcast/index.html</loc>
     <lastmod>2020-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
