@@ -99,39 +99,42 @@ VR/AR業界に関する毎週の動向について、その紹介と解説を音
 ~~~
 
 ## 企業を知る
-技術系のPodcastですが、
 企業がオウンドメディアとして配信しているものです。\\
-その企業がどんな技術を用いて、どんな風に開発をしているかが分かります。
+必ずしも技術的な内容であるとは限りませんが、その企業の考え方や雰囲気を感じられるものが多いです。
+技術的なエピソードであれば、その企業がどんな技術を用いてどのように開発をしているかが分かります。
 
 ### UIT INSIDE
-LINE UIT室の開発者による最新のフロントエンド動向をキャッチアップできるPodcastです。
+LINEのフロントエンド開発部門UIT（User Interface + Technology）に所属する開発者達が、毎週最新のフロントエンド動向を語るというPodcastです。
+
+最新のWeb標準の動向、開発フレームワークの変遷、UI/UXに関するアップデートをキャッチアップできます。
+また、UIT室の人々がフロントエンドに対してどのような考え方を持っているかを強烈に感じることが出来ます。\\
+フロントエンド志望であれば聴いて損はないと思います。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://uit-inside.linecorp.com/" data-iframely-url="//cdn.iframe.ly/AYA9NDH?iframe=card-small"></a></div></div>
 ~~~
 
 ### mercan.fm
-[mercan](https://mercan.mercari.com/)のPodcast版です。
+mercariのオウンドメディアである[mercan](https://mercan.mercari.com/)のPodcast版です。
 
-ジングルの音量がMCの声量に比べてかなり大きかったので聴きづらさを感じていましたが、最近は改善されました。
+ゲストを招き、その方の仕事内容に関して10〜20分程話すスタイルです。
+ゲストはエンジニアだけではないため、話す内容は技術的なものに限りません。
+
+ジングルの音量が声量に比べてかなり大きかったので聴きづらさを感じていましたが、最近は改善されました。
+録音環境はもう少し改善出来ると思うので、その辺りも力を入れてほしいです。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://mercan.mercari.com/tags/mercan-fm/" data-iframely-url="//cdn.iframe.ly/ZgVvdsF?iframe=card-small"></a></div></div>
 ~~~
 
 ### ajitofm
-これはオウンドメディアと言っていいのか微妙です。
-[VOYAGE GROUP](https://voyagegroup.com/)のAJITOという社内BARで録音されているPodcastです。
-基本的にはビール缶をプシュっとあける音から始まります。
-VOYAGE GRUOPやAJITOの雰囲気がわかるのでおすすめです。
+VOYAGE GROUPのAJITOという社内バーで録音されているPodcastです。
 
-<!-- 
-（インターンに参加した時に訊きました）。
+元々は社内Podcastだったものが、2017年6月から公開されるようになったようです（インターンに参加した時に訊きました）。
+そのためオウンドメディアとは言わないのかもしれませんが、VOYAGE GRUOPやAJITOの雰囲気がわかるのでここに分類します。
 
-（僕は気になってしまいます）
-
-
-酔って
-ちょっとテンションに差があるので
-課題をやっている時などに聴くのはおすすめしません笑 -->
+基本的にはビール缶をプシュっとあける音から始まり、ゲストに話を伺いながらWeb技術について酒を交えて語るというスタイルです。
+酒が呑みたくなるので真面目に課題をやっている時などに聴くのはおすすめしません笑。
 
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://ajito.fm/" data-iframely-url="//cdn.iframe.ly/yZ3b2EE"></a></div></div>
