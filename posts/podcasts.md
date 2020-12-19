@@ -48,8 +48,16 @@ SCHOOL OF LOCK!、オールナイトニッポン、SUNDAY NIGHT DREAMER、wktk�
 [^fmドメイン]: 因みに、fmドメインは年1万円程するので、Podcastを継続して配信するハードルが高くなっている要因の1つになっています。別にfmドメインを取る必要は全く無く、良いマイクを買ったほうが良いと宮川さんは言っています（[#80](https://rebuild.fm/80/#t=00:39:17), [#264](https://rebuild.fm/264/#t=00:30:22)など）。
 
 ### mozaic.fm
-ブラウザの動向などを知ることが出来ます。
-聴いているだけで面白いです。
+
+大別して2種類の回があり、Monthly/Yearly Web回とテーマ回があります。
+
+Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrome, Firefox, Safari, Edge）のアップデート内容やWeb標準・Web周辺の動向など、Webの最新動向をスナップショット的に知ることが出来ます。
+
+テーマ回では、Web技術に関する特定のテーマについて深く掘り下げて議論しています。
+最新のテーマ回では[Semantic Web](https://mozaic.fm/episodes/73/semantic-web.html)について話されていました。
+
+過去のエピソードだと居酒屋で録音したもの（[ep7 REST](https://mozaic.fm/episodes/7/rest.html)）もあり、これはかなり面白かったです。
+
 ~~~
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://mozaic.fm" data-iframely-url="//cdn.iframe.ly/8iwlHIR"></a></div></div>
 ~~~
