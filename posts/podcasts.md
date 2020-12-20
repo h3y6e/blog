@@ -12,7 +12,7 @@ cover = "/img/2020-12-20/camphor-slack_podcast.png"
 
 この記事は、[CAMPHOR- Advent Calendar 2020](https://advent.camph.net/)の20日目の記事です。
 
-こんにちは、[へいほぅ](https://twitter.com/5ebec)です。修士1回生で、CAMPHOR-の運営メンバーです。\\
+こんにちは、[へいほぅ](https://twitter.com/5ebec)です。修士1回生で、[CAMPHOR-](https://camph.net/)の運営メンバーです。\\
 大学院ではARにおけるインターフェースについて研究をしています。
 
 ## Podcastとは
@@ -30,12 +30,16 @@ SCHOOL OF LOCK!、オールナイトニッポン、SUNDAY NIGHT DREAMER、wktk�
 
 僕が購読しているPodcastはジャンルが様々ありますが、今回はITエンジニア志望の学生におすすめするという視点で幾つか紹介します。
 
-[^配信プラットフォーム]: 例えばSpotifyは録音・編集・配信ができるPodcastサービスであるAnchorを買収したり、Google PodcastsにiOSアプリが登場したり、Amazon MusicでPodcastが利用可能になったりしています。
+[^配信プラットフォーム]: 例えば[Spotify](https://www.spotify.com/jp/)は録音・編集・配信ができるPodcastサービスである[Anchor](https://anchor.fm/)を買収したり、[Google Podcasts](https://podcasts.google.com/)にiOSアプリが登場したり、[Amazon MusicでPodcast](https://www.amazon.co.jp/music/lp/podcasts)が利用可能になったりしています。
 
-## 技術を知る
+## Podcastで技術を知る
+IT/Tech系では英語圏のものだと沢山良いPodcastがあります[^英語圏の技術系podcasts] が、ここでは日本語のものをピックアップしています。
+
+[^英語圏の技術系podcasts]: "[best tech podcasts](https://www.google.com/search?q=best+tech+podcasts)"等でググると大量に出てきます。\\僕は[Software Engineering Daily](https://softwareengineeringdaily.com/)や[Waveform: The MKBHD Podcast](https://bit.ly/WaveformMKBHD)を最近聴いています。
+
 ### Rebuild
 技術系の話題について幅広く取り上げているPodcastです。
-1エピソード2時間以上の雑談系であるため、作業をしながら聴いたり通学時間で聴いたりするのが良いです。
+1エピソード2時間以上の雑談ベースのPodcastであるため、作業をしながら聴いたり通学時間で聴いたりするのが良いです。
 
 日本のエンジニア界隈でPodcastが流行るきっかけとなったPodcast番組でもあります。
 技術系Podcastではfmドメイン[^fmドメイン] を取る傾向にありますが、RebuildのWebサイトである[rebuild.fm](https://rebuild.fm/)に触発されているものも多いと考えられます。
@@ -66,7 +70,7 @@ Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrom
 ### fukabori.fm
 何らかの分野に特化したゲストの話をひたすら"深掘り"していくPodcastです。
 
-最初は入門的な話を訊き、面白いところを技術的に掘り下げていくスタイル。
+最初は入門的な話を訊き、面白いところを技術的に掘り下げていくスタイルを取っています。
 故にその分野に明るくなくても理解する事が出来、自分の知らない分野であるほど楽しく聴くことが出来ます。
 
 1エピソードの長さも1時間弱くらいでテンポが良いので全て聴いてほしいのですが、
@@ -89,6 +93,8 @@ Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrom
 ~~~
 
 ### もぐラジオ
+ITエンジニア志望にお勧め出来るというか、個人的に役に立っている（所謂「俺得」な）ものです。
+
 [Mogura VR](https://www.moguravr.com/)というVR/AR専門メディアによるPodcastです。
 VR/AR業界に関する毎週の動向について、その紹介と解説を音声で聴くことが出来ます。
 
@@ -98,7 +104,7 @@ VR/AR業界に関する毎週の動向について、その紹介と解説を音
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://www.moguravr.com/moguradio-2/" data-iframely-url="//cdn.iframe.ly/uhGvgBc"></a></div></div>
 ~~~
 
-## 企業を知る
+## Podcastで企業を知る
 企業がオウンドメディアとして配信しているものです。\\
 必ずしも技術的な内容であるとは限りませんが、その企業の考え方や雰囲気を感じられるものが多いです。
 技術的なエピソードであれば、その企業がどんな技術を用いてどのように開発をしているかが分かります。
@@ -140,13 +146,16 @@ VOYAGE GROUPのAJITOという社内バーで録音されているPodcastです�
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://ajito.fm/" data-iframely-url="//cdn.iframe.ly/yZ3b2EE"></a></div></div>
 ~~~
 
-## 英語を学ぶ
+## Podcastで英語を学ぶ
+音声コンテンツであるPodcastは英語学習にも適しています。\\
+「[Podcastで技術を知る](#podcastで技術を知る)」の項で述べたような英語話者によるIT/Tech系Podcastを聴くのも良いと思います。
+ただ僕は内容が殆ど理解出来ずに聴き流してしまうことが多いので、ここでは技術系ではないが英語学習に向いているものを挙げます。
 
 ### バイリンガルニュース
 僕がPodcastを聞き始めるきっかけとなったもの。
 2013年のエピソード1からずっと聞き続けています。
 
-日本語と英語で交互に話すというスタイルなので、英語弱者でも英語を聞き取れている錯覚に陥ることが出来ます。
+日本語と英語で交互に話すというスタイルなので、僕のような英語弱者でも英語を聞き取れている錯覚に陥ることが出来ます。
 また、ニュースの選択が独特なので英語学習とか関係無く普通に面白いです。
 宇宙に関する話題や、特別編で学者や宇宙産業従事者をゲストに招く回が好きです。
 
@@ -167,9 +176,11 @@ VOYAGE GROUPのAJITOという社内バーで録音されているPodcastです�
 気になるPodcast番組はありましたか？
 興味は持ったけど何から聞いたらいいのか分からないという方や、もっと聴くべき番組があるぞと言いたい方もいると思います。
 
-そんなあなたに、CAMPHOR-のSlackには**#podcast**というチャンネルがあります！
+そんなあなたに、[CAMPHOR-](https://camph.net/)のSlack[^slack] には**#podcast**というチャンネルがあります！
 現在このチャンネルには10人しか入ってないので、普段からPodcast聞いてるよって人は勿論、聞いてなかったけど興味を持ったって人はぜひ入りましょう。\strike{僕が感想をコメントしていないのも原因の1つですが、}RSS Readerと化しているので寂しいです。
 
 Podcastトーク、一緒にしませんか？
 
 ![CAMPHOR- Slack Podcast](/img/2020-12-20/camphor-slack_podcast.png)
+
+[^slack]: CAMPHOR-のSlackには[CAMPHOR- HOUSE](https://camph.net/#house)へ2回以上来ていただけると参加することが出来ます。\\学生の方は是非[普段の開館日](https://camph.net/schedule/)に作業や雑談などをしに来てください。
