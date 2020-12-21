@@ -183,4 +183,4 @@ Podcastトーク、一緒にしませんか？
 
 ![CAMPHOR- Slack Podcast](/img/2020-12-20/camphor-slack_podcast.png)
 
-[^slack]: CAMPHOR-のSlackには[CAMPHOR- HOUSE](https://camph.net/#house)へ2回以上来ていただけると参加することが出来ます。\\学生の方は是非[普段の開館日](https://camph.net/schedule/)に作業や雑談などをしに来てください。
+[^slack]: CAMPHOR-のSlackには[CAMPHOR- HOUSE](https://camph.net/#house)へ2回以上来ていただけると参加することが出来ます。\\学生の方は是非[普段の開館日](https://camph.net/schedule/)に作業や雑談などをしに来てください！
