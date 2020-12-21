@@ -95,24 +95,22 @@ function hfun_tagpage()
     write(io, """
     <table class="tagpage">
     <tr><th>count</th><th>name</th></tr>
-    <tr>
-    <td class="count">$count</td>
+    <tr><td class="count">$count</td>
     <td class="block">
     """)
     for (tag, c) in countsortedtags
-        write(io, """
-            <a href="$tag/">#$tag</a>
-        """)
         if c < count
             write(io, """
             </td></tr>
-            <tr>
-            <td class="count">$c</td>
+            <tr><td class="count">$c</td>
             <td class="block">
             """)
             count = c
         end
+        write(io, """
+            <a href="$tag/">#$tag</a>
+        """)
     end
-    write(io, "</tr></table>")
+    write(io, "</td></tr></table>")
     return String(take!(io))
 end
