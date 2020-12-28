@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>#a5ebec</title>
+  <title><![CDATA[#a5ebec]]></title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
   <link>https://blog.5ebec.dev/</link>
   <atom:link href="https://blog.5ebec.dev/tags/threejs/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>webpack + typescript + three.jsでGLSL (.frag|.vert) を外部モジュールとしてimportする</title>
+    <title><![CDATA[webpack + typescript + three.jsでGLSL (.frag|.vert) を外部モジュールとしてimportする]]></title>
     <link>https://blog.5ebec.dev/posts/webpack-ts-three-js-glsl/</link>
     <description><![CDATA[typescript &#43; three.jsでGLSLをいい感じに編集したい。
 <br><a href="https://blog.5ebec.dev/posts/webpack-ts-three-js-glsl/">Read more</a>]]></description>

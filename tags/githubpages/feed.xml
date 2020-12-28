@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>#a5ebec</title>
+  <title><![CDATA[#a5ebec]]></title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
   <link>https://blog.5ebec.dev/</link>
   <atom:link href="https://blog.5ebec.dev/tags/githubpages/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>GitHub Pages + Netlify DNSでカスタムドメイン</title>
+    <title><![CDATA[GitHub Pages + Netlify DNSでカスタムドメイン]]></title>
     <link>https://blog.5ebec.dev/posts/github-pages-netlify-managed-dns-custom-domain/</link>
     <description><![CDATA[GitHub Pagesにもカスタムドメインを設定する。
 <br><a href="https://blog.5ebec.dev/posts/github-pages-netlify-managed-dns-custom-domain/">Read more</a>]]></description>

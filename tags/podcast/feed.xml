@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>#a5ebec</title>
+  <title><![CDATA[#a5ebec]]></title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
   <link>https://blog.5ebec.dev/</link>
   <atom:link href="https://blog.5ebec.dev/tags/podcast/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>ITエンジニア志望の学生が聴くべきPodcast</title>
+    <title><![CDATA[ITエンジニア志望の学生が聴くべきPodcast]]></title>
     <link>https://blog.5ebec.dev/posts/podcasts/</link>
     <description><![CDATA[おすすめのPodcast番組を紹介して皆んなとPodcastトークがしたい。
 <br><a href="https://blog.5ebec.dev/posts/podcasts/">Read more</a>]]></description>

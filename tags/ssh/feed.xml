@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>#a5ebec</title>
+  <title><![CDATA[#a5ebec]]></title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
   <link>https://blog.5ebec.dev/</link>
   <atom:link href="https://blog.5ebec.dev/tags/ssh/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>ssh keys</title>
+    <title><![CDATA[ssh keys]]></title>
     <link>https://blog.5ebec.dev/posts/ssh-keys/</link>
     <description><![CDATA[何回やっても覚えられないので自分用に。
 <br><a href="https://blog.5ebec.dev/posts/ssh-keys/">Read more</a>]]></description>

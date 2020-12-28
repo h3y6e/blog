@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>#a5ebec</title>
+  <title><![CDATA[#a5ebec]]></title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
   <link>https://blog.5ebec.dev/</link>
   <atom:link href="https://blog.5ebec.dev/tags/kuac/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>メインアカウントにbot機能を搭載して運用してるけど意外と上手くやってる</title>
+    <title><![CDATA[メインアカウントにbot機能を搭載して運用してるけど意外と上手くやってる]]></title>
     <link>https://blog.5ebec.dev/posts/kuac2019/</link>
     <description><![CDATA[僕のTwitterアカウントに付属している単位取得率botと降水量を教えてくれるbotについて
 <br><a href="https://blog.5ebec.dev/posts/kuac2019/">Read more</a>]]></description>

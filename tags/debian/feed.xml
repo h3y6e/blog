@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>#a5ebec</title>
+  <title><![CDATA[#a5ebec]]></title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
   <link>https://blog.5ebec.dev/</link>
   <atom:link href="https://blog.5ebec.dev/tags/debian/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>Ubuntu,Debianにzsh+prezto導入&テーマ変更</title>
+    <title><![CDATA[Ubuntu,Debianにzsh+prezto導入&テーマ変更]]></title>
     <link>https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/</link>
     <description><![CDATA[ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。
 <br><a href="https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/">Read more</a>]]></description>

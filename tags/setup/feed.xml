@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>#a5ebec</title>
+  <title><![CDATA[#a5ebec]]></title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
   <link>https://blog.5ebec.dev/</link>
   <atom:link href="https://blog.5ebec.dev/tags/setup/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>macOSで初期状態からのセットアップ</title>
+    <title><![CDATA[macOSで初期状態からのセットアップ]]></title>
     <link>https://blog.5ebec.dev/posts/macos-setup/</link>
     <description><![CDATA[新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。
 <br><a href="https://blog.5ebec.dev/posts/macos-setup/">Read more</a>]]></description>

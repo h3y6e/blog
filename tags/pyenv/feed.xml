@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>#a5ebec</title>
+  <title><![CDATA[#a5ebec]]></title>
   <description><![CDATA[へいほぅの殴り書き
 ]]></description>
   <link>https://blog.5ebec.dev/</link>
   <atom:link href="https://blog.5ebec.dev/tags/pyenv/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）</title>
+    <title><![CDATA[pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）]]></title>
     <link>https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/</link>
     <description><![CDATA[Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。
 <br><a href="https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/">Read more</a>]]></description>
