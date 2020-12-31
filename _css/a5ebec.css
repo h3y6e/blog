@@ -598,6 +598,10 @@ header .menu {
       margin-bottom: 0;
     }
 
+.franklin-content .twitter-tweet {
+    margin: 0 auto;
+  }
+
 .franklin-toc {
   --toc-color: rgba(165, 235, 236, 0.8);
   --border: 1px dotted var(--toc-color);
