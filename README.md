@@ -1,4 +1,7 @@
 # Blog
+[![Build and Deploy](https://github.com/5ebec/blog/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/5ebec/blog/actions)
+[![reviewdog](https://github.com/5ebec/blog/workflows/reviewdog/badge.svg)](https://github.com/5ebec/blog/actions)
+
 heyhoe's pothooks
 
 ## Dev
