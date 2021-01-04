@@ -1,6 +1,6 @@
 # Blog
-[![Build and Deploy](https://github.com/5ebec/blog/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/5ebec/blog/actions)
-[![reviewdog](https://github.com/5ebec/blog/workflows/reviewdog/badge.svg)](https://github.com/5ebec/blog/actions)
+[![Build and Deploy](https://github.com/5ebec/blog/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/5ebec/blog/actions?query=workflow%3A%22Build+and+Deploy%22)
+[![reviewdog](https://github.com/5ebec/blog/workflows/reviewdog/badge.svg)](https://github.com/5ebec/blog/actions?query=workflow%3AReviewdog)
 
 heyhoe's pothooks
 
