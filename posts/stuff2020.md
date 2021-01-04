@@ -1,7 +1,7 @@
 +++
 title = "買って（良|悪）かったもの2020"
 date = Date(2020, 12, 31)
-tags = ["stuff"]
+tags = ["stuff", "life"]
 rss = "2020年に買ったものを紹介する。"
 +++
 
