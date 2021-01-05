@@ -54,9 +54,9 @@ uuid = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
 
 [[Franklin]]
 deps = ["Dates", "DelimitedFiles", "DocStringExtensions", "ExprTools", "FranklinTemplates", "HTTP", "Literate", "LiveServer", "Logging", "Markdown", "NodeJS", "OrderedCollections", "Pkg", "REPL", "Random"]
-git-tree-sha1 = "fbf011b3fdf8ce01f2762252354527ea26cd1948"
-repo-rev = "rsstitle"
-repo-url = "https://github.com/5ebec/Franklin.jl"
+git-tree-sha1 = "a3a4452b2c1e619bc0f737283659a46ae8d8712f"
+repo-rev = "master"
+repo-url = "https://github.com/tlienart/Franklin.jl"
 uuid = "713c75ef-9fc9-4b05-94a9-213340da978e"
 version = "0.10.22"
 
@@ -83,9 +83,9 @@ deps = ["Markdown"]
 uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 
 [[JLLWrappers]]
-git-tree-sha1 = "c70593677bbf2c3ccab4f7500d0f4dacfff7b75c"
+git-tree-sha1 = "04b49c556240b62d5a799e94c63d5fc14d3c07cd"
 uuid = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
-version = "1.1.3"
+version = "1.1.4"
 
 [[JSON]]
 deps = ["Dates", "Mmap", "Parsers", "Unicode"]
