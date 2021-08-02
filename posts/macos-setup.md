@@ -18,27 +18,14 @@ rss = "新しいMacを買ったときとか、macOSをファクトリーリセ�
 
 #### mackupのcfg
 
-`.mackup/nvim.cfg`
+`.mackup/$app_name$.cfg`に、以下の形式で保存する
 
 ```
 [application]
-name = nvim
+name = $app_name$
 
 [configuration_files]
-.config/nvim
-.nvimrc
-.nvim
-```
-
-`.mackup/brewfile.cfg`
-
-```
-[application]
-name = Brewfile
-
-[configuration_files]
-.Brewfile
-Brewfile
+$configfile$
 ```
 
 #### シェル実行
@@ -60,28 +47,32 @@ $ mackup backup
 * 書類をとじるときに変更内容を保持するかどうかを確認  
 
 #### Dock
+サイズ/拡大は適当に
 
 * ウィンドウをアプリケーションアイコンにしまう
 
+#### Touch ID
+設定する
+
+#### アクセスビリティ
+
+* ディスプレイ
+  - [x] 視差効果を減らす
+
 #### セキュリティとプライバシー
 
-* 一般
-  * Apple WatchでこのMacのロックを解除できるようにする
 * ファイアウォール
   * ファイアウォールをオンにする
 
-#### 内蔵Retinaディスプレイ
+#### ディスプレイ
 
 * ディスプレイ
-  * 解像度： 変更 > スペースを拡大
-  * 輝度を自動調整
+  * 解像度： 変更 > スペースを拡大  
+  - [ ] 輝度を自動調整
 
-#### 省エネルギー
+#### サウンド
 
-* バッテリー
-  * ディスプレイをオフにするまでの時間： 5分
-* 電源アダプタ
-  * 電源アダプタに接続中にPower Napをオンにする
+* メニューバーに音量を表示
 
 #### キーボード
 
@@ -98,44 +89,34 @@ $ mackup backup
     メニュータイトルにアカウントの名前を正確に入力 \\
     キーボードショートカット： Control+Command+[Num]
 
+
 #### トラックパッド
 
 * クリック： 弱い
 * 起動の速さ： 中心から1つ右
 
-#### サウンド
+#### バッテリー
 
-* メニューバーに音量を表示
+* バッテリー
+  * ディスプレイをオフにするまでの時間： 5分
+* 電源アダプタ
+  * 電源アダプタに接続中にPower Napをオンにする
 
 #### 共有
 
-* コンピュータ名： (変更する）
-
-#### Siri
-
-* メニューバーにSiriを表示
-
-#### 日付と時刻
-
-* 秒を表示
-* 日付を表示
+コンピュータ名を変更する
 
 #### Time Machine
 
 * バックアップを自動生成
 * Time Machineをメニューバーに表示
 
-#### アクセスビリティ
-
-* ディスプレイ
-  * 視差効果を減らす
-
 ## Homebrew
 
 [Homebrew](https://brew.sh/) をインストールする  
 
 ```shell
-$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 #### Dropbox, mackupをインストール
@@ -159,6 +140,11 @@ $ mackup restore
 
 ```shell
 $ brew bundle --global
+```
+
+#### [prezto](https://github.com/sorin-ionescu/prezto)のインストール
+```shell
+$ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 
 ## 各種App
