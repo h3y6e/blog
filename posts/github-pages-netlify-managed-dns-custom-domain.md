@@ -5,24 +5,24 @@ tags = ["netlify", "domain", "githubpages"]
 rss =  "GitHub Pagesにもカスタムドメインを設定する。"
 +++
 
-[これ](/netlify-custom-domain)の続き
+[これ](/netlify-custom-domain)の続き。
 
-前回、カスタムネームサーバーを使用してDNSをNetlifyに移したのでGoogle DomainsのDNSからはカスタムリソースレコードの設定はできない
+前回、カスタムネームサーバーを使用して DNS を Netlify に移したので Google Domains の DNS からはカスタムリソースレコードの設定は出来ない。
 
-NetlifyのDomainsタブを開く
+Netlify の Domains タブを開く。
 
 ![netlify_domains_tab](/img/2019-06-09/netlify_domains_tab.png)
 
-DNS settingsのAdd new recordで
+DNS settings の Add new record を以下のように設定する。
 
-Record type: ALIAS \\
-Name: @ \\
+```
+Record type: ALIAS
+Name: @
 Value: *USERNAME*.github.io
-
-として、Saveする
+```
 
 ![netlify_dns_settings](/img/2019-06-09/netlify_dns_settings.png)
 
-GitHub PagesのレポジトリのページからSetting > Options > GitHub Pages > Custom domainにカスタムドメインを書いてSave
+GitHub Pages のレポジトリのページから Setting > Options > GitHub Pages > Custom domain にカスタムドメインを書いて Save。
 
-完成
+完成。

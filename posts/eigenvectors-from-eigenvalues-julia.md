@@ -8,7 +8,7 @@ rss = "Twitterで話題になったり、研究室のslackで話されたりし�
  - [Eigenvectors from Eigenvalues](https://arxiv.org/pdf/1908.03795.pdf)
  - Peter B. Denton, Stephen J. Parke, Terence Tao, Xining Zhang
 
-$n$ 番煎じだと思うが、 Juliaで検証してみる。
+$n$ 番煎じだと思うが、 Julia で検証してみる。
 
 この論文の重要な部分は **Lemma 2** である。
 
@@ -16,7 +16,6 @@ $$
 |v_{i,j}|^2 \prod_{k = 1; k \neq i}^n{(\lambda_i(A) - \lambda_k(A))} = \prod_{k = 1}^{n-1}{(\lambda_i(A) - \lambda_k(M_j))}
 $$
 
-ただし、
  - $A$ : $n \times n$ のエルミート行列
  - $\lambda_i(A)$ : $A$ の $i$ 番目の固有値
  - $v_{i,j}$ : $\lambda_i(A)$ に対する固有ベクトル $v_i$ の $j$ 番目の要素
@@ -40,7 +39,7 @@ Platform Info:
 ```
 
 ## 準備
-行列をシンプルに表示するため、`printarr`関数を作成しておく。
+行列をシンプルに表示するため、`printarr` 関数を作成しておく。
 ```julia
 using Test
 using LinearAlgebra
@@ -49,7 +48,7 @@ printarr(arr) = Base.print_array(IOContext(stdout, :compact => true), arr)
 ```
 
 ## エルミート行列 $A$ を生成
-[JuliaMath/RandomMatrices.jl](https://github.com/JuliaMath/RandomMatrices.jl) パッケージの`GaussianHermite`を用いてランダムなエルミート行列を生成する。
+[JuliaMath/RandomMatrices.jl](https://github.com/JuliaMath/RandomMatrices.jl) パッケージの `GaussianHermite` を用いてランダムなエルミート行列を生成する。
 ```julia
 N = 3
 A = rand(GaussianHermite(2), N)
@@ -62,7 +61,7 @@ printarr(A)
 ```
 
 ## $A$ の固有値、 固有ベクトルを求める
-固有値及び固有ベクトルはStandard Libraryである [LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) の`eigvals`関数と`eigvecs`関数で求められる。また、`eigen`関数でも取得することが出来る。
+固有値及び固有ベクトルは Standard Library である [LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) の `eigvals` 関数と `eigvecs` 関数で求められる。また、`eigen` 関数でも取得することが出来る。
 ```julia
 println("固有値(eigvals)")
 λ = eigvals(A)
@@ -100,11 +99,11 @@ printarr(F.vectors)
 ```julia
 A[1:N .!= j, 1:N .!= j]
 ```
-または
+または、以下のように記述する。
 ```julia
 A[setdiff(1:N, j), setdiff(1:N, j)]
 ```
-のように記述することで、 $M_j$ を表現することができる。
+$M_j$ を表現出来る。
 ```julia
 M = zeros(Complex{Float64}, N-1, N-1, N)
 for j = 1:N

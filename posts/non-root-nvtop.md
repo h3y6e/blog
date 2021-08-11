@@ -5,8 +5,8 @@ tags = ["memo"]
 rss = "nvtopを研究室のGPUサーバーにインストールした。"
 +++
 
-htopのnvidia-smi版的なやつ： [nvtop](https://github.com/Syllo/nvtop) \\
-いい感じになるのでオススメ
+htop の nvidia-smi 版的なやつ： [nvtop](https://github.com/Syllo/nvtop) \\
+いい感じになるのでオススメ。
 
 ```bash
 $ git clone https://github.com/Syllo/nvtop.git
@@ -15,8 +15,7 @@ $ cmake -DCMAKE_INSTALL_PREFIX=$HOME/local
 $ make
 $ make install
 ```
-その後`.zshrc`等に
+その後 `.zshrc` 等に以下を書いて反映させる。
 ```vim
 export PATH=$PATH:$HOME/local/bin
 ```
-を書いて反映させる
