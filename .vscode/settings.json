@@ -2,5 +2,8 @@
   "prettier.configPath": ".prettierrc.yml",
   "editor.formatOnSave": true,
   "textlint.autoFixOnSave": true,
-  "textlint.configPath": ".textlintrc.yml"
+  "textlint.configPath": ".textlintrc.yml",
+  "files.watcherExclude": {
+    "**/target": true
+  }
 }
