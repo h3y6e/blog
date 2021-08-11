@@ -13,7 +13,7 @@ rss = "ググればすぐ出てくるけど何回も同じ作業するのでい�
 ## zsh インストール
 Ubuntu や Debian をインストールしたらまずターミナルを開いてこれを脳死で打つ。
 
-```bash
+```shell
 $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install zsh
@@ -22,14 +22,14 @@ $ sudo apt install zsh
 ## prezto 導入
 zsh を起動して以下を実行。
 
-```zsh
+```shell
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 chsh -s /usr/bin/zsh
 ```
 
 以下を実行。
 
-```zsh
+```shell
 $ setopt EXTENDED_GLOB  
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do  
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"  
@@ -38,7 +38,7 @@ done
 
 再起動。
 
-```zsh
+```shell
 sudo reboot
 ```
 
@@ -50,7 +50,7 @@ sudo reboot
 
 以下ですべてのテーマをプレビュー出来る。
 
-```zsh
+```shell
 ~ ❯❯❯ prompt -p
 ```
 
@@ -64,7 +64,7 @@ zstyle ':prezto:module:prompt' theme 'pure'
 ```
 vim で変更する場合は以下のようにやると楽。
 
-```zsh
+```shell
 ~ ❯❯❯ vim .zpreztorc
 ```
 ```
@@ -76,7 +76,7 @@ vim で変更する場合は以下のようにやると楽。
 
 最後にシェルを再起動して完成。
 
-```zsh
+```shell
 ~ ❯❯❯ exec $SHELL -l
 ```
 
