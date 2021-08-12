@@ -2,7 +2,7 @@
 title = "Ubuntu,Debianにzsh+prezto導入&テーマ変更"
 date = Date(2019,05,25)
 tags = ["ubuntu", "debian", "zsh", "prezto", "shell"]
-rss = "ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。"
+rss_description = "ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。"
 +++
 
 ~~~
@@ -10,67 +10,61 @@ rss = "ググればすぐ出てくるけど何回も同じ作業するのでい�
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
-## zshインストール
-UbuntuやDebianをインストールしたらまずターミナルを開いてこれを脳死で打つ。
+## zsh インストール
+Ubuntu や Debian をインストールしたらまずターミナルを開いてこれを脳死で打つ。
 
-```bash
+```shell
 $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install zsh
 ```
 
-## prezto導入
-以下でzshを起動
+## prezto 導入
+zsh を起動して以下を実行。
 
-```bash
-$ zsh
-```
-設定画面が開く場合がありますが、preztoを導入する場合、この設定は必要ないので`q`で抜ける。
-bashはここまで、以下はzsh内で
-
-```zsh
+```shell
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 chsh -s /usr/bin/zsh
 ```
 
-以下を実行
+以下を実行。
 
-```zsh
+```shell
 $ setopt EXTENDED_GLOB  
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do  
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"  
 done
 ```
 
-再起動
+再起動。
 
-```zsh
+```shell
 sudo reboot
 ```
 
-これでターミナルを開いたときにzshが起動されるはず。
+これでターミナルを開いたときに zsh が起動されるはず。
 
 ## テーマ変更
-このまま使用してもよいが、preztoでは沢山のテーマが利用できるので好きなものに変える。  
-ちなみにデフォルトは`sorin`というテーマ。
+このまま使用してもよいが、prezto では沢山のテーマが利用出来るので好きなものに変える。  
+ちなみにデフォルトは `sorin` というテーマ。
 
-以下ですべてのテーマをプレビューできる。
+以下ですべてのテーマをプレビュー出来る。
 
-```zsh
+```shell
 ~ ❯❯❯ prompt -p
 ```
 
-みんな大好きpowerlineもある。
+みんな大好き powerline もある。
 
-テーマの設定は`.zpreztorc`ファイルの116行目に書かれている。  
-自分は`pure`が好きなので、`sorin`から`pure`に変更しました。
+テーマの設定は `.zpreztorc` ファイルの 116 行目に書かれている。  
+自分は `pure` が好きなので、`sorin` から `pure` に変更した。
 
 ```vim
 zstyle ':prezto:module:prompt' theme 'pure'
 ```
-vimで変更する場合は
+vim で変更する場合は以下のようにやると楽。
 
-```zsh
+```shell
 ~ ❯❯❯ vim .zpreztorc
 ```
 ```
@@ -78,11 +72,11 @@ vimで変更する場合は
 :%s/'sorin/'pure/
 :wq
 ```
-こうやると楽。
+
 
 最後にシェルを再起動して完成。
 
-```zsh
+```shell
 ~ ❯❯❯ exec $SHELL -l
 ```
 

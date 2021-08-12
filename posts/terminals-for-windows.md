@@ -2,12 +2,12 @@
 title = "Windows 10のためのTerminal"
 date = Date(2019,05,19)
 tags = ["windows", "terminal", "shell"]
-rss = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」"
+rss_description = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」"
 +++
 
-自分が使ってきたTerminalを順にまとめていく。
+自分が使ってきた Terminal を順にまとめていく。
 
-## Windows標準コンソール
+## Windows 標準コンソール
 論外。
 
 
@@ -15,7 +15,7 @@ rss = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり�
 [jwilm/alacritty](https://github.com/jwilm/alacritty)
 
 #### pros
- - GPU-acceleratedで非常に高速
+ - GPU-accelerated で非常に高速
 
 #### cons
  - 日本語入力に難あり（入力窓が別のところに出てくるアレ）
@@ -27,11 +27,11 @@ rss = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり�
 [felixse/FluentTerminal](https://github.com/felixse/FluentTerminal)
 
 #### pros
- - WindowsのFluent Desginに合っていて良い
+ - Windows の Fluent Desgin に合っていて良い
  - タブ機能あり
 
 #### cons
- - 入力切り替えできない
+ - 入力切り替え出来ない
 
 
 ## Terminus
@@ -45,7 +45,7 @@ rss = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり�
 
 #### cons
  - 起動が遅い
- - 動作遅い、vimのカーソル移動がカクつく
+ - 動作遅い、vim のカーソル移動がカクつく
  - タブを移動すると文字が見えなくなる（再度入力すると見えるようにはなる）
 
 
@@ -54,7 +54,7 @@ rss = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり�
 
 #### pros
  - デザインよい
- - プラグインでカスタマイズできる
+ - プラグインでカスタマイズ出来る
 
 #### cons
- - electron製なのでそれなりに遅い
+ - electron 製なのでそれなりに遅い

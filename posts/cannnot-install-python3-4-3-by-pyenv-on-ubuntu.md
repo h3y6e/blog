@@ -2,10 +2,10 @@
 title = "pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）"
 date = Date(2019,06,28)
 tags = ["python","pyenv","ubuntu"]
-rss = "Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。"
+rss_description = "Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。"
 +++
 
-pyenvでPython 3.4.3をインストールしようとしたらこんなエラーが出た。
+pyenv で Python 3.4.3 をインストールしようとしたらこんなエラーが出た。
 ```shell
 Downloading Python-3.4.3.tar.xz...
 -> https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz
@@ -47,7 +47,7 @@ sudo apt-get install libssl1.0-dev
 
 これっぽい。
 
-以下を実行
+以下を実行。
 
 ```shell
 sudo apt remove libssl-dev
@@ -55,7 +55,7 @@ sudo apt update
 sudo apt install libssl1.0-dev
 ```
 
-再び`pyenv install 3.4.3`をしてみる
+再び `pyenv install 3.4.3` をしてみる。
 ```shell
 Downloading Python-3.4.3.tar.xz...
 -> https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz

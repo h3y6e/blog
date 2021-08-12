@@ -2,7 +2,7 @@
 title = "macOSで初期状態からのセットアップ"
 date = Date(2019,09,26)
 tags = ["macos", "setup"]
-rss = "新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。"
+rss_description = "新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。"
 +++
 
 ~~~
@@ -16,9 +16,9 @@ rss = "新しいMacを買ったときとか、macOSをファクトリーリセ�
 β版だが、 設定 > 同期で \\
  - [x] 同期を有効にする
 
-#### mackupのcfg
+#### mackup の cfg
 
-`.mackup/$app_name$.cfg`に、以下の形式で保存する
+`.mackup/$app_name$.cfg` に、以下の形式で保存する。
 
 ```
 [application]
@@ -37,7 +37,7 @@ $ mackup backup
 
 ## 起動直後
 
-流れに沿ってデスクトップが表示されるところまで行く
+流れに沿ってデスクトップが表示されるところまで行く。
 
 ## システム環境設定
 
@@ -47,12 +47,12 @@ $ mackup backup
 * 書類をとじるときに変更内容を保持するかどうかを確認  
 
 #### Dock
-サイズ/拡大は適当に
+サイズ/拡大は適当に。
 
 * ウィンドウをアプリケーションアイコンにしまう
 
 #### Touch ID
-設定する
+設定する。
 
 #### アクセスビリティ
 
@@ -80,12 +80,12 @@ $ mackup backup
   * キーのリピート： 最速
   * リピート入力認識までの時間： 最短
   * 環境光が暗い場合にキーボードの輝度を調整
-  * 修飾キー… > Caps Lockキー: Control
+  * 修飾キー… > Caps Lock キー: Control
 * ショートカット
-  * Launchpadを表示： Control+Shift+L
-  * デスクトップ [Num] へ切り替え  
-  * 以下はGoogle Chromeをインストールしアカウントを追加した後 \\
-    アプリケーションでGoogle Chromeを選択 \\
+  * Launchpad を表示： Control+Shift+L
+  * デスクトップ[Num]へ切り替え  
+  * 以下は Google Chrome をインストールしアカウントを追加した後 \\
+    アプリケーションで Google Chrome を選択 \\
     メニュータイトルにアカウントの名前を正確に入力 \\
     キーボードショートカット： Control+Command+[Num]
 
@@ -93,42 +93,46 @@ $ mackup backup
 #### トラックパッド
 
 * クリック： 弱い
-* 起動の速さ： 中心から1つ右
+* 起動の速さ： 中心から 1 つ右
 
 #### バッテリー
 
+<!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
+
 * バッテリー
-  * ディスプレイをオフにするまでの時間： 5分
+  * ディスプレイをオフにするまでの時間： 5 分
 * 電源アダプタ
-  * 電源アダプタに接続中にPower Napをオンにする
+  * 電源アダプタに接続中に Power Nap をオンにする
+
+<!-- textlint-enable ja-technical-writing/no-doubled-joshi -->
 
 #### 共有
 
-コンピュータ名を変更する
+コンピュータ名を変更する。
 
 #### Time Machine
 
 * バックアップを自動生成
-* Time Machineをメニューバーに表示
+* Time Machine をメニューバーに表示
 
 ## Homebrew
 
-[Homebrew](https://brew.sh/) をインストールする  
+[Homebrew](https://brew.sh/) をインストールする。
 
 ```shell
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-#### Dropbox, mackupをインストール
+#### Dropbox, mackup をインストール
 
 ```shell
 $ brew install mackup
-$ brew cask install dropbox
+$ brew install --cask dropbox
 ```
 
 #### Dropbox
 
-起動してログイン
+起動してログイン。
 
 #### mackup
 
@@ -136,7 +140,7 @@ $ brew cask install dropbox
 $ mackup restore
 ```
 
-#### Homebrew Packageのインストール
+#### Homebrew Package のインストール
 
 ```shell
 $ brew bundle --global
@@ -147,10 +151,8 @@ $ brew bundle --global
 $ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 
-## 各種App
-Launchpadから起動する
+## 各種 App
+Launchpad から起動する。
 
 ## ssh
 [ssh keys](https://blog.5ebec.dev/posts/ssh-keys/)
-
-

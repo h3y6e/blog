@@ -1,0 +1,24 @@
+# prh version
+version: 1
+rules:
+  - expected: macOS
+    patterns:
+      - MacOS
+      - Mac OS X
+      - OS X
+      - OSX
+  - expected: $1ずつ
+    patterns: /(\d+[個つ]?)づつ/
+  - expected: 箇所
+    patterns: /[ヶか]所/
+  - expected: 見てい$1
+    patterns: /見て行(く|き)/
+  - expected: 出来$1
+    patterns: /でき([るまな])/
+  - expected: 括弧
+    patterns:
+      - かっこ
+      - カッコ
+  - expected: （$1）
+    pattern: /\((.+?)\)/
+    prh: 半角括弧の代わりに全角括弧を使う
