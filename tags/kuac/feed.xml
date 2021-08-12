@@ -1,17 +1,42 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-  <title><![CDATA[#a5ebec]]></title>
-  <description><![CDATA[へいほぅの殴り書き
-]]></description>
-  <link>https://blog.5ebec.dev/</link>
-  <atom:link href="https://blog.5ebec.dev/tags/kuac/feed.xml" rel="self" type="application/rss+xml" />
-  <item>
-    <title><![CDATA[メインアカウントにbot機能を搭載して運用してるけど意外と上手くやってる]]></title>
-    <link>https://blog.5ebec.dev/posts/kuac2019/</link>
-    <description><![CDATA[僕のTwitterアカウントに付属している単位取得率botと降水量を教えてくれるbotについて
-<br><a href="https://blog.5ebec.dev/posts/kuac2019/">Read more</a>]]></description>
-    <guid>https://blog.5ebec.dev/posts/kuac2019/</guid>
-    <pubDate>Sun, 8 Dec 2019 00:00:00 UT</pubDate>
-  </item>
-</channel>
-</rss>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  {{fd2rss website_title}}  ]]>
+    </title>
+    <link> {{website_url}} </link>
+    <description>
+      <![CDATA[  {{fd2rss website_description}}  ]]>
+    </description>
+    <atom:link
+      href="{{fd_rss_feed_url}}"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  メインアカウントにbot機能を搭載して運用してるけど意外と上手くやってる  ]]>
+  </title>
+  <link> https://blog.5ebec.dev/posts/kuac2019/index.html </link>
+  <guid> https://blog.5ebec.dev/posts/kuac2019/index.html </guid>
+  <description>
+    <![CDATA[  僕のTwitterアカウントに付属している単位取得率botと降水量を教えてくれるbotについて  ]]>
+  </description>  
+    
+  <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>5ebec</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>

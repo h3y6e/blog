@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html lang=ja > <script async src="https://www.googletagmanager.com/gtag/js?id=G-9SVT03FL33" ></script> <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", "G-9SVT03FL33"); </script> <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=5ebec  /> <meta name=theme-color  content="#a5ebec" /> <link rel=stylesheet  href="/libs/katex/katex.min.css" /> <link rel=stylesheet  href="/css/a5ebec.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <meta property="og:site_name" content="#a5ebec" /> <meta property="og:image" content="https://blog.5ebec.dev/assets/a5ebec.jpg" /> <meta name="twitter:card" content=summary  /> <meta name="twitter:site" content="@5ebec" /> <meta name="twitter:creator" content="@5ebec" /> <title> Ubuntuで解像度の異なる複数のディスプレイを同時に、いい感じに使いたい :: #a5ebec </title> <meta name=description  content="研究室で与えられたディスプレイの解像度が異なっていて気持ち悪かったので修正した（?)ときのメモ。" /> <meta property="og:type" content=article  /> <meta property="og:title" content="Ubuntuで解像度の異なる複数のディスプレイを同時に、いい感じに使いたい :: #a5ebec" /> <meta property="og:url" content="https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/index.html" /> <meta property="og:description" content="研究室で与えられたディスプレイの解像度が異なっていて気持ち悪かったので修正した（?)ときのメモ。" /> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >Ubuntuで解像度の異なる複数のディスプレイを同時に、いい感じに使いたい</h1> <div class=date >2019-05-20</div><span class=tags ><a href="/tags/ubuntu">#ubuntu</a> <a href="/tags/display">#display</a> </span></div><div class=franklin-toc ><ol><li><a href="#環境">環境</a><li><a href="#xrandr">XRandR</a><li><a href="#方針">方針</a><li><a href="#シェルコマンド">シェルコマンド</a><li><a href="#結論">結論</a></ol></div> <div class=franklin-content > <p>解像度とサイズの違う2つのディスプレイをどうにかしていい感じに使いたい</p> <h2 id="環境"><a href="#環境">環境</a></h2> <p>OS: Ubuntu 18.04 LTS display: </p> <ul> <li><p>Dell 24inch FullHD 1920x1200 &#40;16:10&#41; </p> <li><p>BenQ 27inch WQHD 2560x1440 &#40;16:9&#41; </p> </ul> <h2 id=xrandr ><a href="#xrandr">XRandR</a></h2> <p>「エックス・アール・アンド・アール」と読むらしい。 X Window Systemを再起動せずに解像度の変更・画面の回転・表示モニタの切り替え・マルチモニタの設定を行うライブラリとコマンド。</p> <pre><code class="shell hljs"><span class=hljs-meta >&gt;</span><span class=bash > xrandr</span></code></pre>
+<!DOCTYPE html> <html lang=ja > <script async src="https://www.googletagmanager.com/gtag/js?id=G-9SVT03FL33" ></script> <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", "G-9SVT03FL33"); </script> <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=5ebec  /> <meta name=theme-color  content="#a5ebec" /> <link rel=stylesheet  href="/libs/katex/katex.min.css" /> <link rel=stylesheet  href="/css/a5ebec.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <meta property="og:site_name" content="#a5ebec" /> <meta property="og:image" content="https://blog.5ebec.dev/assets/a5ebec.jpg" /> <meta name="twitter:card" content=summary  /> <meta name="twitter:site" content="@5ebec" /> <meta name="twitter:creator" content="@5ebec" /> <title> Ubuntuで解像度の異なる複数のディスプレイを同時に、いい感じに使いたい :: #a5ebec </title> <meta name=description  content="研究室で与えられたディスプレイの解像度が異なっていて気持ち悪かったので修正した（?)ときのメモ。" /> <meta property="og:type" content=article  /> <meta property="og:title" content="Ubuntuで解像度の異なる複数のディスプレイを同時に、いい感じに使いたい :: #a5ebec" /> <meta property="og:url" content="https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/index.html" /> <meta property="og:description" content="研究室で与えられたディスプレイの解像度が異なっていて気持ち悪かったので修正した（?)ときのメモ。" /> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >Ubuntuで解像度の異なる複数のディスプレイを同時に、いい感じに使いたい</h1> <div class=date >2019-05-20</div><span class=tags ><a href="/tags/ubuntu">#ubuntu</a> <a href="/tags/display">#display</a> </span></div><div class=franklin-toc ><ol><li><a href="#環境">環境</a><li><a href="#xrandr">XRandR</a><li><a href="#方針">方針</a><li><a href="#シェルコマンド">シェルコマンド</a><li><a href="#結論">結論</a></ol></div> <div class=franklin-content > <p>解像度とサイズの違う 2 つのディスプレイをどうにかしていい感じに使いたい。</p> <h2 id="環境"><a href="#環境" class=header-anchor >環境</a></h2> <p>OS: Ubuntu 18.04 LTS display: </p> <ul> <li><p>Dell 24inch FullHD 1920x1200（16:10） </p> <li><p>BenQ 27inch WQHD 2560x1440（16:9） </p> </ul> <h2 id=xrandr ><a href="#xrandr" class=header-anchor >XRandR</a></h2> <p>「エックス・アール・アンド・アール」と読むらしい。 X Window System を再起動せずに解像度の変更・画面の回転・表示モニタの切り替え・マルチモニタの設定をするライブラリとコマンド。</p> <pre><code class="shell hljs"><span class=hljs-meta >&gt; </span><span class=language-bash >xrandr</span></code></pre>
 <p>でディスプレイの情報を得られる。</p>
 <pre><code class="shell hljs">Screen 0: minimum 8 x 8, current 4480 x 1440, maximum 32767 x 32767
 DVI-D-0 connected 1920x1200+0+0 (normal left inverted right x axis y axis) 518mm x 324mm
@@ -30,20 +30,20 @@ DP-2 disconnected (normal left inverted right x axis y axis)
 DP-3 disconnected (normal left inverted right x axis y axis)
 DP-4 disconnected (normal left inverted right x axis y axis)
 DP-5 disconnected (normal left inverted right x axis y axis)</code></pre>
-<p>こんな。   見方としては、  </p>
+<p>こんな。  </p>
 <ul>
-<li><p><code>DVI-D-0</code>や<code>DP-0</code>は接続端子</p>
+<li><p><code>DVI-D-0</code> や <code>DP-0</code> は接続端子</p>
 
-<li><p><code>connected</code>/<code>disconnected</code>はその端子の接続有無</p>
+<li><p><code>connected</code>/<code>disconnected</code> はその端子の接続有無</p>
 
-<li><p><code>primary</code>/<code></code>はプライマリかどうか</p>
+<li><p><code>primary</code>/<code></code> はプライマリか、否か</p>
 
-<li><p><code>1920x1200&#43;0&#43;0</code>や<code>2560x1400&#43;1920&#43;0</code>は解像度&#43;x方向の位置&#43;y方向の位置</p>
+<li><p><code>1920x1200&#43;0&#43;0</code> や <code>2560x1400&#43;1920&#43;0</code> は解像度&#43;x 方向の位置&#43;y 方向の位置</p>
 
-<li><p><code>518mm x 324mm</code>や<code>597mm x 336mm</code>は実際のディスプレイサイズ</p>
+<li><p><code>518mm x 324mm</code> や <code>597mm x 336mm</code> は実際のディスプレイサイズ</p>
 
 </ul>
-<h2 id="方針"><a href="#方針">方針</a></h2>
+<h2 id="方針"><a href="#方針" class=header-anchor >方針</a></h2>
 <ul>
 <li><p>実際のサイズ</p>
 
@@ -54,11 +54,11 @@ DP-5 disconnected (normal left inverted right x axis y axis)</code></pre>
 
 </ul>
 <p><img src="/img/2019-05-20/resolution.png" alt="解像度" /></p>
-<p>方法としては2つある。</p>
+<p>方法としては 2 つある。</p>
 <ol>
-<li><p>WQHDのディスプレイのスケールを小さくする。</p>
+<li><p>WQHD のディスプレイのスケールを小さくする。</p>
 
-<li><p>FullHDのディスプレイのスケールを大きくする。</p>
+<li><p>FullHD のディスプレイのスケールを大きくする。</p>
 
 </ol>
 <span class=katex-display ><span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML" display=block ><semantics><mrow><mfrac><mn>1200</mn><mn>1440</mn></mfrac><mo>×</mo><mfrac><mrow><mn>336</mn><mtext> </mtext><mrow><mi mathvariant=normal >m</mi><mi mathvariant=normal >m</mi></mrow></mrow><mrow><mn>324</mn><mtext> </mtext><mrow><mi mathvariant=normal >m</mi><mi mathvariant=normal >m</mi></mrow></mrow></mfrac><mo>=</mo><mn>0.864...</mn></mrow><annotation encoding="application/x-tex">
@@ -67,24 +67,24 @@ DP-5 disconnected (normal left inverted right x axis y axis)</code></pre>
 <span class=katex-display ><span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML" display=block ><semantics><mrow><mfrac><mn>1440</mn><mn>1200</mn></mfrac><mo>×</mo><mfrac><mrow><mn>324</mn><mtext> </mtext><mrow><mi mathvariant=normal >m</mi><mi mathvariant=normal >m</mi></mrow></mrow><mrow><mn>336</mn><mtext> </mtext><mrow><mi mathvariant=normal >m</mi><mi mathvariant=normal >m</mi></mrow></mrow></mfrac><mo>=</mo><mn>1.157...</mn></mrow><annotation encoding="application/x-tex">
 \frac{1440}{1200} \times \frac{324\,\rm{mm}}{336\,\rm{mm}} = 1.157...
 </annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:2.00744em;vertical-align:-0.686em;"></span><span class=mord ><span class="mopen nulldelimiter"></span><span class=mfrac ><span class="vlist-t vlist-t2"><span class=vlist-r ><span class=vlist  style="height:1.32144em;"><span style="top:-2.314em;"><span class=pstrut  style="height:3em;"></span><span class=mord ><span class=mord >1</span><span class=mord >2</span><span class=mord >0</span><span class=mord >0</span></span></span><span style="top:-3.23em;"><span class=pstrut  style="height:3em;"></span><span class=frac-line  style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class=pstrut  style="height:3em;"></span><span class=mord ><span class=mord >1</span><span class=mord >4</span><span class=mord >4</span><span class=mord >0</span></span></span></span><span class=vlist-s >​</span></span><span class=vlist-r ><span class=vlist  style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class=mspace  style="margin-right:0.2222222222222222em;"></span><span class=mbin >×</span><span class=mspace  style="margin-right:0.2222222222222222em;"></span></span><span class=base ><span class=strut  style="height:2.00744em;vertical-align:-0.686em;"></span><span class=mord ><span class="mopen nulldelimiter"></span><span class=mfrac ><span class="vlist-t vlist-t2"><span class=vlist-r ><span class=vlist  style="height:1.32144em;"><span style="top:-2.314em;"><span class=pstrut  style="height:3em;"></span><span class=mord ><span class=mord >3</span><span class=mord >3</span><span class=mord >6</span><span class=mspace  style="margin-right:0.16666666666666666em;"></span><span class=mord ><span class=mord ><span class="mord mathrm">m</span><span class="mord mathrm">m</span></span></span></span></span><span style="top:-3.23em;"><span class=pstrut  style="height:3em;"></span><span class=frac-line  style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class=pstrut  style="height:3em;"></span><span class=mord ><span class=mord >3</span><span class=mord >2</span><span class=mord >4</span><span class=mspace  style="margin-right:0.16666666666666666em;"></span><span class=mord ><span class=mord ><span class="mord mathrm">m</span><span class="mord mathrm">m</span></span></span></span></span></span><span class=vlist-s >​</span></span><span class=vlist-r ><span class=vlist  style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class=mspace  style="margin-right:0.2777777777777778em;"></span><span class=mrel >=</span><span class=mspace  style="margin-right:0.2777777777777778em;"></span></span><span class=base ><span class=strut  style="height:0.64444em;vertical-align:0em;"></span><span class=mord >1</span><span class=mord >.</span><span class=mord >1</span><span class=mord >5</span><span class=mord >7</span><span class=mord >.</span><span class=mord >.</span><span class=mord >.</span></span></span></span></span>
-<p>WQHDディスプレイの解像度を約0.864倍、またはFullHDディスプレイの解像度を約1.157倍すれば良いことが分かる。</p>
-<h2 id="シェルコマンド"><a href="#シェルコマンド">シェルコマンド</a></h2>
+<p>WQHD ディスプレイの解像度を約 0.864 倍、または FullHD ディスプレイの解像度を約 1.157 倍すれば良いことが分かる。</p>
+<h2 id="シェルコマンド"><a href="#シェルコマンド" class=header-anchor >シェルコマンド</a></h2>
 <ul>
-<li><p>WQHDのディスプレイのスケールを小さくし、全体の文字サイズを小さくする</p>
+<li><p>WQHD のディスプレイのスケールを小さくし、全体の文字サイズを小さくする</p>
 
 </ul>
 <pre><code class="shell hljs">xrandr --output DVI-D-0 --scale 1x1 --panning 1920x1200+0+0 --output DP-0 --scale 0.864x0.864 --pos 1920x0
 gsettings set org.gnome.desktop.interface text-scaling-factor 0.864</code></pre>
-<p>WQHDのディスプレイのスケールを小さくすると、そのディスプレイでは表示が拡大され、文字が非常に大きくなる。   それを修正するために、Universal Access機能を有効にしている。&#40;二行目のコマンド）</p>
+<p>WQHD のディスプレイのスケールを小さくすると、そのディスプレイでは表示が拡大され、文字が非常に大きくなる。   それを修正するために、Universal Access 機能を有効にしている。（二行目のコマンド）</p>
 <ul>
-<li><p>FullHDのディスプレイのスケールを大きくし、全体の文字サイズを大きくする</p>
+<li><p>FullHD のディスプレイのスケールを大きくし、全体の文字サイズを大きくする</p>
 
 </ul>
 <pre><code class="shell hljs">xrandr --output DVI-D-0 --scale 1.157x1.157 --pos 0x0 --output DP-0 --scale 1x1 --panning 2560x1440+2221+0
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.157</code></pre>
-<p>FullHDのディスプレイのスケールを小さくすると、そのディスプレイでは表示が縮小され、文字が非常に小さくなる。 それを修正するために、Universal Access機能を有効にしている。</p>
-<p>2つとも試してみて後者を採用することにした。   無理に解像度を変更しているのでどちらにせよ滲んでしまうのだが、WQHDのディスプレイをメインで使うつもりなのでFullHDの方を犠牲にした。 &#40;シャープに表示することもできるかもしれないが見つけられなかった）</p>
-<h2 id="結論"><a href="#結論">結論</a></h2>
+<p>FullHD のディスプレイのスケールを小さくすると、そのディスプレイでは表示が縮小され、文字が非常に小さくなる。 それを修正するために、Universal Access 機能を有効にしている。</p>
+<p>2 つとも試してみて後者を採用することにした。   無理に解像度を変更しているのでどちらにせよ滲んでしまうのだが、WQHD のディスプレイをメインで使うつもりなので FullHD の方を犠牲にした。 （シャープに表示することも出来るかもしれないが見つけられなかった）</p>
+<h2 id="結論"><a href="#結論" class=header-anchor >結論</a></h2>
 <p>マウスポインタの移動やウィンドウの移動で気持ち悪い思いをしなくて良くなったが、滲みが気になってしまって仕方がない。<br/> 慣れなのかもしれないが、これに慣れるくらいならマウスポインタ移動時の気持ち悪さに慣れるほうが良い気がしてくる。</p>
 <footer class=page-foot >
   <div class=copyright >
