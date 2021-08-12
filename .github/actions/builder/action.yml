@@ -1,0 +1,19 @@
+name: Builder
+description: "Build"
+runs:
+  using: "composite"
+  steps:
+    - name: Install dependencies
+      run: yarn install --prod --pure-lockfile
+      shell: bash
+
+    - name: Activate and Instantiate
+      run: |
+        using Pkg
+        Pkg.activate(".")
+        Pkg.instantiate()
+      shell: julia --color=yes {0}
+
+    - name: Build
+      run: yarn prod
+      shell: bash
