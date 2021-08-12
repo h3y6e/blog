@@ -20,7 +20,7 @@ Add here files or directories that should be ignored by Franklin, otherwise
 these files might be copied and, if markdown, processed by Franklin which
 you might not want. Indicate directories by ending the name with a `/`.
 -->
-@def ignore = [".vscode/", "theme/", ".prettierignore",
+@def ignore = [".vscode/", "theme/", ".node-version", ".prettierignore",
     ".prettierrc.yml", ".prh.yml", ".textlintrc.yml", "Manifest.toml",
     "package.json", "postcss.config.js", "Project.toml", "yarn.lock"]
 
