@@ -5,4 +5,6 @@ DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 Franklin = "713c75ef-9fc9-4b05-94a9-213340da978e"
 
 [compat]
+DataStructures = "0.18"
+Franklin = "0.10"
 julia = "1.6"
