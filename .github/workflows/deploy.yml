@@ -27,7 +27,7 @@ jobs:
       - name: Install Julia
         uses: julia-actions/setup-julia@v1
         with:
-          version: 1.5
+          version: 1.6
 
       # NOTE
       #   The steps below ensure that NodeJS and Franklin are loaded then it
@@ -44,8 +44,7 @@ jobs:
         run: yarn prod
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: __site
