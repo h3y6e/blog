@@ -2,7 +2,7 @@
 title = "[論文読み] Neural Inverse Rendering of an Indoor Scene From a Single Image"
 date = Date(2019,05,17)
 tags = ["paper", "cv", "inverserendering"]
-rss = "論文読み：単一画像からの屋内シーンのニューラルインバースレンダリング"
+rss_description = "論文読み：単一画像からの屋内シーンのニューラルインバースレンダリング"
 +++
 
 <!-- textlint-disable ja-technical-writing/max-comma -->

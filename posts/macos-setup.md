@@ -2,7 +2,7 @@
 title = "macOSで初期状態からのセットアップ"
 date = Date(2019,09,26)
 tags = ["macos", "setup"]
-rss = "新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。"
+rss_description = "新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。"
 +++
 
 ~~~

@@ -2,7 +2,7 @@
 title = "Netlifyでさくっとカスタムドメイン"
 date = Date(2019,06,09)
 tags = ["netlify", "domain"]
-rss =  "院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く。"
+rss_description =  "院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く。"
 +++
 
 ## カスタムドメインの購入

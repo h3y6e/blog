@@ -5,7 +5,7 @@
     <title>Tag: #{{ fd_tag }}</title>
     <meta
       name="description"
-      content="{{ website_descr }} :: {{ website_title }}"
+      content="{{ website_description }} :: {{ website_title }}"
     />
     <meta property="og:title" content="Tag: #{{ fd_tag }}" />
     <meta property="og:type" content="website" />
@@ -13,7 +13,7 @@
       property="og:url"
       content="{{ website_url }}/{{ tag_page_path }}/{{ fd_tag }}/index.html"
     />
-    <meta property="og:description" content="{{ website_descr }}" />
+    <meta property="og:description" content="{{ website_description }}" />
   </head>
   <body>
     {{ insert head/header.html }}

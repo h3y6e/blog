@@ -1,9 +1,9 @@
 authors = ["5ebec <hash.a5ebec@gmail.com>"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 Franklin = "713c75ef-9fc9-4b05-94a9-213340da978e"
 
 [compat]
-julia = "1.5"
+julia = "1.6"

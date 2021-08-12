@@ -2,7 +2,7 @@
 title = "Eigenvectors from EigenvaluesをJuliaで検証する"
 date = Date(2019, 11, 19)
 tags = ["julia"]
-rss = "Twitterで話題になったり、研究室のslackで話されたりしていたのでJuliaで書いてみた。"
+rss_description = "Twitterで話題になったり、研究室のslackで話されたりしていたのでJuliaで書いてみた。"
 +++
 
  - [Eigenvectors from Eigenvalues](https://arxiv.org/pdf/1908.03795.pdf)

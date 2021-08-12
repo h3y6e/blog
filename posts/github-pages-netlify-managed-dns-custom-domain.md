@@ -2,7 +2,7 @@
 title = "GitHub Pages + Netlify DNSでカスタムドメイン"
 date = Date(2019, 06, 09)
 tags = ["netlify", "domain", "githubpages"]
-rss =  "GitHub Pagesにもカスタムドメインを設定する。"
+rss_description =  "GitHub Pagesにもカスタムドメインを設定する。"
 +++
 
 [これ](/netlify-custom-domain)の続き。

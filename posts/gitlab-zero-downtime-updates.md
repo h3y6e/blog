@@ -2,7 +2,7 @@
 title = "GitLabのアップデート & Zero downtime updates & Slack通知"
 date = Date(2020, 05, 08)
 tags = ["gitlab", "slack"]
-rss = "重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。"
+rss_description = "重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。"
 +++
 
 バイト先で GitLab を GCP 上にホスティングしているのだが、GitLab のアップデートが暫くされていなかったので、やった。

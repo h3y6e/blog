@@ -2,7 +2,7 @@
 title = "誰得なAtomのSyntax themeを作った"
 date = Date(2019, 12, 23)
 tags = ["camphor", "adventcalendar", "atom", "vscode", "julia"]
-rss = "Atomは好きですか？ライトテーマは好きですか？Juliaは好きですか？"
+rss_description = "Atomは好きですか？ライトテーマは好きですか？Juliaは好きですか？"
 cover = "/img/2019-12-23/light-owl-syntax.jpg"
 +++
 

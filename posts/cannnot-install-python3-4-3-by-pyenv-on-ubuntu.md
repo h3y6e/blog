@@ -2,7 +2,7 @@
 title = "pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）"
 date = Date(2019,06,28)
 tags = ["python","pyenv","ubuntu"]
-rss = "Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。"
+rss_description = "Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。"
 +++
 
 pyenv で Python 3.4.3 をインストールしようとしたらこんなエラーが出た。

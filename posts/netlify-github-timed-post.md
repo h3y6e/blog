@@ -2,7 +2,7 @@
 title = "Netlify +  GitHub ActionsでHugo製ブログの予約投稿"
 date = Date(2019,12,07)
 tags = ["hugo", "netlify", "githubactions", "ci"]
-rss = "NetlifyでホスティングしているHugo製ブログで予約投稿したいなと思ってGitHub Actions使ったらめちゃ簡単だった。"
+rss_description = "NetlifyでホスティングしているHugo製ブログで予約投稿したいなと思ってGitHub Actions使ったらめちゃ簡単だった。"
 +++
 
 ## モチベーション

@@ -2,7 +2,7 @@
 title = "A2ネットを改善しよう"
 date = Date(2020, 12, 18)
 tags = ["kmnac", "adventcalendar"]
-rss = "寮のネットワークを改善している話。"
+rss_description = "寮のネットワークを改善している話。"
 cover = "/img/2020-12-18/rack.jpg"
 +++
 

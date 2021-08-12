@@ -2,7 +2,7 @@
 title = "Windows 10のためのTerminal"
 date = Date(2019,05,19)
 tags = ["windows", "terminal", "shell"]
-rss = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」"
+rss_description = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」"
 +++
 
 自分が使ってきた Terminal を順にまとめていく。

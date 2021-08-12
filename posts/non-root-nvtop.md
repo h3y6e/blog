@@ -2,7 +2,7 @@
 title = "nvtopを非rootでインストール"
 date = Date(2020,01,28)
 tags = ["memo"]
-rss = "nvtopを研究室のGPUサーバーにインストールした。"
+rss_description = "nvtopを研究室のGPUサーバーにインストールした。"
 +++
 
 htop の nvidia-smi 版的なやつ： [nvtop](https://github.com/Syllo/nvtop) \\

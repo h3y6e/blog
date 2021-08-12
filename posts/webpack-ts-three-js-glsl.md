@@ -2,7 +2,7 @@
 title = "webpack + typescript + three.jsでGLSL (.frag|.vert) を外部モジュールとしてimportする"
 date = Date(2019,11,14)
 tags = ["webpack", "typescript", "threejs", "glsl"]
-rss = "typescript + three.jsでGLSLをいい感じに編集したい。"
+rss_description = "typescript + three.jsでGLSLをいい感じに編集したい。"
 +++
 
 ## まとめ

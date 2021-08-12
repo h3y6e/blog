@@ -2,7 +2,7 @@
 title = "ITエンジニア志望の学生が聴くべきPodcast"
 date = Date(2020, 12, 20)
 tags = ["camphor", "adventcalendar", "podcast"]
-rss = "おすすめのPodcast番組を紹介して皆んなとPodcastトークがしたい。"
+rss_description = "おすすめのPodcast番組を紹介して皆んなとPodcastトークがしたい。"
 cover = "/img/2020-12-20/camphor-slack_podcast.png"
 +++
 

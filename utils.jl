@@ -38,7 +38,7 @@ function postlist(rpaths)
         title = pagevar(post, :title)
         date = pagevar(post, :date)
         tags = pagevar(post, :tags)
-        rss = pagevar(post, :rss)
+        rss = pagevar(post, :rss_description)
         linktitle = "<a href=\"$url\">$title</a>"
         write(io, headline(linktitle, date, tags))
         write(io, """

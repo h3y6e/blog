@@ -2,7 +2,7 @@
 title = "Ubuntu,Debianにzsh+prezto導入&テーマ変更"
 date = Date(2019,05,25)
 tags = ["ubuntu", "debian", "zsh", "prezto", "shell"]
-rss = "ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。"
+rss_description = "ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。"
 +++
 
 ~~~

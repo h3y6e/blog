@@ -2,7 +2,7 @@
 title = "[論文読み] How Do Humans Sketch Objects? "
 date = Date(2019,10,24)
 tags = ["paper", "cv"]
-rss = "人間はどのように物体をスケッチするか"
+rss_description = "人間はどのように物体をスケッチするか"
 +++
 
 * How Do Humans Sketch Objects? 
