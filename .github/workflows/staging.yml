@@ -21,3 +21,21 @@ jobs:
         with:
           BRANCH: staging
           FOLDER: __site
+
+  publish:
+    needs: build-and-deploy
+    environment:
+      name: cloudflare-pages
+      url: ${{ steps.cf-pages.outputs.url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Publish to Cloudflare Pages
+        id: cf-pages
+        env:
+          deploy_hook: ${{ secrets.PAGES_DEPLOY_HOOK }}
+        run: |
+          result_id=$(curl -X POST "$deploy_hook" | awk -F'["-]' '/"id":/{print $4}')
+          echo "::set-output name=url::https://${result_id}.blog-8a9.pages.dev"
