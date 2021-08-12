@@ -1,7 +1,10 @@
 name: Builder
-description: "Build"
+description:
+  "Build website. Julia 1.6 and Python 3.8 are already installed on
+  GitHub-hosted runners. Reference:
+  https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-README.md"
 runs:
-  using: "composite"
+  using: composite
   steps:
     - name: Install dependencies
       run: yarn install --prod --pure-lockfile
