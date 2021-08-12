@@ -1,7 +1,16 @@
 # Blog
-[![Build and Deploy](https://github.com/5ebec/blog/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/5ebec/blog/actions?query=workflow%3A%22Build+and+Deploy%22)
 
-heyhoe's pothooks
+heyhoe's pothooks.
+
+## Prod（GitHub Pages）
+[![Production](https://github.com/5ebec/blog/workflows/Production/badge.svg)](https://github.com/5ebec/blog/actions?query=workflow%3A%22Production%22)
+
+URL: https://blog.5ebec.dev
+
+## Stg（Cloudflare Pages）
+[![Staging](https://github.com/5ebec/blog/workflows/Staging/badge.svg)](https://github.com/5ebec/blog/actions?query=workflow%3A%22Staging%22)
+
+Latest staging site's URL: https://stg.pages.dev
 
 ## Dev
 ### Franklin.jl

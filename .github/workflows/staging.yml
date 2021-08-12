@@ -35,7 +35,7 @@ jobs:
       - name: Publish to Cloudflare Pages
         id: cf-pages
         env:
-          deploy_hook: ${{ secrets.PAGES_DEPLOY_HOOK }}
+          deploy_hook: ${{ secrets.DEPLOY_HOOK }}
         run: |
           result_id=$(curl -X POST "$deploy_hook" | awk -F'["-]' '/"id":/{print $4}')
-          echo "::set-output name=url::https://${result_id}.blog-8a9.pages.dev"
+          echo "::set-output name=url::https://${result_id}.stg.pages.dev"
