@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  {{fd2rss website_title}}  ]]>
+    </title>
+    <link> {{website_url}} </link>
+    <description>
+      <![CDATA[  {{fd2rss website_description}}  ]]>
+    </description>
+    <atom:link
+      href="{{fd_rss_feed_url}}"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  セキュリティ・キャンプ2019参加記  ]]>
+  </title>
+  <link> https://blog.5ebec.dev/posts/seccamp2019/index.html </link>
+  <guid> https://blog.5ebec.dev/posts/seccamp2019/index.html </guid>
+  <description>
+    <![CDATA[  セキュリティ・キャンプ全国大会2019に参加した話本編  ]]>
+  </description>  
+    
+  <pubDate>Sat, 24 Aug 2019 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>5ebec</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  セキュリティ・キャンプ2019起床記  ]]>
+  </title>
+  <link> https://blog.5ebec.dev/posts/seccamp2019-wakeup/index.html </link>
+  <guid> https://blog.5ebec.dev/posts/seccamp2019-wakeup/index.html </guid>
+  <description>
+    <![CDATA[  セキュリティ・キャンプ全国大会2019に参加した話起床編  ]]>
+  </description>  
+    
+  <pubDate>Sat, 17 Aug 2019 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>5ebec</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>

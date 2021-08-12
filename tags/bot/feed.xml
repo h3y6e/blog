@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  {{fd2rss website_title}}  ]]>
+    </title>
+    <link> {{website_url}} </link>
+    <description>
+      <![CDATA[  {{fd2rss website_description}}  ]]>
+    </description>
+    <atom:link
+      href="{{fd_rss_feed_url}}"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  メインアカウントにbot機能を搭載して運用してるけど意外と上手くやってる  ]]>
+  </title>
+  <link> https://blog.5ebec.dev/posts/kuac2019/index.html </link>
+  <guid> https://blog.5ebec.dev/posts/kuac2019/index.html </guid>
+  <description>
+    <![CDATA[  僕のTwitterアカウントに付属している単位取得率botと降水量を教えてくれるbotについて  ]]>
+  </description>  
+    
+  <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>5ebec</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>
