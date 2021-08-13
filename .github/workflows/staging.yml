@@ -6,6 +6,10 @@ on:
       - master
       - gh-pages
 
+  pull_request:
+    branches:
+      - master
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
