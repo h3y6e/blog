@@ -2,7 +2,7 @@
 
 heyhoe's pothooks.
 
-## Prod（GitHub Pages）
+## Prd（GitHub Pages）
 [![Production](https://github.com/5ebec/blog/workflows/Production/badge.svg)](https://github.com/5ebec/blog/actions?query=workflow%3A%22Production%22)
 
 URL: https://blog.5ebec.dev
