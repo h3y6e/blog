@@ -1,7 +1,7 @@
 :root {
   --accent: #a5ebec;
-  --background: rgb(32, 34, 44);
-  --color: rgb(250, 251, 251);
+  --background: #212f2f;
+  --color: #d3d5d5;
   --border-color: rgba(255, 255, 255, 0.1);
 
   --phoneWidth: (max-width: 684px);
@@ -42,9 +42,9 @@ body {
   font-size: 1rem;
   line-height: 1.8;
   letter-spacing: -0.02em;
-  color: rgb(250, 251, 251);
+  color: #d3d5d5;
   color: var(--color);
-  background: rgb(32, 34, 44);
+  background: #212f2f;
   background: var(--background);
   text-rendering: optimizeLegibility;
   font-family: "Fira Code", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
@@ -154,7 +154,7 @@ figure figcaption {
     padding: 5px 10px;
     background: #a5ebec;
     background: var(--accent);
-    color: rgb(32, 34, 44);
+    color: #212f2f;
     color: var(--background);
   }
 
@@ -204,8 +204,8 @@ pre code {
 
 blockquote {
   font-style: italic;
-  color: rgba(250, 251, 251, 0.8);
-  color: rgba(250, 251, 251, 0.8);
+  color: rgba(211, 213, 213, 0.8);
+  color: rgba(211, 213, 213, 0.8);
   margin: 0;
   padding: 0 25px
 }
@@ -300,7 +300,7 @@ ol ol li:before {
 mark {
   background: #a5ebec;
   background: var(--accent);
-  color: rgb(32, 34, 44);
+  color: #212f2f;
   color: var(--background);
 }
 
@@ -420,9 +420,9 @@ header input#trigger {
 header input#trigger:checked + nav {
         display: block;
         position: absolute;
-        background: rgb(32, 34, 44);
+        background: #212f2f;
         background: var(--background);
-        color: rgb(250, 251, 251);
+        color: #d3d5d5;
         color: var(--color);
         border: 2px solid;
         margin: 0;
@@ -622,7 +622,7 @@ header .menu {
 
 .franklin-toc:before {
     content: "TOC";
-    background: rgb(32, 34, 44);
+    background: #212f2f;
     background: var(--background);
     position: absolute;
     left: 50%;
@@ -699,8 +699,10 @@ SOFTWARE.
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #011627;
-  color: #d6deeb;
+  background: rgb(23, 33, 33);
+  background: rgb(23, 33, 33);
+  color: rgb(224, 226, 226);
+  color: rgb(224, 226, 226);
 }
 
 /* General Purpose */
