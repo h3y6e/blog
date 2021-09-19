@@ -2,10 +2,6 @@ name: Staging
 
 on:
   push:
-    branches-ignore:
-      - master
-      - gh-pages
-
   pull_request:
     branches:
       - master
@@ -36,7 +32,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: staging
           FOLDER: __site
 
