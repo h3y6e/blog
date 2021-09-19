@@ -17,6 +17,7 @@ Latest staging site's URL: https://stg.pages.dev
 ```julia
 julia> ]
 (blog) Pkg> activate .
+(blog) Pkg> instantiate
 julia> using Franklin
 julia> serve()
 → Initial full pass...
