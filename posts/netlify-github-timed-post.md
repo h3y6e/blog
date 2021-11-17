@@ -7,36 +7,36 @@ rss_description = "NetlifyでホスティングしているHugo製ブログで�
 
 ## モチベーション
 
-Hugo は静的サイトジェネレータであり、予約投稿というものが無い。これでは「アドベントカレンダーで 0 時に公開したい」などという時に困るので、どうにかして予約投稿を実現したい。
+Hugoは静的サイトジェネレータであり、予約投稿というものが無い。これでは「アドベントカレンダーで0時に公開したい」などという時に困るので、どうにかして予約投稿を実現したい。
 
 ## tl;dr
 
-Hugo 製ブログを Netlify でホスティングしている前提。
-[Netlify の Build hooks](https://docs.netlify.com/configure-builds/build-hooks/#parameters)と[GitHub Actions の `schedule`](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#scheduled-events-schedule)を用いる。
+Hugo製ブログをNetlifyでホスティングしている前提。
+[NetlifyのBuild hooks](https://docs.netlify.com/configure-builds/build-hooks/#parameters)と[GitHub Actionsの `schedule`](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#scheduled-events-schedule)を用いる。
 
-## Netlify の Build hooks
+## NetlifyのBuild hooks
 
-build と deploy をトリガーする為の URL。
+buildとdeployをトリガーする為のURL。
 ダッシュボードの `Settings > Build & deploy > Continuous Deployment > Build hooks` にある。
-Add build hook から Build Hooks URL を作成する。name は参照用で、Build hooks のリストと deploy 時のメッセージに表示される。
-branch は master にする。
+Add build hookからBuild Hooks URLを作成する。nameは参照用で、Build hooksのリストとdeploy時のメッセージに表示される。
+branchはmasterにする。
 ![Add Build Hook](/img/2019-12-07/addbuildhook.png)
 ![Build Hooks URL](/img/2019-12-07/build_hooks_url.png)
-生成された URL を用いて、端末で以下のような `curl` コマンドを叩くと、Netlify で build と deploy が実行される。
+生成されたURLを用いて、端末で以下のような `curl` コマンドを叩くと、Netlifyでbuildとdeployが実行される。
 
 ```shell
 curl -X POST -d '{}' https://api.netlify.com/build_hooks/XXXXXXXXXXXXXXX
 ```
 
-## GitHub Actions の `schedule`
+## GitHub Actionsの `schedule`
 
-別に他の CI サービスを用いても良いのだが、自分は Travis CI しか使ったことがなかったのと、[Travis CI の Cron Jobs](https://docs.travis-ci.com/user/cron-jobs/)では `daily` が最短なので却下。
-そういえば GitHub Actions なんてものがあったなぁと思って触ってみた。
+別に他のCIサービスを用いても良いのだが、自分はTravis CIしか使ったことがなかったのと、[Travis CIのCron Jobs](https://docs.travis-ci.com/user/cron-jobs/)では `daily` が最短なので却下。
+そういえばGitHub Actionsなんてものがあったなぁと思って触ってみた。
 
-GitHub Actions ではリポジトリの `~/.github/workflows` 以下に YAML 構文でワークフローを定義する。
+GitHub Actionsではリポジトリの `~/.github/workflows` 以下にYAML構文でワークフローを定義する。
 ワークフローの書き方は [Workflow syntax for GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions) を参考にされたい。
 
-今回は「毎時 0 分に build & deploy を実行」させてみる。
+今回は「毎時0分にbuild & deployを実行」させてみる。
 ```yaml
 name: scheduler
 
@@ -53,19 +53,19 @@ jobs:
       run: curl -X POST -d {} ${{ secrets.BUILD_HOOKS_URL }}
 ```
 
-最終行の `${{ secrets.BUILD_HOOKS_URL }}` は GitHub の `Settings > Secrets` に設定した変数を呼び出している。ここに先程 Netlify で生成した Build Hooks URL を追加すればよい。
+最終行の `${{ secrets.BUILD_HOOKS_URL }}` はGitHubの `Settings > Secrets` に設定した変数を呼び出している。ここに先程Netlifyで生成したBuild Hooks URLを追加すればよい。
 ![Secrets](/img/2019-12-07/secrets_buildhooksurl.png)
 
-これで完成。ちょうど 1 時間毎に実行されていることが確認出来る。
+これで完成。ちょうど1時間毎に実行されていることが確認出来る。
 ![Scheduler](/img/2019-12-07/scheduler_workflows.png)
 
 ## 利点
-#### git が汚染されない
-空 commit を master に push すれば Netlify が自動 build してくれるが、これだと log が汚れるので `curl` を叩いたほうが綺麗。
-#### build 頻度が分単位で決定出来る
-`schedule` を使って [POSIX cron 構文](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) で記述出来る。
+#### gitが汚染されない
+空commitをmasterにpushすればNetlifyが自動buildしてくれるが、これだとlogが汚れるので `curl` を叩いたほうが綺麗。
+#### build頻度が分単位で決定出来る
+`schedule` を使って [POSIX cron構文](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) で記述出来る。
 #### （ほぼ）無料
-Public レポジトリなら無料、Private でもこの程度の使用なら無料。（Free で 2,000 分/月）
+Publicレポジトリなら無料、Privateでもこの程度の使用なら無料。（Freeで2,000分/月）
 #### 簡単
 学習コスト低い。
 

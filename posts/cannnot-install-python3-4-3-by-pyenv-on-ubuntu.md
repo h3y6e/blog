@@ -5,7 +5,7 @@ tags = ["python","pyenv","ubuntu"]
 rss_description = "Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。"
 +++
 
-pyenv で Python 3.4.3 をインストールしようとしたらこんなエラーが出た。
+pyenvでPython 3.4.3をインストールしようとしたらこんなエラーが出た。
 ```shell
 Downloading Python-3.4.3.tar.xz...
 -> https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz

@@ -16,7 +16,7 @@ rss_description = "新しいMacを買ったときとか、macOSをファクト�
 β版だが、 設定 > 同期で \\
  - [x] 同期を有効にする
 
-#### mackup の cfg
+#### mackupのcfg
 
 `.mackup/$app_name$.cfg` に、以下の形式で保存する。
 
@@ -80,12 +80,12 @@ $ mackup backup
   * キーのリピート： 最速
   * リピート入力認識までの時間： 最短
   * 環境光が暗い場合にキーボードの輝度を調整
-  * 修飾キー… > Caps Lock キー: Control
+  * 修飾キー… > Caps Lockキー: Control
 * ショートカット
-  * Launchpad を表示： Control+Shift+L
+  * Launchpadを表示： Control+Shift+L
   * デスクトップ[Num]へ切り替え  
-  * 以下は Google Chrome をインストールしアカウントを追加した後 \\
-    アプリケーションで Google Chrome を選択 \\
+  * 以下はGoogle Chromeをインストールしアカウントを追加した後 \\
+    アプリケーションでGoogle Chromeを選択 \\
     メニュータイトルにアカウントの名前を正確に入力 \\
     キーボードショートカット： Control+Command+[Num]
 
@@ -93,16 +93,16 @@ $ mackup backup
 #### トラックパッド
 
 * クリック： 弱い
-* 起動の速さ： 中心から 1 つ右
+* 起動の速さ： 中心から1つ右
 
 #### バッテリー
 
 <!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
 
 * バッテリー
-  * ディスプレイをオフにするまでの時間： 5 分
+  * ディスプレイをオフにするまでの時間： 5分
 * 電源アダプタ
-  * 電源アダプタに接続中に Power Nap をオンにする
+  * 電源アダプタに接続中にPower Napをオンにする
 
 <!-- textlint-enable ja-technical-writing/no-doubled-joshi -->
 
@@ -113,7 +113,7 @@ $ mackup backup
 #### Time Machine
 
 * バックアップを自動生成
-* Time Machine をメニューバーに表示
+* Time Machineをメニューバーに表示
 
 ## Homebrew
 
@@ -123,7 +123,7 @@ $ mackup backup
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-#### Dropbox, mackup をインストール
+#### Dropbox, mackupをインストール
 
 ```shell
 $ brew install mackup
@@ -140,7 +140,7 @@ $ brew install --cask dropbox
 $ mackup restore
 ```
 
-#### Homebrew Package のインストール
+#### Homebrew Packageのインストール
 
 ```shell
 $ brew bundle --global
@@ -151,8 +151,8 @@ $ brew bundle --global
 $ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 
-## 各種 App
-Launchpad から起動する。
+## 各種App
+Launchpadから起動する。
 
 ## ssh
 [ssh keys](https://blog.5ebec.dev/posts/ssh-keys/)

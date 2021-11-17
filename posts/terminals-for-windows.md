@@ -5,9 +5,9 @@ tags = ["windows", "terminal", "shell"]
 rss_description = "WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」"
 +++
 
-自分が使ってきた Terminal を順にまとめていく。
+自分が使ってきたTerminalを順にまとめていく。
 
-## Windows 標準コンソール
+## Windows標準コンソール
 論外。
 
 
@@ -15,7 +15,7 @@ rss_description = "WindowsのTerminal探し。「日本語入力対応、タブ�
 [jwilm/alacritty](https://github.com/jwilm/alacritty)
 
 #### pros
- - GPU-accelerated で非常に高速
+ - GPU-acceleratedで非常に高速
 
 #### cons
  - 日本語入力に難あり（入力窓が別のところに出てくるアレ）
@@ -27,7 +27,7 @@ rss_description = "WindowsのTerminal探し。「日本語入力対応、タブ�
 [felixse/FluentTerminal](https://github.com/felixse/FluentTerminal)
 
 #### pros
- - Windows の Fluent Desgin に合っていて良い
+ - WindowsのFluent Desginに合っていて良い
  - タブ機能あり
 
 #### cons
@@ -45,7 +45,7 @@ rss_description = "WindowsのTerminal探し。「日本語入力対応、タブ�
 
 #### cons
  - 起動が遅い
- - 動作遅い、vim のカーソル移動がカクつく
+ - 動作遅い、vimのカーソル移動がカクつく
  - タブを移動すると文字が見えなくなる（再度入力すると見えるようにはなる）
 
 
@@ -57,4 +57,4 @@ rss_description = "WindowsのTerminal探し。「日本語入力対応、タブ�
  - プラグインでカスタマイズ出来る
 
 #### cons
- - electron 製なのでそれなりに遅い
+ - electron製なのでそれなりに遅い

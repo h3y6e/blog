@@ -10,8 +10,8 @@ rss_description = "ググればすぐ出てくるけど何回も同じ作業す�
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
-## zsh インストール
-Ubuntu や Debian をインストールしたらまずターミナルを開いてこれを脳死で打つ。
+## zshインストール
+UbuntuやDebianをインストールしたらまずターミナルを開いてこれを脳死で打つ。
 
 ```shell
 $ sudo apt update
@@ -19,8 +19,8 @@ $ sudo apt upgrade
 $ sudo apt install zsh
 ```
 
-## prezto 導入
-zsh を起動して以下を実行。
+## prezto導入
+zshを起動して以下を実行。
 
 ```shell
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
@@ -42,10 +42,10 @@ done
 sudo reboot
 ```
 
-これでターミナルを開いたときに zsh が起動されるはず。
+これでターミナルを開いたときにzshが起動されるはず。
 
 ## テーマ変更
-このまま使用してもよいが、prezto では沢山のテーマが利用出来るので好きなものに変える。  
+このまま使用してもよいが、preztoでは沢山のテーマが利用出来るので好きなものに変える。  
 ちなみにデフォルトは `sorin` というテーマ。
 
 以下ですべてのテーマをプレビュー出来る。
@@ -54,15 +54,15 @@ sudo reboot
 ~ ❯❯❯ prompt -p
 ```
 
-みんな大好き powerline もある。
+みんな大好きpowerlineもある。
 
-テーマの設定は `.zpreztorc` ファイルの 116 行目に書かれている。  
+テーマの設定は `.zpreztorc` ファイルの116行目に書かれている。  
 自分は `pure` が好きなので、`sorin` から `pure` に変更した。
 
 ```vim
 zstyle ':prezto:module:prompt' theme 'pure'
 ```
-vim で変更する場合は以下のようにやると楽。
+vimで変更する場合は以下のようにやると楽。
 
 ```shell
 ~ ❯❯❯ vim .zpreztorc

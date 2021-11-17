@@ -5,19 +5,19 @@ tags = ["gitlab", "slack"]
 rss_description = "重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。"
 +++
 
-バイト先で GitLab を GCP 上にホスティングしているのだが、GitLab のアップデートが暫くされていなかったので、やった。
+バイト先でGitLabをGCP上にホスティングしているのだが、GitLabのアップデートが暫くされていなかったので、やった。
 
-ついでに Zero downtime updates（GitLab インスタンスをオフラインにすることなく GitLab を新しいバージョンにアップグレード出来る方法）に対応したシェルスクリプトを書いた。
+ついでにZero downtime updates（GitLabインスタンスをオフラインにすることなくGitLabを新しいバージョンにアップグレード出来る方法）に対応したシェルスクリプトを書いた。
 
-## 新しい GPG Key の入手
+## 新しいGPG Keyの入手
 
-とりあえず Linux インスタンスに SSH 接続して以下を実行。
+とりあえずLinuxインスタンスにSSH接続して以下を実行。
 ```bash
 $ sudo apt-get update && sudo apt-get install gitlab-ee
 ```
 したがうまくいかなかった。
 
-[2020/04/06 に GitLab Omnibus の GPG Key が更新されていた](https://docs.gitlab.com/omnibus/update/package_signatures.html#fetching-new-keys-after-2020-04-06)ようなので新しい鍵を取得。
+[2020/04/06にGitLab OmnibusのGPG Keyが更新されていた](https://docs.gitlab.com/omnibus/update/package_signatures.html#fetching-new-keys-after-2020-04-06)ようなので新しい鍵を取得。
 ```bash
 $ curl https://packages.gitlab.com/gpg.key -o /tmp/omnibus_gitlab_gpg.key
 $ sudo apt-key add /tmp/omnibus_gitlab_gpg.key
@@ -32,7 +32,7 @@ $ sudo apt-get autoremove
 以下のシェルスクリプトを `gitlab-update.sh` に書いた。
 
 と言っても殆どこれを参考にしている↓  
-[【2019 年版】GitLab CE/EE のゼロダウンタイムアップグレード](https://qiita.com/ynott/items/7e3d730d12a09e7fdd8b)
+[【2019年版】GitLab CE/EEのゼロダウンタイムアップグレード](https://qiita.com/ynott/items/7e3d730d12a09e7fdd8b)
 
 ```bash
 #!/bin/bash
@@ -87,7 +87,7 @@ MSG="{
 curl -X POST -H 'Content-type: application/json' --data "$MSG" $SLACK_WEBHOOK_API_URL
 sudo apt-mark hold gitlab-ee
 ```
-更新通知は Slack で受け取るようにした。
+更新通知はSlackで受け取るようにした。
 
 以下のコマンドを実行して完了。
 ```bash

@@ -8,7 +8,7 @@ rss_description = "Twitterで話題になったり、研究室のslackで話さ�
  - [Eigenvectors from Eigenvalues](https://arxiv.org/pdf/1908.03795.pdf)
  - Peter B. Denton, Stephen J. Parke, Terence Tao, Xining Zhang
 
-$n$ 番煎じだと思うが、 Julia で検証してみる。
+$n$ 番煎じだと思うが、 Juliaで検証してみる。
 
 この論文の重要な部分は **Lemma 2** である。
 
@@ -61,7 +61,7 @@ printarr(A)
 ```
 
 ## $A$ の固有値、 固有ベクトルを求める
-固有値及び固有ベクトルは Standard Library である [LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) の `eigvals` 関数と `eigvecs` 関数で求められる。また、`eigen` 関数でも取得することが出来る。
+固有値及び固有ベクトルはStandard Libraryである [LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) の `eigvals` 関数と `eigvecs` 関数で求められる。また、`eigen` 関数でも取得することが出来る。
 ```julia
 println("固有値(eigvals)")
 λ = eigvals(A)

@@ -12,8 +12,8 @@ rss_description = "typescript + three.jsでGLSLをいい感じに編集したい
 
 
 ## はじめに
-three.js で [ShaderMaterial](https://threejs.org/docs/#api/en/materials/ShaderMaterial) や [RawShaderMaterial](https://threejs.org/docs/#api/en/materials/RawShaderMaterial) を使うと、自作した GLSL を利用することが出来る。  
-公式ドキュメントで紹介されている方法や、「[three.js glsl](https://lmgtfy.com/?q=three.js+glsl&s=g)」とかで検索して出てくる大抵の記事には html や js に直書きしている例が見られる。
+three.jsで [ShaderMaterial](https://threejs.org/docs/#api/en/materials/ShaderMaterial) や [RawShaderMaterial](https://threejs.org/docs/#api/en/materials/RawShaderMaterial) を使うと、自作したGLSLを利用することが出来る。  
+公式ドキュメントで紹介されている方法や、「[three.js glsl](https://lmgtfy.com/?q=three.js+glsl&s=g)」とかで検索して出てくる大抵の記事にはhtmlやjsに直書きしている例が見られる。
 しかし、これではシンタックスハイライトは効かないし見栄えも良くない。
 
 
@@ -45,7 +45,7 @@ declare module '*.frag' {
 ```
 `.(vert|frag)` ファイルを外部モジュールとして `declare` キーワードでアンビエント宣言している。
 
-`.ts` ファイルに import する際のコードは以下のようになる。
+`.ts` ファイルにimportする際のコードは以下のようになる。
 ```ts
 import hoge_frag from "./glsl/hoge.frag";
 import hoge_vert from "./glsl/hoge.vert";
@@ -53,11 +53,11 @@ import hoge_vert from "./glsl/hoge.vert";
 
 ## raw-loader
 
-`.(ts|js)` ではないファイルを import したいので、 loader が必要。
+`.(ts|js)` ではないファイルをimportしたいので、 loaderが必要。
 
-npmjs.com で ["shader loader webpack"](https://www.npmjs.com/search?q=shader%20loader%20webpack) と検索してみると、パッケージが 10 個ほど（2019/11/15 現在）出てくる。  
+npmjs.comで ["shader loader webpack"](https://www.npmjs.com/search?q=shader%20loader%20webpack) と検索してみると、パッケージが10個ほど（2019/11/15現在）出てくる。  
 
-が、単に `.vert` と `.frag` を import したいだけであれば、これらを使う必要はない。   
+が、単に `.vert` と `.frag` をimportしたいだけであれば、これらを使う必要はない。   
 テキストをそのまま `string` として読み込みたいので、 [webpack-contrib/raw-loader](https://github.com/webpack-contrib/raw-loader) を用いる。
 
 ```shell

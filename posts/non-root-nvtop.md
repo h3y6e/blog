@@ -5,7 +5,7 @@ tags = ["memo"]
 rss_description = "nvtopを研究室のGPUサーバーにインストールした。"
 +++
 
-htop の nvidia-smi 版的なやつ： [nvtop](https://github.com/Syllo/nvtop) \\
+htopのnvidia-smi版的なやつ： [nvtop](https://github.com/Syllo/nvtop) \\
 いい感じになるのでオススメ。
 
 ```bash

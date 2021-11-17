@@ -19,7 +19,7 @@ rss_description = "2020年に買ったものを紹介する。"
 ~~~
 
 とにかく安いだけの完全食、[Huel](https://jp.huel.com/)。人曰く、壁の味がするらしい。\\
-完全食は他に COMP Powder、COMP Gummy、All-in PASTA などやったが、食に拘りのない自分にとって食事は Huel と松屋で充分だった。\\
+完全食は他にCOMP Powder、COMP Gummy、All-in PASTAなどやったが、食に拘りのない自分にとって食事はHuelと松屋で充分だった。\\
 研究室から一切出ずに数分で食事が完了するので最高だったが、だいぶ病んだ。
 
 ### iPad Pro
@@ -29,38 +29,38 @@ rss_description = "2020年に買ったものを紹介する。"
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">12.9inchでかい <a href="https://t.co/DHieWJU92h">pic.twitter.com/DHieWJU92h</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1246856329450274816?ref_src=twsrc%5Etfw">April 5, 2020</a></blockquote>
 ~~~
 
-大学入って 3 枚目の iPad Pro。
-これを買うまでは 11inch を使っていたが、大きさに若干不満があった & 前モデルよりかなり安くなったので買い替えた。
+大学入って3枚目のiPad Pro。
+これを買うまでは11inchを使っていたが、大きさに若干不満があった & 前モデルよりかなり安くなったので買い替えた。
 
-（これだけで記事一本かけそうなくらい語れるが）簡潔に言うと MacBook Pro 13inch とほぼ同じ画面サイズなので Sidecar に最適で、文字が書きやすく、論文が読みやすい。
+（これだけで記事一本かけそうなくらい語れるが）簡潔に言うとMacBook Pro 13inchとほぼ同じ画面サイズなのでSidecarに最適で、文字が書きやすく、論文が読みやすい。
 
 ### Kyash Card
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">Kyash Card Navyが美しかったのでCorne Cherry w/ IMK Corne Caseと写真撮ってた <a href="https://t.co/7dpOvHnury">pic.twitter.com/7dpOvHnury</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1249186176705146880?ref_src=twsrc%5Etfw">April 12, 2020</a></blockquote>
 ~~~
-発行手数料に 900 円かかるので「買ったもの」でいいでしょ。
+発行手数料に900円かかるので「買ったもの」でいいでしょ。
 
 色が最高。
-3D セキュアに対応したのでより使いやすいカードとなった。
+3Dセキュアに対応したのでより使いやすいカードとなった。
 
 ### サブスマホ
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">my new gear... <a href="https://t.co/emOjDMG8ZK">pic.twitter.com/emOjDMG8ZK</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1252784239046610944?ref_src=twsrc%5Etfw">April 22, 2020</a></blockquote>
 ~~~
 
-楽天モバイルを契約するついでに買った。メインの携帯端末である iPhone 8 Plus のバッテリが流石にヘタってきたのでサブ機兼モバイルバッテリ[^モバブ] として。
-Color OS はまああれだが、結構満足してる。
+楽天モバイルを契約するついでに買った。メインの携帯端末であるiPhone 8 Plusのバッテリが流石にヘタってきたのでサブ機兼モバイルバッテリ[^モバブ] として。
+Color OSはまああれだが、結構満足してる。
 
-[^モバブ]: 5000mAh という大容量バッテリを搭載しており、OTG 接続によりリバース充電が出来る。
+[^モバブ]: 5000mAhという大容量バッテリを搭載しており、OTG接続によりリバース充電が出来る。
 
 ### ウッドパームレスト
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">俺も届いた<br>アウトレット品で残り1個だったやつだけど特に傷も付いてなくて大変良い<a href="https://t.co/fPtbMT5qXC">https://t.co/fPtbMT5qXC</a> <a href="https://t.co/jtQjhU02kP">pic.twitter.com/jtQjhU02kP</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1253510043787390977?ref_src=twsrc%5Etfw">April 24, 2020</a></blockquote>
 ~~~
 
-[FILCO のウッドパームレスト](https://www.diatec.co.jp/shop/list.php?s[]=100:1003:10011)。
+[FILCOのウッドパームレスト](https://www.diatec.co.jp/shop/list.php?s[]=100:1003:10011)。
 
-[どらくん](https://twitter.com/d0ra1998)から良いパームレストは無いかと訊かれたので、木はいいぞと言いながら FILCO のショップで調べたら分離型がアウトレット品であったので衝動買いした。
+[どらくん](https://twitter.com/d0ra1998)から良いパームレストは無いかと訊かれたので、木はいいぞと言いながらFILCOのショップで調べたら分離型がアウトレット品であったので衝動買いした。
 ありがとうどらくん。
 
 ### スマート電球
@@ -69,28 +69,28 @@ Color OS はまああれだが、結構満足してる。
 ~~~
 
 スマート電球にしては破格の値段。
-スマホから操作するならゲートウェイを買う必要があるが、これまた安い（2,999 円）。
-スマート化したいけど Hue 高えな〜と思ってる人はこれを買えばいい。
+スマホから操作するならゲートウェイを買う必要があるが、これまた安い（2,999円）。
+スマート化したいけどHue高えな〜と思ってる人はこれを買えばいい。
 
 
-### AirPods Pro ケース
+### AirPods Proケース
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">NOMADのAirPods Proケース届いた<br>ごつい <a href="https://t.co/mpxzqh6Dh8">pic.twitter.com/mpxzqh6Dh8</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1270583376093736961?ref_src=twsrc%5Etfw">June 10, 2020</a></blockquote>
 ~~~
 
-NOMAD 製品 1: [Rugged Case](https://nomadgoods.com/products/rugged-case-airpods-pro-natural-leather)。
+NOMAD製品1: [Rugged Case](https://nomadgoods.com/products/rugged-case-airpods-pro-natural-leather)。
 
-革製品だが色が薄いため、白色の AirPods Pro と合う。
+革製品だが色が薄いため、白色のAirPods Proと合う。
 
 ### 薄い財布
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">my new wallet… <a href="https://t.co/fpDvRvu0gg">pic.twitter.com/fpDvRvu0gg</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1271002724931235841?ref_src=twsrc%5Etfw">June 11, 2020</a></blockquote>
 ~~~
 
-NOMAD 製品 2: [Slim Wallet](https://nomadgoods.com/products/slim-wallet-tile)。
+NOMAD製品2: [Slim Wallet](https://nomadgoods.com/products/slim-wallet-tile)。
 
 現金不要論者なのでメイン財布はこれになっている。
-Tile Slim が付属してくるので失くしてもすぐ見つけられる。
+Tile Slimが付属してくるので失くしてもすぐ見つけられる。
 
 ### コーヒー豆のサブスク
 ~~~
@@ -107,12 +107,12 @@ Tile Slim が付属してくるので失くしてもすぐ見つけられる。
 その名の通りポストに届くので、再配達を頼む必要が無いのは一人暮らしには良いと思う。
 平日の朝に一杯飲むくらいなら丁度良い量。
 
-### Nintendo Switch のあつ森モデル
+### Nintendo Switchのあつ森モデル
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">my new gear... <a href="https://t.co/rBCYITmZbh">pic.twitter.com/rBCYITmZbh</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1294140144153325568?ref_src=twsrc%5Etfw">August 14, 2020</a></blockquote>
 ~~~
 
-どう森はやらないが、可愛すぎるので 3 月から全ての抽選に応募していた。8 月に買えた。
+どう森はやらないが、可愛すぎるので3月から全ての抽選に応募していた。8月に買えた。
 
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">やっと届いた。 <a href="https://t.co/HYfFOmRftb">pic.twitter.com/HYfFOmRftb</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1289037456713478144?ref_src=twsrc%5Etfw">July 31, 2020</a></blockquote>
@@ -127,15 +127,15 @@ Tile Slim が付属してくるので失くしてもすぐ見つけられる。
 
 寮の同部屋の人と割り勘で買った。
 
-Amazon とかで見かける数万円のビデオキャプチャ（Elg\*to とか AVer\*edia とか）がボッタクリ商品なんじゃないかと思えるレベルで普通に使える（多分色味とかは全然違うんだろうが）。
-ゲーム配信をするなら遅延があるので HDMI スプリッターは必要。
+Amazonとかで見かける数万円のビデオキャプチャ（Elg\*toとかAVer\*ediaとか）がボッタクリ商品なんじゃないかと思えるレベルで普通に使える（多分色味とかは全然違うんだろうが）。
+ゲーム配信をするなら遅延があるのでHDMIスプリッターは必要。
 
-### 多機能 USB 電力テスター
+### 多機能USB電力テスター
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">aliで買ったAVHzY-CT3が届いたので遊んでいる <a href="https://t.co/NGcHcAPTj5">pic.twitter.com/NGcHcAPTj5</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1329426546193403904?ref_src=twsrc%5Etfw">November 19, 2020</a></blockquote>
 ~~~
 
-USB Type-C に興味を持ち、色々調べると面白い世界だったので買った。
+USB Type-Cに興味を持ち、色々調べると面白い世界だったので買った。
 
 ### マリオ時計
 ~~~
@@ -161,7 +161,7 @@ USB Type-C に興味を持ち、色々調べると面白い世界だったので
 ~~~
 
 楽天で買った。
-`AKE-29`0 と `FSKK-0929` という 2 つの品番があるが、同じ製品らしいので安い方を買うと良い。
+`AKE-29`0と `FSKK-0929` という2つの品番があるが、同じ製品らしいので安い方を買うと良い。
 
 ### 充電器
 ~~~
@@ -175,7 +175,7 @@ USB Type-C に興味を持ち、色々調べると面白い世界だったので
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">ASUS クソデカメッシュWi-Fiルーター<br><br>寮でのネット改善の為に買った 俺の金ではないが俺が買ったのでセーフ[要出典]<br>2台で502平米をカバーできるらしい<br>1つを食堂に、もう1つを事務室に置くことで、食堂/ロビー/事務室一帯を全てカバーしている 欲を言えばシャワー室にも入って欲しかった <a href="https://t.co/Z7kBxQiMTw">pic.twitter.com/Z7kBxQiMTw</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1344281378230177792?ref_src=twsrc%5Etfw">December 30, 2020</a></blockquote>
 ~~~
 
-2.7 万くらいで買った。値段の変動が大きいので買い時を見極めるべし。現時点での過去最安値は 25,166 円らしい。
+2.7万くらいで買った。値段の変動が大きいので買い時を見極めるべし。現時点での過去最安値は25,166円らしい。
 
 ### コーヒーミル
 ~~~
@@ -189,15 +189,15 @@ USB Type-C に興味を持ち、色々調べると面白い世界だったので
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">SONY WF-H800<br><br>部屋で使う用に買った 寝る前とかに付けてYouTube観てる<br>色が可愛い ケースの質感良い 音も良い ノイキャンは無い 値段は1.6万円くらい<br>最大8台のマルチペアリング接続に対応していいて切り替えがスムーズ<br>物理ボタンなので誤作動も起こらない <a href="https://t.co/i3rBNwV3yv">pic.twitter.com/i3rBNwV3yv</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1344286534778798081?ref_src=twsrc%5Etfw">December 30, 2020</a></blockquote>
 ~~~
 
-[WF-H800](https://www.sony.jp/headphone/products/WF-H800/)。5 個目の完全ワイヤレスイヤホン。
+[WF-H800](https://www.sony.jp/headphone/products/WF-H800/)。5個目の完全ワイヤレスイヤホン。
 
-### MacBook Pro 用スリーブケース
+### MacBook Pro用スリーブケース
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">MOFT 3 in 1 Carry Sleeve<br><br>クラファンで支援した 値段は忘れた<br>MOFT Laptop Standが自分には合わなかったので期待していなかったが、これは結構良い<br>PC側に貼り付けるなどしないので、角度を付けたくない時は普通に使える(当たり前)のが最高 <a href="https://t.co/v5VO3aLkqY">pic.twitter.com/v5VO3aLkqY</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1344273813173796865?ref_src=twsrc%5Etfw">December 30, 2020</a></blockquote>
 ~~~
 
 [MOFT 3 in 1 Carry Sleeve](https://www.moft.us/products/moft-carry-sleeve)。
-PC に角度は付けたいが何も貼りたくはないという我儘を綺麗に叶えてくれた。
+PCに角度は付けたいが何も貼りたくはないという我儘を綺麗に叶えてくれた。
 小物入れ的な伸びるポケットが付いているが他の素材と比べて汚れやすいので、無いバージョンも作って欲しかった。
 
 ## 買って悪かったもの
@@ -207,10 +207,10 @@ PC に角度は付けたいが何も貼りたくはないという我儘を綺�
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">my new gear... <a href="https://t.co/rUVx8yxqDV">pic.twitter.com/rUVx8yxqDV</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1307875299577614338?ref_src=twsrc%5Etfw">September 21, 2020</a></blockquote>
 ~~~
 
-別に Apple Watch 自体悪くはないし使い続けているんだが、Series 6 である必要はなかったなと思ったので「悪かったもの」とした。\\
-Always On は自分には馴染まなかったのでオフにして使っており、血中酸素濃度を計ることもない。
+別にApple Watch自体悪くはないし使い続けているんだが、Series 6である必要はなかったなと思ったので「悪かったもの」とした。\\
+Always Onは自分には馴染まなかったのでオフにして使っており、血中酸素濃度を計ることもない。
 青色なのが自分にとって唯一かつ最大の差別点だが、今となってはそれに数万円出すか？という感じ。
-Series 3 も Nike モデルを使っていて Nike モデル専用の文字盤が好きだったので、Apple Watch SE の Nike モデルが良かったかな…と思っている。
+Series 3もNikeモデルを使っていてNikeモデル専用の文字盤が好きだったので、Apple Watch SEのNikeモデルが良かったかな…と思っている。
 
 あ、でもソロループは良い。付けるの楽。
 
@@ -219,7 +219,7 @@ Series 3 も Nike モデルを使っていて Nike モデル専用の文字盤�
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">持ち運ぶ用のケーブルとして、等間隔に磁石が付いてるやつをAliexpressで買ったけど悪くはない。 <a href="https://t.co/eT98fNgWQJ">pic.twitter.com/eT98fNgWQJ</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1338336619292545026?ref_src=twsrc%5Etfw">December 14, 2020</a></blockquote>
 ~~~
 
-このツイートでは悪くはないと言ってるが、悪い。普通の 1m ケーブルでよい。\\
+このツイートでは悪くはないと言ってるが、悪い。普通の1mケーブルでよい。\\
 確かにポーチの中で絡まりはしないが、ケーブル同士がくっついて取り回し難い。適当に仕舞うことが出来ない。
 
 ### コンセント一体型モバイルバッテリ
@@ -237,9 +237,9 @@ Series 3 も Nike モデルを使っていて Nike モデル専用の文字盤�
 ~~~
 
 ディスプレイ置けるならディスプレイのほうが良いと思う。ファンが五月蝿い。\\
-どうしてもプロジェクタが欲しいのならこういうモバイルプロジェクタではなくちゃんとした奴を買うべき。Fire TV Stick でも挿しておけば大体同じものが出来上がる。
+どうしてもプロジェクタが欲しいのならこういうモバイルプロジェクタではなくちゃんとした奴を買うべき。Fire TV Stickでも挿しておけば大体同じものが出来上がる。
 
-あと、利用可能な Netflix アプリは付属のリモコンではまともに操作出来ないので、スマホをリモコン代わりにするアプリ経由で操作しなければならないのがかなり面倒臭い。
+あと、利用可能なNetflixアプリは付属のリモコンではまともに操作出来ないので、スマホをリモコン代わりにするアプリ経由で操作しなければならないのがかなり面倒臭い。
 
 ### Google Nest Mini
 ~~~
@@ -247,8 +247,8 @@ Series 3 も Nike モデルを使っていて Nike モデル専用の文字盤�
 ~~~
 
 「OK Google。 誤作動多すぎない？」\\
-Alexa は全然反応しないが、こいつは逆に反応しすぎで困る。其の癖反応してほしいときには反応しない。
-あと Spotify を連携していると音楽流してって言っても流してくれないことが度々あった。
+Alexaは全然反応しないが、こいつは逆に反応しすぎで困る。其の癖反応してほしいときには反応しない。
+あとSpotifyを連携していると音楽流してって言っても流してくれないことが度々あった。
 
 ## おわり
 来年も沢山気絶して沢山衝動買いしような。

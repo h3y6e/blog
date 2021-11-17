@@ -26,14 +26,14 @@ rss_description = "論文読み：単一画像からの屋内シーンのニュ�
 
 ## Why it is worthy researching
 
-屋内シーンの単一画像を、Inverse Rendering Network（IRN）を用いて以下の 3 つの属性に分解する。  
+屋内シーンの単一画像を、Inverse Rendering Network（IRN）を用いて以下の3つの属性に分解する。  
  - アルベド
  - 表面法線ベクトル
  - 照明の環境マップ
 
-今までの手法では、主に単一のオブジェクトに対して、またはシーン属性の 1 つのみを解決するものだった。  
+今までの手法では、主に単一のオブジェクトに対して、またはシーン属性の1つのみを解決するものだった。  
 本稿では、屋内シーンの単一画像に対してそれらのシーン属性を同時に解くことが出来る。
-また、SUNCG-PBR という名のデータセットを作成している。
+また、SUNCG-PBRという名のデータセットを作成している。
 このデータセットは以前のデータセットを大幅に改善したもの。
  * 鏡面反射を仮定したシーン
  * 拡散反射を仮定したシーン
@@ -47,11 +47,11 @@ rss_description = "論文読み：単一画像からの屋内シーンのニュ�
 以前のデータセットと比べてより写実的でノイズが少ない。
 
 ## Key idea
-ラベル無しのデータから、self-supervised reconstruction loss という損失関数を使用して学習することが本稿のキーアイデア。  
-Self-supervised Learning の Residual Appearance Renderer（RAR）によって可能としている。  
+ラベル無しのデータから、self-supervised reconstruction lossという損失関数を使用して学習することが本稿のキーアイデア。  
+Self-supervised LearningのResidual Appearance Renderer（RAR）によって可能としている。  
 
 #### Self-supervised Learning
-自己教師あり学習。教師なし学習の 1 つ。  
+自己教師あり学習。教師なし学習の1つ。  
 pretext tasks（関係なさそうなタスク）を学習することにより、本当に学習したいタスクで使える特徴表現を学習する。
 
 #### self-supervised reconstruction loss
@@ -69,7 +69,7 @@ $$
 RAR: f_r(I, \hat{A}, \hat{N}; \Theta_r) \to \hat{I_r}
 $$
 
-以下の式が self-supervised reconstruction loss。
+以下の式がself-supervised reconstruction loss。
 
 $$
 L_u = ||I - (\hat{I_d}+\hat{I_r})||_{1}
@@ -79,9 +79,9 @@ $$
 #### 他の論文との比較
 より正確な法線と陰影。  
 反射率の曖昧さを解消している。  
-これは deep CNN を使用しているため。
+これはdeep CNNを使用しているため。
 
-IIW をテストセットとして比較  
+IIWをテストセットとして比較  
 WHDR（Weighted Human Disagreement Rate）を評価して、優れていることが確認出来る。
 
 アルベド、法線ベクトル、環境マップ（合成データ、実データ）全てで以前の研究より勝っている。
