@@ -39,42 +39,4 @@
   </atom:author>
         
 </item>
-
-<item>
-  <title>
-    <![CDATA[  ITエンジニア志望の学生が聴くべきPodcast  ]]>
-  </title>
-  <link> https://blog.5ebec.dev/posts/podcasts/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/podcasts/index.html </guid>
-  <description>
-    <![CDATA[  おすすめのPodcast番組を紹介して皆んなとPodcastトークがしたい。  ]]>
-  </description>  
-    
-  <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>  
-  
-  
-  <atom:author>
-    <atom:name>5ebec</atom:name>
-  </atom:author>
-        
-</item>
-
-<item>
-  <title>
-    <![CDATA[  誰得なAtomのSyntax themeを作った  ]]>
-  </title>
-  <link> https://blog.5ebec.dev/posts/light-owl-syntax-theme-for-atom/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/light-owl-syntax-theme-for-atom/index.html </guid>
-  <description>
-    <![CDATA[  Atomは好きですか？ライトテーマは好きですか？Juliaは好きですか？  ]]>
-  </description>  
-    
-  <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>  
-  
-  
-  <atom:author>
-    <atom:name>5ebec</atom:name>
-  </atom:author>
-        
-</item>
 </channel></rss>
