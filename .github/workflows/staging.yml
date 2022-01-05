@@ -30,7 +30,7 @@ jobs:
         uses: ./.github/actions/builder
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.8
+        uses: JamesIves/github-pages-deploy-action@4.1.9
         with:
           BRANCH: staging
           FOLDER: __site
