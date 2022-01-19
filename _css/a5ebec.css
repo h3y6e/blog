@@ -82,7 +82,7 @@ h1,h2,h3,h4,h5,h6 {
   margin-top: 30px
 }
 
-:is(h1,h2,h3,h4,h5,h6) a {
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none;
   }
 
@@ -253,7 +253,7 @@ ol {
   padding: 0
 }
 
-:is(ul,ol) li {
+ul li, ol li {
     margin: -0.5rem 0;
     position: relative;
   }
