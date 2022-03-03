@@ -37,6 +37,6 @@
     "postcss-cli": "^9.1.0",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-import": "^14.0.2",
-    "postcss-preset-env": "^7.2.3"
+    "postcss-preset-env": "^7.4.2"
   }
 }
