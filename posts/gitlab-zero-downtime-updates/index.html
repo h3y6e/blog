@@ -1,69 +1,69 @@
-<!DOCTYPE html> <html lang=ja > <script async src="https://www.googletagmanager.com/gtag/js?id=G-9SVT03FL33" ></script> <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", "G-9SVT03FL33"); </script> <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=5ebec  /> <meta name=theme-color  content="#a5ebec" /> <link rel=stylesheet  href="/css/a5ebec.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <meta property="og:site_name" content="#a5ebec" /> <meta property="og:image" content="https://blog.5ebec.dev/assets/a5ebec.jpg" /> <meta name="twitter:card" content=summary  /> <meta name="twitter:site" content="@5ebec" /> <meta name="twitter:creator" content="@5ebec" /> <title> GitLabのアップデート & Zero downtime updates & Slack通知 :: #a5ebec </title> <meta name=description  content="重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。" /> <meta property="og:type" content=article  /> <meta property="og:title" content="GitLabのアップデート & Zero downtime updates & Slack通知 :: #a5ebec" /> <meta property="og:url" content="https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/index.html" /> <meta property="og:description" content="重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。" /> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >GitLabのアップデート & Zero downtime updates & Slack通知</h1> <div class=date >2020-05-08</div><span class=tags ><a href="/tags/gitlab">#gitlab</a> <a href="/tags/slack">#slack</a> </span></div><div class=franklin-toc ><ol><li><a href="#新しいgpg_keyの入手">新しいGPG Keyの入手</a><li><a href="#zero_downtime_updates">Zero downtime updates</a></ol></div> <div class=franklin-content > <p>バイト先でGitLabをGCP上にホスティングしているのだが、GitLabのアップデートが暫くされていなかったので、やった。</p> <p>ついでにZero downtime updates（GitLabインスタンスをオフラインにすることなくGitLabを新しいバージョンにアップグレード出来る方法）に対応したシェルスクリプトを書いた。</p> <h2 id="新しいgpg_keyの入手"><a href="#新しいgpg_keyの入手" class=header-anchor >新しいGPG Keyの入手</a></h2> <p>とりあえずLinuxインスタンスにSSH接続して以下を実行。</p> <pre><code class="bash hljs">$ sudo apt-get update &amp;&amp; sudo apt-get install gitlab-ee</code></pre>
+<!DOCTYPE html> <html lang=ja > <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=5ebec  /> <meta name=theme-color  content="#a5ebec" /> <link rel=stylesheet  href="/css/a5ebec.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <meta property="og:site_name" content="#a5ebec" /> <meta property="og:image" content="https://blog.5ebec.dev/assets/a5ebec.jpg" /> <meta name="twitter:card" content=summary  /> <meta name="twitter:site" content="@5ebec" /> <meta name="twitter:creator" content="@5ebec" /> <title> GitLabのアップデート & Zero downtime updates & Slack通知 :: #a5ebec </title> <meta name=description  content="重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。" /> <meta property="og:type" content=article  /> <meta property="og:title" content="GitLabのアップデート & Zero downtime updates & Slack通知 :: #a5ebec" /> <meta property="og:url" content="https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/index.html" /> <meta property="og:description" content="重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。" /> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >GitLabのアップデート & Zero downtime updates & Slack通知</h1> <div class=date >2020-05-08</div><span class=tags ><a href="/tags/gitlab">#gitlab</a> <a href="/tags/slack">#slack</a> </span></div><div class=franklin-toc ><ol><li><a href="#新しいgpg_keyの入手">新しいGPG Keyの入手</a><li><a href="#zero_downtime_updates">Zero downtime updates</a></ol></div> <div class=franklin-content > <p>バイト先でGitLabをGCP上にホスティングしているのだが、GitLabのアップデートが暫くされていなかったので、やった。</p> <p>ついでにZero downtime updates（GitLabインスタンスをオフラインにすることなくGitLabを新しいバージョンにアップグレード出来る方法）に対応したシェルスクリプトを書いた。</p> <h2 id="新しいgpg_keyの入手"><a href="#新しいgpg_keyの入手" class=header-anchor >新しいGPG Keyの入手</a></h2> <p>とりあえずLinuxインスタンスにSSH接続して以下を実行。</p> <pre><code class=language-bash >&#36; sudo apt-get update &amp;&amp; sudo apt-get install gitlab-ee</code></pre>
 <p>したがうまくいかなかった。</p>
 <p><a href="https://docs.gitlab.com/omnibus/update/package_signatures.html#fetching-new-keys-after-2020-04-06">2020/04/06にGitLab OmnibusのGPG Keyが更新されていた</a>ようなので新しい鍵を取得。</p>
-<pre><code class="bash hljs">$ curl https://packages.gitlab.com/gpg.key -o /tmp/omnibus_gitlab_gpg.key
-$ sudo apt-key add /tmp/omnibus_gitlab_gpg.key</code></pre>
+<pre><code class=language-bash >&#36; curl https://packages.gitlab.com/gpg.key -o /tmp/omnibus_gitlab_gpg.key
+&#36; sudo apt-key add /tmp/omnibus_gitlab_gpg.key</code></pre>
 <p>再び <code>&#36; sudo apt-get install gitlab-ee</code> を実行したが <code>No space left on device</code> と言われたので以下を実行。</p>
-<pre><code class="bash hljs">$ sudo apt-get autoremove</code></pre>
+<pre><code class=language-bash >&#36; sudo apt-get autoremove</code></pre>
 <h2 id=zero_downtime_updates ><a href="#zero_downtime_updates" class=header-anchor >Zero downtime updates</a></h2>
 <p>以下のシェルスクリプトを <code>gitlab-update.sh</code> に書いた。</p>
 <p>と言っても殆どこれを参考にしている↓   <a href="https://qiita.com/ynott/items/7e3d730d12a09e7fdd8b">【2019年版】GitLab CE/EEのゼロダウンタイムアップグレード</a></p>
-<pre><code class="bash hljs"><span class=hljs-meta >#!/bin/bash</span>
+<pre><code class=language-bash >#&#33;/bin/bash
 
-<span class=hljs-built_in >export</span> LANG=en_US.UTF-8
-SLACK_WEBHOOK_API_URL=xxxxx
+export LANG&#61;en_US.UTF-8
+SLACK_WEBHOOK_API_URL&#61;xxxxx
 
-<span class=hljs-comment ># check update</span>
+# check update
 sudo apt update
 
-<span class=hljs-comment ># get versions</span>
-GITLAB_VERSIONS=$(apt-cache policy gitlab-ee | grep -1 Installed | sed -r <span class=hljs-string >&#x27;s/(^  )//&#x27;</span> | grep -v <span class=hljs-string >&quot;gitlab-ee:&quot;</span>)
-INSTALLED_VERSION=$(<span class=hljs-built_in >echo</span> <span class=hljs-variable >$GITLAB_VERSIONS</span> | sed -r <span class=hljs-string >&#x27;s/Installed: (.*?) Candidate: .*/\1/g&#x27;</span>)
-CANDIDATE_VERSION=$(<span class=hljs-built_in >echo</span> <span class=hljs-variable >$GITLAB_VERSIONS</span> | sed -r <span class=hljs-string >&#x27;s/Installed: .* Candidate: (.*?)/\1/g&#x27;</span>)
+# get versions
+GITLAB_VERSIONS&#61;&#36;&#40;apt-cache policy gitlab-ee | grep -1 Installed | sed -r &#39;s/&#40;^  &#41;//&#39; | grep -v &quot;gitlab-ee:&quot;&#41;
+INSTALLED_VERSION&#61;&#36;&#40;echo &#36;GITLAB_VERSIONS | sed -r &#39;s/Installed: &#40;.*?&#41; Candidate: .*/\1/g&#39;&#41;
+CANDIDATE_VERSION&#61;&#36;&#40;echo &#36;GITLAB_VERSIONS | sed -r &#39;s/Installed: .* Candidate: &#40;.*?&#41;/\1/g&#39;&#41;
 
-<span class=hljs-comment ># check if you can upgrade</span>
-<span class=hljs-keyword >if</span> [ <span class=hljs-string >&quot;<span class=hljs-variable >$INSTALLED_VERSION</span>&quot;</span> = <span class=hljs-string >&quot;<span class=hljs-variable >$CANDIDATE_VERSION</span>&quot;</span> ];
-<span class=hljs-keyword >then</span>
-   <span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Installed: <span class=hljs-variable >$INSTALLED_VERSION</span> is equal Candidate: <span class=hljs-variable >$CANDIDATE_VERSION</span>&quot;</span>
-   <span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Exit&quot;</span>
-   <span class=hljs-built_in >exit</span> 0;
-<span class=hljs-keyword >fi</span>
+# check if you can upgrade
+if &#91; &quot;&#36;INSTALLED_VERSION&quot; &#61; &quot;&#36;CANDIDATE_VERSION&quot; &#93;;
+then
+   echo &quot;Installed: &#36;INSTALLED_VERSION is equal Candidate: &#36;CANDIDATE_VERSION&quot;
+   echo &quot;Exit&quot;
+   exit 0;
+fi
 
-<span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Installed: <span class=hljs-variable >$INSTALLED_VERSION</span>&quot;</span>
-<span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Candidate: <span class=hljs-variable >$CANDIDATE_VERSION</span>&quot;</span>
-<span class=hljs-built_in >echo</span> <span class=hljs-string >&quot;Update version&quot;</span>
+echo &quot;Installed: &#36;INSTALLED_VERSION&quot;
+echo &quot;Candidate: &#36;CANDIDATE_VERSION&quot;
+echo &quot;Update version&quot;
 
 sudo apt-get install gitlab-ee
 sudo apt-mark unhold gitlab-ee
-sudo SKIP_POST_DEPLOYMENT_MIGRATIONS=<span class=hljs-literal >true</span> sudo gitlab-ctl reconfigure
+sudo SKIP_POST_DEPLOYMENT_MIGRATIONS&#61;true sudo gitlab-ctl reconfigure
 sudo gitlab-rake db:migrate
 sudo gitlab-ctl hup puma
 sudo gitlab-ctl restart sidekiq
-MSG=<span class=hljs-string >&quot;{
-        \&quot;blocks\&quot;: [
-                {
+MSG&#61;&quot;&#123;
+        \&quot;blocks\&quot;: &#91;
+                &#123;
                         \&quot;type\&quot;: \&quot;section\&quot;,
-                        \&quot;text\&quot;: {
+                        \&quot;text\&quot;: &#123;
                                 \&quot;type\&quot;: \&quot;mrkdwn\&quot;,
                                 \&quot;text\&quot;: \&quot;*Update GitLab version* :tada: \&quot;
-                        }
-                },
-                {
+                        &#125;
+                &#125;,
+                &#123;
                         \&quot;type\&quot;: \&quot;section\&quot;,
-                        \&quot;text\&quot;: {
+                        \&quot;text\&quot;: &#123;
                                 \&quot;type\&quot;: \&quot;plain_text\&quot;,
-                                \&quot;text\&quot;: \&quot;<span class=hljs-variable >${INSTALLED_VERSION}</span> → <span class=hljs-variable >${CANDIDATE_VERSION}</span>\&quot;
-                        }
-                }
-        ]
-}&quot;</span>
-curl -X POST -H <span class=hljs-string >&#x27;Content-type: application/json&#x27;</span> --data <span class=hljs-string >&quot;<span class=hljs-variable >$MSG</span>&quot;</span> <span class=hljs-variable >$SLACK_WEBHOOK_API_URL</span>
+                                \&quot;text\&quot;: \&quot;&#36;&#123;INSTALLED_VERSION&#125; → &#36;&#123;CANDIDATE_VERSION&#125;\&quot;
+                        &#125;
+                &#125;
+        &#93;
+&#125;&quot;
+curl -X POST -H &#39;Content-type: application/json&#39; --data &quot;&#36;MSG&quot; &#36;SLACK_WEBHOOK_API_URL
 sudo apt-mark hold gitlab-ee</code></pre>
 <p>更新通知はSlackで受け取るようにした。</p>
 <p>以下のコマンドを実行して完了。</p>
-<pre><code class="bash hljs">$ <span class=hljs-built_in >chmod</span> +x gitlab-update.sh</code></pre>
+<pre><code class=language-bash >&#36; chmod &#43;x gitlab-update.sh</code></pre>
 <p>次回以降のアップデートは以下を実行することで完了する。</p>
-<pre><code class="bash hljs">$ ./gitlab-update.sh</code></pre>
+<pre><code class=language-bash >&#36; ./gitlab-update.sh</code></pre>
 <footer class=page-foot >
   <div class=copyright >
     <span>
