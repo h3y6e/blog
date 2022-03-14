@@ -1,6 +1,6 @@
 :root {
   --accent: #a5ebec;
-  --background: #212f2f;
+  --background: #2f2f2f;
   --color: #d3d5d5;
   --border-color: rgba(255, 255, 255, 0.1);
 
@@ -42,7 +42,9 @@ body {
   font-size: 1rem;
   line-height: 1.8;
   letter-spacing: -0.02em;
+  color: #d3d5d5;
   color: var(--color);
+  background: #2f2f2f;
   background: var(--background);
   text-rendering: optimizeLegibility;
   font-family: "Fira Code", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
@@ -82,7 +84,7 @@ h1,h2,h3,h4,h5,h6 {
   margin-top: 30px
 }
 
-:is(h1,h2,h3,h4,h5,h6) a {
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none;
   }
 
@@ -105,6 +107,8 @@ a {
   color: inherit;
   -webkit-text-decoration-style: dotted;
           text-decoration-style: dotted;
+  -webkit-text-decoration-color: #a5ebec;
+          text-decoration-color: #a5ebec;
   -webkit-text-decoration-color: var(--accent);
           text-decoration-color: var(--accent);
 }
@@ -148,7 +152,9 @@ figure figcaption {
     margin: auto;
     font-size: 14px;
     padding: 5px 10px;
+    background: #a5ebec;
     background: var(--accent);
+    color: #2f2f2f;
     color: var(--background);
   }
 
@@ -159,6 +165,7 @@ kbd {
   letter-spacing: 0em;
   background: rgba(165, 235, 236, 0.15);
   border-radius: 2px;
+  color: #a5ebec;
   color: var(--accent);
   padding: 1px 5px;
   margin: 0 2px;
@@ -221,6 +228,7 @@ blockquote p:first-of-type:before {
         display: block;
         position: absolute;
         left: -25px;
+        color: #a5ebec;
         color: var(--accent);
       }
 
@@ -233,13 +241,17 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin: 20px 0;
+  border-top: 2px solid #a5ebec;
   border-top: 2px solid var(--accent);
+  border-bottom: 2px solid #a5ebec;
   border-bottom: 2px solid var(--accent)
 }
 
 table th {
+    color: #a5ebec;
     color: var(--accent);
     padding: 10px;
+    border-bottom: 1px solid #a5ebec;
     border-bottom: 1px solid var(--accent);
   }
 
@@ -253,7 +265,7 @@ ol {
   padding: 0
 }
 
-:is(ul,ol) li {
+ul li, ol li {
     margin: -0.5rem 0;
     position: relative;
   }
@@ -284,13 +296,16 @@ ol ol li:before {
     }
 
 mark {
+  background: #a5ebec;
   background: var(--accent);
+  color: #2f2f2f;
   color: var(--background);
 }
 
 hr {
   width: 100%;
   border: none;
+  background: rgba(255, 255, 255, 0.1);
   background: var(--border-color);
   height: 1px;
 }
@@ -312,6 +327,7 @@ header .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
+    background: #a5ebec;
     background: var(--accent);
     color: black;
     padding: 5px 10px;
@@ -330,6 +346,13 @@ header .header-logo {
 
 header .header-logo:after {
       content: "";
+      background: repeating-linear-gradient(
+        90deg,
+        #a5ebec,
+        #a5ebec 2px,
+        transparent 0,
+        transparent 10px
+      );
       background: repeating-linear-gradient(
         90deg,
         var(--accent),
@@ -395,7 +418,9 @@ header input#trigger {
 header input#trigger:checked + nav {
         display: block;
         position: absolute;
+        background: #2f2f2f;
         background: var(--background);
+        color: #d3d5d5;
         color: var(--color);
         border: 2px solid;
         margin: 0;
@@ -416,6 +441,7 @@ header .menu {
 header .menu {
       cursor: pointer;
       display: inline;
+      color: #a5ebec;
       color: var(--accent);
       border: 2px solid;
       margin-left: 10px;
@@ -438,6 +464,7 @@ header .menu {
 .franklin-headline h1.title {
     --border: 3px dotted var(--accent);
     position: relative;
+    color: #a5ebec;
     color: var(--accent);
     margin-bottom: 8px;
     padding-bottom: 15px;
@@ -467,6 +494,7 @@ header .menu {
 
 .postlist {
   padding: 20px 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
   border-bottom: 2px solid var(--border-color)
 }
 
@@ -477,6 +505,7 @@ header .menu {
 .postlist a.read-more {
     display: flex;
     text-decoration: none;
+    color: #a5ebec;
     color: var(--accent);
   }
 
@@ -495,6 +524,7 @@ header .menu {
       content: "*";
       position: absolute;
       left: -20px;
+      color: #a5ebec;
       color: var(--accent);
     }
 
@@ -505,7 +535,9 @@ header .menu {
 
 .franklin-content table.fndef {
     margin-bottom: 10px;
+    border-top: 1px solid #a5ebec;
     border-top: 1px solid var(--accent);
+    border-bottom: 1px solid #a5ebec;
     border-bottom: 1px solid var(--accent)
   }
 
@@ -534,6 +566,7 @@ header .menu {
 .franklin-content table.tagpage .count {
       text-align: center;
       font-weight: bold;
+      color: #a5ebec;
       color: var(--accent);
     }
 
@@ -544,10 +577,12 @@ header .menu {
       }
 
 .franklin-content table.tagpage .block a:hover {
+          color: #a5ebec;
           color: var(--accent);
         }
 
 .franklin-content .framed {
+    border: 1px solid #a5ebec;
     border: 1px solid var(--accent);
     padding: 20px
   }
@@ -584,6 +619,7 @@ header .menu {
 
 .franklin-toc:before {
     content: "TOC";
+    background: #2f2f2f;
     background: var(--background);
     position: absolute;
     left: 50%;
@@ -660,7 +696,7 @@ SOFTWARE.
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: rgb(23, 33, 33);
+  background: rgb(33, 33, 33);
   color: rgb(224, 226, 226);
 }
 
