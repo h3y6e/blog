@@ -93,7 +93,7 @@ Lessの変数にも対応していてかなり使いやすいです。
 ## できたもの
 **Light Owl Syntax theme for Atom** という完全に俺得なSyntax themeが完成しました。
 
-[light-owl-syntax](https://github.com/5ebec/light-owl-syntax)
+[light-owl-syntax](https://github.com/h3y6e/light-owl-syntax)
 
 JavaScriptだとこんな感じ。
 

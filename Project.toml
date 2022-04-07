@@ -1,4 +1,4 @@
-authors = ["5ebec <hash.a5ebec@gmail.com>"]
+authors = ["heyhoe"]
 
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
