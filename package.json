@@ -1,8 +1,8 @@
 {
   "name": "blog",
   "description": "heyhoe's pothooks",
-  "repository": "https://github.com/5ebec/blog",
-  "author": "5ebec <hash.a5ebec@gmail.com>",
+  "repository": "https://github.com/h3y6e/blog",
+  "author": "heyhoe",
   "license": "MIT",
   "private": true,
   "browserslist": [

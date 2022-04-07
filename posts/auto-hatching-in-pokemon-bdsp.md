@@ -160,7 +160,7 @@ Arduinoの[HID library](https://www.arduino.cc/en/Reference/HID)を用いれば�
 全てのコードは下記リポジトリにあります。
 
 ~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/5ebec/birdo" data-iframely-url="//cdn.iframe.ly/JgnZlBb?card=small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/h3y6e/birdo" data-iframely-url="//cdn.iframe.ly/JgnZlBb?card=small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 ~~~
 
 Arduino Libraryとして、MIT License下にある [celclow/SwitchControlLibrary](https://github.com/celclow/SwitchControlLibrary) を改変したものを利用させていただいております。
