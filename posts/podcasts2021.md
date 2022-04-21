@@ -14,17 +14,27 @@ rss_description = "今年聴いたPodcastで勧めたいやつを雑に紹介す
 去年[これ](/posts/podcasts)を書いて、釣り針がデカかったのか変に拡散されてしまったので控えめに。
 
 ## Podcast
-現時点で自分は30個 [^単位] 弱のPodcastを聴いている。ジャンルは技術系が多いですがそれ以外も普通にある。
+現時点で自分は30個[^単位] 弱のPodcastを聴いている。ジャンルは技術系が多いですがそれ以外も普通にある。
 [ここ](/posts/podcasts)で述べたものは（更新されなくなったものを除けば）今も引き続き聞いており、以下はそれ以外でお勧めのものを紹介する。
 
 [^単位]: Podcastの単位って「個」であってるんですかね？「番組」とか？
 
 ### Today I Learned
+どこかでオススメされて聴き始めた。
+
+コードレビューや仮想通貨Solanaの話が大変面白く、勉強になった。\\
+技術的な話題は勿論、Web系ITエンジニアとしての生き方（というとちょっと大袈裟な気もするが）が学べるのでこれからも聴き続けたい。
+
 ~~~
 <div style="max-width: 765px;"><div style="left: 0; width: 100%; height: 102px; position: relative;"><iframe src="https://anchor.fm/todayilearnedfm/embed" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="encrypted-media;"></iframe></div></div>
 ~~~
 
 ### Off Topic
+
+アメリカを中心としたテック、ビジネス、スタートアップ業界ニュース、カルチャーなどについて知ることが出来るPodcast。\\
+ビジネスの話はあまり好きでないがミーハーではあるので楽しく聴いている。
+
+ところでPodcastは作業中にながら聴きすることが多いのだが、このPodcastは2人のホストのうち一方の相槌に少し癖があり気になってしまうので作業中ではなく移動中などに聞いている。
 
 ~~~
 <div style="max-width: 765px;"><div style="left: 0; width: 100%; height: 102px; position: relative;"><iframe src="https://anchor.fm/mikirepo/embed" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="encrypted-media;"></iframe></div></div>
@@ -32,6 +42,11 @@ rss_description = "今年聴いたPodcastで勧めたいやつを雑に紹介す
 
 ### いんよう！
 自分が所属する[CAMPHOR-](https://camph.net)に来られているPodcast好きな方からお勧めされて聴き始めた。
+
+お便りでも何度か言及されているが、BGMの使い方が上手く、聴き心地が良い。また物事の言い回しも面白く、頭の良さが伝わってくる。
+
+好きな回はいくつもあるが、162回が特に好きかもしれない。
+進化生物学が好き（Wikipediaを読み漁る程度）なので、関連する話題が上がるときは興奮しながら聴いている。
 
 ~~~
 <div style="max-width: 765px;"><div style="left: 0; width: 100%; height: 102px; position: relative;"><iframe src="https://anchor.fm/inntoyoh/embed" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="encrypted-media;"></iframe></div></div>
@@ -65,7 +80,7 @@ DDDやアーキテクチャ、オブジェクト指向プログラミングや�
 
 ### normalize.fm
 [h_doxas](https://twitter.com/h_doxas)さんがMCのPodcast。
-大学での研究でGLSL/WebGL/Three.jsを少し触っており、[wgld.org](https://wgld.org/)や[WebGL総本山](https://webgl.souhonzan.org/)を運営されている[h_doxas](https://twitter.com/h_doxas)さんを存じ上げていたので初回から聴き始めた。
+大学での研究でGLSL/WebGL/Three.jsを少し触っており、[wgld.org](https://wgld.org/)や[WebGL総本山](https://webgl.souhonzan.org/)を運営されているh_doxasさんを存じ上げていたので初回から聴き始めた。
 
 今はグラフィックスプログラミングを行う機会が無い為その辺りの話をされると己の知識不足を感じることもあるが、ゲストの方々やh_doxasさん自身のキャリアの話など面白く聴かせていただいている。
 ~~~
@@ -123,4 +138,4 @@ ref. [はてなのポッドキャスト、はじめます - Hatena Developer Blo
 
 日本語Podcastも露骨にスポンサーを付けたりCMを挟んだりする番組が増えており、ビジネスの臭いを鬱陶しく実感するようになった。2022年もより良いコンテンツ、より良いプラットフォームが生まれることを願っている[^それはお前がやるんだよ]。
 
-[^それはお前がやるんだよ]: 自分でも配信したいなぁと思うことはあるが、いかんせん喋りが下手なので続く未来が見えない…\\[CAMPHOR-](https://camph.net)のメンバーでやりたいなぁ。
+[^それはお前がやるんだよ]: 自分でも配信したいなぁと思うことはあるが、いかんせん喋りが下手なので続く未来が見えない…\\[CAMPHOR-](https://camph.net)のメンバーでやりたいな
