@@ -25,8 +25,8 @@
   <title>
     <![CDATA[  nvtopを非rootでインストール  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/non-root-nvtop/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/non-root-nvtop/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/non-root-nvtop/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/non-root-nvtop/index.html </guid>
   <description>
     <![CDATA[  nvtopを研究室のGPUサーバーにインストールした。  ]]>
   </description>  
@@ -35,7 +35,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
