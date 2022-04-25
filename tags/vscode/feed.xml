@@ -25,8 +25,8 @@
   <title>
     <![CDATA[  誰得なAtomのSyntax themeを作った  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/light-owl-syntax-theme-for-atom/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/light-owl-syntax-theme-for-atom/index.html </guid>
+  <link> https://blog.5ebec.dev/posts/light-owl-syntax-theme-for-atom/index.html </link>
+  <guid> https://blog.5ebec.dev/posts/light-owl-syntax-theme-for-atom/index.html </guid>
   <description>
     <![CDATA[  Atomは好きですか？ライトテーマは好きですか？Juliaは好きですか？  ]]>
   </description>  
@@ -35,7 +35,7 @@
   
   
   <atom:author>
-    <atom:name>heyhoe</atom:name>
+    <atom:name>5ebec</atom:name>
   </atom:author>
         
 </item>
