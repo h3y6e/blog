@@ -3,12 +3,12 @@
 <!--
 global page variables
 -->
-@def author = "5ebec"
+@def author = "heyhoe"
 @def author_url = "https://a5e.be/c"
 @def generate_rss = true
 @def website_title = "#a5ebec"
 @def website_description = "へいほぅの殴り書き"
-@def website_url = "https://blog.5ebec.dev"
+@def website_url = "https://blog.h3y6e.com"
 @def tag_page_path = "tags"
 @def date_format = "yyyy-mm-dd"
 @def mintoclevel = 2
@@ -31,6 +31,8 @@ For instance:
 * \newcommand{\phrase}{This is a long phrase to copy.}
 -->
 \newcommand{\R}{\mathbb R}
+\newcommand{\unchecked}[1]{~~~<input type="checkbox" />~~~#1}
+\newcommand{\checked}[1]{~~~<input type="checkbox" checked />~~~#1}
 \newcommand{\scal}[1]{\langle #1 \rangle}
 \newcommand{\strike}[1]{~~~<s>#1</s>~~~}
 
