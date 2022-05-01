@@ -7,6 +7,8 @@ rules:
       - Mac OS X
       - OS X
       - OSX
+  - expected: まず
+    pattern: 先ず
   - expected: $1ずつ
     patterns: /(\d+[個つ]?)づつ/
   - expected: 箇所
