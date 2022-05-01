@@ -25,8 +25,8 @@
   <title>
     <![CDATA[  Ubuntu,Debianにzsh&#43;prezto導入&amp;テーマ変更  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/zsh-prezto-ubuntu/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/zsh-prezto-ubuntu/index.html </guid>
   <description>
     <![CDATA[  ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。  ]]>
   </description>  
@@ -35,7 +35,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -44,8 +44,8 @@
   <title>
     <![CDATA[  Windows 10のためのTerminal  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/terminals-for-windows/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/terminals-for-windows/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/terminals-for-windows/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/terminals-for-windows/index.html </guid>
   <description>
     <![CDATA[  WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」  ]]>
   </description>  
@@ -54,7 +54,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
