@@ -5,32 +5,23 @@ tags = ["macos", "setup"]
 rss_description = "新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。"
 +++
 
+完全に自分の為の書き殴り。
+
+以前は[mackup](https://github.com/lra/mackup)を使っていたが、ここまで厳密にファイルを同期させたくない事が多かったのと、Intel MacとARM Macのconfigを同じにするのはなんかヤバそうなので、現在は[chezmoi](https://github.com/twpayne/chezmoi)[^chezmoi] を使っている。
+
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">掃除出来ない人間はコマンド叩いた時の多少のエラーとかは動けば放置してしまうから、いっそ定期的にリストアするぞくらいの気持ちのほうが良い</p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1049345182955528197?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
+[^chezmoi]: フランス語らしい。読み方はチェズモイではなく /ʃeɪmwa/（シェィモア）。
+
 <!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
 <!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
 
-## バックアップ
-### BetterTouchTool
-β版だが、 設定 > 同期で \\
-\checked{同期を有効にする}
-
-### mackupのcfg
-`.mackup/$app_name$.cfg` に、以下の形式で保存する。
-```
-[application]
-name = $app_name$
-
-[configuration_files]
-$configfile$
-```
-
-### シェル実行
+## 準備
+### Homebrew
 ```shell
 $ brew bundle dump --global
-$ mackup backup
 ```
 
 ## 起動直後
@@ -107,20 +98,6 @@ $ mackup backup
 [Homebrew](https://brew.sh/)をインストールする。
 ```shell
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-### Dropbox, mackupをインストール
-```shell
-$ brew install mackup
-$ brew install --cask dropbox
-```
-
-### Dropbox
-起動してログイン。
-
-### mackup
-```shell
-$ mackup restore
 ```
 
 ### Homebrew Packageのインストール
