@@ -1,7 +1,7 @@
 +++
 title = "Navpad 1.0 ビルドログ"
 date = Date(2022,03,15)
-tags = ["keyboard", "yushakobo_guild"]
+tags = ["keyboard", "buildlog", "yushakobo_guild"]
 rss_description =  "遊舎工房様より提供していただいたNavpad 1.0のビルドログです。"
 cover = "/img/2022-03-15/navpad_10_rev1_red.jpg"
 +++
@@ -124,7 +124,6 @@ Amazonで適当に買ったやつを使いました。
 はんだ付けをしていきます。
 
 ![ダイオード はんだ付け](/img/2022-03-15/solder_diodes.jpg)
-
 
 全てのダイオードのはんだ付けが完了したら、リード線をペンチで取り除きます。
 セロハンテープ等でリード線を纏めておけば、散らばることが無い為おすすめです。
