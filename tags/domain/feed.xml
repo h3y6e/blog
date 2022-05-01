@@ -25,8 +25,8 @@
   <title>
     <![CDATA[  GitHub Pages &#43; Netlify DNSでカスタムドメイン  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/github-pages-netlify-managed-dns-custom-domain/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/github-pages-netlify-managed-dns-custom-domain/index.html </guid>
+  <link> https://blog.5ebec.dev/posts/github-pages-netlify-managed-dns-custom-domain/index.html </link>
+  <guid> https://blog.5ebec.dev/posts/github-pages-netlify-managed-dns-custom-domain/index.html </guid>
   <description>
     <![CDATA[  GitHub Pagesにもカスタムドメインを設定する。  ]]>
   </description>  
@@ -35,7 +35,7 @@
   
   
   <atom:author>
-    <atom:name>heyhoe</atom:name>
+    <atom:name>5ebec</atom:name>
   </atom:author>
         
 </item>
@@ -44,8 +44,8 @@
   <title>
     <![CDATA[  Netlifyでさくっとカスタムドメイン  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/netlify-custom-domain/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/netlify-custom-domain/index.html </guid>
+  <link> https://blog.5ebec.dev/posts/netlify-custom-domain/index.html </link>
+  <guid> https://blog.5ebec.dev/posts/netlify-custom-domain/index.html </guid>
   <description>
     <![CDATA[  院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く。  ]]>
   </description>  
@@ -54,7 +54,7 @@
   
   
   <atom:author>
-    <atom:name>heyhoe</atom:name>
+    <atom:name>5ebec</atom:name>
   </atom:author>
         
 </item>

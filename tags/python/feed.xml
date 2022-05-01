@@ -25,8 +25,8 @@
   <title>
     <![CDATA[  pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/index.html </guid>
+  <link> https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/index.html </link>
+  <guid> https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/index.html </guid>
   <description>
     <![CDATA[  Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。  ]]>
   </description>  
@@ -35,7 +35,7 @@
   
   
   <atom:author>
-    <atom:name>heyhoe</atom:name>
+    <atom:name>5ebec</atom:name>
   </atom:author>
         
 </item>

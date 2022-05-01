@@ -25,8 +25,8 @@
   <title>
     <![CDATA[  GitLabのアップデート &amp; Zero downtime updates &amp; Slack通知  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/gitlab-zero-downtime-updates/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/gitlab-zero-downtime-updates/index.html </guid>
+  <link> https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/index.html </link>
+  <guid> https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/index.html </guid>
   <description>
     <![CDATA[  重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。  ]]>
   </description>  
@@ -35,7 +35,7 @@
   
   
   <atom:author>
-    <atom:name>heyhoe</atom:name>
+    <atom:name>5ebec</atom:name>
   </atom:author>
         
 </item>
