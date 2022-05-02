@@ -8,17 +8,26 @@ cover = "/img/2022-05-02/rustykeys.jpg"
 
 ~~~
 <script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
 ## はじめに
 
+本稿は[KOBA789](https://twitter.com/KOBA789)さんが設計された[RustyKeys](https://koba789.booth.pm/items/3787019)のビルドログです。参考までに活用していただければ幸いです。
+
+また、RustyKeysのコミュニティがGitHub Discussionsで作られていますので、このキットについての質問や依頼はこちらにコメントを残すと幸せになれると思います。
 
 ~~~
-<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/7Rn1n0EEcfo?rel=0&cc_load_policy=1" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"></iframe></div>
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/KOBA789/rusty-keys" data-iframely-url="//iframely.net/b8YNiNO?card=small"></a></div></div>
 ~~~
 
+---
+
+[KOBA789さんのYouTube Live](https://youtu.be/7Rn1n0EEcfo)を観て面白そうなキットだなぁと思い、ゴールデンウィークのお供にと購入しました。
+販売開始前から全裸待機していたら無事に買えました。1分で売り切れたようです。やば。
+
 ~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/KOBA789/rusty-keys" data-iframely-url="//iframely.net/PaLazB8?card=small"></a></div></div>
+<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" align="center"><p lang="ja" dir="ltr">買えました。良かった / 「RustyKeys (初回版（再販予定なし）)」を Bracket Works で購入しました！ <a href="https://t.co/sJ5Cxk5byM">https://t.co/sJ5Cxk5byM</a> <a href="https://twitter.com/hashtag/booth_pm?src=hash&amp;ref_src=twsrc%5Etfw">#booth_pm</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1518534492902035456?ref_src=twsrc%5Etfw">April 25, 2022</a></blockquote>
 ~~~
 
 ## RustyKeysの特徴
@@ -27,11 +36,9 @@ cover = "/img/2022-05-02/rustykeys.jpg"
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://shop.yushakobo.jp/products/4256" data-iframely-url="//iframely.net/6Ud2SnE?card=small"></a></div></div>
 ~~~
 
- - フットプリントが名刺サイズ（91mm x 55mm）
- - 公式のビルドガイド（本ガイド）が組込みRustをサポートしている
- - キーボードを「使いたい人」向けではなく「作りたい人」向け
-   - 本商品は、組み立て・プログラミング自体を楽しむことを目的としたキットです
- - 組み立てが簡単で、はんだ付け入門としてもおすすめ
+最大の特徴は、[ビルドガイド](https://rusty-keys.koba789.com)が組込みRustをサポートしており、既存のファームウェアには対応していない、という所でしょう。
+
+勿論6キーのマクロパッドとしても利用可能ですが、組み立て・プログラミング自体を楽しむことを目的として開発されている為、組み込みRust入門・はんだ付け入門・キーボード自作入門に最適なキットとなっています。
 
 ## ビルドガイド
 ビルドガイドは [rusty-keys.koba789.com](https://rusty-keys.koba789.com) です。
@@ -271,8 +278,11 @@ Darwin mbp2019.local 21.4.0 Darwin Kernel Version 21.4.0: Fri Mar 18 00:45:05 PD
 
 デバッグアダプタ -> 本体の順に、2本のUSBケーブルで開発用PCに接続します。
 
-
 ファームウェアのサンプルコードは[rusty-keys](https://github.com/KOBA789/rusty-keys)の `firmware` 下に用意されているので、cloneします。
+
+~~~
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/KOBA789/rusty-keys" data-iframely-url="//iframely.net/PaLazB8?card=small"></a></div></div>
+~~~
 
 ```sh
 ❯ git clone https://github.com/KOBA789/rusty-keys.git
@@ -300,7 +310,7 @@ Hello, world!
 ```
 
 表示されたことが確認出来ました。[`probe-run`](https://github.com/knurling-rs/probe-run) 凄い...。
-
+動作を見ると分かりますが、書き込みはprobe（デバッグアダプタ）を通して行われているようですね。
 
 #### firmware/keyboard
 USBキーボードのサンプルコードです。
@@ -324,3 +334,7 @@ USBキーボードのサンプルコードです。
 作者様の名前が入力可能な最高のキーボードが完成しました🎉
 
 ![作者様の名前が入力可能な最高のキーボード](/img/2022-05-02/out.gif)
+
+~~~
+<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" align="center"><p lang="ja" dir="ltr">RustyKeysできた。Mil-Max Socketが余っていたのでホットスワップ化した <a href="https://t.co/TLHjC9G9Fi">pic.twitter.com/TLHjC9G9Fi</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1520812444519911425?ref_src=twsrc%5Etfw">May 1, 2022</a></blockquote>
+~~~
