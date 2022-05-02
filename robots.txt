@@ -1,4 +1,4 @@
-Sitemap: https://blog.5ebec.dev/sitemap.xml
+Sitemap: https://blog.h3y6e.com/sitemap.xml
 
 User-agent: *
 Disallow:
