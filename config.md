@@ -4,11 +4,11 @@
 global page variables
 -->
 @def author = "5ebec"
-@def author_url = "https://a5e.be/c"
+@def author_url = "https://h3y6e.com"
 @def generate_rss = true
 @def website_title = "#a5ebec"
 @def website_description = "へいほぅの殴り書き"
-@def website_url = "https://blog.5ebec.dev"
+@def website_url = "https://blog.h3y6e.com"
 @def tag_page_path = "tags"
 @def date_format = "yyyy-mm-dd"
 @def mintoclevel = 2
