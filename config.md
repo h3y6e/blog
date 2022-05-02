@@ -3,7 +3,7 @@
 <!--
 global page variables
 -->
-@def author = "5ebec"
+@def author = "heyhoe"
 @def author_url = "https://h3y6e.com"
 @def generate_rss = true
 @def website_title = "#a5ebec"
