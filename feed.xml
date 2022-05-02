@@ -11,22 +11,41 @@
     <title>
       <![CDATA[  #a5ebec  ]]>
     </title>
-    <link> https://blog.5ebec.dev </link>
+    <link> https://blog.h3y6e.com </link>
     <description>
       <![CDATA[  へいほぅの殴り書き  ]]>
     </description>
     <atom:link
-      href="https://blog.5ebec.dev/feed.xml"
+      href="https://blog.h3y6e.com/feed.xml"
       rel="self"
       type="application/rss+xml" />
 
 
 <item>
   <title>
+    <![CDATA[  RustyKeys ビルドログ  ]]>
+  </title>
+  <link> https://blog.h3y6e.com/posts/rustykeys-buildlog/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/rustykeys-buildlog/index.html </guid>
+  <description>
+    <![CDATA[  RustyKeysのビルドログです。  ]]>
+  </description>  
+    
+  <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>heyhoe</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
     <![CDATA[  Navpad 1.0 ビルドログ  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/navpad-10-buildlog/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/navpad-10-buildlog/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/navpad-10-buildlog/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/navpad-10-buildlog/index.html </guid>
   <description>
     <![CDATA[  遊舎工房様より提供していただいたNavpad 1.0のビルドログです。  ]]>
   </description>  
@@ -35,7 +54,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -44,8 +63,8 @@
   <title>
     <![CDATA[  2021年に聴いていたPodcast  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/podcasts2021/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/podcasts2021/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/podcasts2021/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/podcasts2021/index.html </guid>
   <description>
     <![CDATA[  今年聴いたPodcastで勧めたいやつを雑に紹介する。  ]]>
   </description>  
@@ -54,7 +73,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -63,8 +82,8 @@
   <title>
     <![CDATA[  【ポケモンBDSP】自動孵化装置を作って高個体値色違いイーブイを手に入れる&#40;夢を見た&#41;  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/auto-hatching-in-pokemon-bdsp/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/auto-hatching-in-pokemon-bdsp/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/auto-hatching-in-pokemon-bdsp/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/auto-hatching-in-pokemon-bdsp/index.html </guid>
   <description>
     <![CDATA[  Pro Micro&#40;Arduino Leonardo互換機&#41;でポケモンBDSP版自動孵化装置を作成する。  ]]>
   </description>  
@@ -73,7 +92,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -82,8 +101,8 @@
   <title>
     <![CDATA[  買って（良|悪）かったもの2020  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/stuff2020/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/stuff2020/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/stuff2020/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/stuff2020/index.html </guid>
   <description>
     <![CDATA[  2020年に買ったものを紹介する。  ]]>
   </description>  
@@ -92,7 +111,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -101,8 +120,8 @@
   <title>
     <![CDATA[  ITエンジニア志望の学生が聴くべきPodcast  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/podcasts/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/podcasts/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/podcasts/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/podcasts/index.html </guid>
   <description>
     <![CDATA[  おすすめのPodcast番組を紹介して皆んなとPodcastトークがしたい。  ]]>
   </description>  
@@ -111,7 +130,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -120,8 +139,8 @@
   <title>
     <![CDATA[  A2ネットを改善しよう  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/a2net/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/a2net/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/a2net/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/a2net/index.html </guid>
   <description>
     <![CDATA[  寮のネットワークを改善している話。  ]]>
   </description>  
@@ -130,7 +149,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -139,8 +158,8 @@
   <title>
     <![CDATA[  GitLabのアップデート &amp; Zero downtime updates &amp; Slack通知  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/gitlab-zero-downtime-updates/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/gitlab-zero-downtime-updates/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/gitlab-zero-downtime-updates/index.html </guid>
   <description>
     <![CDATA[  重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。  ]]>
   </description>  
@@ -149,7 +168,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -158,8 +177,8 @@
   <title>
     <![CDATA[  nvtopを非rootでインストール  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/non-root-nvtop/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/non-root-nvtop/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/non-root-nvtop/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/non-root-nvtop/index.html </guid>
   <description>
     <![CDATA[  nvtopを研究室のGPUサーバーにインストールした。  ]]>
   </description>  
@@ -168,7 +187,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -177,8 +196,8 @@
   <title>
     <![CDATA[  誰得なAtomのSyntax themeを作った  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/light-owl-syntax-theme-for-atom/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/light-owl-syntax-theme-for-atom/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/light-owl-syntax-theme-for-atom/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/light-owl-syntax-theme-for-atom/index.html </guid>
   <description>
     <![CDATA[  Atomは好きですか？ライトテーマは好きですか？Juliaは好きですか？  ]]>
   </description>  
@@ -187,7 +206,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -196,8 +215,8 @@
   <title>
     <![CDATA[  メインアカウントにbot機能を搭載して運用してるけど意外と上手くやってる  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/kuac2019/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/kuac2019/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/kuac2019/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/kuac2019/index.html </guid>
   <description>
     <![CDATA[  僕のTwitterアカウントに付属している単位取得率botと降水量を教えてくれるbotについて  ]]>
   </description>  
@@ -206,7 +225,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -215,8 +234,8 @@
   <title>
     <![CDATA[  Netlify &#43;  GitHub ActionsでHugo製ブログの予約投稿  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/netlify-github-timed-post/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/netlify-github-timed-post/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/netlify-github-timed-post/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/netlify-github-timed-post/index.html </guid>
   <description>
     <![CDATA[  NetlifyでホスティングしているHugo製ブログで予約投稿したいなと思ってGitHub Actions使ったらめちゃ簡単だった。  ]]>
   </description>  
@@ -225,7 +244,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -234,8 +253,8 @@
   <title>
     <![CDATA[  Eigenvectors from EigenvaluesをJuliaで検証する  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/eigenvectors-from-eigenvalues-julia/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/eigenvectors-from-eigenvalues-julia/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/eigenvectors-from-eigenvalues-julia/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/eigenvectors-from-eigenvalues-julia/index.html </guid>
   <description>
     <![CDATA[  Twitterで話題になったり、研究室のslackで話されたりしていたのでJuliaで書いてみた。  ]]>
   </description>  
@@ -244,7 +263,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -253,8 +272,8 @@
   <title>
     <![CDATA[  webpack &#43; typescript &#43; three.jsでGLSL &#40;.frag|.vert&#41; を外部モジュールとしてimportする  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/webpack-ts-three-js-glsl/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/webpack-ts-three-js-glsl/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/webpack-ts-three-js-glsl/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/webpack-ts-three-js-glsl/index.html </guid>
   <description>
     <![CDATA[  typescript &#43; three.jsでGLSLをいい感じに編集したい。  ]]>
   </description>  
@@ -263,7 +282,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -272,8 +291,8 @@
   <title>
     <![CDATA[  &#91;論文読み&#93; How Do Humans Sketch Objects?   ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/how-do-humans-sketch-objects/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/how-do-humans-sketch-objects/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/how-do-humans-sketch-objects/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/how-do-humans-sketch-objects/index.html </guid>
   <description>
     <![CDATA[  人間はどのように物体をスケッチするか  ]]>
   </description>  
@@ -282,7 +301,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -291,8 +310,8 @@
   <title>
     <![CDATA[  ssh keys  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/ssh-keys/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/ssh-keys/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/ssh-keys/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/ssh-keys/index.html </guid>
   <description>
     <![CDATA[  何回やっても覚えられないので自分用に。  ]]>
   </description>  
@@ -301,7 +320,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -310,8 +329,8 @@
   <title>
     <![CDATA[  macOSで初期状態からのセットアップ  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/macos-setup/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/macos-setup/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/macos-setup/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/macos-setup/index.html </guid>
   <description>
     <![CDATA[  新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。  ]]>
   </description>  
@@ -320,7 +339,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -329,8 +348,8 @@
   <title>
     <![CDATA[  &#91;論文読み&#93; Shape from Shading through Shape Evolution  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/shape-from-shading-through-shape-evolution/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/shape-from-shading-through-shape-evolution/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/shape-from-shading-through-shape-evolution/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/shape-from-shading-through-shape-evolution/index.html </guid>
   <description>
     <![CDATA[  論文読み : 形状進化による3Dデータを用いたShape-from-Shading  ]]>
   </description>  
@@ -339,7 +358,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -348,8 +367,8 @@
   <title>
     <![CDATA[  セキュリティ・キャンプ2019参加記  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/seccamp2019/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/seccamp2019/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/seccamp2019/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/seccamp2019/index.html </guid>
   <description>
     <![CDATA[  セキュリティ・キャンプ全国大会2019に参加した話本編  ]]>
   </description>  
@@ -358,7 +377,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -367,8 +386,8 @@
   <title>
     <![CDATA[  セキュリティ・キャンプ2019起床記  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/seccamp2019-wakeup/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/seccamp2019-wakeup/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/seccamp2019-wakeup/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/seccamp2019-wakeup/index.html </guid>
   <description>
     <![CDATA[  セキュリティ・キャンプ全国大会2019に参加した話起床編  ]]>
   </description>  
@@ -377,7 +396,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -386,8 +405,8 @@
   <title>
     <![CDATA[  pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/index.html </guid>
   <description>
     <![CDATA[  Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。  ]]>
   </description>  
@@ -396,7 +415,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -405,8 +424,8 @@
   <title>
     <![CDATA[  GitHub Pages &#43; Netlify DNSでカスタムドメイン  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/github-pages-netlify-managed-dns-custom-domain/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/github-pages-netlify-managed-dns-custom-domain/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/github-pages-netlify-managed-dns-custom-domain/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/github-pages-netlify-managed-dns-custom-domain/index.html </guid>
   <description>
     <![CDATA[  GitHub Pagesにもカスタムドメインを設定する。  ]]>
   </description>  
@@ -415,7 +434,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -424,8 +443,8 @@
   <title>
     <![CDATA[  Netlifyでさくっとカスタムドメイン  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/netlify-custom-domain/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/netlify-custom-domain/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/netlify-custom-domain/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/netlify-custom-domain/index.html </guid>
   <description>
     <![CDATA[  院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く。  ]]>
   </description>  
@@ -434,7 +453,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -443,8 +462,8 @@
   <title>
     <![CDATA[  Ubuntu,Debianにzsh&#43;prezto導入&amp;テーマ変更  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/zsh-prezto-ubuntu/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/zsh-prezto-ubuntu/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/zsh-prezto-ubuntu/index.html </guid>
   <description>
     <![CDATA[  ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。  ]]>
   </description>  
@@ -453,7 +472,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -462,8 +481,8 @@
   <title>
     <![CDATA[  Ubuntuで解像度の異なる複数のディスプレイを同時に、いい感じに使いたい  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/index.html </guid>
   <description>
     <![CDATA[  研究室で与えられたディスプレイの解像度が異なっていて気持ち悪かったので修正した（?&#41;ときのメモ。  ]]>
   </description>  
@@ -472,7 +491,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -481,8 +500,8 @@
   <title>
     <![CDATA[  Windows 10のためのTerminal  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/terminals-for-windows/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/terminals-for-windows/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/terminals-for-windows/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/terminals-for-windows/index.html </guid>
   <description>
     <![CDATA[  WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」  ]]>
   </description>  
@@ -491,7 +510,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
@@ -500,8 +519,8 @@
   <title>
     <![CDATA[  &#91;論文読み&#93; Neural Inverse Rendering of an Indoor Scene From a Single Image  ]]>
   </title>
-  <link> https://blog.5ebec.dev/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/index.html </link>
-  <guid> https://blog.5ebec.dev/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/index.html </guid>
   <description>
     <![CDATA[  論文読み：単一画像からの屋内シーンのニューラルインバースレンダリング  ]]>
   </description>  
@@ -510,7 +529,7 @@
   
   
   <atom:author>
-    <atom:name>5ebec</atom:name>
+    <atom:name>heyhoe</atom:name>
   </atom:author>
         
 </item>
