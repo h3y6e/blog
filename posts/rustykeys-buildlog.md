@@ -12,6 +12,7 @@ cover = "/img/2022-05-02/rustykeys.jpg"
 
 ## はじめに
 
+
 ~~~
 <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/7Rn1n0EEcfo?rel=0&cc_load_policy=1" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"></iframe></div>
 ~~~
@@ -214,3 +215,112 @@ Raspberry Pi Picoのはんだ付けを行います。本キットでは端面ス
 デバッグに用いるピンは `GND`, `GP2`, `GP4` の3ピンのみなので、その部分（と固定のための `GP0`,`GP15`）をはんだ付けしておきました。
 
 これでデバッグアダプタの組み立ては完了です。はんだ付けのフェーズは以上になります。
+
+## ファームウェアの書き込み
+
+現在、多くの自作キーボードキットは[QMK Firmware](https://github.com/qmk/qmk_firmware)というファームウェアに対応しています。
+他に有名な設定ツールとして、QMK Firmware派生の[VIA](https://www.caniusevia.com), [Remap](https://remap-keys.app), [Vial](https://get.vial.today)などがあります。
+Raspberry Pi PicoのようなRP2040チップであれば、CircuitPythonで記述出来る[kmk_firmware](https://github.com/KMKfw/kmk_firmware)やPicoRubyで記述出来る[prk_firmware](https://github.com/picoruby/prk_firmware)などを使えばキーボードとして動作します。
+
+RustyKeysキットではこれらの既存のファームウェアを用いることなく、組み込みRustで開発します！\\
+2022/5/2現在、[**作者様の名前が入力可能な最高のキーボード**](https://rusty-keys.koba789.com/firmware/first_keyboard)まではビルドガイドに含まれていますのでそこまでやってみましょう。
+
+自分の開発環境は以下の通りです。
+```sh
+❯ uname -a
+Darwin mbp2019.local 21.4.0 Darwin Kernel Version 21.4.0: Fri Mar 18 00:45:05 PDT 2022; root:xnu-8020.101.4~15/RELEASE_X86_64 x86_64
+```
+
+### 必要なツールのインストール
+ビルドガイド通りに作業していればもう済んでいることかと思いますが、必要な環境及びツールは[ビルドガイド](https://rusty-keys.koba789.com/devenv)を参考にインストールしておきましょう。
+```sh
+# Install Rust
+❯ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# ...or Update Rust
+❯ rustup update
+
+# Add thumbv6m-none-eabi target
+❯ rustup target add thumbv6m-none-eabi
+
+# Install probe-run
+❯ cargo install probe-run
+# Install flip-link
+❯ cargo install flip-link
+# Install elf2uf2-rs
+❯ cargo install elf2uf2-rs
+```
+
+### デバッグアダプタのファームウェア
+[rust-dap](https://github.com/ciniml/rust-dap)をデバッグアダプタに書き込みます。
+デバッグアダプタ用のRaspberry Pi Picoと開発用PCをUSBケーブルで接続し、以下を実行します。
+
+```sh
+❯ git clone https://github.com/ciniml/rust-dap.git
+❯ cd boards/xiao_rp2040
+❯ cargo run --release
+```
+
+### 本体のファームウェア
+ジャンパ線で本体とデバッグアダプタを接続します。対応は以下です。
+
+| 本体側ピン | デバッグアダプタ側ピン |
+| :-- | :-- |
+| SWDIO | GP4（GPIO4） |
+| GND | GND |
+| SWCLK | GP2（GPIO2） |
+
+デバッグアダプタ -> 本体の順に、2本のUSBケーブルで開発用PCに接続します。
+
+
+ファームウェアのサンプルコードは[rusty-keys](https://github.com/KOBA789/rusty-keys)の `firmware` 下に用意されているので、cloneします。
+
+```sh
+❯ git clone https://github.com/KOBA789/rusty-keys.git
+❯ cd rusty-keys
+```
+
+#### firmware/hello
+デバッグ出力に `Hello, world!` を出力するサンプルコードです。
+
+```sh
+❯ cd firmware/hello/
+❯ cargo run
+```
+
+```sh
+    Finished dev [unoptimized + debuginfo] target(s) in 35.00s
+     Running `probe-run --chip RP2040 target/thumbv6m-none-eabi/debug/rusty-keys-hello`
+(HOST) INFO  flashing program (6 pages / 24.00 KiB)
+(HOST) INFO  success!
+────────────────────────────────────────────────────────────────────────────────
+Hello, world!
+└─ rusty_keys_hello::__cortex_m_rt_main @ src/main.rs:21
+────────────────────────────────────────────────────────────────────────────────
+(HOST) INFO  device halted without error
+```
+
+表示されたことが確認出来ました。[`probe-run`](https://github.com/knurling-rs/probe-run) 凄い...。
+
+
+#### firmware/keyboard
+USBキーボードのサンプルコードです。
+
+[`src/bin/sample.rs`](https://github.com/KOBA789/rusty-keys/blob/main/firmware/keyboard/src/bin/simple.rs)に `k` `o` `b` `a` `7` `8` `9` や修飾キーなどが入力出来るようになるサンプルコードがあります。
+
+```sh
+❯ cd ..
+❯ cd keyboard/
+❯ cargo run --release --bin simple
+```
+
+```sh
+    Finished release [optimized + debuginfo] target(s) in 33.94s
+     Running `probe-run --chip RP2040 target/thumbv6m-none-eabi/release/simple`
+(HOST) INFO  flashing program (8 pages / 32.00 KiB)
+(HOST) INFO  success!
+────────────────────────────────────────────────────────────────────────────────
+```
+
+作者様の名前が入力可能な最高のキーボードが完成しました🎉
+
+![作者様の名前が入力可能な最高のキーボード](/img/2022-05-02/out.gif)
