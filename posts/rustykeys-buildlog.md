@@ -66,7 +66,7 @@ cover = "/img/2022-05-02/rustykeys.jpg"
 ![キースイッチ](/img/2022-05-02/keyswitches.jpg)
 
  - キーキャップ: 6個
-キーキャップには[TEX ADA -Film Never Dies-](https://talpkeyboard.net/items/5ecdd2fdcee9ea12129dbe11)を使いました。フィルムカメラがモチーフのノベルティキーキャップセットです。プロファイルはADAという、DSAよりも更に抉れた形状をしており、小さい打鍵音が特徴です。
+キーキャップには[TEX ADA -Film Never Dies-](https://talpkeyboard.net/items/5ecdd2fdcee9ea12129dbe11)を使いました。フィルムカメラがモチーフのノベルティキーキャップセットです。プロファイルはADAという、DSAよりも更に窪んだ形状をしており、打鍵音は低めで小さいように感じます。
 
 ![キーキャップ](/img/2022-05-02/keycaps.jpg)
 
@@ -122,7 +122,7 @@ RustyKeys本体の組み立てを行います。
 ダイオードのリード線を曲げます。
 今回は6個なので1つずつ曲げてもそれほど時間はかかりません。
 
-大量のダイオードを曲げるのは多少面倒なので、Thingiverse等で[Diode bender](https://www.thingiverse.com/search?q=Diode+bender)と検索してダイオードをいい感じに曲げてくれる君の3Dモデルを手に入れ、3Dプリンタ[^make] で印刷すると良いでしょう。
+大量のダイオードを曲げることがあるなら、Thingiverse等で[Diode bender](https://www.thingiverse.com/search?q=Diode+bender)と検索してダイオードをいい感じに曲げてくれる君の3Dモデルを手に入れ、3Dプリンタ[^make] で印刷すると良いでしょう。
 
 ![曲げダイオード](/img/2022-05-02/bended_diode.jpg)
 
@@ -149,8 +149,8 @@ RustyKeys本体の組み立てを行います。
 今回用いる[Kailh BOX Silent Pink](https://shop.yushakobo.jp/products/kailh-box-silent-switch)は押下圧が軽めで軸のぐらつきが少ない静音リニア軸です。
 値段もそこまで高く無いので、安定して静音なキースイッチを求めている方にはお勧めです。
 
-そのままでも十分静かなのですが、ルブることで更にノイズを軽減することが出来るので、やっておきます。
-今回使用する潤滑剤は、リニアMXスイッチ用である[Krytox GPL 205 G0](https://shop.yushakobo.jp/products/lubricants?_pos=1&_sid=b3d9bc2ba&_ss=r&variant=37665260994721)です。
+そのままでも静かなのですが、ルブることで更にノイズを軽減することが出来るので、やっておきます。
+使用する潤滑剤は、リニアMXスイッチ用である[Krytox GPL 205 G0](https://shop.yushakobo.jp/products/lubricants?_pos=1&_sid=b3d9bc2ba&_ss=r&variant=37665260994721)です。
 
 ![ルブ](/img/2022-05-02/lube.jpg)
 
@@ -179,7 +179,7 @@ RustyKeys本体の組み立てを行います。
 
 ![ソケットのはんだ付け](/img/2022-05-02/soldering_sockets.jpg)
 
-キースイッチを抜くとこんな感じになります。
+キースイッチを外すとこんな感じになります。
 
 ![はんだ付けされたソケット](/img/2022-05-02/soldered_sockets.jpg)
 
