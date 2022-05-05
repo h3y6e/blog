@@ -4,7 +4,7 @@
 global page variables
 -->
 @def author = "heyhoe"
-@def author_url = "https://a5e.be/c"
+@def author_url = "https://h3y6e.com"
 @def generate_rss = true
 @def website_title = "#a5ebec"
 @def website_description = "へいほぅの殴り書き"
