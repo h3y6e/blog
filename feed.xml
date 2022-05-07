@@ -23,15 +23,15 @@
 
 <item>
   <title>
-    <![CDATA[  RustyKeys ビルドログ  ]]>
+    <![CDATA[  macOSで初期状態からのセットアップ  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/rustykeys-buildlog/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/rustykeys-buildlog/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/macos-setup/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/macos-setup/index.html </guid>
   <description>
-    <![CDATA[  RustyKeysのビルドログです。  ]]>
+    <![CDATA[  新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。  ]]>
   </description>  
     
-  <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>  
+  <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
@@ -42,15 +42,15 @@
 
 <item>
   <title>
-    <![CDATA[  macOSで初期状態からのセットアップ  ]]>
+    <![CDATA[  RustyKeys ビルドログ  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/macos-setup/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/macos-setup/index.html </guid>
+  <link> https://blog.h3y6e.com/posts/rustykeys-buildlog/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/rustykeys-buildlog/index.html </guid>
   <description>
-    <![CDATA[  新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。  ]]>
+    <![CDATA[  RustyKeysのビルドログです。  ]]>
   </description>  
     
-  <pubDate>Tue, 26 Apr 2022 00:00:00 +0000</pubDate>  
+  <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
