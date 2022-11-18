@@ -6,7 +6,7 @@ rss_description = "新しいMacを買ったときとか、macOSをファクト�
 +++
 
 ~~~
-<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">掃除出来ない人間はコマンド叩いた時の多少のエラーとかは動けば放置してしまうから、いっそ定期的にリストアするぞくらいの気持ちのほうが良い</p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1049345182955528197?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">掃除出来ない人間はコマンド叩いた時の多少のエラーとかは動けば放置してしまうから、いっそ定期的にリストアするぞくらいの気持ちのほうが良い</p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1049345182955528197?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
 ## バックアップ
@@ -155,4 +155,4 @@ $ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-
 Launchpadから起動する。
 
 ## ssh
-[ssh keys](https://blog.5ebec.dev/posts/ssh-keys/)
+[ssh keys](https://blog.h3y6e.com/posts/ssh-keys/)

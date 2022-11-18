@@ -12,12 +12,12 @@ cover = "/img/2021-12-01/6v.jpg"
 ## tl;dr
 
 ~~~
-<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">ATmega32U4で 孵 化 厳 選 <a href="https://t.co/iIxeC5RUdw">pic.twitter.com/iIxeC5RUdw</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1461719540379774982?ref_src=twsrc%5Etfw">November 19 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">ATmega32U4で 孵 化 厳 選 <a href="https://t.co/iIxeC5RUdw">pic.twitter.com/iIxeC5RUdw</a></p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1461719540379774982?ref_src=twsrc%5Etfw">November 19 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
 
 ## はじめに
-こんにちは、[へいほぅ](https://twitter.com/5ebec)です。[CAMPHOR-](https://camph.net/)の運営メンバーです。
+こんにちは、[へいほぅ](https://twitter.com/h3y6e)です。[CAMPHOR-](https://camph.net/)の運営メンバーです。
 
 皆さん『ポケットモンスター ブリリアントダイヤモンド・シャイニングパール』（以下、ポケモンBDSP）遊んでらっしゃいますでしょうか。
 待ちに待ったダイパリメイクであり、望まれたバグ以外のあらゆるバグが実装されてしまったことで話題となっていますが、それらも含めて楽しく遊ばれていることと思います。

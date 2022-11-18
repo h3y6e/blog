@@ -12,7 +12,7 @@ cover = "/img/2020-12-20/camphor-slack_podcast.png"
 
 この記事は、[CAMPHOR- Advent Calendar 2020](https://advent.camph.net/)の20日目の記事です。
 
-こんにちは、[へいほぅ](https://twitter.com/5ebec)です。修士1回生で、[CAMPHOR-](https://camph.net/)の運営メンバーです。\\
+こんにちは、[へいほぅ](https://twitter.com/h3y6e)です。修士1回生で、[CAMPHOR-](https://camph.net/)の運営メンバーです。\\
 大学院ではARにおけるインターフェースについて研究をしています。
 
 ## Podcastとは

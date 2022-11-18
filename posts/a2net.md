@@ -78,7 +78,7 @@ A2ネットはeo光で光回線を契約しているのですが、5/10Gbpsが�
 10GbEに対応したスイッチングハブを導入しました。\\
 `my new gear...` とか言ってますが、僕のでは無いです。
 ~~~
-<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">my new gear... <a href="https://t.co/q3HrhkyQTC">pic.twitter.com/q3HrhkyQTC</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1278714547629461510?ref_src=twsrc%5Etfw">July 2, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">my new gear... <a href="https://t.co/q3HrhkyQTC">pic.twitter.com/q3HrhkyQTC</a></p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1278714547629461510?ref_src=twsrc%5Etfw">July 2, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
 配線後はこんな感じになりました[^電源]。
