@@ -22,7 +22,7 @@ Inspect or clean up the working tree at /tmp/python-build.20190629080825.2203
 Results logged to /tmp/python-build.20190629080825.2203.log
 
 Last 10 log lines:
-(cd /home/5ebec/.anyenv/envs/pyenv/versions/3.4.3/share/man/man1; ln -s python3.4.1 python3.1)
+(cd /home/h3y6e/.anyenv/envs/pyenv/versions/3.4.3/share/man/man1; ln -s python3.4.1 python3.1)
 if test "xupgrade" != "xno"  ; then \
 	case upgrade in \
 		upgrade) ensurepip="--upgrade" ;; \
@@ -60,7 +60,7 @@ sudo apt install libssl1.0-dev
 Downloading Python-3.4.3.tar.xz...
 -> https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz
 Installing Python-3.4.3...
-Installed Python-3.4.3 to /home/5ebec/.anyenv/envs/pyenv/versions/3.4.3
+Installed Python-3.4.3 to /home/h3y6e/.anyenv/envs/pyenv/versions/3.4.3
 ```
 
 解決。
