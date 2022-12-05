@@ -19,31 +19,31 @@ rss_description = "新しいMacを買ったときとか、macOSをファクト�
 `$HOME/.local/share/chezmoi` 下で管理される。
 
 ### 管理対象の確認
-```shell
+```sh
 chezmoi managed
 ```
 
 ### 追加
-```shell
+```sh
 chezmoi add $FILE
 chezmoi add --template $FILE # templateとして追加
 ```
 
 管理対象のものを再追加する
-```shell
+```sh
 chezmoi re-add
 ```
 
 ### 反映
-```shell
+```sh
 chezmoi -v apply
 ```
 
 ## 事前準備（初期化前）
 
 ### Homebrew
-```shell
-$ brew bundle dump --force --file '~/.Brewfile'
+```sh
+brew bundle dump --force --file '~/.Brewfile'
 ```
 
 ### chezmoi
@@ -124,29 +124,29 @@ $ brew bundle dump --force --file '~/.Brewfile'
 
 ## chezmoi
 ```sh
-$ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply h3y6e
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply h3y6e
 ```
 
 ## Homebrew
 [Homebrew](https://brew.sh/)をインストールする。
 ```sh
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 Homebrew Packageのインストール。
 ```sh
-$ brew bundle --global
+brew bundle --global
 ```
 
 ## prezto
 [prezto](https://github.com/sorin-ionescu/prezto)をインストールする。
 ```sh
-$ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 zpreztoの更新は `zprezto-update` で出来る。
 
 ## chezmoiの編集
-```shell
+```sh
 chezmoi edit $FILE
 chezmoi execute-template "{{ .chezmoi.os }}/{{ .chezmoi.arch }}" # templateのtestとdebug
 ```
