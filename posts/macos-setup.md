@@ -1,29 +1,54 @@
 +++
 title = "macOSで初期状態からのセットアップ"
-date = Date(2022,05,05)
+date = Date(2022,12,05)
 tags = ["macos", "setup"]
 rss_description = "新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。"
 +++
 
-完全に自分の為の書き殴り（n575）。
-
 ~~~
-<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">掃除出来ない人間はコマンド叩いた時の多少のエラーとかは動けば放置してしまうから、いっそ定期的にリストアするぞくらいの気持ちのほうが良い</p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1049345182955528197?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">掃除出来ない人間はコマンド叩いた時の多少のエラーとかは動けば放置してしまうから、いっそ定期的にリストアするぞくらいの気持ちのほうが良い</p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1049345182955528197?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
-以前は[mackup](https://github.com/lra/mackup)を使っていたが、ここまで厳密にファイルを同期させたくない事が多かったのと、Intel MacとARM Macのconfigを同じにするのはなんかヤバそうなので、現在は[chezmoi](https://github.com/twpayne/chezmoi)[^chezmoi] を使っている。
+以前は[mackup](https://github.com/lra/mackup)を使っていたが、ここまで厳密にファイルを同期させたくない事が多かったのと、Intel MacとARM Macを同時に使いたかったので、現在は[chezmoi](https://github.com/twpayne/chezmoi)[^chezmoi] を使っている。
 
-[^chezmoi]: フランス語らしい。読み方はチェズモイではなく /ʃeɪmwa/（shay-moi）。
+[^chezmoi]: フランス語らしい。読み方は /ʃeɪmwa/（shay-moi）。
 
 <!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
 
-## 準備
+## chezmoiについての軽い取説
+`$HOME/.local/share/chezmoi` 下で管理される。
+
+### 管理対象の確認
+```shell
+chezmoi managed
+```
+
+### 追加
+```shell
+chezmoi add $FILE
+chezmoi add --template $FILE # templateとして追加
+```
+
+管理対象のものを再追加する
+```shell
+chezmoi re-add
+```
+
+### 反映
+```shell
+chezmoi -v apply
+```
+
+## 事前準備（初期化前）
 
 ### Homebrew
 ```shell
-$ chezmoi cd
-$ brew bundle dump --force --file './dot_Brewfile'
+$ brew bundle dump --force --file '~/.Brewfile'
 ```
+
+### chezmoi
+変更を https://github.com/h3y6e/dotfiles へ同期する。
+
 
 ## 起動直後
 流れに沿ってデスクトップが表示されるところまで行く。
@@ -97,6 +122,11 @@ $ brew bundle dump --force --file './dot_Brewfile'
 ### Time Machine
 * バックアップを自動生成
 
+## chezmoi
+```sh
+$ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply h3y6e
+```
+
 ## Homebrew
 [Homebrew](https://brew.sh/)をインストールする。
 ```sh
@@ -108,13 +138,15 @@ Homebrew Packageのインストール。
 $ brew bundle --global
 ```
 
-## chezmoi
-```sh
-$ sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply h3y6e
-```
-
 ## prezto
 [prezto](https://github.com/sorin-ionescu/prezto)をインストールする。
 ```sh
 $ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+```
+zpreztoの更新は `zprezto-update` で出来る。
+
+## chezmoiの編集
+```shell
+chezmoi edit $FILE
+chezmoi execute-template "{{ .chezmoi.os }}/{{ .chezmoi.arch }}" # templateのtestとdebug
 ```
