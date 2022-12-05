@@ -6,7 +6,7 @@ rss_description = "ググればすぐ出てくるけど何回も同じ作業す�
 +++
 
 ~~~
-<blockquote class="twitter-tweet" data-lang="ja" data-theme="dark"><p lang="ja" dir="ltr">bashは`sudo apt install zsh`をする場所だと思っている</p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1115124604538744832?ref_src=twsrc%5Etfw">2019年4月8日</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="ja" data-theme="dark"><p lang="ja" dir="ltr">bashは`sudo apt install zsh`をする場所だと思っている</p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1115124604538744832?ref_src=twsrc%5Etfw">2019年4月8日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 

@@ -9,7 +9,7 @@ cover = "/img/2019-12-23/light-owl-syntax.jpg"
 この記事は [CAMPHOR- Advent Calendar](https://advent.camph.net/) 2019の23日目の記事です。\\
 22日目の記事は[kazbno](https://twitter.com/kazbno)氏による[Verilogでミニプロセッサを実装してみた](http://kaz7890.hatenablog.com/entry/simple-riscv)でした。
 
-おはようございます、へいほぅ（[@5ebec](https://twitter.com/5ebec)）です。3日後に卒論の中間発表ですが進捗が無くてとても辛いです。
+おはようございます、へいほぅ（[@h3y6e](https://twitter.com/h3y6e)）です。3日後に卒論の中間発表ですが進捗が無くてとても辛いです。
 
 今回は最近研究の合間にぼちぼち作っているAtomのSyntax themeの話をします。
 
@@ -24,7 +24,7 @@ cover = "/img/2019-12-23/light-owl-syntax.jpg"
 その後様々なテキストエディタの存在を知り、色々と（Sublime Text 3/Spacemacs/SpaceVim/NeoVim/etc...）手を出してはいましたが、Atomへの慣れと信仰心から何らかの形で使い続けていました。
 
 ~~~
-<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">これに勝てるLaTeXエディタを俺は知らない <a href="https://t.co/3Ymy6zhaen">pic.twitter.com/3Ymy6zhaen</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1065872335108956161?ref_src=twsrc%5Etfw">November 23, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">これに勝てるLaTeXエディタを俺は知らない <a href="https://t.co/3Ymy6zhaen">pic.twitter.com/3Ymy6zhaen</a></p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1065872335108956161?ref_src=twsrc%5Etfw">November 23, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
 (ちなみにこのSyntax themeは[Flatwhite](https://atom.io/themes/flatwhite-syntax)というもので、foreground colorを変えるのではなくbackground colorを変えるので文書作成に最適です👍)

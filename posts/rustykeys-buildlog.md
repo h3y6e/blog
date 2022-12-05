@@ -27,7 +27,7 @@ cover = "/img/2022-05-02/rustykeys.jpg"
 販売開始前から全裸待機していたら無事に買えました。1分で売り切れたようです。やば。
 
 ~~~
-<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" align="center"><p lang="ja" dir="ltr">買えました。良かった / 「RustyKeys (初回版（再販予定なし）)」を Bracket Works で購入しました！ <a href="https://t.co/sJ5Cxk5byM">https://t.co/sJ5Cxk5byM</a> <a href="https://twitter.com/hashtag/booth_pm?src=hash&amp;ref_src=twsrc%5Etfw">#booth_pm</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1518534492902035456?ref_src=twsrc%5Etfw">April 25, 2022</a></blockquote>
+<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" align="center"><p lang="ja" dir="ltr">買えました。良かった / 「RustyKeys (初回版（再販予定なし）)」を Bracket Works で購入しました！ <a href="https://t.co/sJ5Cxk5byM">https://t.co/sJ5Cxk5byM</a> <a href="https://twitter.com/hashtag/booth_pm?src=hash&amp;ref_src=twsrc%5Etfw">#booth_pm</a></p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1518534492902035456?ref_src=twsrc%5Etfw">April 25, 2022</a></blockquote>
 ~~~
 
 ## RustyKeysの特徴
@@ -336,5 +336,5 @@ USBキーボードのサンプルコードです。
 ![作者様の名前が入力可能な最高のキーボード](/img/2022-05-02/out.gif)
 
 ~~~
-<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" align="center"><p lang="ja" dir="ltr">RustyKeysできた。Mil-Max Socketが余っていたのでホットスワップ化した <a href="https://t.co/TLHjC9G9Fi">pic.twitter.com/TLHjC9G9Fi</a></p>&mdash; へいほぅ (@5ebec) <a href="https://twitter.com/5ebec/status/1520812444519911425?ref_src=twsrc%5Etfw">May 1, 2022</a></blockquote>
+<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" align="center"><p lang="ja" dir="ltr">RustyKeysできた。Mil-Max Socketが余っていたのでホットスワップ化した <a href="https://t.co/TLHjC9G9Fi">pic.twitter.com/TLHjC9G9Fi</a></p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1520812444519911425?ref_src=twsrc%5Etfw">May 1, 2022</a></blockquote>
 ~~~

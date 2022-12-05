@@ -150,3 +150,9 @@ zpreztoの更新は `zprezto-update` で出来る。
 chezmoi edit $FILE
 chezmoi execute-template "{{ .chezmoi.os }}/{{ .chezmoi.arch }}" # templateのtestとdebug
 ```
+
+## 各種App
+Launchpadから起動する。
+
+## ssh
+[ssh keys](https://blog.h3y6e.com/posts/ssh-keys/)
