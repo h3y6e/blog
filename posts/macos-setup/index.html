@@ -1,20 +1,154 @@
-<!DOCTYPE html> <html lang=ja > <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=heyhoe  /> <meta name=theme-color  content="#2f2f2f" /> <link rel=stylesheet  href="/css/a5ebec.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <meta property="og:site_name" content="#a5ebec" /> <meta property="og:image" content="https://blog.h3y6e.com/assets/2f2f2f.jpg" /> <meta name="twitter:card" content=summary  /> <meta name="twitter:site" content="@h3y6e" /> <meta name="twitter:creator" content="@h3y6e" /> <title> macOSで初期状態からのセットアップ :: #a5ebec </title> <meta name=description  content="新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。" /> <meta property="og:type" content=article  /> <meta property="og:title" content="macOSで初期状態からのセットアップ :: #a5ebec" /> <meta property="og:url" content="https://blog.h3y6e.com/posts/macos-setup/index.html" /> <meta property="og:description" content="新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。" /> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >macOSで初期状態からのセットアップ</h1> <div class=date >2019-09-26</div><span class=tags ><a href="/tags/macos">#macos</a> <a href="/tags/setup">#setup</a> </span></div><div class=franklin-toc ><ol><li><a href="#バックアップ">バックアップ</a><li><a href="#起動直後">起動直後</a><li><a href="#システム環境設定">システム環境設定</a><li><a href="#homebrew">Homebrew</a><li><a href="#各種app">各種App</a><li><a href="#ssh">ssh</a></ol></div> <div class=franklin-content > <blockquote class=twitter-tweet  data-theme=dark ><p lang=ja  dir=ltr >掃除出来ない人間はコマンド叩いた時の多少のエラーとかは動けば放置してしまうから、いっそ定期的にリストアするぞくらいの気持ちのほうが良い</p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1049345182955528197?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset=utf-8 ></script> <h2 id="バックアップ"><a href="#バックアップ" class=header-anchor >バックアップ</a></h2> <h4 id=bettertouchtool ><a href="#bettertouchtool" class=header-anchor >BetterTouchTool</a></h4> <p>β版だが、 設定 &gt; 同期で <br/></p> <ul> <li><p>&#91;x&#93; 同期を有効にする</p> </ul> <h4 id="mackupのcfg"><a href="#mackupのcfg" class=header-anchor >mackupのcfg</a></h4> <p><code>.mackup/&#36;app_name&#36;.cfg</code> に、以下の形式で保存する。</p> <pre><code class=language-julia >&#91;application&#93;
-name &#61; &#36;app_name&#36;
+<!DOCTYPE html> <html lang=ja > <meta charset=utf-8  /> <meta name=viewport  content="width=device-width,initial-scale=1,maximum-scale=1" /> <meta name=author  content=heyhoe  /> <meta name=theme-color  content="#2f2f2f" /> <link rel=stylesheet  href="/css/a5ebec.css" /> <link rel=icon  href="/assets/favicon/favicon.ico" /> <link rel=apple-touch-icon  href="/assets/favicon/apple-touch-icon.png" /> <meta property="og:site_name" content="#a5ebec" /> <meta property="og:image" content="https://blog.h3y6e.com/assets/2f2f2f.jpg" /> <meta name="twitter:card" content=summary  /> <meta name="twitter:site" content="@h3y6e" /> <meta name="twitter:creator" content="@h3y6e" /> <title> macOSで初期状態からのセットアップ :: #a5ebec </title> <meta name=description  content="新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。" /> <meta property="og:type" content=article  /> <meta property="og:title" content="macOSで初期状態からのセットアップ :: #a5ebec" /> <meta property="og:url" content="https://blog.h3y6e.com/posts/macos-setup/index.html" /> <meta property="og:description" content="新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。" /> <header> <div class=header-inner > <div class=header-logo > <a href="/"><div class=logo >#a5ebec</div></a> </div> <label for=trigger  class=menu >menu</label> </div> <input type=checkbox  id=trigger  /> <nav> <ul> <li><a href="/">Posts</a> <li><a href="/tags">Tags</a> <li><a href="/about">About</a> </ul> </nav> </header> <div class=franklin-headline > <h1 class=title >macOSで初期状態からのセットアップ</h1> <div class=date >2022-12-05</div><span class=tags ><a href="/tags/macos">#macos</a> <a href="/tags/setup">#setup</a> </span></div><div class=franklin-toc ><ol><li><a href="#chezmoiについての軽い取説">chezmoiについての軽い取説</a><ol><li><a href="#管理対象の確認">管理対象の確認</a><li><a href="#追加">追加</a><li><a href="#反映">反映</a></ol><li><a href="#事前準備初期化前">事前準備（初期化前）</a><ol><li><a href="#homebrew">Homebrew</a><li><a href="#chezmoi">chezmoi</a></ol><li><a href="#起動直後">起動直後</a><li><a href="#システム環境設定">システム環境設定</a><ol><li><a href="#一般">一般</a><li><a href="#dockとメニューバー">Dockとメニューバー</a><li><a href="#スクリーンタイム">スクリーンタイム</a><li><a href="#アクセスビリティ">アクセスビリティ</a><li><a href="#セキュリティとプライバシー">セキュリティとプライバシー</a><li><a href="#キーボード">キーボード</a><li><a href="#トラックパッド">トラックパッド</a><li><a href="#ディスプレイ">ディスプレイ</a><li><a href="#バッテリー__2">バッテリー</a><li><a href="#共有">共有</a><li><a href="#time_machine">Time Machine</a></ol><li><a href="#chezmoi__2">chezmoi</a><li><a href="#homebrew__2">Homebrew</a><li><a href="#prezto">prezto</a><li><a href="#chezmoiの編集">chezmoiの編集</a><li><a href="#各種app">各種App</a><li><a href="#ssh">ssh</a></ol></div> <div class=franklin-content > <blockquote class=twitter-tweet  data-theme=dark ><p lang=ja  dir=ltr >掃除出来ない人間はコマンド叩いた時の多少のエラーとかは動けば放置してしまうから、いっそ定期的にリストアするぞくらいの気持ちのほうが良い</p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1049345182955528197?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset=utf-8 ></script> <p>以前は<a href="https://github.com/lra/mackup">mackup</a>を使っていたが、ここまで厳密にファイルを同期させたくない事が多かったのと、Intel MacとARM Macを同時に使いたかったので、現在は<a href="https://github.com/twpayne/chezmoi">chezmoi</a><sup id="fnref:chezmoi"><a href="#fndef:chezmoi" class=fnref >[1]</a></sup> を使っている。</p> <table class=fndef  id="fndef:chezmoi"> <tr> <td class=fndef-backref ><a href="#fnref:chezmoi">[1]</a> <td class=fndef-content >フランス語らしい。読み方は /ʃeɪmwa/（shay-moi）。 </table> <h2 id="chezmoiについての軽い取説"><a href="#chezmoiについての軽い取説" class=header-anchor >chezmoiについての軽い取説</a></h2> <p><code>&#36;HOME/.local/share/chezmoi</code> 下で管理される。</p> <h3 id="管理対象の確認"><a href="#管理対象の確認" class=header-anchor >管理対象の確認</a></h3> <pre><code class=language-shell >chezmoi managed</code></pre>
+<h3 id="追加"><a href="#追加" class=header-anchor >追加</a></h3>
+<pre><code class=language-shell >chezmoi add &#36;FILE
+chezmoi add --template &#36;FILE # templateとして追加</code></pre>
+<p>管理対象のものを再追加する</p>
+<pre><code class=language-shell >chezmoi re-add</code></pre>
+<h3 id="反映"><a href="#反映" class=header-anchor >反映</a></h3>
+<pre><code class=language-shell >chezmoi -v apply</code></pre>
+<h2 id="事前準備初期化前"><a href="#事前準備初期化前" class=header-anchor >事前準備（初期化前）</a></h2>
+<h3 id=homebrew ><a href="#homebrew" class=header-anchor >Homebrew</a></h3>
+<pre><code class=language-shell >&#36; brew bundle dump --force --file &#39;~/.Brewfile&#39;</code></pre>
+<h3 id=chezmoi ><a href="#chezmoi" class=header-anchor >chezmoi</a></h3>
+<p>変更を https://github.com/h3y6e/dotfiles へ同期する。</p>
+<h2 id="起動直後"><a href="#起動直後" class=header-anchor >起動直後</a></h2>
+<p>流れに沿ってデスクトップが表示されるところまで行く。</p>
+<h2 id="システム環境設定"><a href="#システム環境設定" class=header-anchor >システム環境設定</a></h2>
+<h3 id="一般"><a href="#一般" class=header-anchor >一般</a></h3>
+<ul>
+<li><p>スクロールバーの表示: スクロール時に表示</p>
 
-&#91;configuration_files&#93;
-&#36;configfile&#36;</code></pre> <h4 id="シェル実行"><a href="#シェル実行" class=header-anchor >シェル実行</a></h4> <pre><code class=language-shell >&#36; brew bundle dump --global
-&#36; mackup backup</code></pre> <h2 id="起動直後"><a href="#起動直後" class=header-anchor >起動直後</a></h2> <p>流れに沿ってデスクトップが表示されるところまで行く。</p> <h2 id="システム環境設定"><a href="#システム環境設定" class=header-anchor >システム環境設定</a></h2> <h4 id="一般"><a href="#一般" class=header-anchor >一般</a></h4> <ul> <li><p>スクロールバーのクリック時： クリックされた場所にジャンプ </p> <li><p>書類をとじるときに変更内容を保持するかどうかを確認 </p> </ul> <h4 id=dock ><a href="#dock" class=header-anchor >Dock</a></h4> <p>サイズ/拡大は適当に。</p> <ul> <li><p>ウィンドウをアプリケーションアイコンにしまう</p> </ul> <h4 id=touch_id ><a href="#touch_id" class=header-anchor >Touch ID</a></h4> <p>設定する。</p> <h4 id="アクセスビリティ"><a href="#アクセスビリティ" class=header-anchor >アクセスビリティ</a></h4> <ul> <li><p>ディスプレイ</p> <ul> <li><p>&#91;x&#93; 視差効果を減らす</p> </ul> </ul> <h4 id="セキュリティとプライバシー"><a href="#セキュリティとプライバシー" class=header-anchor >セキュリティとプライバシー</a></h4> <ul> <li><p>ファイアウォール</p> <ul> <li><p>ファイアウォールをオンにする</p> </ul> </ul> <h4 id="ディスプレイ"><a href="#ディスプレイ" class=header-anchor >ディスプレイ</a></h4> <ul> <li><p>ディスプレイ</p> <ul> <li><p>解像度： 変更 &gt; スペースを拡大 </p> <li><p>&#91; &#93; 輝度を自動調整</p> </ul> </ul> <h4 id="サウンド"><a href="#サウンド" class=header-anchor >サウンド</a></h4> <ul> <li><p>メニューバーに音量を表示</p> </ul> <h4 id="キーボード"><a href="#キーボード" class=header-anchor >キーボード</a></h4> <ul> <li><p>キーボード</p> <ul> <li><p>キーのリピート： 最速</p> <li><p>リピート入力認識までの時間： 最短</p> <li><p>環境光が暗い場合にキーボードの輝度を調整</p> <li><p>修飾キー… &gt; Caps Lockキー: Control</p> </ul> <li><p>ショートカット</p> <ul> <li><p>Launchpadを表示： Control&#43;Shift&#43;L</p> <li><p>デスクトップ&#91;Num&#93;へ切り替え </p> <li><p>以下はGoogle Chromeをインストールしアカウントを追加した後 <br/> アプリケーションでGoogle Chromeを選択 <br/> メニュータイトルにアカウントの名前を正確に入力 <br/> キーボードショートカット： Control&#43;Command&#43;&#91;Num&#93;</p> </ul> </ul> <h4 id="トラックパッド"><a href="#トラックパッド" class=header-anchor >トラックパッド</a></h4> <ul> <li><p>クリック： 弱い</p> <li><p>起動の速さ： 中心から1つ右</p> </ul> <h4 id="バッテリー"><a href="#バッテリー" class=header-anchor >バッテリー</a></h4> <ul> <li><p>バッテリー</p> <ul> <li><p>ディスプレイをオフにするまでの時間： 5分</p> </ul> <li><p>電源アダプタ</p> <ul> <li><p>電源アダプタに接続中にPower Napをオンにする</p> </ul> </ul> <h4 id="共有"><a href="#共有" class=header-anchor >共有</a></h4> <p>コンピュータ名を変更する。</p> <h4 id=time_machine ><a href="#time_machine" class=header-anchor >Time Machine</a></h4> <ul> <li><p>バックアップを自動生成</p> <li><p>Time Machineをメニューバーに表示</p> </ul> <h2 id=homebrew ><a href="#homebrew" class=header-anchor >Homebrew</a></h2> <p><a href="https://brew.sh/">Homebrew</a> をインストールする。</p> <pre><code class=language-shell >&#36; /bin/bash -c &quot;&#36;&#40;curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&#41;&quot;</code></pre>
-<h4 id="dropbox_mackupをインストール"><a href="#dropbox_mackupをインストール" class=header-anchor >Dropbox, mackupをインストール</a></h4>
-<pre><code class=language-shell >&#36; brew install mackup
-&#36; brew install --cask dropbox</code></pre>
-<h4 id=dropbox ><a href="#dropbox" class=header-anchor >Dropbox</a></h4>
-<p>起動してログイン。</p>
-<h4 id=mackup ><a href="#mackup" class=header-anchor >mackup</a></h4>
-<pre><code class=language-shell >&#36; mackup restore</code></pre>
-<h4 id="homebrew_packageのインストール"><a href="#homebrew_packageのインストール" class=header-anchor >Homebrew Packageのインストール</a></h4>
-<pre><code class=language-shell >&#36; brew bundle --global</code></pre>
-<h4 id="a_hrefhttpsgithubcomsorin-ionescupreztopreztoのインストール"><a href="#a_hrefhttpsgithubcomsorin-ionescupreztopreztoのインストール" class=header-anchor ><a href="https://github.com/sorin-ionescu/prezto">prezto</a>のインストール</a></h4>
-<pre><code class=language-shell >&#36; git clone --recursive https://github.com/sorin-ionescu/prezto.git &quot;&#36;&#123;ZDOTDIR:-&#36;HOME&#125;/.zprezto&quot;</code></pre>
+<li><p>スクロールバーのクリック時： クリックされた場所にジャンプ</p>
+
+<li><p><input type=checkbox  checked /> 書類をとじるときに変更内容を保持するかどうかを確認</p>
+
+</ul>
+<h3 id="dockとメニューバー"><a href="#dockとメニューバー" class=header-anchor >Dockとメニューバー</a></h3>
+<h4 id=dock ><a href="#dock" class=header-anchor >Dock</a></h4>
+<p>サイズ/拡大は適当に。</p>
+<ul>
+<li><p>ウィンドウをアプリケーションアイコンにしまう</p>
+
+<li><p>Dockを自動的に表示/非表示</p>
+
+</ul>
+<h4 id="サウンド"><a href="#サウンド" class=header-anchor >サウンド</a></h4>
+<ul>
+<li><p>メニューバーに表示: 常に</p>
+
+</ul>
+<h4 id="バッテリー"><a href="#バッテリー" class=header-anchor >バッテリー</a></h4>
+<ul>
+<li><p>割合（&#37;）を表示</p>
+
+</ul>
+<h4 id="時計"><a href="#時計" class=header-anchor >時計</a></h4>
+<ul>
+<li><p>時計のオプション: 秒を表示</p>
+
+</ul>
+<h4 id=spotlight ><a href="#spotlight" class=header-anchor >Spotlight</a></h4>
+<ul>
+<li><p><input type=checkbox  /> メニューバーに表示</p>
+
+</ul>
+<h3 id="スクリーンタイム"><a href="#スクリーンタイム" class=header-anchor >スクリーンタイム</a></h3>
+<ul>
+<li><p>スクリーンタイム: オンにする</p>
+
+</ul>
+<h3 id="アクセスビリティ"><a href="#アクセスビリティ" class=header-anchor >アクセスビリティ</a></h3>
+<ul>
+<li><p>ディスプレイ</p>
+
+<li><p><input type=checkbox  checked /> 視差効果を減らす</p>
+
+</ul>
+<h3 id="セキュリティとプライバシー"><a href="#セキュリティとプライバシー" class=header-anchor >セキュリティとプライバシー</a></h3>
+<h4 id="ファイアウォール"><a href="#ファイアウォール" class=header-anchor >ファイアウォール</a></h4>
+<ul>
+<li><p>ファイアウォールをオンにする</p>
+
+</ul>
+<h3 id="キーボード"><a href="#キーボード" class=header-anchor >キーボード</a></h3>
+<ul>
+<li><p>キーボード</p>
+<ul>
+<li><p>キーのリピート： 最速</p>
+
+<li><p>リピート入力認識までの時間： 最短</p>
+
+<li><p>環境光が暗い場合にキーボードの輝度を調整</p>
+
+<li><p>🌐キーを押して: 音声入力を開始（🌐キーを2回押す）</p>
+
+<li><p>修飾キー… &gt; Caps Lockキー: Control</p>
+
+</ul>
+
+<li><p>ショートカット</p>
+<ul>
+<li><p><input type=checkbox  checked /> Launchpadを表示： Control&#43;Shift&#43;L</p>
+
+<li><p><input type=checkbox  checked /> デスクトップ&#91;Num&#93;へ切り替え</p>
+
+<li><p><input type=checkbox  /> 前の入力ソースを選択</p>
+
+<li><p><input type=checkbox  /> 入力メニューの次のソースを選択</p>
+
+</ul>
+
+</ul>
+<h3 id="トラックパッド"><a href="#トラックパッド" class=header-anchor >トラックパッド</a></h3>
+<ul>
+<li><p>クリック： 弱い</p>
+
+<li><p>起動の速さ： 中心から1つ右</p>
+
+<li><p><input type=checkbox  checked /> サイレントクリック</p>
+
+</ul>
+<h3 id="ディスプレイ"><a href="#ディスプレイ" class=header-anchor >ディスプレイ</a></h3>
+<ul>
+<li><p>ディスプレイ</p>
+<ul>
+<li><p>解像度： 変更 &gt; スペースを拡大</p>
+
+<li><p><input type=checkbox  /> 輝度を自動調整</p>
+
+</ul>
+
+</ul>
+<h3 id="バッテリー__2"><a href="#バッテリー__2" class=header-anchor >バッテリー</a></h3>
+<ul>
+<li><p>バッテリー</p>
+<ul>
+<li><p>ディスプレイをオフにするまでの時間： 5分</p>
+
+</ul>
+
+</ul>
+<h3 id="共有"><a href="#共有" class=header-anchor >共有</a></h3>
+<p>コンピュータ名を変更する。</p>
+<h3 id=time_machine ><a href="#time_machine" class=header-anchor >Time Machine</a></h3>
+<ul>
+<li><p>バックアップを自動生成</p>
+
+</ul>
+<h2 id=chezmoi__2 ><a href="#chezmoi__2" class=header-anchor >chezmoi</a></h2>
+<pre><code class=language-sh >&#36; sh -c &quot;&#36;&#40;curl -fsLS get.chezmoi.io&#41;&quot; -- init --apply h3y6e</code></pre>
+<h2 id=homebrew__2 ><a href="#homebrew__2" class=header-anchor >Homebrew</a></h2>
+<p><a href="https://brew.sh/">Homebrew</a>をインストールする。</p>
+<pre><code class=language-sh >&#36; /bin/bash -c &quot;&#36;&#40;curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&#41;&quot;</code></pre>
+<p>Homebrew Packageのインストール。</p>
+<pre><code class=language-sh >&#36; brew bundle --global</code></pre>
+<h2 id=prezto ><a href="#prezto" class=header-anchor >prezto</a></h2>
+<p><a href="https://github.com/sorin-ionescu/prezto">prezto</a>をインストールする。</p>
+<pre><code class=language-sh >&#36; git clone --recursive https://github.com/sorin-ionescu/prezto.git &quot;&#36;&#123;ZDOTDIR:-&#36;HOME&#125;/.zprezto&quot;</code></pre>
+<p>zpreztoの更新は <code>zprezto-update</code> で出来る。</p>
+<h2 id="chezmoiの編集"><a href="#chezmoiの編集" class=header-anchor >chezmoiの編集</a></h2>
+<pre><code class=language-shell >chezmoi edit &#36;FILE
+chezmoi execute-template &quot;&#123;&#123; .chezmoi.os &#125;&#125;/&#123;&#123; .chezmoi.arch &#125;&#125;&quot; # templateのtestとdebug</code></pre>
 <h2 id="各種app"><a href="#各種app" class=header-anchor >各種App</a></h2>
 <p>Launchpadから起動する。</p>
 <h2 id=ssh ><a href="#ssh" class=header-anchor >ssh</a></h2>
