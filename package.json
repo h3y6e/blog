@@ -15,7 +15,7 @@
     "prod": "run-s prod:*",
     "dev:css": "postcss theme/css/a5ebec.pcss --dir _css --ext css -w",
     "prod:css": "postcss theme/css/a5ebec.pcss --dir _css --ext css --no-map",
-    "dev:franklin": "julia --project=. -e 'using Franklin;serve(clear=true)'",
+    "dev:franklin": "julia --project=. -O0 -e 'using Franklin;serve(clear=true)'",
     "prod:franklin": "julia --project=. -e 'using Franklin;optimize()'",
     "format": "prettier --write . -u",
     "lint": "textlint posts/*.md",

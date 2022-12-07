@@ -14,7 +14,7 @@ Latest staging site's URL: https://stg.pages.dev
 
 ## Dev
 ### Franklin.jl
-```julia
+```sh
 julia> ]
 (blog) Pkg> activate .
 (blog) Pkg> instantiate
@@ -28,14 +28,14 @@ julia> serve()
 
 or
 
-```shell
+```sh
 $ julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate();'
 $ yarn install
 $ yarn dev:franklin
 ```
 
 ### Style（PostCSS）
-```shell
+```sh
 $ yarn install
 $ yarn dev:css
 ```
