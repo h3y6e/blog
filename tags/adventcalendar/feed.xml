@@ -23,6 +23,25 @@
 
 <item>
   <title>
+    <![CDATA[  Podcastことはじめ  ]]>
+  </title>
+  <link> https://blog.h3y6e.com/posts/getting-started-with-podcasting/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/getting-started-with-podcasting/index.html </guid>
+  <description>
+    <![CDATA[  CAMPHOR-でPodcastを始めたので収録から配信までの知見を書く。  ]]>
+  </description>  
+    
+  <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>heyhoe</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
     <![CDATA[  【ポケモンBDSP】自動孵化装置を作って高個体値色違いイーブイを手に入れる&#40;夢を見た&#41;  ]]>
   </title>
   <link> https://blog.h3y6e.com/posts/auto-hatching-in-pokemon-bdsp/index.html </link>
