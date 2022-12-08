@@ -3,7 +3,6 @@ title = "Podcastことはじめ"
 date = Date(2022, 12, 09)
 tags = ["camphor", "adventcalendar", "podcast"]
 rss_description = "CAMPHOR-でPodcastを始めたので収録から配信までの知見を書く。"
-cover = "/img/2022-12-09/coverart.png"
 +++
 
 <!-- textlint-disable ja-technical-writing/no-mix-dearu-desumasu -->
