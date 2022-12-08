@@ -124,10 +124,10 @@ Editorial Notes:</p>
 ```
 
 以下の点に注意する。
-- `Show Notes:`, `Co-Host:`,  `Editorial Notes:` 前のそれぞれのbrタグはWeb版Amazon Musicで行間を調整する為に記述している。
-- 一部の環境（Web版Spotify, Web版Google Podcasts, Web版Apple Podcasts）でaタグが機能しないことを意識してリンクを設置する。
+- `Show Notes:`, `Co-Host:`,  `Editorial Notes:` 前のそれぞれの `br` タグはWeb版Amazon Musicで行間を調整する為に記述している。
+- 一部の環境（Web版Spotify, Web版Google Podcasts, Web版Apple Podcasts）で `a` タグが機能しないことを意識してリンクを設置する。
 - `li` タグ前や `p` タグ前にスペースを**1文字**置いて、タグが機能しない環境の一部（Web版Spotifyなど）で改行を挿入している。**2文字以上では保存にスペースの数が強制的に変更され、インデントが崩れる。**
-- `b` タグ（太字）を設定すると、Web版Google Podcastsでは太字にならず `*` が表示されるので使用する場合は注意する。
+- `b` タグを設定すると、Web版Google Podcastsでは太字にならず `*` が表示されるので使用する場合は注意する。
 
 ~~~
 <details><summary>例: プラットフォーム毎の表示の違い (クリックして展開)</summary>
@@ -143,7 +143,10 @@ Editorial Notes:</p>
 
 #### Spotify （web）
 - リンク無効
-![](/img/2022-12-09/spotify-web.png)
+![](/img/2022-12-09/spotify-web-1.png)
+
+機能する環境もある
+![](/img/2022-12-09/spotify-web-2.png)
 
 #### Spotify （desktop）
 - 改行がクソデカいのは諦める
@@ -164,7 +167,10 @@ Editorial Notes:</p>
 
 #### Google Podcasts （web）
 - リンク無効
-![](/img/2022-12-09/google-web.png)
+![](/img/2022-12-09/google-web-1.png)
+
+機能する環境もある
+![](/img/2022-12-09/google-web-2.png)
 
 #### Google Podcasts （mobile）
 ![](/img/2022-12-09/google-mobile.jpeg)
@@ -247,8 +253,6 @@ Moon FMはAnchorと紐付けられるプラットフォームでは無いもの�
 2020年から、その年聴いていたPodcastで人に勧めたいものを書いていたので、よければこちらも。
 - [ITエンジニア志望の学生が聴くべきPodcast](/posts/podcasts)
 - [2021年に聴いていたPodcast](/posts/podcasts2021)
-
-今年も書きたい。
 
 ## おわりに
 [これ](/posts/podcasts2021)の総括にも書いてありますが、ずっとCAMPHOR-でPodcastをやりたいと思っていたので始められて良かったです。
