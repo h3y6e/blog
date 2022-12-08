@@ -11,13 +11,18 @@ rss_description = "CAMPHOR-でPodcastを始めたので収録から配信まで�
 ## はじめに
 こんにちは、[へいほぅ](https://twitter.com/h3y6e)です。[CAMPHOR-](https://camph.net/)の運営メンバーです。
 
-CAMPHOR-でPodcastを始めました。この記事が公開されているときには0回目（0-based indexing）しか無いと思いますが、今年中に1,2個出せたら良いなと考えています。\\
-初回では、CAMPHOR-とは何か、なぜPodcastを始めたのかなどを緩く話しています。
+CAMPHOR-で雑談系Podcastを始めました。この記事が公開されているときには第0回しか無いと思いますが、今年中にもう1,2個出せたら良いなと考えています[^次回]。\\
+この回では、CAMPHOR-とは何か、なぜPodcastを始めたのかなどを緩く話しています。
 ~~~
 <div style="max-width: 765px;"><div style="left: 0; width: 100%; height: 102px; position: relative;"><iframe src="https://anchor.fm/camphor-downtime/embed/episodes/0--Podcast-e1rbeco" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="encrypted-media;"></iframe></div></div>
 ~~~
 
+音声メディア（AM, FM, Podcast）が好きで何年も聴き漁っており、何故か収録や編集も含めて理解しているつもりになっていましたが、やはり作る側になると改めてその難しさや沼の深さに驚かされました。\\
+例えば第0回ではマイクの指向性を勘違いしており一方の声が小さくなるという、かなり初歩的なミスを犯しています…。お聴き苦しいかと思いますが、温かい目で（耳で？）聴いていただけると幸いです。
+
 Podcastのセットアップについてまだ見識が浅く手探りな状態ですが、記録として残しておきたいと思います。
+
+[^次回]: この記事の執筆時点で次エピソードの編集は殆ど終わっています。お楽しみに。
 
 ## 収録時
 #### 収録前に気を付けること
@@ -65,14 +70,14 @@ Web版はサブスクリプション+ワンタイムクレジット制で、無�
 無言部分は1秒程度であれば別にそのままにしても良いと思う。
 [Logic Pro](https://www.apple.com/jp/logic-pro/)等の有料ソフトウェアを用いると無音部分の自動カットなどが出来る。
 
-編集についてはRebuild.fmの宮川さんが執筆された [Podcasting Setup 2020#Post-Production](https://weblog.bulknews.net/podcasting-setup-2020-db90240423d7#:~:text=laptop%20built%2Din%29.-,Post%2DProduction,-First%2C%20I%20run) や [Podcasting Guide 2017#ポストプロダクション編](https://weblog.bulknews.net/podcasting-guide-2017-2e88531a367d#:~:text=%E3%81%8C%E9%87%8D%E8%A6%81%EF%BC%89%E3%80%82-,%E3%83%9D%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E7%B7%A8,-%E5%8F%8E%E9%8C%B2%E3%81%8C%E7%B5%82) が大変参考になる。
+編集については[Rebuild](https://rebuild.fm)の宮川さんが執筆された[Podcasting Setup 2020#Post-Production](https://weblog.bulknews.net/podcasting-setup-2020-db90240423d7#:~:text=laptop%20built%2Din%29.-,Post%2DProduction,-First%2C%20I%20run)や[Podcasting Guide 2017#ポストプロダクション編](https://weblog.bulknews.net/podcasting-guide-2017-2e88531a367d#:~:text=%E3%81%8C%E9%87%8D%E8%A6%81%EF%BC%89%E3%80%82-,%E3%83%9D%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E7%B7%A8,-%E5%8F%8E%E9%8C%B2%E3%81%8C%E7%B5%82)が大変参考になる。
 
 ## 公開時
 様々な方法があるが、現在CAMPHOR-では[Anchor](https://anchor.fm)というSpotifyが提供するPodcast制作サービスを用いてホスティングや各種プラットフォームへの配信をしている。\\
-アカウント作成時の注意点として、モバイル版Anchorから作成した場合のみSingle sign-on（及びSocial login）を選択出来るが、**一度決定したログイン方法の変更は現状出来ない**。パスワードリセットから通常のパスワード認証に変更は出来ると思う。\\
+アカウント作成時の注意点として、モバイル版Anchorから作成した場合のみSocial login（Single Sign-On）を選択出来るが、**一度決定したログイン方法の変更は現状出来ない**。パスワードリセットから通常のパスワード認証に変更は出来ると思う。\\
 CAMPHOR-ではSign in with Twitterで登録したものの、何故か最近その選択肢が削除された為、アカウントを作り直すことになった[^パスワード認証]。
 
-新しいエピソードを作成し、編集した音源をアップロードする。
+新しいエピソードを作成し、編集した音源をアップロードする。x
 1ファイルあたり250MBまでであることに注意する。
 
 [^パスワード認証]: Eメールとパスワードによる認証にすればいいのでは?と思われるかもしれないが、Anchorは現状ワンタイムパスワード等の二要素認証に対応していない為、二要素認証を設定した別サービスのアカウントでSSOを行いたかった。
@@ -86,9 +91,10 @@ BGMを追加することでハム音やホワイトノイズを誤魔化すこ�
 
 
 利用する場合、再生速度を上げても違和感のないBGMを選ぶと良い。
-そして、**音量を最小にして追加する**ことを推奨する。左に振り切ってもBGMは充分聴こえる。
+そして、**音量を最小にして追加する**ことを推奨する。
+左に振り切ってもBGMは充分聴こえる。
 
-例えば、初回は「フォーク風」内の「**Feathersoft**」を利用している。
+例えば、第0回では「フォーク風」内の「**Feathersoft**」を利用している。
 
 ![](/img/2022-12-09/smartbgm.png)
 
@@ -127,7 +133,7 @@ Editorial Notes:</p>
 <details><summary>例: プラットフォーム毎の表示の違い (クリックして展開)</summary>
 ~~~
 
-初回のエピソードの説明を例とする。
+第0回のエピソードの説明を例とする。
 
 #### Anchor （web）
 - `li` タグによる改行が出来ていないが、`br` タグを用いて無理矢理改行すると他プラットフォームのスタイルが崩れてしまうので諦める
@@ -209,7 +215,7 @@ Editorial Notes:</p>
 ### 各種プラットフォーム
 CAMPHOR-では2022/12/9時点で以下のプラットフォームで購読出来るようにしている。\\
 これらを選んだ基準は明確には無いが、Anchorに紐付けられるプラットフォームで日本語対応しているものが多い。
-Moon FMはAnchorと紐付けられるプラットフォームでは無いものの、アプリのデザインが美しいので対応した（日本語が中華フォントになるのは残念）。
+Moon FMはAnchorと紐付けられるプラットフォームでは無いものの、アプリのデザインが個人的に好きなので対応した。
 - [RSS（Anchor)](https://anchor.fm/s/d065c950/podcast/rss)
 - [Anchor](https://anchor.fm/camphor-downtime)
 - [Spotify](https://open.spotify.com/show/47AmHk2DTtFth5kXto94Ks)
@@ -222,13 +228,13 @@ Moon FMはAnchorと紐付けられるプラットフォームでは無いもの�
 - [Pocket Casts](https://pca.st/34t5dagg)
 - [Moon FM](https://moon.fm/podcasts/805964)
 
-基本的には音声のみ配信となるが、いい感じに動画を付けてYouTube[^YouTube] に投稿しても良さそう。
+基本的には音声のみの配信となるが、いい感じに動画を付けてYouTube[^YouTube] に投稿しても良さそう。
 
-[^YouTube]: CAMPHOR-はYouTubeもやってます [@camphor_kyoto](https://youtube.com/camphor_kyoto)
+[^YouTube]: CAMPHOR-はYouTubeもやってます → [@camphor_kyoto](https://youtube.com/camphor_kyoto)
 
 ## 参考になるPodcast番組
-- 雑談系（個人）: [Rebuild.fm](https://rebuild.fm)
-2013年から放送されており、日本におけるテック系Podcastの先駆け。ホストである宮川さんが [Podcasting Setup 2020](https://weblog.bulknews.net/podcasting-setup-2020-db90240423d7) に書かれているように音質にかなり気を使われている。
+- 雑談系（個人）: [Rebuild](https://rebuild.fm)
+2013年から放送されており、日本におけるテック系Podcastの先駆け。[Podcasting Setup 2020](https://weblog.bulknews.net/podcasting-setup-2020-db90240423d7) に書かれているように音質にかなり気を使われている。
 - 雑談・論文紹介系: [いんよう!](https://open.spotify.com/show/2vbZRI8GsdQ7ioWIC215oA)
 内容が面白いのは勿論だが、BGMの使い方が上手い。
 - 広報系（企業）: [Backyard Hatena](https://open.spotify.com/show/6qnwcLU95nPqqgaUYXzGrK)
