@@ -11,7 +11,9 @@ rss_description = "CAMPHOR-でPodcastを始めたので収録から配信まで�
 ## はじめに
 こんにちは、[へいほぅ](https://twitter.com/h3y6e)です。[CAMPHOR-](https://camph.net/)の運営メンバーです。
 
-CAMPHOR-で雑談系Podcastを始めました。この記事が公開されているときには第0回しか無いと思いますが、今年中にもう1,2個出せたら良いなと考えています[^次回]。\\
+CAMPHOR-で『[CAMPHOR- DOWNTIME](https://anchor.fm/camphor-downtime)』という雑談系Podcastを始めました。\\
+この記事が公開されているときには第0回しか無いと思いますが、今年中にもう1,2個出せたら良いなと考えています[^次回]。
+
 この回では、CAMPHOR-とは何か、なぜPodcastを始めたのかなどを緩く話しています。
 ~~~
 <div style="max-width: 765px;"><div style="left: 0; width: 100%; height: 102px; position: relative;"><iframe src="https://anchor.fm/camphor-downtime/embed/episodes/0--Podcast-e1rbeco" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="encrypted-media;"></iframe></div></div>
@@ -77,7 +79,7 @@ Web版はサブスクリプション+ワンタイムクレジット制で、無�
 アカウント作成時の注意点として、モバイル版Anchorから作成した場合のみSocial login（Single Sign-On）を選択出来るが、**一度決定したログイン方法の変更は現状出来ない**。パスワードリセットから通常のパスワード認証に変更は出来ると思う。\\
 CAMPHOR-ではSign in with Twitterで登録したものの、何故か最近その選択肢が削除された為、アカウントを作り直すことになった[^パスワード認証]。
 
-新しいエピソードを作成し、編集した音源をアップロードする。x
+新しいエピソードを作成し、編集した音源をアップロードする。
 1ファイルあたり250MBまでであることに注意する。
 
 [^パスワード認証]: Eメールとパスワードによる認証にすればいいのでは?と思われるかもしれないが、Anchorは現状ワンタイムパスワード等の二要素認証に対応していない為、二要素認証を設定した別サービスのアカウントでSSOを行いたかった。
@@ -130,7 +132,7 @@ Editorial Notes:</p>
 - `b` タグを設定すると、Web版Google Podcastsでは太字にならず `*` が表示されるので使用する場合は注意する。
 
 ~~~
-<details><summary>例: プラットフォーム毎の表示の違い (クリックして展開)</summary>
+<details><summary><b>例: プラットフォーム毎の表示の違い (クリックして展開)</b></summary>
 ~~~
 
 第0回のエピソードの説明を例とする。
@@ -214,9 +216,14 @@ Editorial Notes:</p>
 </details>
 ~~~
 
+また、編集時やShow Notesを書く時などに録音したものを全て聞き直していては時間がかかる[^長時間収録] ので、文字起こしツールとしてOpenAIによる高性能な音声認識モデル[Whisper](https://github.com/openai/whisper)をC/C++に移植した[whisper.cpp](https://github.com/ggerganov/whisper.cpp)を使ってみている。
+自分の持っているIntel MacBook Proでも充分動かせるので有り難い。
+
+[^長時間収録]: 因みに第1回は2時間半収録し、大幅にカットした結果1時間半になる予定。
+
 ### エピソードのカスタマイズ
-基本的には弄る必要は無い。
-カバーアートは**3000×3000pxのJPEG**でCDN（Amazon CloudFront）に保存されるようなので、アップロード前に [Squoosh](https://squoosh.app) などを用いて圧縮しつつサイズを合わせておくと良い。
+基本的には弄る必要は無い?\\
+カバーアートは**3000×3000pxのJPEG**でCDN（Amazon CloudFront）に保存されるようなので、アップロード前に[Squoosh](https://squoosh.app)などを用いて圧縮しつつサイズを合わせておくと良い。
 
 ### 各種プラットフォーム
 CAMPHOR-では2022/12/9時点で以下のプラットフォームで購読出来るようにしている。\\
@@ -238,19 +245,19 @@ Moon FMはAnchorと紐付けられるプラットフォームでは無いもの�
 
 [^YouTube]: CAMPHOR-はYouTubeもやってます → [@camphor_kyoto](https://youtube.com/camphor_kyoto)
 
-## 参考になるPodcast番組
+## 参考にしたいPodcast番組
 - 雑談系（個人）: [Rebuild](https://rebuild.fm)
 2013年から放送されており、日本におけるテック系Podcastの先駆け。[Podcasting Setup 2020](https://weblog.bulknews.net/podcasting-setup-2020-db90240423d7) に書かれているように音質にかなり気を使われている。
 - 雑談・論文紹介系: [いんよう!](https://open.spotify.com/show/2vbZRI8GsdQ7ioWIC215oA)
 内容が面白いのは勿論だが、BGMの使い方が上手い。
 - 広報系（企業）: [Backyard Hatena](https://open.spotify.com/show/6qnwcLU95nPqqgaUYXzGrK)
-企業がオウンドメディアとしてPodcastをやる例は最近増えてきたように感じるが、はてな社は社内Podcastを前から行っていることもあってかクオリティが高い。
+企業がオウンドメディアとしてPodcastをやる例は最近増えてきたように感じるが、はてな社は社内Podcastを前から行っていることもあってかその中でもクオリティが高い。
 
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">Backyard Hatena、録音環境が良い・無駄なBGM/効果音が無い・ホストがCTOのため技術話が適度に聴ける のでここ数年で最高のオウンドメディアだなと思いながら聴いている</p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1499977577565671425?ref_src=twsrc%5Etfw">March 5, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
-2020年から、その年聴いていたPodcastで人に勧めたいものを書いていたので、よければこちらも。
+2020年から、その年聴いていたPodcastで他人に勧めたいものを書いていたので、よければこちらも。
 - [ITエンジニア志望の学生が聴くべきPodcast](/posts/podcasts)
 - [2021年に聴いていたPodcast](/posts/podcasts2021)
 
