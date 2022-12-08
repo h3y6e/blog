@@ -4,16 +4,22 @@ using DataStructures
 function headline(title, date, tags)
     tag_page = globvar(:tag_page_path)
     io = IOBuffer()
-    write(io, """
-    <div class="franklin-headline">
-    <h1 class="title">$title</h1>
-    """)
+    write(
+        io,
+        """
+        <div class="franklin-headline">
+        <h1 class="title">$title</h1>
+        """
+    )
     date == Date(1) || write(io, "<div class=\"date\">$date</div>")
     write(io, "<span class=\"tags\">")
     for tag in tags
-        write(io, """
-        <a href="/$tag_page/$tag">#$tag</a>
-        """)
+        write(
+            io,
+            """
+            <a href="/$tag_page/$tag">#$tag</a>
+            """
+        )
     end
     write(io, "</span></div>")
     return String(take!(io))
@@ -27,7 +33,7 @@ function bydate!(pagelist)
         end
         return pvd
     end
-    sort!(pagelist, by = sorter, rev = true)
+    sort!(pagelist, by=sorter, rev=true)
 end
 
 function postlist(rpaths)
@@ -41,16 +47,19 @@ function postlist(rpaths)
         rss = pagevar(post, :rss_description)
         linktitle = "<a href=\"$url\">$title</a>"
         write(io, headline(linktitle, date, tags))
-        write(io, """
-        <p>$rss</p>
-        <a class="read-more" href="$url">Read more →</a>
-        </div>
-        """)
+        write(
+            io,
+            """
+            <p>$rss</p>
+            <a class="read-more" href="$url">Read more →</a>
+            </div>
+            """
+        )
     end
     return String(take!(io))
 end
 
-function getpostpaths(path = "posts")
+function getpostpaths(path="posts")
     posts = readdir(path)
     return path .* rstrip.(get_url.(posts), '/')
 end
@@ -61,7 +70,7 @@ function hfun_headline()
     title = locvar(:title)
     date = locvar(:date)
     tags = locvar(:tags)
-   
+
     io = IOBuffer()
     write(io, headline(title, date, tags))
     toc = Franklin.hfun_toc(
@@ -89,27 +98,36 @@ function hfun_tagpage()
     rpaths = getpostpaths()
     tags = Iterators.flatten(pagevar.(rpaths, :tags))
     namesortedtags = collect(SortedDict(counter(tags)))
-    countsortedtags = sort(namesortedtags; by = x -> x[2], rev = true)
+    countsortedtags = sort(namesortedtags; by=x -> x[2], rev=true)
     count = countsortedtags[1][2]
     io = IOBuffer()
-    write(io, """
-    <table class="tagpage">
-    <tr><th>count</th><th>name</th></tr>
-    <tr><td class="count">$count</td>
-    <td class="block">
-    """)
+    write(
+        io,
+        """
+        <table class="tagpage">
+        <tr><th>count</th><th>name</th></tr>
+        <tr><td class="count">$count</td>
+        <td class="block">
+        """
+    )
     for (tag, c) in countsortedtags
         if c < count
-            write(io, """
-            </td></tr>
-            <tr><td class="count">$c</td>
-            <td class="block">
-            """)
+            write(
+                io,
+                """
+                </td></tr>
+                <tr><td class="count">$c</td>
+                <td class="block">
+                """
+            )
             count = c
         end
-        write(io, """
+        write(
+            io,
+            """
             <a href="$tag/">#$tag</a>
-        """)
+            """
+        )
     end
     write(io, "</td></tr></table>")
     return String(take!(io))

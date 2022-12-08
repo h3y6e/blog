@@ -81,10 +81,10 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
   line-height: 1.5;
-  margin-top: 30px
+  margin-top: 30px;
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
     text-decoration: none;
   }
 
@@ -105,12 +105,9 @@ h6 {
 
 a {
   color: inherit;
-  -webkit-text-decoration-style: dotted;
-          text-decoration-style: dotted;
-  -webkit-text-decoration-color: #a5ebec;
-          text-decoration-color: #a5ebec;
-  -webkit-text-decoration-color: var(--accent);
-          text-decoration-color: var(--accent);
+  text-decoration-style: dotted;
+  text-decoration-color: #a5ebec;
+  text-decoration-color: var(--accent);
 }
 
 p {
@@ -134,7 +131,7 @@ img {
 }
 
 figure {
-  margin: auto
+  margin: auto;
 }
 
 figure figcaption {
@@ -173,10 +170,13 @@ kbd {
 
 pre {
   background: transparent !important;
+}
+
+pre {
   margin: 30px 20px;
   overflow: auto;
   font-size: 95%;
-  font-weight: lighter
+  font-weight: lighter;
 }
 
 pre + pre {
@@ -189,7 +189,7 @@ pre + pre {
 pre {
     margin: 30px 5px;
     white-space: pre-wrap;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
   }
 
@@ -205,22 +205,22 @@ blockquote {
   font-style: italic;
   color: rgba(211, 213, 213, 0.8);
   margin: 0;
-  padding: 0 25px
+  padding: 0 25px;
 }
 
 @media (max-width: 684px) {
 
 blockquote {
-    padding-right: 0
+    padding-right: 0;
 }
   }
 
 blockquote p {
-    position: relative
+    position: relative;
   }
 
 blockquote p:first-of-type {
-      margin-top: 0
+      margin-top: 0;
     }
 
 blockquote p:first-of-type:before {
@@ -244,7 +244,7 @@ table {
   border-top: 2px solid #a5ebec;
   border-top: 2px solid var(--accent);
   border-bottom: 2px solid #a5ebec;
-  border-bottom: 2px solid var(--accent)
+  border-bottom: 2px solid var(--accent);
 }
 
 table th {
@@ -262,7 +262,7 @@ table td {
 ul,
 ol {
   margin-left: 30px;
-  padding: 0
+  padding: 0;
 }
 
 ul li, ol li {
@@ -272,11 +272,11 @@ ul li, ol li {
 
 ol {
   list-style: none;
-  counter-reset: li
+  counter-reset: li;
 }
 
 ol li {
-    counter-increment: li
+    counter-increment: li;
   }
 
 ol li:before {
@@ -288,7 +288,7 @@ ol li:before {
     }
 
 ol ol li {
-    list-style-type: lower-alpha
+    list-style-type: lower-alpha;
   }
 
 ol ol li:before {
@@ -313,13 +313,13 @@ hr {
 header {
   display: flex;
   flex-direction: column;
-  position: relative
+  position: relative;
 }
 
 @media print {
 
 header {
-    display: none
+    display: none;
 }
   }
 
@@ -341,7 +341,7 @@ header .header-inner {
 
 header .header-logo {
     display: flex;
-    flex: 1
+    flex: 1;
   }
 
 header .header-logo:after {
@@ -372,13 +372,13 @@ header .header-logo a {
     }
 
 header nav {
-    margin: 20px 0
+    margin: 20px 0;
   }
 
 @media (max-width: 684px) {
 
 header nav {
-      display: none
+      display: none;
   }
     }
 
@@ -387,7 +387,7 @@ header nav ul {
       flex-wrap: wrap;
       list-style: none;
       margin: 0;
-      padding: 0
+      padding: 0;
     }
 
 header nav ul li:not(:last-of-type) {
@@ -401,7 +401,7 @@ header nav ul li:not(:last-of-type) {
 header nav ul {
         flex-direction: column;
         align-items: flex-start;
-        padding: 0
+        padding: 0;
     }
         header nav ul li {
           margin: 0;
@@ -410,7 +410,7 @@ header nav ul {
       }
 
 header input#trigger {
-    display: none
+    display: none;
   }
 
 @media (max-width: 684px) {
@@ -428,12 +428,12 @@ header input#trigger:checked + nav {
         list-style: none;
         z-index: 99;
         top: 50px;
-        right: 0
+        right: 0;
     }
       }
 
 header .menu {
-    display: none
+    display: none;
   }
 
 @media (max-width: 684px) {
@@ -447,14 +447,14 @@ header .menu {
       margin-left: 10px;
       height: 100%;
       padding: 3px 8px;
-      position: relative
+      position: relative;
   }
     }
 
 .franklin-headline {
   width: 100%;
   text-align: left;
-  margin: 20px auto 0
+  margin: 20px auto 0;
 }
 
 .franklin-headline a {
@@ -468,7 +468,7 @@ header .menu {
     color: var(--accent);
     margin-bottom: 8px;
     padding-bottom: 15px;
-    border-bottom: var(--border)
+    border-bottom: var(--border);
   }
 
 .franklin-headline h1.title:after {
@@ -495,7 +495,7 @@ header .menu {
 .postlist {
   padding: 20px 0;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 2px solid var(--border-color)
+  border-bottom: 2px solid var(--border-color);
 }
 
 .postlist p {
@@ -513,11 +513,11 @@ header .menu {
   width: 100%;
   text-align: left;
   margin: 0 auto 20px;
-  padding: 0 0 20px
+  padding: 0 0 20px;
 }
 
 .franklin-content ul {
-    list-style: none
+    list-style: none;
   }
 
 .franklin-content ul li:not(:empty):before {
@@ -538,11 +538,11 @@ header .menu {
     border-top: 1px solid #a5ebec;
     border-top: 1px solid var(--accent);
     border-bottom: 1px solid #a5ebec;
-    border-bottom: 1px solid var(--accent)
+    border-bottom: 1px solid var(--accent);
   }
 
 .franklin-content table.fndef td {
-      font-size: 90%
+      font-size: 90%;
     }
 
 .franklin-content table.fndef td.fndef-backref {
@@ -560,7 +560,7 @@ header .menu {
 
 .franklin-content table.tagpage {
     border: none;
-    margin: 0
+    margin: 0;
   }
 
 .franklin-content table.tagpage .count {
@@ -573,7 +573,7 @@ header .menu {
 .franklin-content table.tagpage .block a {
         font-size: 105%;
         text-decoration: none;
-        color: rgba(255, 255, 255, 0.5)
+        color: rgba(255, 255, 255, 0.5);
       }
 
 .franklin-content table.tagpage .block a:hover {
@@ -584,7 +584,7 @@ header .menu {
 .franklin-content .framed {
     border: 1px solid #a5ebec;
     border: 1px solid var(--accent);
-    padding: 20px
+    padding: 20px;
   }
 
 .franklin-content .framed :first-child {
@@ -606,11 +606,11 @@ header .menu {
   font-size: 0.9rem;
   border-top: var(--border);
   border-bottom: var(--border);
-  margin: 1rem
+  margin: 1rem;
 }
 
 .franklin-toc li {
-    margin: 0.2rem 0
+    margin: 0.2rem 0;
   }
 
 .franklin-toc li ol li:last-of-type {
@@ -634,13 +634,13 @@ header .menu {
 @media (max-width: 684px) {
 
 .franklin-toc {
-    margin: 0 0 1rem
+    margin: 0 0 1rem;
 }
   }
 
 .page-foot {
   padding: 40px 0;
-  opacity: 0.5
+  opacity: 0.5;
 }
 
 .page-foot a {
@@ -650,14 +650,14 @@ header .menu {
 .page-foot .copyright {
     display: flex;
     flex-direction: row;
-    align-items: center
+    align-items: center;
   }
 
 @media (max-width: 900px) {
 
 .page-foot .copyright {
       flex-direction: column;
-      margin-top: 10px
+      margin-top: 10px;
   }
     }
 
@@ -896,14 +896,13 @@ table.hljs-ln {
   table-layout: auto;
   width: auto;
   margin: 5px 0;
-  border: none
+  border: none;
 }
 
 table.hljs-ln .hljs-ln-numbers {
     --ln-color: rgba(165, 235, 236, 0.5);
     -webkit-user-select: none;
        -moz-user-select: none;
-        -ms-user-select: none;
             user-select: none;
     text-align: right;
     vertical-align: top;
