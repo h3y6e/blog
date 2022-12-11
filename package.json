@@ -19,9 +19,11 @@
     "prod:franklin": "julia --project=. -e 'using Franklin;optimize()'",
     "format": "prettier --write . -u",
     "lint": "textlint posts/*.md",
-    "lint:fix": "textlint --fix posts/*.md"
+    "lint:fix": "textlint --fix posts/*.md",
+    "ogimage": "node ogimage.mjs"
   },
   "devDependencies": {
+    "@cloudinary/url-gen": "^1.8.7",
     "prettier": "^2.8.1",
     "textlint": "^12.2.4",
     "textlint-filter-rule-allowlist": "^4.0.0",

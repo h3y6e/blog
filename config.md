@@ -22,8 +22,8 @@ you might not want. Indicate directories by ending the name with a `/`.
 -->
 @def ignore = [".vscode/", "theme/", ".node-version", ".imgbotconfig",
     ".prettierignore", ".prettierrc.yml", ".prh.yml", ".textlintrc.yml",
-    ".tool-versions", "Manifest.toml", "package.json", "postcss.config.js",
-    "Project.toml", "yarn.lock"]
+    ".tool-versions", "Manifest.toml", "ogimage.mjs", "package.json",
+    "postcss.config.js", "Project.toml", "yarn.lock"]
 
 <!--
 Add here global latex commands to use throughout your
