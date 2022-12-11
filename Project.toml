@@ -3,6 +3,7 @@ authors = ["heyhoe"]
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 Franklin = "713c75ef-9fc9-4b05-94a9-213340da978e"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 
 [compat]
 DataStructures = "0.18"
