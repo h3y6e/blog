@@ -1,5 +1,6 @@
 using Dates
 using DataStructures
+using HTTP: escapeuri
 
 function headline(title, date, tags)
     tag_page = globvar(:tag_page_path)
@@ -131,4 +132,17 @@ function hfun_tagpage()
     end
     write(io, "</td></tr></table>")
     return String(take!(io))
+end
+
+function hfun_ogimage_url()
+    title = escapeuri(locvar(:title))
+    date = locvar(:date)
+    tags = "%23" * join(locvar(:tags), "%20%23")
+    return "https://res.cloudinary.com/dzugrdlkb/image/upload/" *
+           "c_fit,w_840,co_rgb:a5ebec,l_text:Firge35-Bold.ttf_50:$title/" *
+           "fl_layer_apply,g_south_west,x_180,y_355/" *
+           "co_rgb:a5ebec7f,l_text:Firge35-Regular.ttf_30:$date/" *
+           "fl_layer_apply,g_north_west,x_180,y_565/" *
+           "c_fit,w_840,co_rgb:d3d5d57f,l_text:Firge35-Regular.ttf_30:$tags/" *
+           "fl_layer_apply,g_north_west,x_180,y_605/a5ebec-ogimage-left.png"
 end

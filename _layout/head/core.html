@@ -10,12 +10,16 @@
   <link rel="icon" href="/assets/favicon/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />
   <meta property="og:site_name" content="{{ website_title }}" />
-  {{ isdef cover }}
+  {{ ispage posts/* }} {{ isdef cover }}
   <meta property="og:image" content="{{ website_url }}{{ cover }}" />
   <meta name="twitter:card" content="summary_large_image" />
   {{ else }}
+  <meta property="og:image" content="{{ ogimage_url }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  {{ end }} {{ else }}
   <meta property="og:image" content="{{ website_url }}/assets/2f2f2f.jpg" />
   <meta name="twitter:card" content="summary" />
   {{ end }}
   <meta name="twitter:site" content="@h3y6e" />
   <meta name="twitter:creator" content="@h3y6e" />
+</head>

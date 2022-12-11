@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   {{ insert head/core.html }}
+  <head prefix="og: https://ogp.me/ns#">
     <title>Tag: #{{ fd_tag }}</title>
     <meta
       name="description"
@@ -16,7 +17,7 @@
   </head>
   <body>
     {{ insert head/header.html }}
-    <div class="franklin-content">{{taglist}}</div>
+    <div class="franklin-content">{{ taglist }}</div>
   </body>
   {{ insert page_foot.html }} {{ insert foot.html }}
 </html>
