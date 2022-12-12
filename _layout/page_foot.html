@@ -1,4 +1,12 @@
 <footer class="page-foot">
+  {{ ispage posts/* }}
+  <p>
+    <a href="https://github.com/h3y6e/blog/blob/master/{{ fd_rpath }}">
+      <!--  = &#xE0A0; -->
+      &#xE0A0; Edit this page on GitHub
+    </a>
+  </p>
+  {{ end }}
   <div class="copyright">
     <span>
       &copy; 2019-{{ year }} <a href="{{ author_url }}">{{ author }}</a>
