@@ -95,7 +95,7 @@ HIDクラスでは、レポートと呼ばれる単位でデータを転送し�
 Report DescriptorによってUSBデバイスに関する情報を定義しUSBホストに提供することが出来ます。
 参考までに、以下にNintendo Switchのコントローラとして認識するReport Descriptorを記載します。
 
-```julia
+```
 item                                | hex
 -----------------------------------------------------
 USAGE_PAGE (Generic Desktop)        | 0x05 0x01

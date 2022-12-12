@@ -57,6 +57,5 @@ $ yarn dev:css
 [`hugo-theme-terminal`](https://github.com/panr/hugo-theme-terminal/)
 [(MIT License)](https://github.com/panr/hugo-theme-terminal/blob/master/LICENSE.md).
 
-The font for `Blog`'s OG images is
-[`Firge35`](https://github.com/yuru7/Firge)
+The font for `Blog`'s OG images is [`Firge35`](https://github.com/yuru7/Firge)
 [(SIL OPEN FONT LICENSE)](https://github.com/yuru7/Firge/blob/master/LICENSE).
