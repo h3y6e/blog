@@ -19,6 +19,7 @@ themeSwitcher.onclick = function () {
   const theme = rootElement.getAttribute("data-theme");
   const targetTheme = theme === "dark" ? "light" : "dark";
 
+  document.getElementById("menu-trigger").checked = false;
   metaThemeColor.setAttribute(
     "content",
     targetTheme === "dark" ? "#2f2f2f" : "#fbfbfb",
