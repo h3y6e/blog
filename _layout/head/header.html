@@ -3,15 +3,16 @@
     <div class="header-logo">
       <a href="/"><div class="logo">{{ website_title }}</div></a>
     </div>
-    <label for="trigger" class="menu">menu</label>
+    <label for="menu-trigger" class="menu">menu</label>
   </div>
-  <input type="checkbox" id="trigger" />
+  <input type="checkbox" id="menu-trigger" />
   <nav>
     <ul>
       <li><a href="/">Posts</a></li>
       <li><a href="/{{ tag_page_path }}">Tags</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/feed.xml">RSS</a></li>
+      <li class="theme-switcher"><button id="theme-switcher">Theme</button></li>
     </ul>
   </nav>
 </header>
