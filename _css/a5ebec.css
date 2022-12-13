@@ -1,11 +1,32 @@
 :root {
-  --accent: #a5ebec;
-  --background: #2f2f2f;
-  --color: #d3d5d5;
-  --border-color: rgba(255, 255, 255, 0.1);
-
   --phoneWidth: (max-width: 684px);
   --tabletWidth: (max-width: 900px);
+
+  /* colors */
+  --background: #2f2f2f;
+  --logo-color: #2f2f2f;
+  --accent: #a5ebec;
+  --toc-color: rgba(165,235,236,0.8);
+  --date-color: rgba(165,235,236,0.70196);
+  --code-background: rgba(165,235,236,0.14902);
+  --color: #d3d5d5;
+  --blockquote-color: rgba(211,213,213,0.8);
+  --tag-color: rgba(211,213,213,0.49804);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+  /* colors */
+  --background: #fbfbfb;
+  --logo-color: #fbfbfb;
+  --accent: #2aa298;
+  --toc-color: #2aa298;
+  --date-color: #2aa298;
+  --code-background: rgba(42,162,152,0.14902);
+  --color: #403f53;
+  --blockquote-color: rgba(64,63,83,0.8);
+  --tag-color: rgba(64,63,83,0.49804);
+  --border-color: rgba(0, 0, 0, 0.1);
 }
 
 @font-face {
@@ -160,7 +181,8 @@ kbd {
   font-family: "Fira Code", Monaco, Consolas, Ubuntu Mono, monospace;
   font-feature-settings: nomal;
   letter-spacing: 0em;
-  background: rgba(165, 235, 236, 0.15);
+  background: rgba(165,235,236,0.14902);
+  background: var(--code-background);
   border-radius: 2px;
   color: #a5ebec;
   color: var(--accent);
@@ -203,7 +225,8 @@ pre code {
 
 blockquote {
   font-style: italic;
-  color: rgba(211, 213, 213, 0.8);
+  color: rgba(211,213,213,0.8);
+  color: var(--blockquote-color);
   margin: 0;
   padding: 0 25px;
 }
@@ -310,6 +333,25 @@ hr {
   height: 1px;
 }
 
+button {
+  padding: 1px 6px;
+  border: 2px solid #a5ebec;
+  border: 2px solid var(--accent);
+  background: #2f2f2f;
+  background: var(--background);
+  color: #a5ebec;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+    background: #a5ebec;
+    background: var(--accent);
+    color: #2f2f2f;
+    color: var(--logo-color);
+  }
+
 header {
   display: flex;
   flex-direction: column;
@@ -329,7 +371,8 @@ header .logo {
     text-decoration: none;
     background: #a5ebec;
     background: var(--accent);
-    color: black;
+    color: #2f2f2f;
+    color: var(--logo-color);
     padding: 5px 10px;
   }
 
@@ -392,9 +435,18 @@ header nav ul {
 
 header nav ul li:not(:last-of-type) {
           margin-right: 16px;
-          margin-bottom: 10px;
-          flex: 0 0 auto;
         }
+
+header nav ul li.theme-switcher {
+          margin-left: auto;
+        }
+
+@media (max-width: 684px) {
+
+header nav ul li.theme-switcher {
+            margin-left: 0;
+        }
+          }
 
 @media (max-width: 684px) {
 
@@ -409,13 +461,13 @@ header nav ul {
         }
       }
 
-header input#trigger {
+header input#menu-trigger {
     display: none;
   }
 
 @media (max-width: 684px) {
 
-header input#trigger:checked + nav {
+header input#menu-trigger:checked + nav {
         display: block;
         position: absolute;
         background: #2f2f2f;
@@ -482,14 +534,16 @@ header .menu {
 
 .franklin-headline .date {
     font-size: 1rem;
-    color: rgba(165, 235, 236, 0.7);
+    color: rgba(165,235,236,0.70196);
+    color: var(--date-color);
   }
 
 .franklin-headline .tags {
     display: block;
     margin-bottom: 10px;
     font-size: 1rem;
-    opacity: 0.5;
+    color: rgba(211,213,213,0.49804);
+    color: var(--tag-color);
   }
 
 .postlist {
@@ -573,7 +627,8 @@ header .menu {
 .franklin-content table.tagpage .block a {
         font-size: 105%;
         text-decoration: none;
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(211,213,213,0.49804);
+        color: var(--tag-color);
       }
 
 .franklin-content table.tagpage .block a:hover {
@@ -600,8 +655,8 @@ header .menu {
   }
 
 .franklin-toc {
-  --toc-color: rgba(165, 235, 236, 0.8);
   --border: 1px dotted var(--toc-color);
+  color: rgba(165,235,236,0.8);
   color: var(--toc-color);
   font-size: 0.9rem;
   border-top: var(--border);
@@ -900,7 +955,7 @@ table.hljs-ln {
 }
 
 table.hljs-ln .hljs-ln-numbers {
-    --ln-color: rgba(165, 235, 236, 0.5);
+    --ln-color: rgba(165,235,236,0.50196);
     -webkit-user-select: none;
        -moz-user-select: none;
             user-select: none;
