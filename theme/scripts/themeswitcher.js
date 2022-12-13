@@ -1,13 +1,14 @@
 var storageKey = "theme";
 var rootElement = document.documentElement;
 var themeSwitcher = document.getElementById("theme-switcher");
+var metaThemeColor = document.querySelector("meta[name='theme-color']");
 var storedTheme = localStorage.getItem(storageKey);
 
-function toggle(theme) {
-  return theme === "dark" ? "light" : "dark";
-}
-
-themeSwitcher.innerText = toggle(storedTheme);
+metaThemeColor.setAttribute(
+  "content",
+  storedTheme === "dark" ? "#2f2f2f" : "#fbfbfb",
+);
+themeSwitcher.innerText = storedTheme === "dark" ? "light" : "dark";
 
 var tweets = document.querySelectorAll(".twitter-tweet");
 tweets.forEach(function (tweet) {
@@ -16,8 +17,12 @@ tweets.forEach(function (tweet) {
 
 themeSwitcher.onclick = function () {
   const theme = rootElement.getAttribute("data-theme");
-  const targetTheme = toggle(theme);
+  const targetTheme = theme === "dark" ? "light" : "dark";
 
+  metaThemeColor.setAttribute(
+    "content",
+    targetTheme === "dark" ? "#2f2f2f" : "#fbfbfb",
+  );
   document.querySelector(".logo").innerText =
     targetTheme === "dark" ? "#a5ebec" : "#2aa298";
   themeSwitcher.innerText = theme;
