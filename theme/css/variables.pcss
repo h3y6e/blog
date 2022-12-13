@@ -1,11 +1,32 @@
 :root {
-  --accent: #a5ebec;
-  --background: #2f2f2f;
-  --color: #d3d5d5;
-  --border-color: rgba(255, 255, 255, 0.1);
-
   --phoneWidth: (max-width: 684px);
   --tabletWidth: (max-width: 900px);
+
+  /* colors */
+  --background: #2f2f2f;
+  --logo-color: #2f2f2f;
+  --accent: #a5ebec;
+  --toc-color: #a5ebeccc;
+  --date-color: #a5ebecb3;
+  --code-background: #a5ebec26;
+  --color: #d3d5d5;
+  --blockquote-color: #d3d5d5cc;
+  --tag-color: #d3d5d57f;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+  /* colors */
+  --background: #fbfbfb;
+  --logo-color: #fbfbfb;
+  --accent: #2aa298;
+  --toc-color: #2aa298;
+  --date-color: #2aa298;
+  --code-background: #2aa29826;
+  --color: #403f53;
+  --blockquote-color: #403f53cc;
+  --tag-color: #403f537f;
+  --border-color: rgba(0, 0, 0, 0.1);
 }
 
 @custom-media --phone (max-width: 684px);
