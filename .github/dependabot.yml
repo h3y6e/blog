@@ -3,16 +3,12 @@ updates:
   - package-ecosystem: npm
     directory: "/"
     schedule:
-      interval: daily
-      time: "05:00"
-      timezone: "Asia/Tokyo"
+      interval: weekly
     assignees:
       - h3y6e
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: daily
-      time: "05:00"
-      timezone: "Asia/Tokyo"
+      interval: weekly
     assignees:
       - h3y6e
