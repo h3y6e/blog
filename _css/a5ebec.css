@@ -13,7 +13,7 @@
   --blockquote-color: rgba(211,213,213,0.8);
   --tag-color: rgba(211,213,213,0.49804);
   --border-color: rgba(255, 255, 255, 0.1);
-  --embed-background: #1E2732;
+  --embed-background: #212121;
 }
 
 [data-theme="light"] {
@@ -21,8 +21,8 @@
   --background: #fbfbfb;
   --logo-color: #fbfbfb;
   --accent: #2aa298;
-  --toc-color: #2aa298;
-  --date-color: #2aa298;
+  --toc-color: rgba(42,162,152,0.8);
+  --date-color: rgba(42,162,152,0.70196);
   --code-background: rgba(42,162,152,0.14902);
   --color: #403f53;
   --blockquote-color: rgba(64,63,83,0.8);
@@ -135,7 +135,13 @@ a {
   text-decoration-style: dotted;
   text-decoration-color: #a5ebec;
   text-decoration-color: var(--accent);
+  transition: all 0.2s;
 }
+
+a:hover {
+    color: #a5ebec;
+    color: var(--accent);
+  }
 
 p {
   margin-bottom: 20px;
@@ -143,7 +149,8 @@ p {
 
 img {
   display: block;
-  max-width: 95%;
+  border-radius: 5px;
+  max-width: 100%;
   max-height: 30rem;
   margin: auto;
 }
@@ -157,7 +164,6 @@ figure figcaption {
     display: table-caption;
     caption-side: bottom;
     margin: auto;
-    max-width: 95%;
     font-size: 0.9rem;
     padding: 5px 10px;
     background: #a5ebec;
@@ -179,39 +185,6 @@ kbd {
   padding: 1px 5px;
   margin: 0 2px;
 }
-
-pre {
-  background: transparent !important;
-}
-
-pre {
-  margin: 30px 20px;
-  overflow: auto;
-  font-size: 95%;
-  font-weight: lighter;
-}
-
-pre + pre {
-    border-top: 0;
-    margin-top: -20px;
-  }
-
-@media (max-width: 684px) {
-
-pre {
-    margin: 30px 5px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-  }
-
-pre code {
-    border-radius: 10px;
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    border: 0;
-  }
 
 blockquote {
   font-style: italic;
@@ -333,6 +306,7 @@ button {
   color: var(--accent);
   font: inherit;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 button:hover {
@@ -615,7 +589,6 @@ header .menu {
     }
 
 .franklin-content table.tagpage .block a {
-        font-size: 105%;
         text-decoration: none;
         color: rgba(211,213,213,0.49804);
         color: var(--tag-color);
@@ -686,15 +659,26 @@ header .menu {
 .embed {
   display: flex;
   height: 140px;
-  background: #1E2732;
+  background: #212121;
   background: var(--embed-background);
-  border: 1px solid #a5ebec;
-  border: 1px solid var(--accent);
+  border: 1px dotted rgba(165,235,236,0.8);
+  border: 1px dotted var(--toc-color);
   border-radius: 5px;
   padding: 3px;
   position: relative;
   margin-bottom: 20px;
+  transition: all 0.2s;
 }
+
+.embed:hover {
+    border-radius: 5px;
+    background: rgba(165,235,236,0.14902);
+    background: var(--code-background);
+  }
+
+.embed:active {
+    transform: scale(0.95, 0.95);
+  }
 
 @media (max-width: 684px) {
 
@@ -785,6 +769,11 @@ header .menu {
     color: inherit;
   }
 
+.page-foot a:hover {
+      color: #a5ebec;
+      color: var(--accent);
+    }
+
 .page-foot .copyright {
     display: flex;
     flex-direction: row;
@@ -830,13 +819,35 @@ SOFTWARE.
 
 */
 
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: rgb(33, 33, 33);
-  color: rgb(224, 226, 226);
+pre {
+  margin: 30px 0px;
+  overflow: auto;
+  font-size: 0.9rem;
+  font-weight: lighter;
 }
+
+@media (max-width: 684px) {
+
+pre {
+    margin: 20px calc(50% - 50vw);
+}
+  }
+
+pre code.hljs {
+    background: #212121;
+    color: #E0E2E2;
+    display: block;
+    overflow-x: scroll;
+    padding: 0.5em;
+    border-radius: 5px;
+  }
+
+@media (max-width: 684px) {
+
+pre code.hljs {
+      border-radius: 0;
+  }
+    }
 
 /* General Purpose */
 
@@ -1030,14 +1041,14 @@ SOFTWARE.
     font-weight: bold;
   }
 
-table.hljs-ln {
+.hljs-ln {
   table-layout: auto;
   width: auto;
   margin: 5px 0;
   border: none;
 }
 
-table.hljs-ln .hljs-ln-numbers {
+.hljs-ln .hljs-ln-numbers {
     --ln-color: rgba(165,235,236,0.50196);
     -webkit-user-select: none;
        -moz-user-select: none;
@@ -1050,7 +1061,7 @@ table.hljs-ln .hljs-ln-numbers {
     border-right: 1px solid var(--ln-color);
   }
 
-table.hljs-ln .hljs-ln-code {
+.hljs-ln .hljs-ln-code {
     padding-left: 10px;
   }
 
