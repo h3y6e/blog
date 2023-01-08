@@ -142,7 +142,7 @@ function hfun_embed(params)
     return """
     <div class="embed">
         <a href="$(body["url"])" target="_blank"></a>
-        <img src="$(body["images"][1])" alt="$(body["description"])">
+        <img src="$(body["images"][1])" alt="$(body["description"])" decoding="async" loading="lazy">
         <div class="embed-content">
             <b>$title</b>
             <p>$(body["description"])</p>
