@@ -152,12 +152,6 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://blog.h3y6e.com/about/index.html</loc>
-    <lastmod>2023-01-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
     <loc>https://blog.h3y6e.com/posts/rustykeys-buildlog/index.html</loc>
     <lastmod>2023-01-08</lastmod>
     <changefreq>monthly</changefreq>
