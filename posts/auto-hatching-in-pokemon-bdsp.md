@@ -26,14 +26,10 @@ cover = "/img/2021-12-01/6v.jpg"
 なお本稿は任天堂の許諾を受けていない周辺機器の使用を推奨するものではありません。
 
 ## ドメイン知識: タマゴ
-ポケモンのメインシリーズをやったことのある人でも、タマゴや孵化の仕様について深く知らない方も多いのではないでしょうか。\
-シリーズ全体でのタマゴに関しては
-[タマゴ - ポケモンWiki](https://wiki.xn--rckteqa2e.com/wiki/%E3%82%BF%E3%83%9E%E3%82%B4)
-や
-[The Breeding Guide Part II - Smogon University](https://www.smogon.com/ingame/guides/breeding_guide_part2#hatching_eggs)
-が、『ポケットモンスター ダイヤモンド・パール』（以下、ポケモンDP）におけるタマゴに関しては
-[タマゴ - ポケットモンスターダイヤモンド、パール攻略Wiki](https://w.atwiki.jp/pokemondp/pages/205.html)
-が詳しいです。以下ではポケモンBDSPで自動孵化装置を作成するにあたり必要な知識のみを説明します。
+ポケモンのメインシリーズをやったことのある人でも、タマゴや孵化の仕様について深く知らない方も多いのではないでしょうか。
+<!-- textlint-disable ja-technical-writing/sentence-length -->
+シリーズ全体でのタマゴに関しては [タマゴ - ポケモンWiki](https://wiki.xn--rckteqa2e.com/wiki/%E3%82%BF%E3%83%9E%E3%82%B4) や [The Breeding Guide Part II - Smogon University](https://www.smogon.com/ingame/guides/breeding_guide_part2#hatching_eggs) が、『ポケットモンスター ダイヤモンド・パール』（以下、ポケモンDP）におけるタマゴに関しては [タマゴ - ポケットモンスターダイヤモンド、パール攻略Wiki](https://w.atwiki.jp/pokemondp/pages/205.html) が詳しいです。以下ではポケモンBDSPで自動孵化装置を作成するにあたり必要な知識のみを説明します。
+<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 ### タマゴが見つかる条件
 預かり屋に2匹のポケモンを預けると、255歩毎[^歩数] に以下の確率でタマゴが見つかります。
@@ -70,8 +66,7 @@ $$
 
 ### 廃人ロード
 
-メインシリーズには [廃人ロード](
-https://dic.nicovideo.jp/a/%E5%BB%83%E4%BA%BA%E3%83%AD%E3%83%BC%E3%83%89) と俗称される、育て屋/預かり屋周辺に整備された道路があります。
+メインシリーズには [廃人ロード](https://dic.nicovideo.jp/a/%E5%BB%83%E4%BA%BA%E3%83%AD%E3%83%BC%E3%83%89) と俗称される、育て屋/預かり屋周辺に整備された道路があります。
 ポケモンDP及びBDSPにも廃人ロードは用意されており、209番道路⇔ズイタウン⇔210番道路の往復**254**歩の道です。
 
 ### 参考: ダイヤモンドダスト
@@ -159,9 +154,7 @@ Arduinoの[HID library](https://www.arduino.cc/en/Reference/HID)を用いれば�
 
 全てのコードは下記リポジトリにあります。
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/h3y6e/birdo" data-iframely-url="//cdn.iframe.ly/JgnZlBb?card=small"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
-~~~
+{{ embed https://github.com/h3y6e/birdo h3y6e/birdo }}
 
 Arduino Libraryとして、MIT License下にある [celclow/SwitchControlLibrary](https://github.com/celclow/SwitchControlLibrary) を改変したものを利用させていただいております。
 

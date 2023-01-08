@@ -6,25 +6,18 @@ rss_description =  "遊舎工房様より提供していただいたNavpad 1.0�
 cover = "/img/2022-03-15/navpad_10_rev1_red.jpg"
 +++
 
-~~~
-<script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
-~~~
-
 ## はじめに
 
 本稿は遊舎工房ギルドの活動によるものです。
 遊舎工房ギルドの詳細については以下を参照してください。
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://yushakobo.jp/news/2022/02/23/guild/" data-iframely-url="//iframely.net/oxRDo5v"></a></div></div>
-~~~
+
+{{ embed https://yushakobo.jp/news/2022/02/23/guild/ }}
 
 遊舎工房ギルド本部から[Navpad 1.0](https://shop.yushakobo.jp/products/3685?variant=42393049497831)と[Aluminum feetセット](https://shop.yushakobo.jp/products/3685?variant=42393049530599)を提供していただきました。ありがとうございます🙇
 
 ## Navpad 1.0の特徴
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://shop.yushakobo.jp/en/products/3685" data-iframely-url="//iframely.net/RiHOxWx?card=small"></a></div></div>
-~~~
+{{ embed https://shop.yushakobo.jp/products/3685 }}
 
 このキーボードは、アルファベットや記号が打てる"普通の"キーボードとは違い、フルキーボードのnavigation clusterとnumpadのみを切り出したキーパッドです。\\
 自作キーボードでは40%や60%などのコンパクトなキーボードが好まれているように思うのですが、3DCG制作ソフトウェアなどではテンキー等を欲しくなることが多いです。
@@ -34,9 +27,7 @@ cover = "/img/2022-03-15/navpad_10_rev1_red.jpg"
 ## ビルドガイド
 ビルドガイドは以下になります。**作業の前に、必ず一読するようにしましょう。**
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/yushakobo/build-documents/blob/master/Navpad_10/readme.md" data-iframely-url="//iframely.net/GqJizmt?card=small"></a></div></div>
-~~~
+{{ embed https://github.com/yushakobo/build-documents/blob/master/Navpad_10/readme.md "yushakobo/build-documents/readme.md" }}
 
 ## 内容物の確認
 まずは内容物の確認をします。不足があっても1週間以内であれば対応していただけるので、届いたら早めに確認しましょう。
@@ -185,9 +176,7 @@ Gateron Ink Blueを取り付けます。\\
 
 ビルドガイドは以下になります。
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/yushakobo/build-documents/blob/master/Navpad_10/formore/aluminum_feet.md" data-iframely-url="//iframely.net/cvnBrrv?card=small"></a></div></div>
-~~~
+{{ embed https://github.com/yushakobo/build-documents/blob/master/Navpad_10/formore/aluminum_feet.md yushakobo/build-documents/aluminum_feet.md }}
 
 ![ボトムプレート](/img/2022-03-15/bottom_plate.jpg)
 

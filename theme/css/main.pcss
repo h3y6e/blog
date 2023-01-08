@@ -2,6 +2,10 @@ html {
   box-sizing: border-box;
   font-size: 15px;
   overflow-x: hidden;
+
+  @media (--phone) {
+    font-size: 14px;
+  }
 }
 
 *,
@@ -30,13 +34,13 @@ body {
   flex-direction: column;
   max-width: 864px;
   min-height: 100vh;
+  overflow-x: hidden;
   @media (--phone) {
-    padding: 20px;
+    padding: 10px;
   }
   @media print {
     display: initial;
   }
-  overflow-x: hidden;
 }
 
 :--heading {
@@ -75,21 +79,20 @@ p {
 img {
   display: block;
   max-width: 95%;
-  @media (--phone) {
-    max-width: 100%;
-  }
+  max-height: 30rem;
   margin: auto;
 }
 
 figure {
+  display: table;
   margin: auto;
+
   & figcaption {
-    max-width: 95%;
-    @media (--phone) {
-      max-width: 100%;
-    }
+    display: table-caption;
+    caption-side: bottom;
     margin: auto;
-    font-size: 14px;
+    max-width: 95%;
+    font-size: 0.9rem;
     padding: 5px 10px;
     background: var(--accent);
     color: var(--background);

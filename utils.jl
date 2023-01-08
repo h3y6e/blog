@@ -1,6 +1,7 @@
 using Dates
 using DataStructures
-using HTTP: escapeuri
+using HTTP
+using JSON
 
 function headline(title, date, tags)
     tag_page = globvar(:tag_page_path)
@@ -134,8 +135,25 @@ function hfun_tagpage()
     return String(take!(io))
 end
 
+function hfun_embed(params)
+    r = HTTP.get("https://jsonlink.io/api/extract?url=$(params[1])")
+    body = JSON.parse(String(r.body))
+    title = length(params) == 2 ? params[2] : body["title"]
+    return """
+    <div class="embed">
+        <a href="$(body["url"])" target="_blank"></a>
+        <img src="$(body["images"][1])" alt="$(body["description"])">
+        <div class="embed-content">
+            <b>$title</b>
+            <p>$(body["description"])</p>
+            <div class="domain">$(body["domain"])</div>
+        </div>
+    </div>
+    """
+end
+
 function hfun_ogimage_url()
-    title = escapeuri(locvar(:title))
+    title = HTTP.escapeuri(locvar(:title))
     date = locvar(:date)
     tags = "%23" * join(locvar(:tags), "%20%23")
     return "https://res.cloudinary.com/dzugrdlkb/image/upload/" *

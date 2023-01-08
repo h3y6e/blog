@@ -7,7 +7,6 @@ cover = "/img/2022-05-02/rustykeys.jpg"
 +++
 
 ~~~
-<script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
@@ -17,9 +16,7 @@ cover = "/img/2022-05-02/rustykeys.jpg"
 
 また、RustyKeysのコミュニティがGitHub Discussionsで作られていますので、このキットについての質問や依頼はこちらにコメントを残すと幸せになれると思います。
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/KOBA789/rusty-keys" data-iframely-url="//iframely.net/b8YNiNO?card=small"></a></div></div>
-~~~
+{{ embed https://github.com/KOBA789/rusty-keys/discussions }}
 
 ---
 
@@ -32,9 +29,7 @@ cover = "/img/2022-05-02/rustykeys.jpg"
 
 ## RustyKeysの特徴
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://shop.yushakobo.jp/products/4256" data-iframely-url="//iframely.net/6Ud2SnE?card=small"></a></div></div>
-~~~
+{{ embed https://shop.yushakobo.jp/products/4256 }}
 
 最大の特徴は、[ビルドガイド](https://rusty-keys.koba789.com)が組込みRustをサポートしており、既存のファームウェアには対応していない、という所でしょう。
 
@@ -82,17 +77,9 @@ RustyKeysを始め、自作キーボードキットの組み立てにははん�
 
 必要な工具を1つずつ購入するのが面倒な方は、遊舎工房さんで購入可能な工具セット（全部入りセット）を買うのが良いでしょう。
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://shop.yushakobo.jp/products/a9900to" data-iframely-url="//iframely.net/c6MxuHh?card=small"></a></div></div>
-~~~
+{{ embed https://shop.yushakobo.jp/products/a9900to }}
 
-この他には作業マット、マルチテスターもあると良いです。
-
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://amzn.to/3ydNMeK" data-iframely-url="//iframely.net/gMCVwHn?card=small"></a></div></div>
-
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://amzn.to/3vUUFPp" data-iframely-url="//iframely.net/yvvsOOs?card=small"></a></div></div>
-~~~
+この他には[作業マット](https://amzn.to/3ydNMeK)、[マルチテスター](https://amzn.to/3vUUFPp)もあると良いです。
 
 ### CAMPHOR- Make
 2万円弱もかけて工具を一式揃えるのはちょっと...という学生に朗報です。\\
@@ -110,9 +97,7 @@ RustyKeysを始め、自作キーボードキットの組み立てにははん�
 お近くにお住まいの方は是非お越しください。開館スケジュールは[こちら](https://camph.net/schedule)になります。\\
 お待ちしております！
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://blog.camph.net/news/open-camphor-make/" data-iframely-url="//iframely.net/0YM0aeZ?card=small"></a></div></div>
-~~~
+{{ embed https://blog.camph.net/news/open-camphor-make/ }}
 
 ## 本体の組み立て
 
@@ -156,13 +141,10 @@ RustyKeys本体の組み立てを行います。
 
 以下の3つを買っておけばとりあえずルブは出来ます。使用するキースイッチがリニア軸でない場合は[Tribosys 3204](https://shop.yushakobo.jp/products/lubricants?_pos=1&_sid=b3d9bc2ba&_ss=r&variant=37665260961953)が汎用的でお勧めです。
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://shop.yushakobo.jp/products/kbdfans-lube-tools-collection" data-iframely-url="//iframely.net/1f9BDql"></a></div></div>
+{{ embed https://shop.yushakobo.jp/products/kbdfans-lube-tools-collection }}
+{{ embed https://shop.yushakobo.jp/products/kbdfans-x-ai03-2-in-1-%e3%82%a2%e3%83%ab%e3%83%9f%e3%83%8b%e3%82%a6%e3%83%a0%e3%82%b9%e3%82%a4%e3%83%83%e3%83%81%e3%82%aa%e3%83%bc%e3%83%97%e3%83%8a%e3%83%bc }}
+{{ embed https://shop.yushakobo.jp/products/lubricants }}
 
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://shop.yushakobo.jp/products/kbdfans-x-ai03-2-in-1-%e3%82%a2%e3%83%ab%e3%83%9f%e3%83%8b%e3%82%a6%e3%83%a0%e3%82%b9%e3%82%a4%e3%83%83%e3%83%81%e3%82%aa%e3%83%bc%e3%83%97%e3%83%8a%e3%83%bc" data-iframely-url="//iframely.net/cvWLdnI?card=small"></a></div></div>
-
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://shop.yushakobo.jp/products/lubricants" data-iframely-url="//iframely.net/bjXWf90"></a></div></div>
-~~~
 
 スイッチオープナーを用いてキースイッチを分解し、それぞれの部品で他の部品と擦れる場所にルブをしていきます。
 今回は6つしかキーが無いので楽ですね。
@@ -280,9 +262,7 @@ Darwin mbp2019.local 21.4.0 Darwin Kernel Version 21.4.0: Fri Mar 18 00:45:05 PD
 
 ファームウェアのサンプルコードは[rusty-keys](https://github.com/KOBA789/rusty-keys)の `firmware` 下に用意されているので、cloneします。
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/KOBA789/rusty-keys" data-iframely-url="//iframely.net/PaLazB8?card=small"></a></div></div>
-~~~
+{{ embed https://github.com/KOBA789/rusty-keys "KOBA789/rusty-keys" }}
 
 ```sh
 ❯ git clone https://github.com/KOBA789/rusty-keys.git

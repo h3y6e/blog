@@ -5,10 +5,6 @@ tags = ["podcast"]
 rss_description = "今年聴いたPodcastで勧めたいやつを雑に紹介する。"
 +++
 
-~~~
-<script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
-~~~
-
 今年も沢山Podcastを聴いたので、纏める。
 
 去年[これ](/posts/podcasts)を書いて、釣り針がデカかったのか変に拡散されてしまったので控えめに。
@@ -55,9 +51,8 @@ rss_description = "今年聴いたPodcastで勧めたいやつを雑に紹介す
 ### Researchat.fm
 これもお勧めされて聴き始めたPodcast。バイオロジーの話が多いもののそれ以外の話が広く扱われている。三人の掛け合いが面白い。
 生物学については全くの素人なのでその話になると付いていけなくなるが、研究者としての考え方などが参考になる。
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://researchat.fm/" data-iframely-url="//cdn.iframe.ly/J2Sg5hr"></a></div></div>
-~~~
+
+{{ embed https://researchat.fm/ }}
 
 ### texta.fm
 ピクスタ株式会社のオウンドメディア。
@@ -83,34 +78,29 @@ DDDやアーキテクチャ、オブジェクト指向プログラミングや�
 大学での研究でGLSL/WebGL/Three.jsを少し触っており、[wgld.org](https://wgld.org/)や[WebGL総本山](https://webgl.souhonzan.org/)を運営されているh_doxasさんを存じ上げていたので初回から聴き始めた。
 
 今はグラフィックスプログラミングを行う機会が無い為その辺りの話をされると己の知識不足を感じることもあるが、ゲストの方々やh_doxasさん自身のキャリアの話など面白く聴かせていただいている。
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://normalize.fm" data-iframely-url="//cdn.iframe.ly/w8EjCpT"></a></div></div>
-~~~
+
+{{ embed https://normalize.fm }}
 
 ### e34.fm
 インフラ、SRE、プラットフォームエンジニアリングについて[deeeet](https://twitter.com/deeeet)さんと[rrreeeyyy](https://twitter.com/rrreeeyyy)さんがトークされているPodcast。
 DevOps、生産性向上、及びSREやDBREを含む横断的チームに興味があるため聴いている。
 [mozaic.fm](https://mozaic.fm/)のようなスタイルでその月のニュースを取り上げたエピソードが毎月配信されており、新しい情報がキャッチアップ出来て良い。
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://e34.fm/" data-iframely-url="//cdn.iframe.ly/qZSKJZU"></a></div></div>
-~~~
+
+{{ embed https://e34.fm/ }}
 
 ### omoiyari.fm
 リーン、アジャイル、マネジメントについてトークされているPodcast。これらはチーム開発をするうえで考えなければならない事象であるため学びになる。
 
 2021年5月で更新が途絶えているが、パーソナリティの一人である[ykmc09](https://twitter.com/ykmc09)さんが[fukabori.fm第62回](https://fukabori.fm/episode/62)でゲストとしてお話されている。再開を楽しみに待っております。
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://lean-agile.fm/" data-iframely-url="//cdn.iframe.ly/JbrAEmx"></a></div></div>
-~~~
+
+{{ embed https://omoiyarifm.github.io/ "omoiyari.fm（lean-agile podcast）" }}
 
 ### エンジニアトーク「ROLE MODEL」
 ポッドキャスト番組専門の制作会社であるPitPaがオリジナルでやっている（やっていた?）もの。2021年6月で更新が途絶えているのでもう更新されないかもしれないが、様々な経歴を持ったエンジニアの話を聞けるので遡って聴いてみては。
 
 ただし台本通りのPodcastが好きでなければ合わないと思う。
 
-~~~
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://pitpa.jp/" data-iframely-url="//cdn.iframe.ly/wZqQbpS"></a></div></div>
-~~~
+{{ embed https://pitpa.jp/playlist/JxtCyoZTDZ "エンジニアトーク「ROLE MODEL」" }}
 
 ### Kyashfm
 株式会社Kyashのオウンドメディア。技術的な話をする回は聴いている。人によって音質悪いことがあるのはちょっと気になる。
@@ -138,4 +128,4 @@ ref. [はてなのポッドキャスト、はじめます - Hatena Developer Blo
 
 日本語Podcastも露骨にスポンサーを付けたりCMを挟んだりする番組が増えており、ビジネスの臭いを鬱陶しく実感するようになった。2022年もより良いコンテンツ、より良いプラットフォームが生まれることを願っている[^それはお前がやるんだよ]。
 
-[^それはお前がやるんだよ]: 自分でも配信したいなぁと思うことはあるが、いかんせん喋りが下手なので続く未来が見えない…\\[CAMPHOR-](https://camph.net)のメンバーでやりたいな
+[^それはお前がやるんだよ]: 自分でも配信したいなぁと思うことはあるが、いかんせん喋りが下手なので続く未来が見えない…\\[CAMPHOR-](https://camph.net)のメンバーでやりたいな。
