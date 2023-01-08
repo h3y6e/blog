@@ -820,18 +820,11 @@ SOFTWARE.
 */
 
 pre {
-  margin: 30px 0px;
+  margin: 20px 0px;
   overflow: auto;
   font-size: 0.9rem;
   font-weight: lighter;
 }
-
-@media (max-width: 684px) {
-
-pre {
-    margin: 20px calc(50% - 50vw);
-}
-  }
 
 pre code.hljs {
     background: #212121;
@@ -841,13 +834,6 @@ pre code.hljs {
     padding: 0.5em;
     border-radius: 5px;
   }
-
-@media (max-width: 684px) {
-
-pre code.hljs {
-      border-radius: 0;
-  }
-    }
 
 /* General Purpose */
 
