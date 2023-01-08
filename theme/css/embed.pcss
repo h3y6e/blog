@@ -2,11 +2,21 @@
   display: flex;
   height: 140px;
   background: var(--embed-background);
-  border: 1px solid var(--accent);
+  border: 1px dotted var(--toc-color);
   border-radius: 5px;
   padding: 3px;
   position: relative;
   margin-bottom: 20px;
+  transition: all 0.2s;
+
+  &:hover {
+    border-radius: 5px;
+    background: var(--code-background);
+  }
+
+  &:active {
+    transform: scale(0.95, 0.95);
+  }
 
   @media (--phone) {
     height: 120px;
