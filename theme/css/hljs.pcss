@@ -27,12 +27,28 @@ SOFTWARE.
 
 */
 
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: color-mod(var(--background) blend(#000 30%));
-  color: color-mod(var(--color) blend(#fff 30%));
+pre {
+  margin: 30px 0px;
+  overflow: auto;
+  font-size: 0.9rem;
+  font-weight: lighter;
+
+  @media (--phone) {
+    margin: 20px calc(50% - 50vw);
+  }
+
+  & code.hljs {
+    background: #212121;
+    color: #E0E2E2;
+    display: block;
+    overflow-x: scroll;
+    padding: 0.5em;
+    border-radius: 5px;
+
+    @media (--phone) {
+      border-radius: 0;
+    }
+  }
 }
 
 /* General Purpose */
