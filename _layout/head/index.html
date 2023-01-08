@@ -15,7 +15,7 @@
     property="og:title"
     content="{{ title }}{{ isnotpage index }} :: {{ website_title }}{{ end }}"
   />
-  <meta property="og:url" content="{{ website_url }}{{ fd_url }}" />
+  <meta property="og:url" content="{{ fd_full_url }}" />
   <meta
     property="og:description"
     content="{{ ispage posts/* }}{{ rss_description }}{{ else }}{{ website_description }}{{ end }}"
