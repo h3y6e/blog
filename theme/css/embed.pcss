@@ -24,21 +24,31 @@
     object-fit: cover;
     border-radius: 3px;
     height: 100%;
-    max-width: 33%;
+    max-width: 40%;
     margin-left: 0;
     margin-right: 20px;
+
+    @media (--phone) {
+      margin-right: 10px;
+    }
   }
 
   & .embed-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 20px;
+    margin-right: 10px;
+    overflow-x: hidden;
+
+    @media (--phone) {
+      margin-right: 0px;
+    }
 
     & b {
       font-size: 0.95rem;
+      line-height: 1.5;
       display: -webkit-box;
-      -webkit-line-clamp: 1;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -46,7 +56,6 @@
     & p {
       font-size: 0.85rem;
       line-height: 1.5;
-      word-break: break-all;
       max-width: 100%;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -55,7 +64,7 @@
       margin: 5px 0;
 
       @media (--phone) {
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
       }
     }
 
