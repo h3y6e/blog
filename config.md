@@ -32,9 +32,10 @@ For instance:
 * \newcommand{\phrase}{This is a long phrase to copy.}
 -->
 \newcommand{\R}{\mathbb R}
-\newcommand{\unchecked}[1]{~~~<input type="checkbox" />~~~#1}
-\newcommand{\checked}[1]{~~~<input type="checkbox" checked />~~~#1}
-\newcommand{\scal}[1]{\langle #1 \rangle}
-\newcommand{\strike}[1]{~~~<s>#1</s>~~~}
+\newcommand{\unchecked}[1]{~~~<input type="checkbox" />~~~!#1}
+\newcommand{\checked}[1]{~~~<input type="checkbox" checked />~~~!#1}
+\newcommand{\scal}[1]{\langle !#1 \rangle}
+\newcommand{\strike}[1]{~~~<s>!#1</s>~~~}
+\newcommand{\figure}[2]{~~~<figure><img src="!#1"/><figcaption>!#2</figcaption></figure>~~~}
 
 <!-- textlint-enable -->

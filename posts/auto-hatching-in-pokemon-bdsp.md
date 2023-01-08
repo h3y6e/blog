@@ -140,12 +140,8 @@ END_COLLECTION                      | 0xc0
 
 
 ### ATmega32U4
-~~~
-<figure>
-  <img src="/img/2021-12-01/promicro.jpg"/>
-  <figcaption>Pro Micro。中央のマイクロコントローラがATmega34U4。</figcaption>
-</figure>
-~~~
+
+\figure{/img/2021-12-01/promicro.jpg}{Pro Micro。中央のマイクロコントローラがATmega34U4}
 
 ATmega32U4マイコンにはHID機能があるため、ATmega32u4を搭載したPro MicroはNintendo Switchコントローラとして動作します。
 Arduinoの[HID library](https://www.arduino.cc/en/Reference/HID)を用いれば、コントローラを実装出来ます。
