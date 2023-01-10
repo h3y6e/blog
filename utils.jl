@@ -141,14 +141,14 @@ function hfun_embed(params)
     try
         title = length(params) == 2 ? params[2] : body["title"]
         return """
-        <div class="embed">
-            <a href="$(body["url"])" rel="noopener noreferrer nofollow" target="_blank" role="link"></a>
+        <div class="embed" ontouchstart="">
             <img src="$(body["images"][1])" alt="$(body["description"])" decoding="async" loading="lazy">
             <div class="embed-content">
                 <b>$title</b>
                 <p>$(body["description"])</p>
                 <div class="domain">$(body["domain"])</div>
             </div>
+            <a href="$(body["url"])" rel="noopener noreferrer nofollow" target="_blank" role="link"></a>
         </div>
         """
     catch

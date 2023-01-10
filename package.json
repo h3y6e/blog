@@ -17,7 +17,7 @@
     "prod:css": "postcss theme/css/a5ebec.pcss --dir _css --ext css --no-map",
     "dev:swc": "swc theme/scripts/*.js -d _libs -w",
     "prod:swc": "swc theme/scripts/*.js -d _libs",
-    "dev:franklin": "julia --project=. -O0 -e 'using Franklin;serve(clear=true)'",
+    "dev:franklin": "julia --project=. -O0 -e 'using Franklin;serve(clear=true, host=\"0.0.0.0\")'",
     "prod:franklin": "julia --project=. -e 'using Franklin;optimize()'",
     "format": "prettier --write . -u",
     "lint": "textlint posts/*.md",
