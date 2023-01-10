@@ -138,18 +138,22 @@ end
 function hfun_embed(params)
     r = HTTP.get("https://jsonlink.io/api/extract?url=$(params[1])")
     body = JSON.parse(String(r.body))
-    title = length(params) == 2 ? params[2] : body["title"]
-    return """
-    <div class="embed">
-        <a href="$(body["url"])" rel="noopener noreferrer nofollow" target="_blank" role="link"></a>
-        <img src="$(body["images"][1])" alt="$(body["description"])" decoding="async" loading="lazy">
-        <div class="embed-content">
-            <b>$title</b>
-            <p>$(body["description"])</p>
-            <div class="domain">$(body["domain"])</div>
+    try
+        title = length(params) == 2 ? params[2] : body["title"]
+        return """
+        <div class="embed">
+            <a href="$(body["url"])" rel="noopener noreferrer nofollow" target="_blank" role="link"></a>
+            <img src="$(body["images"][1])" alt="$(body["description"])" decoding="async" loading="lazy">
+            <div class="embed-content">
+                <b>$title</b>
+                <p>$(body["description"])</p>
+                <div class="domain">$(body["domain"])</div>
+            </div>
         </div>
-    </div>
-    """
+        """
+    catch
+        throw("keys not found for $(params[1])")
+    end
 end
 
 function hfun_ogimage_url()
