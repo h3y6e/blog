@@ -27,7 +27,7 @@
   "devDependencies": {
     "@cloudinary/url-gen": "^1.8.7",
     "chokidar": "^3.5.3",
-    "prettier": "^2.8.2",
+    "prettier": "^2.8.3",
     "textlint": "^12.5.1",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
