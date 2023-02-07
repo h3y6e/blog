@@ -168,3 +168,11 @@ function hfun_ogimage_url()
            "c_fit,w_840,co_rgb:d3d5d57f,l_text:Firge35-Regular.ttf_30:$tags/" *
            "fl_layer_apply,g_north_west,x_180,y_605/a5ebec-ogimage-left.png"
 end
+
+hfun_twitter_intent() = "https://twitter.com/intent/tweet?text=" *
+                        HTTP.escapeuri("Reading @h3y6e's " *
+                                       locvar(:fd_full_url))
+
+hfun_elk_intent() = "https://elk.zone/intent/post?text=" *
+                    HTTP.escapeuri("Reading @h3y6e@fedibird.com's " *
+                                   locvar(:fd_full_url))
