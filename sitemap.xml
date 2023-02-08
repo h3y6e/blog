@@ -152,13 +152,19 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://blog.h3y6e.com/posts/rustykeys-buildlog/index.html</loc>
+    <loc>https://blog.h3y6e.com/posts/comment-on-nostr/index.html</loc>
     <lastmod>2023-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://blog.h3y6e.com/posts/kuac2019/index.html</loc>
+    <lastmod>2023-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://blog.h3y6e.com/posts/rustykeys-buildlog/index.html</loc>
     <lastmod>2023-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
