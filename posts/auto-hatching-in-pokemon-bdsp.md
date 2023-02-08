@@ -75,20 +75,20 @@ $$
 
 [^時渡り]: 単に特定の日付にすれば良いというわけではなく、2日以上（24時間1分以上）前に設定してから時間を経過させる必要があるらしい。未検証。
 
-## Nintendo Switchコントローラ
-Nintendo Switchは、2017年6月20日に配信開始された本体システムバージョン3.0.0以降、Nintendo Switch Proコントローラの有線接続、及び他社製のコントローラに対応しました。
-その結果、Nintendo Switchで使用出来るようになったホリ製の「『ポッ拳』専用コントローラー for Wii U」をリバースエンジニアリングしたカスタムファイトスティックのPoC、[progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fightstick) が作成されました。
-マイコンを用いたNintendo Switch用カスタムコントローラの作成及び自動化はそこから広まりました。
+## Nintendo Switchコントローラー
+Nintendo Switchは、2017年6月20日に配信開始された本体システムバージョン3.0.0以降、Nintendo Switch Proコントローラーの有線接続、及び他社製のコントローラーに対応しました。
+その結果、Nintendo Switchで使用出来るようになったホリ製の「『ポッ拳』専用コントローラーfor Wii U」をリバースエンジニアリングしたカスタムファイトスティックのPoC、[progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fightstick) が作成されました。
+マイコンを用いたNintendo Switch用カスタムコントローラーの作成及び自動化はそこから広まりました。
 
 ### USB HID
-Nintendo Switchのコントローラは[USB HID](https://www.usb.org/hid)（Human Interface Devices）による通信をサポートしています[^参考]。
+Nintendo Switchのコントローラーは[USB HID](https://www.usb.org/hid)（Human Interface Devices）による通信をサポートしています[^参考]。
 
 USB HIDはコンピュータ周辺機器のUSB仕様の1つで、キーボードやマウスなどのデバイスを規定するものです。
 現在のHIDデバイスは幅広いデバイスが含まれており、様々なハードウェアベンダがHIDを採用しています。
 
 HIDクラスでは、レポートと呼ばれる単位でデータを転送します。
 Report DescriptorによってUSBデバイスに関する情報を定義しUSBホストに提供することが出来ます。
-参考までに、以下にNintendo Switchのコントローラとして認識するReport Descriptorを記載します。
+参考までに、以下にNintendo Switchのコントローラーとして認識するReport Descriptorを記載します。
 
 ```
 item                                | hex
@@ -141,10 +141,10 @@ END_COLLECTION                      | 0xc0
 
 ### ATmega32U4
 
-\figure{/img/2021-12-01/promicro.jpg}{Pro Micro。中央のマイクロコントローラがATmega34U4}
+\figure{/img/2021-12-01/promicro.jpg}{Pro Micro。中央のマイクロコントローラーがATmega34U4}
 
-ATmega32U4マイコンにはHID機能があるため、ATmega32u4を搭載したPro MicroはNintendo Switchコントローラとして動作します。
-Arduinoの[HID library](https://www.arduino.cc/en/Reference/HID)を用いれば、コントローラを実装出来ます。
+ATmega32U4マイコンにはHID機能があるため、ATmega32u4を搭載したPro MicroはNintendo Switchコントローラーとして動作します。
+Arduinoの[HID library](https://www.arduino.cc/en/Reference/HID)を用いれば、コントローラーを実装出来ます。
 
 ## 実装
 
