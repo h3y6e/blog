@@ -9,14 +9,14 @@ rss_description = "Comment on Nostrをこのブログに試験的に導入して
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
 
-経緯: [note1mujewncmefzs0xgz7u8mmcz36a85du63hc2lulgj690xdtyn8z5s9vgt5e](https://iris.to/#/post/note1mujewncmefzs0xgz7u8mmcz36a85du63hc2lulgj690xdtyn8z5s9vgt5e)
+経緯: [note1mujewncmefzs0xgz7u8mmcz36a85du63hc2lulgj690xdtyn8z5s9vgt5e](https://iris.to/post/note1mujewncmefzs0xgz7u8mmcz36a85du63hc2lulgj690xdtyn8z5s9vgt5e)
 
 ## はじめに
 何故か日本で[Nostr](https://github.com/nostr-protocol/nostr)が流行った。
 
 僕がNostrを知ったのは12月くらいで、"post-Elon Twitterが敵対しているSNS"という雑な認識をしていた。
 自分の初めの投稿は去年の12/19らしい。
-[note1x2tv7h06xh3rgmkas85cxq36m3dk24mrpsw00xus5l44y0husjzs5c4lva](https://iris.to/#/post/note1x2tv7h06xh3rgmkas85cxq36m3dk24mrpsw00xus5l44y0husjzs5c4lva) [^余談]
+[note1x2tv7h06xh3rgmkas85cxq36m3dk24mrpsw00xus5l44y0husjzs5c4lva](https://iris.to/post/note1x2tv7h06xh3rgmkas85cxq36m3dk24mrpsw00xus5l44y0husjzs5c4lva) [^余談]
 
 特に日本語が流れている様子もなかったのでその後開くこともなかったが、何やら最近日本人が参入し始めたらしいということを何かの記事で知った。
 再び開いてみたら、一方的に認知している人々が複数人いたので再開した。
@@ -35,7 +35,7 @@ Nostrに対する僕の雑な感想。
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">よくこんなんでTwitterと比較される立場になろうと思ったな、という実装をしていて凄い</p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1623003272700211201?ref_src=twsrc%5Etfw">February 7, 2023</a></blockquote>
 ~~~
 
-Nostrでの雑な投稿。: [note1u3n78mf3efdqswl289qqrm635y8ym65fk89ktruwl6e4nzarvl5qarkvmj](https://iris.to/#/post/note1u3n78mf3efdqswl289qqrm635y8ym65fk89ktruwl6e4nzarvl5qarkvmj)
+Nostrでの雑な投稿。: [note1u3n78mf3efdqswl289qqrm635y8ym65fk89ktruwl6e4nzarvl5qarkvmj](https://iris.to/post/note1u3n78mf3efdqswl289qqrm635y8ym65fk89ktruwl6e4nzarvl5qarkvmj)
 
 [^余談]: 余談だが、投稿内容を確認しに行くのが面倒なのでTwitterみたいに投稿を埋め込むかOGP対応したい。[nostr.guru](https://nostr.guru)あたりでやりたい。
 
@@ -89,7 +89,7 @@ blogを雑記として利用出来ないのはテキストを書くことが特�
 <script src="https://nocomment.netlify.app/embed.js" id="nocomment" data-relays='["wss://relay.damus.io", "wss://nostr.h3y6e.com"]'></script>
 ~~~
 
-[iris](https://iris.to)上では、[このコメント](https://iris.to/#/post/note18t79zypzf2dwlqavwd9tdyhzx38uut6jkkz393qm2r56k7fqcu7s03uj59)に返信しているように表示される。
+[iris](https://iris.to)上では、[このコメント](https://iris.to/post/note18t79zypzf2dwlqavwd9tdyhzx38uut6jkkz393qm2r56k7fqcu7s03uj59)に返信しているように表示される。
 
 ## 課題
 
