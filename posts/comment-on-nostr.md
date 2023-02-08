@@ -23,7 +23,7 @@ rss_description = "Comment on Nostrをこのブログに試験的に導入して
 
 Nostrについて、改めて調べてみるとなかなかどうして愉快なプロトコルじゃあないかと思い、自分で色々リレーサーバを立ててみたり、[NIP - Nostr Implementation Possibilities](https://github.com/nostr-protocol/nips)と呼ばれる仕様書を読んだりした。
 
-{{ embed https://github.com/nostr-protocol/nips }}
+{{ embed https://github.com/nostr-protocol/nips nips }}
 
 Nostrやその周辺知識は[このScrapbox](https://scrapbox.io/nostr/)が纏まっていて分かりやすい。そのため本稿では説明は割愛する。
 
@@ -79,7 +79,7 @@ blogを雑記として利用出来ないのはテキストを書くことが特�
 
 リレーサーバは皆が使っているであろう `wss://relay.damus.io` と、自前の `wss://nostr.h3y6e.com` のみを使用している。沢山のリレーサーバに載せても迷惑だと思うので。
 
-{{ embed https://github.com/fiatjaf/nocomment }}
+{{ embed https://github.com/fiatjaf/nocomment nocomment }}
 
 その場で鍵ペアを生成して匿名でコメントすることも出来るが、[NIP-07](https://scrapbox.io/nostr/NIP-07)に対応しているため、[nos2x](https://github.com/fiatjaf/nos2x)や[Alby](https://getalby.com/)といったブラウザ拡張機能を用いることで自分の持っているアカウントで投稿出来る。
 
