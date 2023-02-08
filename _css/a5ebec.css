@@ -302,34 +302,21 @@ ol {
   padding: 0;
 }
 
-ul li, ol li {
+ul > li, ol > li {
     margin: -0.5rem 0;
     position: relative;
   }
 
 ol {
-  list-style: none;
-  counter-reset: li;
+  list-style: georgian;
 }
 
-ol li {
-    counter-increment: li;
+ol > li {
+    list-style-type: decimal;
   }
 
-ol li:before {
-      content: counter(li) ".";
-      position: absolute;
-      right: calc(100% + 5px);
-      display: inline-block;
-      text-align: right;
-    }
-
-ol ol li {
-    list-style-type: lower-alpha;
-  }
-
-ol ol li:before {
-      content: "";
+ol > li > ol > li {
+      list-style-type: lower-alpha;
     }
 
 mark {
