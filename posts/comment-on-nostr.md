@@ -83,9 +83,13 @@ blogを雑記として利用出来ないのはテキストを書くことが特�
 
 その場で鍵ペアを生成して匿名でコメントすることも出来るが、[NIP-07](https://scrapbox.io/nostr/NIP-07)に対応しているため、[nos2x](https://github.com/fiatjaf/nos2x)や[Alby](https://getalby.com/)といったブラウザ拡張機能を用いることで自分の持っているアカウントで投稿出来る。
 
+↓何でも良いのでコメントしてみよう。
+
 ~~~
 <script src="https://nocomment.netlify.app/embed.js" id="nocomment" data-relays='["wss://relay.damus.io", "wss://nostr.h3y6e.com"]'></script>
 ~~~
+
+[iris](https://iris.to)上では、[このコメント](https://iris.to/#/post/note18t79zypzf2dwlqavwd9tdyhzx38uut6jkkz393qm2r56k7fqcu7s03uj59)に返信しているように表示される。
 
 ## 課題
 
