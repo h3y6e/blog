@@ -42,3 +42,8 @@ rules:
         - "主小行列固有値"
         - "平均単位取得率"
         - "宇宙産業従事者"
+  "@textlint-ja/no-synonyms":
+    allows:
+      - 足
+      - リプ
+      - まとめ

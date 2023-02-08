@@ -65,7 +65,7 @@ jobs:
 #### build頻度が分単位で決定出来る
 `schedule` を使って [POSIX cron構文](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) で記述出来る。
 #### （ほぼ）無料
-Publicレポジトリなら無料、Privateでもこの程度の使用なら無料。（Freeで2,000分/月）
+Publicリポジトリなら無料、Privateでもこの程度の使用なら無料。（Freeで2,000分/月）
 #### 簡単
 学習コスト低い。
 
