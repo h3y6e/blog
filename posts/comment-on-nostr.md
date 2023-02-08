@@ -52,7 +52,7 @@ Nostrでの雑な投稿。: [note1u3n78mf3efdqswl289qqrm635y8ym65fk89ktruwl6e4nz
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Starting February 9, we will no longer support free access to the Twitter API, both v2 and v1.1. A paid basic tier will be available instead 🧵</p>&mdash; Twitter Dev (@TwitterDev) <a href="https://twitter.com/TwitterDev/status/1621026986784337922?ref_src=twsrc%5Etfw">February 2, 2023</a></blockquote>
 ~~~
 
-blogを雑記として利用出来ないのはテキストを書くことが特段嫌いだがらというわけではなく、blogという形式が自分に合っていないからではないかと思っている。
+blogを雑記として利用出来ないのはテキストを書くことが特段嫌いだからというわけではなく、blogという形式が自分に合っていないからではないかと思っている。
 
 じゃあその良いとこ取りをしたような構造があれば良いのでは？という思考。
 
@@ -77,7 +77,7 @@ blogを雑記として利用出来ないのはテキストを書くことが特�
 
 現状は、nostrの製作者である[fiatjaf](https://github.com/fiatjaf)氏が公開している[nocomment](https://github.com/fiatjaf/nocomment)というスクリプトを埋め込み、CSSを一部カスタマイズしているだけ。
 
-リレーサーバは皆が使っているであろう `wss://relay.damus.io` と、自前の `wss://nostr.h3y6e.com` のみを使用している。沢山のリレーサーバに載せても迷惑だと思うので。
+リレーサーバは皆が使っているであろう `wss://nostr-pub.wellorder.net`, `wss://nostr-relay.untethr.me`, `wss://relay.damus.io` と、自前の `wss://nostr.h3y6e.com` のみを使用している。沢山のリレーサーバに載せても迷惑だと思うので。
 
 {{ embed https://github.com/fiatjaf/nocomment nocomment }}
 
@@ -86,7 +86,7 @@ blogを雑記として利用出来ないのはテキストを書くことが特�
 ↓何でも良いのでコメントしてみよう。
 
 ~~~
-<script src="https://nocomment.netlify.app/embed.js" id="nocomment" data-relays='["wss://relay.damus.io", "wss://nostr.h3y6e.com"]'></script>
+<script src="https://nocomment.netlify.app/embed.js" id="nocomment" data-relays='["wss://nostr-pub.wellorder.net","wss://nostr-relay.untethr.me","wss://relay.damus.io","wss://nostr.h3y6e.com"]'></script>
 ~~~
 
 [iris](https://iris.to)上では、[このコメント](https://iris.to/post/note18t79zypzf2dwlqavwd9tdyhzx38uut6jkkz393qm2r56k7fqcu7s03uj59)に返信しているように表示される。
