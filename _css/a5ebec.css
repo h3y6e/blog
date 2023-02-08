@@ -106,12 +106,63 @@ body {
 }
   }
 
-h1,h2,h3,h4,h5,h6 {
+h1 {
   line-height: 1.5;
   margin-top: 30px;
 }
 
-h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
+h2 {
+  line-height: 1.5;
+  margin-top: 30px;
+}
+
+h3 {
+  line-height: 1.5;
+  margin-top: 30px;
+}
+
+h4 {
+  line-height: 1.5;
+  margin-top: 30px;
+}
+
+h5 {
+  line-height: 1.5;
+  margin-top: 30px;
+}
+
+h6 {
+  line-height: 1.5;
+  margin-top: 30px;
+}
+
+h1 a {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+  }
+
+h2 a {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+  }
+
+h3 a {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+  }
+
+h4 a {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+  }
+
+h5 a {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+  }
+
+h6 a {
+    -webkit-text-decoration: none;
     text-decoration: none;
   }
 
@@ -332,6 +383,7 @@ header {
 header .logo {
     display: flex;
     align-items: center;
+    -webkit-text-decoration: none;
     text-decoration: none;
     background: #a5ebec;
     background: var(--accent);
@@ -375,6 +427,7 @@ header .header-logo:after {
 header .header-logo a {
       flex: 0 0 auto;
       max-width: 100%;
+      -webkit-text-decoration: none;
       text-decoration: none;
     }
 
@@ -474,6 +527,7 @@ header .menu {
 }
 
 .franklin-headline a {
+    -webkit-text-decoration: none;
     text-decoration: none;
   }
 
@@ -484,6 +538,7 @@ header .menu {
     color: var(--accent);
     margin-bottom: 8px;
     padding-bottom: 15px;
+    border-bottom: 3px dotted #a5ebec;
     border-bottom: var(--border);
   }
 
@@ -522,6 +577,7 @@ header .menu {
 
 .postlist a.read-more {
     display: flex;
+    -webkit-text-decoration: none;
     text-decoration: none;
     color: #a5ebec;
     color: var(--accent);
@@ -589,6 +645,7 @@ header .menu {
     }
 
 .franklin-content table.tagpage .block a {
+        -webkit-text-decoration: none;
         text-decoration: none;
         color: rgba(211,213,213,0.49804);
         color: var(--tag-color);
@@ -622,7 +679,9 @@ header .menu {
   color: rgba(165,235,236,0.8);
   color: var(--toc-color);
   font-size: 0.9rem;
+  border-top: 1px dotted rgba(165,235,236,0.8);
   border-top: var(--border);
+  border-bottom: 1px dotted rgba(165,235,236,0.8);
   border-bottom: var(--border);
   margin: 1rem;
 }
@@ -646,6 +705,7 @@ header .menu {
   }
 
 .franklin-toc a {
+    -webkit-text-decoration: none;
     text-decoration: none;
   }
 
@@ -762,20 +822,8 @@ header .menu {
 
 .page-foot {
   padding: 40px 0;
-  opacity: 0.7;
-
-  /* nocomment */
-  --nc-background: var(--background);
-  --nc-text-background: var(--embed-background);
-  --nc-text-color: var(--color);
-  --nc-text-color-dark: var(--blockquote-color);
-  --nc-primary-color: var(--accent);
-  --nc-primary-contrast: var(--logo-color);
+  opacity: 0.5;
 }
-
-.page-foot button > svg {
-    fill: var(--nc-text-color);
-  }
 
 .page-foot a {
     color: inherit;
@@ -799,6 +847,25 @@ header .menu {
       margin-top: 10px;
   }
     }
+
+/* nocomment */
+
+.franklin-content {
+  --nc-background: var(--background);
+  --nc-text-background: var(--embed-background);
+  --nc-text-color: var(--color);
+  --nc-text-color-dark: var(--blockquote-color);
+  --nc-primary-color: var(--accent);
+  --nc-primary-contrast: var(--logo-color);
+}
+
+.franklin-content button > svg {
+    fill: var(--nc-text-color);
+  }
+
+.franklin-content textarea {
+    resize: vertical;
+  }
 
 /* highlight.js */
 
@@ -1055,7 +1122,9 @@ pre code.hljs {
     vertical-align: top;
     padding-right: 8px;
     padding-left: 2px;
+    color: rgba(165,235,236,0.50196);
     color: var(--ln-color);
+    border-right: 1px solid rgba(165,235,236,0.50196);
     border-right: 1px solid var(--ln-color);
   }
 
