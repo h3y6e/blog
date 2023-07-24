@@ -31,10 +31,10 @@
   dependencies:
     "@cloudinary/url-gen" "^1.7.0"
 
-"@cloudinary/url-gen@^1.10.1", "@cloudinary/url-gen@^1.7.0":
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.10.1.tgz#b5b49e03252a90bba17038024f206328482eac96"
-  integrity sha512-6pBmapnL7G231NbNWhKbi+08HcpNASci7M3OmZWaUCQWUfdmo3au27HT3Zqg9NMsisfyer3t7o0RXzPQ4XlmMg==
+"@cloudinary/url-gen@^1.10.2", "@cloudinary/url-gen@^1.7.0":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.10.2.tgz#ac538d01473ba523271ff4a72fca97856d49954d"
+  integrity sha512-0iQcowRGxbRMuWijr3gkWajyrtocXyO5va6b2f5AIuA8K5Utd3IEq17DGR93kpOOLU439JBSjORuWifyphGduA==
   dependencies:
     "@cloudinary/transformation-builder-sdk" "^1.2.7"
 
