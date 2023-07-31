@@ -1,1 +1,1 @@
-var storageKey,storedTheme;storageKey="theme",storedTheme=localStorage.getItem(storageKey)||"dark",document.documentElement.setAttribute("data-theme",storedTheme),localStorage.setItem(storageKey,storedTheme);
+!function(){var t="theme",e=localStorage.getItem(t)||"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem(t,e)}();
