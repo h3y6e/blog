@@ -28,7 +28,7 @@
     "@cloudinary/url-gen": "^1.11.2",
     "@textlint-ja/textlint-rule-no-synonyms": "^1.3.0",
     "chokidar": "^3.5.3",
-    "prettier": "^3.0.1",
+    "prettier": "^3.0.2",
     "sudachi-synonyms-dictionary": "^12.0.0",
     "textlint": "^13.3.3",
     "textlint-filter-rule-allowlist": "^4.0.0",
