@@ -134,6 +134,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://blog.h3y6e.com/posts/podcasts/index.html</loc>
+    <lastmod>2023-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://blog.h3y6e.com/posts/zsh-prezto-ubuntu/index.html</loc>
     <lastmod>2023-09-04</lastmod>
     <changefreq>monthly</changefreq>
