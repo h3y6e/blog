@@ -31,8 +31,8 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
-          BRANCH: staging
-          FOLDER: __site
+          branch: staging
+          folder: __site
 
   publish:
     needs: build-and-deploy
