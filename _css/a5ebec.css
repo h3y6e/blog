@@ -106,62 +106,12 @@ body {
 }
   }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
   margin-top: 30px;
 }
 
-h2 {
-  line-height: 1.5;
-  margin-top: 30px;
-}
-
-h3 {
-  line-height: 1.5;
-  margin-top: 30px;
-}
-
-h4 {
-  line-height: 1.5;
-  margin-top: 30px;
-}
-
-h5 {
-  line-height: 1.5;
-  margin-top: 30px;
-}
-
-h6 {
-  line-height: 1.5;
-  margin-top: 30px;
-}
-
-h1 a {
-    -webkit-text-decoration: none;
-    text-decoration: none;
-  }
-
-h2 a {
-    -webkit-text-decoration: none;
-    text-decoration: none;
-  }
-
-h3 a {
-    -webkit-text-decoration: none;
-    text-decoration: none;
-  }
-
-h4 a {
-    -webkit-text-decoration: none;
-    text-decoration: none;
-  }
-
-h5 a {
-    -webkit-text-decoration: none;
-    text-decoration: none;
-  }
-
-h6 a {
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     -webkit-text-decoration: none;
     text-decoration: none;
   }
