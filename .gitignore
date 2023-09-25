@@ -236,3 +236,6 @@ tags
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,vim,visualstudiocode,linux,julia,node,yarn
+
+# custom
+!.tool-versions

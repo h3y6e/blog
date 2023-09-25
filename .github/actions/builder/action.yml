@@ -1,13 +1,16 @@
 name: Builder
 description:
-  "Build website. Julia 1.8 and Python 3.10 are already installed on
+  "Build website. Julia 1.9 and Python 3.10 are already installed on
   GitHub-hosted runners. Reference:
-  https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md"
+  https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md"
 runs:
   using: composite
   steps:
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v1
+
     - name: Install dependencies
-      run: yarn install --prod --pure-lockfile
+      run: bun install
       shell: bash
 
     - name: Activate and Instantiate
@@ -18,5 +21,5 @@ runs:
       shell: julia --color=yes {0}
 
     - name: Build
-      run: yarn prod
+      run: bun prod
       shell: bash
