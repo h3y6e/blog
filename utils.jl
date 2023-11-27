@@ -1,7 +1,59 @@
 using Dates
 using DataStructures
-using HTTP
 using JSON
+using HTTP
+using Gumbo
+using Cascadia
+
+using HTTP
+using Gumbo
+using Cascadia
+
+getattr(elm::Gumbo.HTMLElement, attr::String) = haskey(elm.attributes, attr) ? elm.attributes[attr] : ""
+
+function getmetadata(url::String)
+    # Initialize the metadata dictionary
+    metadata = Dict(
+        "title" => "",
+        "description" => "",
+        "images" => String[],
+        "sitename" => "",
+        "favicon" => "",
+        "domain" => "",
+        "url" => url,
+    )
+
+    try
+        # Fetch the contents of the URL
+        response = HTTP.get(url)
+        doc = parsehtml(String(response))
+
+        # Extract metadata using selectors
+        title = first(eachmatch(Selector("title"), doc.root))
+        metadata["title"] = nodeText(title)
+
+        description = first(eachmatch(Selector("meta[name='description']"), doc.root))
+        metadata["description"] = getattr(description, "content")
+
+        images = [getattr(elm, "content") for elm in eachmatch(Selector("meta[property='og:image']"), doc.root)]
+        metadata["images"] = isempty(images) ? String[] : images
+
+        sitename = first(eachmatch(Selector("meta[property='og:site_name']"), doc.root))
+        metadata["sitename"] = getattr(sitename, "content")
+
+        favicon = first(eachmatch(Selector("link[rel~='icon']"), doc.root))
+        metadata["favicon"] = getattr(favicon, "href")
+
+        metadata["domain"] = HTTP.URI(url).host
+
+    catch e
+        println("An error occurred while scraping metadata: ", e)
+    end
+
+    println("Scraped metadata: ", metadata)
+
+    return metadata
+end
 
 function headline(title, date, tags)
     tag_page = globvar(:tag_page_path)
@@ -136,8 +188,7 @@ function hfun_tagpage()
 end
 
 function hfun_embed(params)
-    r = HTTP.get("https://jsonlink.io/api/extract?url=$(params[1])")
-    body = JSON.parse(String(r.body))
+    body = getmetadata(params[1])
     try
         title = length(params) == 2 ? params[2] : body["title"]
         return """
@@ -174,5 +225,5 @@ hfun_twitter_intent() = "https://twitter.com/intent/tweet?text=" *
                                        locvar(:fd_full_url))
 
 hfun_elk_intent() = "https://elk.zone/intent/post?text=" *
-                    HTTP.escapeuri("Reading @h3y6e@fedibird.com's " *
+                    HTTP.escapeuri("Reading @h3y6e@social.camph.net's " *
                                    locvar(:fd_full_url))
