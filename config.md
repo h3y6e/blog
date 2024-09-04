@@ -21,8 +21,8 @@ these files might be copied and, if markdown, processed by Franklin which
 you might not want. Indicate directories by ending the name with a `/`.
 -->
 @def ignore = [".vscode/", "theme/", ".node-version", ".imgbotconfig",
-    ".prettierignore", ".prettierrc.yml", ".prh.yml", ".textlintrc.yml",
-    ".tool-versions", "Manifest.toml", "ogimage.mjs", "package.json",
+    ".prettierignore", ".prettierrc.yml", ".prh.yml", ".swcrc", ".textlintrc.yml",
+    ".tool-versions", "bun.lockb", "Manifest.toml", "ogimage.mjs", "package.json",
     "postcss.config.js", "Project.toml", "yarn.lock"]
 
 <!--
