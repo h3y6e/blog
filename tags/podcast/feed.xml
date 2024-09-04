@@ -23,6 +23,25 @@
 
 <item>
   <title>
+    <![CDATA[  2022年に聴いていたPodcast  ]]>
+  </title>
+  <link> https://blog.h3y6e.com/posts/podcasts2022/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/podcasts2022/index.html </guid>
+  <description>
+    <![CDATA[  今年聴いたPodcastで勧めたいやつを雑に紹介する。  ]]>
+  </description>  
+    
+  <pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>heyhoe</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
     <![CDATA[  Podcastことはじめ  ]]>
   </title>
   <link> https://blog.h3y6e.com/posts/getting-started-with-podcasting/index.html </link>
@@ -32,44 +51,6 @@
   </description>  
     
   <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>  
-  
-  
-  <atom:author>
-    <atom:name>heyhoe</atom:name>
-  </atom:author>
-        
-</item>
-
-<item>
-  <title>
-    <![CDATA[  2021年に聴いていたPodcast  ]]>
-  </title>
-  <link> https://blog.h3y6e.com/posts/podcasts2021/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/podcasts2021/index.html </guid>
-  <description>
-    <![CDATA[  今年聴いたPodcastで勧めたいやつを雑に紹介する。  ]]>
-  </description>  
-    
-  <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>  
-  
-  
-  <atom:author>
-    <atom:name>heyhoe</atom:name>
-  </atom:author>
-        
-</item>
-
-<item>
-  <title>
-    <![CDATA[  ITエンジニア志望の学生が聴くべきPodcast  ]]>
-  </title>
-  <link> https://blog.h3y6e.com/posts/podcasts/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/podcasts/index.html </guid>
-  <description>
-    <![CDATA[  おすすめのPodcast番組を紹介して皆んなとPodcastトークがしたい。  ]]>
-  </description>  
-    
-  <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
