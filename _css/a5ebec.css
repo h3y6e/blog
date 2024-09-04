@@ -252,7 +252,7 @@ ol {
   padding: 0;
 }
 
-ul > li, ol > li {
+ul > li,ol > li {
     margin: -0.5rem 0;
     position: relative;
   }
@@ -564,8 +564,7 @@ header .menu {
         width: 100%;
       }
 
-.franklin-content .eqref,
-  .franklin-content .bibref {
+.franklin-content .eqref,.franklin-content .bibref {
     color: #a5ecca;
   }
 
