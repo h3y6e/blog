@@ -23,6 +23,25 @@
 
 <item>
   <title>
+    <![CDATA[  Nostrを用いてblogとmicrobloggingの中間的存在が作れるのでは無いか、という思考と実験  ]]>
+  </title>
+  <link> https://blog.h3y6e.com/posts/comment-on-nostr/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/comment-on-nostr/index.html </guid>
+  <description>
+    <![CDATA[  Comment on Nostrをこのブログに試験的に導入してみる。  ]]>
+  </description>  
+    
+  <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>heyhoe</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
     <![CDATA[  2022年に聴いていたPodcast  ]]>
   </title>
   <link> https://blog.h3y6e.com/posts/podcasts2022/index.html </link>
@@ -70,6 +89,63 @@
   </description>  
     
   <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>heyhoe</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  Navpad 1.0 ビルドログ  ]]>
+  </title>
+  <link> https://blog.h3y6e.com/posts/navpad-10-buildlog/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/navpad-10-buildlog/index.html </guid>
+  <description>
+    <![CDATA[  遊舎工房様より提供していただいたNavpad 1.0のビルドログです。  ]]>
+  </description>  
+    
+  <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>heyhoe</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  2021年に聴いていたPodcast  ]]>
+  </title>
+  <link> https://blog.h3y6e.com/posts/podcasts2021/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/podcasts2021/index.html </guid>
+  <description>
+    <![CDATA[  今年聴いたPodcastで勧めたいやつを雑に紹介する。  ]]>
+  </description>  
+    
+  <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>heyhoe</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  【ポケモンBDSP】自動孵化装置を作って高個体値色違いイーブイを手に入れる&#40;夢を見た&#41;  ]]>
+  </title>
+  <link> https://blog.h3y6e.com/posts/auto-hatching-in-pokemon-bdsp/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/auto-hatching-in-pokemon-bdsp/index.html </guid>
+  <description>
+    <![CDATA[  Pro Micro&#40;Arduino Leonardo互換機&#41;でポケモンBDSP版自動孵化装置を作成する。  ]]>
+  </description>  
+    
+  <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>  
   
   
   <atom:author>

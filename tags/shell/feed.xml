@@ -9,14 +9,14 @@
 
   <channel>
     <title>
-      <![CDATA[  {{fd2rss website_title}}  ]]>
+      <![CDATA[  #a5ebec  ]]>
     </title>
-    <link> {{website_url}} </link>
+    <link> https://blog.h3y6e.com </link>
     <description>
-      <![CDATA[  {{fd2rss website_description}}  ]]>
+      <![CDATA[  へいほぅの殴り書き  ]]>
     </description>
     <atom:link
-      href="{{fd_rss_feed_url}}"
+      href="https://blog.h3y6e.com/feed.xml"
       rel="self"
       type="application/rss+xml" />
 

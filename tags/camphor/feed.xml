@@ -9,14 +9,14 @@
 
   <channel>
     <title>
-      <![CDATA[  {{fd2rss website_title}}  ]]>
+      <![CDATA[  #a5ebec  ]]>
     </title>
-    <link> {{website_url}} </link>
+    <link> https://blog.h3y6e.com </link>
     <description>
-      <![CDATA[  {{fd2rss website_description}}  ]]>
+      <![CDATA[  へいほぅの殴り書き  ]]>
     </description>
     <atom:link
-      href="{{fd_rss_feed_url}}"
+      href="https://blog.h3y6e.com/feed.xml"
       rel="self"
       type="application/rss+xml" />
 
@@ -32,6 +32,25 @@
   </description>  
     
   <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>heyhoe</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  【ポケモンBDSP】自動孵化装置を作って高個体値色違いイーブイを手に入れる&#40;夢を見た&#41;  ]]>
+  </title>
+  <link> https://blog.h3y6e.com/posts/auto-hatching-in-pokemon-bdsp/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/auto-hatching-in-pokemon-bdsp/index.html </guid>
+  <description>
+    <![CDATA[  Pro Micro&#40;Arduino Leonardo互換機&#41;でポケモンBDSP版自動孵化装置を作成する。  ]]>
+  </description>  
+    
+  <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>  
   
   
   <atom:author>

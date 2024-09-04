@@ -9,14 +9,14 @@
 
   <channel>
     <title>
-      <![CDATA[  {{fd2rss website_title}}  ]]>
+      <![CDATA[  #a5ebec  ]]>
     </title>
-    <link> {{website_url}} </link>
+    <link> https://blog.h3y6e.com </link>
     <description>
-      <![CDATA[  {{fd2rss website_description}}  ]]>
+      <![CDATA[  へいほぅの殴り書き  ]]>
     </description>
     <atom:link
-      href="{{fd_rss_feed_url}}"
+      href="https://blog.h3y6e.com/feed.xml"
       rel="self"
       type="application/rss+xml" />
 
@@ -51,6 +51,25 @@
   </description>  
     
   <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>heyhoe</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  2021年に聴いていたPodcast  ]]>
+  </title>
+  <link> https://blog.h3y6e.com/posts/podcasts2021/index.html </link>
+  <guid> https://blog.h3y6e.com/posts/podcasts2021/index.html </guid>
+  <description>
+    <![CDATA[  今年聴いたPodcastで勧めたいやつを雑に紹介する。  ]]>
+  </description>  
+    
+  <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
