@@ -5,5 +5,8 @@
   "textlint.configPath": ".textlintrc.yml",
   "files.watcherExclude": {
     "**/target": true
-  }
+  },
+  "cSpell.words": [
+    "Firge"
+  ]
 }
