@@ -26,15 +26,15 @@ or
 
 ```sh
 $ julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate();'
-$ yarn install
-$ yarn dev:franklin
+$ bun i
+$ bun dev:franklin
 ```
 
 ### Style（PostCSS）
 
 ```sh
-$ yarn install
-$ yarn dev:css
+$ bun i
+$ bun dev:css
 ```
 
 ## LICENSE
