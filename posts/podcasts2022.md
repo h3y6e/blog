@@ -9,10 +9,12 @@ rss_description = "今年聴いたPodcastで勧めたいやつを雑に紹介す
 <script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
 ~~~
 
-毎年恒例の今年聴いたPodcastでお勧めのものを紹介する記事。
+毎年恒例の今年聴いたPodcastでお勧めのものを紹介する
 
 - [2020](/posts/podcasts.md)
 - [2021](/posts/podcasts2021.md)
+
+(それぞれ一言書く予定だったが途中で力尽きた)
 
 ## ゆるふわPodcast
 
@@ -84,5 +86,3 @@ rss_description = "今年聴いたPodcastで勧めたいやつを雑に紹介す
 ~~~
 <div style="max-width: 765px;"><div style="left: 0; width: 100%; height: 102px; position: relative;"><iframe src="https://anchor.fm/cluster-corp/embed" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no"></iframe></div></div>
 ~~~
-
-## 総括
