@@ -174,5 +174,5 @@ hfun_twitter_intent() = "https://twitter.com/intent/tweet?text=" *
                                        locvar(:fd_full_url))
 
 hfun_elk_intent() = "https://elk.zone/intent/post?text=" *
-                    HTTP.escapeuri("Reading @h3y6e@fedibird.com's " *
+                    HTTP.escapeuri("Reading @h3y6e@social.camph.net's " *
                                    locvar(:fd_full_url))
