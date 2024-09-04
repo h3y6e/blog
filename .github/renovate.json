@@ -1,12 +1,22 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
-    ":automergePatch",
+    "config:best-practices",
     ":disableRateLimiting",
     ":label(renovate)",
     ":reviewer(h3y6e)",
     ":timezone(Asia/Tokyo)",
-    "schedule:nonOfficeHours"
+    "schedule:monthly"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "asdf"
+      ],
+      "matchPackageNames": [
+        "julia"
+      ],
+      "enabled": false
+    }
   ]
 }
