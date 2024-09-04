@@ -142,7 +142,7 @@ RustyKeys本体の組み立てを行います。
 以下の3つを買っておけばとりあえずルブは出来ます。使用するキースイッチがリニア軸でない場合は[Tribosys 3204](https://shop.yushakobo.jp/products/lubricants?_pos=1&_sid=b3d9bc2ba&_ss=r&variant=37665260961953)が汎用的でお勧めです。
 
 {{ embed https://shop.yushakobo.jp/products/kbdfans-lube-tools-collection }}
-{{ embed https://shop.yushakobo.jp/products/kbdfans-x-ai03-2-in-1-%e3%82%a2%e3%83%ab%e3%83%9f%e3%83%8b%e3%82%a6%e3%83%a0%e3%82%b9%e3%82%a4%e3%83%83%e3%83%81%e3%82%aa%e3%83%bc%e3%83%97%e3%83%8a%e3%83%bc }}
+{{ embed https://shop.yushakobo.jp/products/3278 }}
 {{ embed https://shop.yushakobo.jp/products/lubricants }}
 
 

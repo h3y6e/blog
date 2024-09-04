@@ -88,7 +88,9 @@ VR/AR業界に関する毎週の動向について、その紹介と解説を音
 
 単純に僕はAR/VRガジェットが好きなのでそういう話が聴けるだけでも楽しいのですが、教授とのミーティング時にここで得た最新情報を話して盛り上がることが出来るので良いです。
 
-{{ embed https://www.moguravr.com/moguradio-2/ }}
+~~~
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/6qarRfTFNB1waILnnTVYKo" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+~~~
 
 ## Podcastで企業を知る
 企業がオウンドメディアとして配信しているものです。\\

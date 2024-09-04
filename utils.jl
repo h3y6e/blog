@@ -174,7 +174,8 @@ function hfun_embed(params)
         </div>
         """
     catch
-        throw("keys not found for $(params[1])")
+        print("$(params[1]) not found")
+        return ""
     end
 end
 
