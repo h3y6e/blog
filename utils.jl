@@ -1,6 +1,8 @@
 using Dates
 using DataStructures
 using HTTP
+using Gumbo
+using Cascadia
 using JSON
 
 function headline(title, date, tags)
@@ -136,15 +138,35 @@ function hfun_tagpage()
 end
 
 function hfun_embed(params)
-    r = HTTP.get("https://jsonlink.io/api/extract?url=$(params[1])")
-    body = JSON.parse(String(r.body))
     try
-        title = length(params) == 2 ? params[2] : body["title"]
+        url = params[1]
+        r = HTTP.get(url)
+        html = parsehtml(String(r.body))
+
+        title = Cascadia.matchFirst(Selector("title"), html.root)
+        title = title === nothing ? "" : nodeText(title)
+
+        description = Cascadia.matchFirst(Selector("meta[name='description']"), html.root)
+        description = description === nothing ? "" : description.attributes["content"]
+
+        image = Cascadia.matchFirst(Selector("meta[property='og:image']"), html.root)
+        image = image === nothing ? "" : image.attributes["content"]
+
+        domain = match(r"^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)", url).captures[1]
+
+        body = Dict(
+            "title" => title,
+            "description" => description,
+            "images" => [image],
+            "domain" => domain,
+            "url" => url
+        )
+
         return """
         <div class="embed" ontouchstart="">
             <img src="$(body["images"][1])" alt="$(body["description"])" decoding="async" loading="lazy">
             <div class="embed-content">
-                <b>$title</b>
+                <b>$(body["title"])</b>
                 <p>$(body["description"])</p>
                 <div class="domain">$(body["domain"])</div>
             </div>
