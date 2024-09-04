@@ -8,15 +8,7 @@
     ":timezone(Asia/Tokyo)",
     "schedule:monthly"
   ],
-  "packageRules": [
-    {
-      "matchManagers": [
-        "asdf"
-      ],
-      "matchPackageNames": [
-        "julia"
-      ],
-      "enabled": false
-    }
+  "ignoreDeps": [
+    "julia"
   ]
 }
