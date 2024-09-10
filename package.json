@@ -1,5 +1,6 @@
 {
   "name": "blog",
+  "type": "module",
   "description": "heyhoe's blog",
   "repository": "https://github.com/h3y6e/blog",
   "author": "heyhoe",
@@ -11,18 +12,19 @@
     "not dead"
   ],
   "scripts": {
-    "dev": "run-p dev:*",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
     "prod": "run-s prod:*",
     "dev:css": "postcss theme/css/a5ebec.pcss --dir _css --ext css -w",
     "prod:css": "postcss theme/css/a5ebec.pcss --dir _css --ext css --no-map",
     "dev:swc": "swc theme/scripts/*.js -d _libs -w",
     "prod:swc": "swc theme/scripts/*.js -d _libs",
-    "dev:franklin": "julia --project=. -O0 -e 'using Franklin;serve(clear=true, host=\"0.0.0.0\")'",
-    "prod:franklin": "julia --project=. -e 'using Franklin;optimize()'",
     "format": "prettier --write . -u",
     "lint": "textlint posts/*.md",
     "lint:fix": "textlint --fix posts/*.md",
-    "ogimage": "node ogimage.mjs"
+    "ogimage": "bun ogimage.mjs"
   },
   "devDependencies": {
     "@cloudinary/url-gen": "1.20.0",
@@ -45,6 +47,12 @@
     "postcss-cli": "^11.0.0",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-import": "^16.0.0",
-    "postcss-preset-env": "^10.0.0"
+    "postcss-preset-env": "^10.0.0",
+    "@astrojs/mdx": "^3.1.5",
+    "@astrojs/rss": "^4.0.7",
+    "@astrojs/sitemap": "^3.1.6",
+    "astro": "^4.15.4",
+    "@astrojs/check": "^0.9.3",
+    "typescript": "^5.6.2"
   }
 }
