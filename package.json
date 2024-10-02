@@ -27,7 +27,7 @@
   "devDependencies": {
     "@cloudinary/url-gen": "1.21.0",
     "@textlint-ja/textlint-rule-no-synonyms": "1.3.0",
-    "chokidar": "3.6.0",
+    "chokidar": "4.0.1",
     "prettier": "3.3.3",
     "sudachi-synonyms-dictionary": "14.0.0",
     "textlint": "14.2.0",
