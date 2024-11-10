@@ -35,5 +35,5 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "Update TOC"
+          git commit -m "Update backlinks"
           git push "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git"

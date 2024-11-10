@@ -32,11 +32,11 @@ done
 update_backlink() {
   local file=$1
   if grep -q "<!-- backlink:start -->" "$file"; then
-    awk '
+    awk -v tmp="$BACKLINK_TMP_FILE" '
     BEGIN { printing = 1 }
     /<!-- backlink:start -->/ {
       print
-      system("cat $BACKLINK_TMP_FILE")
+      system("cat " tmp)
       printing = 0
       next
     }
