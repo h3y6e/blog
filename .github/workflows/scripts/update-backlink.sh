@@ -22,11 +22,22 @@ if [ ! -f "$SIDEBAR_FILE" ]; then
   echo "<!-- backlink:end -->" >> "$SIDEBAR_FILE"
 fi
 
-echo "" > "$BACKLINK_TMP_FILE"
+declare -A file_dates
+
 for file in *.md; do
   if [ "$file" != "$HOME_FILE" ] && [ "$file" != "$SIDEBAR_FILE" ]; then
-    echo "* [[${file%.md}]]" >> "$BACKLINK_TMP_FILE"
+    date_line=$(head -n 1 "$file")
+    if [[ $date_line =~ date:\ ([0-9]{4}-[0-9]{2}-[0-9]{2}) ]]; then
+      file_dates[$file]="${BASH_REMATCH[1]}"
+    fi
   fi
+done
+
+echo "" > "$BACKLINK_TMP_FILE"
+for file in $(for k in "${!file_dates[@]}"; do
+  echo "$k ${file_dates[$k]}"
+done | sort -k2,2r | awk '{print $1}'); do
+  echo "* [[${file%.md}]]" >> "$BACKLINK_TMP_FILE"
 done
 
 update_backlink() {
