@@ -34,9 +34,15 @@ for file in *.md; do
 done
 
 echo "" > "$BACKLINK_TMP_FILE"
+current_year=""
 for file in $(for k in "${!file_dates[@]}"; do
   echo "$k ${file_dates[$k]}"
 done | sort -k2,2r | awk '{print $1}'); do
+  year=${file_dates[$file]:0:4}
+  if [ "$year" != "$current_year" ]; then
+    echo -e "\n## $year" >> "$BACKLINK_TMP_FILE"
+    current_year=$year
+  fi
   echo "* [[${file%.md}]]" >> "$BACKLINK_TMP_FILE"
 done
 
