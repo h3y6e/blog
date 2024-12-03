@@ -27,7 +27,7 @@ jobs:
         run: bun prod
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@920cbb300dcd3f0568dbc42700c61e2fd9e6139c # v4.6.4
+        uses: JamesIves/github-pages-deploy-action@15de0f09300eea763baee31dff6c6184995c5f6a # v4.7.2
         with:
           branch: gh-pages
           folder: __site
