@@ -1,4 +1,4 @@
-Sitemap: https://blog.h3y6e.com/sitemap.xml
+Sitemap: https://h3y6e.github.io/blog-spikey/sitemap.xml
 
 User-agent: *
 Disallow:

@@ -11,12 +11,12 @@
     <title>
       <![CDATA[  #a5ebec  ]]>
     </title>
-    <link> https://blog.h3y6e.com </link>
+    <link> https://h3y6e.github.io/blog-spikey </link>
     <description>
       <![CDATA[  へいほぅの殴り書き  ]]>
     </description>
     <atom:link
-      href="https://blog.h3y6e.com/feed.xml"
+      href="https://h3y6e.github.io/blog-spikey/feed.xml"
       rel="self"
       type="application/rss+xml" />
 
@@ -25,8 +25,8 @@
   <title>
     <![CDATA[  誰得なAtomのSyntax themeを作った  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/light-owl-syntax-theme-for-atom/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/light-owl-syntax-theme-for-atom/index.html </guid>
+  <link> https://h3y6e.github.io/blog-spikey/posts/light-owl-syntax-theme-for-atom/index.html </link>
+  <guid> https://h3y6e.github.io/blog-spikey/posts/light-owl-syntax-theme-for-atom/index.html </guid>
   <description>
     <![CDATA[  Atomは好きですか？ライトテーマは好きですか？Juliaは好きですか？  ]]>
   </description>  

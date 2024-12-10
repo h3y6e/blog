@@ -11,12 +11,12 @@
     <title>
       <![CDATA[  #a5ebec  ]]>
     </title>
-    <link> https://blog.h3y6e.com </link>
+    <link> https://h3y6e.github.io/blog-spikey </link>
     <description>
       <![CDATA[  へいほぅの殴り書き  ]]>
     </description>
     <atom:link
-      href="https://blog.h3y6e.com/feed.xml"
+      href="https://h3y6e.github.io/blog-spikey/feed.xml"
       rel="self"
       type="application/rss+xml" />
 
@@ -25,8 +25,8 @@
   <title>
     <![CDATA[  &#91;論文読み&#93; How Do Humans Sketch Objects?   ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/how-do-humans-sketch-objects/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/how-do-humans-sketch-objects/index.html </guid>
+  <link> https://h3y6e.github.io/blog-spikey/posts/how-do-humans-sketch-objects/index.html </link>
+  <guid> https://h3y6e.github.io/blog-spikey/posts/how-do-humans-sketch-objects/index.html </guid>
   <description>
     <![CDATA[  人間はどのように物体をスケッチするか  ]]>
   </description>  
@@ -44,8 +44,8 @@
   <title>
     <![CDATA[  &#91;論文読み&#93; Shape from Shading through Shape Evolution  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/shape-from-shading-through-shape-evolution/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/shape-from-shading-through-shape-evolution/index.html </guid>
+  <link> https://h3y6e.github.io/blog-spikey/posts/shape-from-shading-through-shape-evolution/index.html </link>
+  <guid> https://h3y6e.github.io/blog-spikey/posts/shape-from-shading-through-shape-evolution/index.html </guid>
   <description>
     <![CDATA[  論文読み : 形状進化による3Dデータを用いたShape-from-Shading  ]]>
   </description>  
@@ -63,8 +63,8 @@
   <title>
     <![CDATA[  &#91;論文読み&#93; Neural Inverse Rendering of an Indoor Scene From a Single Image  ]]>
   </title>
-  <link> https://blog.h3y6e.com/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/index.html </link>
-  <guid> https://blog.h3y6e.com/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/index.html </guid>
+  <link> https://h3y6e.github.io/blog-spikey/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/index.html </link>
+  <guid> https://h3y6e.github.io/blog-spikey/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/index.html </guid>
   <description>
     <![CDATA[  論文読み：単一画像からの屋内シーンのニューラルインバースレンダリング  ]]>
   </description>  
