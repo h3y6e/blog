@@ -4,8 +4,6 @@ heyhoe's blog.
 
 [![Production](https://github.com/h3y6e/blog/workflows/Production/badge.svg)](https://github.com/h3y6e/blog/actions?query=workflow%3A%22Production%22)
 
-URL: https://blog.h3y6e.com
-
 ## Dev
 
 ### Franklin.jl
