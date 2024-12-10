@@ -155,4 +155,4 @@ chezmoi execute-template "{{ .chezmoi.os }}/{{ .chezmoi.arch }}" # templateのte
 Launchpadから起動する。
 
 ## ssh
-[ssh keys](/ssh-keys)
+[ssh keys](/posts/ssh-keys)
