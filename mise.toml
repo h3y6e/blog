@@ -2,6 +2,9 @@
 bun = "1.2.16"
 julia = "1.11.5"
 
+[env]
+_.path = ["{{config_root}}/node_modules/.bin"]
+
 [tasks."dev:franklin"]
 description = "Start Franklin.jl development server"
 run = "julia --project=. -O0 -e 'using Franklin;serve(clear=true, host=\"0.0.0.0\")'"
