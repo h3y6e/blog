@@ -1,4 +1,4 @@
 {
-    "schedule": "daily",
-    "aggressiveCompression": "true"
+  "schedule": "daily",
+  "aggressiveCompression": "true"
 }

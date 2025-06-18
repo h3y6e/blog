@@ -6,7 +6,5 @@
   "files.watcherExclude": {
     "**/target": true
   },
-  "cSpell.words": [
-    "Firge"
-  ]
+  "cSpell.words": ["Firge"]
 }

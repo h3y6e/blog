@@ -14,7 +14,7 @@ rss_description = "今年聴いたPodcastで勧めたいやつを雑に紹介す
 - [2020](/posts/podcasts.md)
 - [2021](/posts/podcasts2021.md)
 
-(それぞれ一言書く予定だったが途中で力尽きた)
+（それぞれ一言書く予定だったが途中で力尽きた）
 
 ## ゆるふわPodcast
 
