@@ -21,7 +21,7 @@ $$
  - $v_{i,j}$ : $\lambda_i(A)$ に対する固有ベクトル $v_i$ の $j$ 番目の要素
  - $M_j$ : $A$ から第 $j$ 行と第 $j$ 列を除去して得られた主小行列
 
-この関係式により、固有値（と主小行列固有値）から固有ベクトル（の成分の二乗ノルム）を計算する事が出来る。
+この関係式により、固有値（と主小行列固有値）から固有ベクトル（の成分の二乗ノルム）を計算できる。
 
 ## 実行環境
 ```julia
@@ -61,7 +61,7 @@ printarr(A)
 ```
 
 ## $A$ の固有値、 固有ベクトルを求める
-固有値及び固有ベクトルはStandard Libraryである [LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) の `eigvals` 関数と `eigvecs` 関数で求められる。また、`eigen` 関数でも取得することが出来る。
+固有値及び固有ベクトルはStandard Libraryである [LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) の `eigvals` 関数と `eigvecs` 関数で求められる。また、`eigen` 関数でも取得できる。
 ```julia
 println("固有値(eigvals)")
 λ = eigvals(A)
@@ -103,7 +103,7 @@ A[1:N .!= j, 1:N .!= j]
 ```julia
 A[setdiff(1:N, j), setdiff(1:N, j)]
 ```
-$M_j$ を表現出来る。
+$M_j$ を表現できる。
 ```julia
 M = zeros(Complex{Float64}, N-1, N-1, N)
 for j = 1:N

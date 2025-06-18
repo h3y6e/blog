@@ -29,7 +29,7 @@ rss_description = "セキュリティ・キャンプ全国大会2019に参加し
 ## 何故Cトラックを選んだか
 
 * 初学に近いセキュリティについて広く学びたかったから
-* 選択コースを選べば必修講義以外はどのトラックの講義でも選ぶことが出来るから
+* 選択コースを選べば必修講義以外はどのトラックの講義でも選ぶことができるから
 * 応募課題が自分にとって書きやすかったから
 
 言語自作も興味があったのですが、院試勉強と被って事前課題が中途半端になるのを避けたかったので諦めました。また自分でやってみたいと思います。
@@ -38,7 +38,7 @@ rss_description = "セキュリティ・キャンプ全国大会2019に参加し
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark" data-link-color="#a5ebec"><p lang="ja" dir="ltr">腐っても電電徒なのでロボットアームで制御システムをやっている <a href="https://twitter.com/hashtag/seccamp?src=hash&amp;ref_src=twsrc%5Etfw">#seccamp</a> <a href="https://t.co/s4pI7RE6CN">pic.twitter.com/s4pI7RE6CN</a></p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1161574936743297026?ref_src=twsrc%5Etfw">August 14, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~
-実際に現場で使われている機器を使わせていただくなど写真に取れないものや口外出来ないものが多く、自分一人では出来ないであろう学びを行う事が出来ました。大変貴重な経験になりました。
+実際に現場で使われている機器を使わせていただくなど写真に取れないものや口外できないものが多く、自分一人ではできないであろう学びを行う事ができました。大変貴重な経験になりました。
 
 ## 名刺バトル
 
@@ -57,7 +57,7 @@ AR名刺の問題点は把握してますが修正はn年後になると思い�
 僕はJuliaという言語が好きなのですが、どこかのコミュニティに参加したりOSS開発に参加したりすることは無かったのでもっと深く関わりたいと思い、「Juliaのコミュニティを活性化させる」を目標としました。
 低レイヤーのJulianがいて色々勉強になりました。Julianは概念じゃなかったです。
 
-残念ながらセキュリティ・キャンプ関係者やスポンサー企業の方々の中にJuliaユーザーはいなかったので、言語コミュニティに参加されている方や言語を自作している方など、沢山の方に\strike{Juliaへの愛を語る}お話を伺うことが出来ました。
+残念ながらセキュリティ・キャンプ関係者やスポンサー企業の方々の中にJuliaユーザーはいなかったので、言語コミュニティに参加されている方や言語を自作している方など、沢山の方に\strike{Juliaへの愛を語る}お話を伺うことができました。
 ~~~
 <blockquote class="twitter-tweet" data-theme="dark" data-link-color="#a5ebec"><p lang="ja" dir="ltr">Turing Complete FMで存在を知ったhikaliumさんにお会いできた上に僕の拙い自然言語でJuliaへの愛を語らせていただきアドバイスまで頂けました ありがとうございました <a href="https://twitter.com/hashtag/seccamp?src=hash&amp;ref_src=twsrc%5Etfw">#seccamp</a> <a href="https://t.co/aoNHuCxnLR">pic.twitter.com/aoNHuCxnLR</a></p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1162010767442399234?ref_src=twsrc%5Etfw">August 15, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ~~~

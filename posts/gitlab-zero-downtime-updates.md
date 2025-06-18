@@ -7,7 +7,7 @@ rss_description = "重い腰を上げてGitLabをアップデートした。そ�
 
 バイト先でGitLabをGCP上にホスティングしているのだが、GitLabのアップデートが暫くされていなかったので、やった。
 
-ついでにZero downtime updates（GitLabインスタンスをオフラインにすることなくGitLabを新しいバージョンにアップグレード出来る方法）に対応したシェルスクリプトを書いた。
+ついでにZero downtime updates（GitLabインスタンスをオフラインにすることなくGitLabを新しいバージョンにアップグレードできる方法）に対応したシェルスクリプトを書いた。
 
 ## 新しいGPG Keyの入手
 

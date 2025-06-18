@@ -31,7 +31,7 @@ rss_description = "WindowsのTerminal探し。「日本語入力対応、タブ�
  - タブ機能あり
 
 #### cons
- - 入力切り替え出来ない
+ - 入力切り替えできない
 
 
 ## Terminus
@@ -54,7 +54,7 @@ rss_description = "WindowsのTerminal探し。「日本語入力対応、タブ�
 
 #### pros
  - デザインよい
- - プラグインでカスタマイズ出来る
+ - プラグインでカスタマイズできる
 
 #### cons
  - electron製なのでそれなりに遅い

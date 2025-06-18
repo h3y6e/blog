@@ -28,7 +28,7 @@ Podcastのセットアップについてまだ見識が浅く手探りな状態�
 
 ## 収録時
 #### 収録前に気を付けること
-- **マイクは出来るだけ良いもの & 有線接続**のものを使う。
+- **マイクはできるだけ良いもの & 有線接続**のものを使う。
 - **未圧縮リニアPCMで収録・保存**するのがベターだが、記憶領域を大量に消費するのでストレージと相談する。macOSのQuickTime Playerでは品質を「最高」に設定するとそれになる。
 - **部屋の音の反響を減らす**。布団や衣服などの音を吸収する物で自分を囲むだけでもかなり改善する。
 
@@ -54,7 +54,7 @@ Podcastのセットアップについてまだ見識が浅く手探りな状態�
 - **Podcast収録用のサービスを用いる**。[Zencastr](https://zencastr.com), [Riverside](https://riverside.fm), [Cleanfeed](https://cleanfeed.net), [Podcastle](https://podcastle.ai) など。
 
 ## 編集時
-[Auphonic](https://auphonic.com/engine/upload/)で**レベラー、ノーマライズ、ノイズ低減、ハム音除去**などが出来る。
+[Auphonic](https://auphonic.com/engine/upload/)で**レベラー、ノーマライズ、ノイズ低減、ハム音除去**などができる。
 
 Web版とデスクトップ版がある（モバイル版もある）。\\
 Web版はサブスクリプション+ワンタイムクレジット制で、無料枠は月2時間。詳細は[こちら](https://auphonic.com/pricing)。
@@ -70,13 +70,13 @@ Web版はサブスクリプション+ワンタイムクレジット制で、無�
 [GarageBand](https://www.apple.com/jp/mac/garageband/), [Audacity](https://www.audacityteam.org)などを使い、**不要な間や不快なノイズ、失言などを削除する**。
 余りに編集しすぎると不自然になるので程々にする。
 無言部分は1秒程度であれば別にそのままにしても良いと思う。
-[Logic Pro](https://www.apple.com/jp/logic-pro/)等の有料ソフトウェアを用いると無音部分の自動カットなどが出来る。
+[Logic Pro](https://www.apple.com/jp/logic-pro/)等の有料ソフトウェアを用いると無音部分の自動カットなどができる。
 
 編集については[Rebuild](https://rebuild.fm)の宮川さんが執筆された[Podcasting Setup 2020#Post-Production](https://weblog.bulknews.net/podcasting-setup-2020-db90240423d7#:~:text=laptop%20built%2Din%29.-,Post%2DProduction,-First%2C%20I%20run)や[Podcasting Guide 2017#ポストプロダクション編](https://weblog.bulknews.net/podcasting-guide-2017-2e88531a367d#:~:text=%E3%81%8C%E9%87%8D%E8%A6%81%EF%BC%89%E3%80%82-,%E3%83%9D%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E7%B7%A8,-%E5%8F%8E%E9%8C%B2%E3%81%8C%E7%B5%82)が大変参考になる。
 
 ## 公開時
 様々な方法があるが、現在CAMPHOR-では[Anchor](https://anchor.fm)というSpotifyが提供するPodcast制作サービスを用いてホスティングや各種プラットフォームへの配信をしている。\\
-アカウント作成時の注意点として、モバイル版Anchorから作成した場合のみSocial login（Single Sign-On）を選択出来るが、**一度決定したログイン方法の変更は現状出来ない**。パスワードリセットから通常のパスワード認証に変更は出来ると思う。\\
+アカウント作成時の注意点として、モバイル版Anchorから作成した場合のみSocial login（Single Sign-On）を選択できるが、**一度決定したログイン方法の変更は現状できない**。パスワードリセットから通常のパスワード認証に変更はできると思う。\\
 CAMPHOR-ではSign in with Twitterで登録したものの、何故か最近その選択肢が削除された為、アカウントを作り直すことになった[^パスワード認証]。
 
 新しいエピソードを作成し、編集した音源をアップロードする。
@@ -85,10 +85,10 @@ CAMPHOR-ではSign in with Twitterで登録したものの、何故か最近そ�
 [^パスワード認証]: Eメールとパスワードによる認証にすればいいのでは?と思われるかもしれないが、Anchorは現状ワンタイムパスワード等の二要素認証に対応していない為、二要素認証を設定した別サービスのアカウントでSSOを行いたかった。
 
 ### スマートBGMの追加
-BGMを追加することでハム音やホワイトノイズを誤魔化すことが出来る。\\
+BGMを追加することでハム音やホワイトノイズを誤魔化すことができる。\\
 ただし、以下の点から本来なら**付けないことが望ましい**。
  - Podcastは人により再生速度が違う（例えば、筆者は1.2倍や1.25倍で聴くことが多い）
- - BGMが気になって会話に集中出来なくなる可能性がある
+ - BGMが気になって会話に集中できなくなる可能性がある
  - フリー音源である以上、他のPodcast番組などとBGMが被る
 
 
@@ -158,7 +158,7 @@ Editorial Notes:</p>
 ![](/img/2022-12-09/spotify-mobile.jpg)
 
 #### Amazon Music （web）
-- `p` タグによる行間開けが出来ないため、`br` タグで調整している
+- `p` タグによる行間開けができないため、`br` タグで調整している
 ![](/img/2022-12-09/amazon-web.png)
 
 #### Amazon Music （mobile/iOS）
@@ -226,7 +226,7 @@ Editorial Notes:</p>
 カバーアートは**3000×3000pxのJPEG**でCDN（Amazon CloudFront）に保存されるようなので、アップロード前に[Squoosh](https://squoosh.app)などを用いて圧縮しつつサイズを合わせておくと良い。
 
 ### 各種プラットフォーム
-CAMPHOR-では2022/12/9時点で以下のプラットフォームで購読出来るようにしている。\\
+CAMPHOR-では2022/12/9時点で以下のプラットフォームで購読できるようにしている。\\
 これらを選んだ基準は明確には無いが、Anchorに紐付けられるプラットフォームで日本語対応しているものが多い。
 Moon FMはAnchorと紐付けられるプラットフォームでは無いものの、アプリのデザインが個人的に好きなので対応した。
 - [RSS（Anchor)](https://anchor.fm/s/d065c950/podcast/rss)

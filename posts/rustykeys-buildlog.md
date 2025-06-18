@@ -56,7 +56,7 @@ cover = "/img/2022-05-02/rustykeys.jpg"
 ## 自分で用意するもの
  - Cherry MX互換キースイッチ: 6個
 今回は[Kailh BOX Silent Pink](https://shop.yushakobo.jp/products/kailh-box-silent-switch)を用いました。
-また、キースイッチをはんだ付け無しで取り外し（ソケット化）出来るようにする[Mill-Max Socket](https://shop.yushakobo.jp/products/a0500mm?variant=37665260634273)が余っていたのでこれを使いました。
+また、キースイッチをはんだ付け無しで取り外し（ソケット化）できるようにする[Mill-Max Socket](https://shop.yushakobo.jp/products/a0500mm?variant=37665260634273)が余っていたのでこれを使いました。
 
 ![キースイッチ](/img/2022-05-02/keyswitches.jpg)
 
@@ -134,12 +134,12 @@ RustyKeys本体の組み立てを行います。
 今回用いる[Kailh BOX Silent Pink](https://shop.yushakobo.jp/products/kailh-box-silent-switch)は押下圧が軽めで軸のぐらつきが少ない静音リニア軸です。
 値段もそこまで高く無いので、安定して静音なキースイッチを求めている方にはお勧めです。
 
-そのままでも静かなのですが、ルブることで更にノイズを軽減することが出来るので、やっておきます。
+そのままでも静かなのですが、ルブることで更にノイズを軽減できるので、やっておきます。
 使用する潤滑剤は、リニアMXスイッチ用である[Krytox GPL 205 G0](https://shop.yushakobo.jp/products/lubricants?_pos=1&_sid=b3d9bc2ba&_ss=r&variant=37665260994721)です。
 
 ![ルブ](/img/2022-05-02/lube.jpg)
 
-以下の3つを買っておけばとりあえずルブは出来ます。使用するキースイッチがリニア軸でない場合は[Tribosys 3204](https://shop.yushakobo.jp/products/lubricants?_pos=1&_sid=b3d9bc2ba&_ss=r&variant=37665260961953)が汎用的でお勧めです。
+以下の3つを買っておけばとりあえずルブはできます。使用するキースイッチがリニア軸でない場合は[Tribosys 3204](https://shop.yushakobo.jp/products/lubricants?_pos=1&_sid=b3d9bc2ba&_ss=r&variant=37665260961953)が汎用的でお勧めです。
 
 {{ embed https://shop.yushakobo.jp/products/kbdfans-lube-tools-collection }}
 {{ embed https://shop.yushakobo.jp/products/3278 }}
@@ -209,7 +209,7 @@ Raspberry Pi Picoのはんだ付けを行います。本キットでは端面ス
 
 現在、多くの自作キーボードキットは[QMK Firmware](https://github.com/qmk/qmk_firmware)というファームウェアに対応しています。
 他に有名な設定ツールとして、QMK Firmware派生の[VIA](https://www.caniusevia.com), [Remap](https://remap-keys.app), [Vial](https://get.vial.today)などがあります。
-Raspberry Pi PicoのようなRP2040チップであれば、CircuitPythonで記述出来る[kmk_firmware](https://github.com/KMKfw/kmk_firmware)やPicoRubyで記述出来る[prk_firmware](https://github.com/picoruby/prk_firmware)などを使えばキーボードとして動作します。
+Raspberry Pi PicoのようなRP2040チップであれば、CircuitPythonで記述できる[kmk_firmware](https://github.com/KMKfw/kmk_firmware)やPicoRubyで記述できる[prk_firmware](https://github.com/picoruby/prk_firmware)などを使えばキーボードとして動作します。
 
 RustyKeysキットではこれらの既存のファームウェアを用いることなく、組み込みRustで開発します！\\
 2022/5/2現在、[**作者様の名前が入力可能な最高のキーボード**](https://rusty-keys.koba789.com/firmware/first_keyboard)まではビルドガイドに含まれていますのでそこまでやってみましょう。
@@ -289,13 +289,13 @@ Hello, world!
 (HOST) INFO  device halted without error
 ```
 
-表示されたことが確認出来ました。[`probe-run`](https://github.com/knurling-rs/probe-run) 凄い...。
+表示されたことが確認できました。[`probe-run`](https://github.com/knurling-rs/probe-run) 凄い...。
 動作を見ると分かりますが、書き込みはprobe（デバッグアダプタ）を通して行われているようですね。
 
 #### firmware/keyboard
 USBキーボードのサンプルコードです。
 
-[`src/bin/sample.rs`](https://github.com/KOBA789/rusty-keys/blob/main/firmware/keyboard/src/bin/simple.rs)に `k` `o` `b` `a` `7` `8` `9` や修飾キーなどが入力出来るようになるサンプルコードがあります。
+[`src/bin/sample.rs`](https://github.com/KOBA789/rusty-keys/blob/main/firmware/keyboard/src/bin/simple.rs)に `k` `o` `b` `a` `7` `8` `9` や修飾キーなどが入力できるようになるサンプルコードがあります。
 
 ```sh
 ❯ cd ..

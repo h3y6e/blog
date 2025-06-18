@@ -56,14 +56,14 @@ jobs:
 最終行の `${{ secrets.BUILD_HOOKS_URL }}` はGitHubの `Settings > Secrets` に設定した変数を呼び出している。ここに先程Netlifyで生成したBuild Hooks URLを追加すればよい。
 ![Secrets](/img/2019-12-07/secrets_buildhooksurl.png)
 
-これで完成。ちょうど1時間毎に実行されていることが確認出来る。
+これで完成。ちょうど1時間毎に実行されていることが確認できる。
 ![Scheduler](/img/2019-12-07/scheduler_workflows.png)
 
 ## 利点
 #### gitが汚染されない
 空commitをmasterにpushすればNetlifyが自動buildしてくれるが、これだとlogが汚れるので `curl` を叩いたほうが綺麗。
-#### build頻度が分単位で決定出来る
-`schedule` を使って [POSIX cron構文](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) で記述出来る。
+#### build頻度が分単位で決定できる
+`schedule` を使って [POSIX cron構文](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) で記述できる。
 #### （ほぼ）無料
 Publicリポジトリなら無料、Privateでもこの程度の使用なら無料。（Freeで2,000分/月）
 #### 簡単

@@ -52,7 +52,7 @@ Nostrでの雑な投稿。: [note1u3n78mf3efdqswl289qqrm635y8ym65fk89ktruwl6e4nz
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Starting February 9, we will no longer support free access to the Twitter API, both v2 and v1.1. A paid basic tier will be available instead 🧵</p>&mdash; Twitter Dev (@TwitterDev) <a href="https://twitter.com/TwitterDev/status/1621026986784337922?ref_src=twsrc%5Etfw">February 2, 2023</a></blockquote>
 ~~~
 
-blogを雑記として利用出来ないのはテキストを書くことが特段嫌いだからというわけではなく、blogという形式が自分に合っていないからではないかと思っている。
+blogを雑記として利用できないのはテキストを書くことが特段嫌いだからというわけではなく、blogという形式が自分に合っていないからではないかと思っている。
 
 じゃあその良いとこ取りをしたような構造があれば良いのでは？という思考。
 
@@ -68,7 +68,7 @@ blogを雑記として利用出来ないのはテキストを書くことが特�
   - ある程度の匿名性がありながら、アイデンティティが存在しても良い。
 
 これに名前があるのか知らないが、想像しているのはインタラクティブなステージ的コミュニケーション。
-ステージは発言者と聴講者に分かれ発言者のみが発言する環境だが、インタラクティブなステージとは聴講者がコメントし、それに対して発言者が回答することも出来る環境。
+ステージは発言者と聴講者に分かれ発言者のみが発言する環境だが、インタラクティブなステージとは聴講者がコメントし、それに対して発言者が回答できる環境。
 発言者は聴講者のことを認知していてもしていなくても問題無い。
 
 これ、Nostrを用いればまるっと解決するのでは？と思ったわけである。
@@ -81,7 +81,7 @@ blogを雑記として利用出来ないのはテキストを書くことが特�
 
 {{ embed https://github.com/fiatjaf/nocomment nocomment }}
 
-その場で鍵ペアを生成して匿名でコメントすることも出来るが、[NIP-07](https://scrapbox.io/nostr/NIP-07)に対応しているため、[nos2x](https://github.com/fiatjaf/nos2x)や[Alby](https://getalby.com/)といったブラウザ拡張機能を用いることで自分の持っているアカウントで投稿出来る。
+その場で鍵ペアを生成して匿名でコメントできるが、[NIP-07](https://scrapbox.io/nostr/NIP-07)に対応しているため、[nos2x](https://github.com/fiatjaf/nos2x)や[Alby](https://getalby.com/)といったブラウザ拡張機能を用いることで自分の持っているアカウントで投稿できる。
 
 ↓何でも良いのでコメントしてみよう。
 
@@ -93,7 +93,7 @@ Nostrクライアント上では、[このコメント](https://snort.social/e/n
 
 ## 課題
 
-これはOS/ブラウザ側の問題なのでどうしようも無いが、ChromeやFirefoxのブラウザ拡張機能はモバイル端末では利用出来ないことが多く、故にNIP-07は利用出来ない。
+これはOS/ブラウザ側の問題なのでどうしようも無いが、ChromeやFirefoxのブラウザ拡張機能はモバイル端末では利用できないことが多く、故にNIP-07は利用できない。
 
 一応、本ブログはIndieWebの[Webmention](https://indieweb.org/Webmention)と[pingback](https://indieweb.org/pingback)に対応しており、[Bridgy](https://brid.gy/)を用いることでTwitterやMastodonの投稿は拾えるようにはなっている（埋め込み等はまだしていないがRSSで購読している）。
 しかし、ご存知のようにTwitterのStandard Search APIは取得漏れが多いし、Mastodonはglobal searchを提供していないため、完全ではない。
