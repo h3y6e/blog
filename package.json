@@ -5,16 +5,11 @@
   "author": "heyhoe",
   "license": "MIT",
   "private": true,
-  "browserslist": [
-    "last 2 versions",
-    "> 2%",
-    "not dead"
-  ],
   "scripts": {
     "dev": "run-p dev:*",
     "prod": "run-s prod:*",
-    "dev:css": "postcss theme/css/a5ebec.pcss --dir _css --ext css -w",
-    "prod:css": "postcss theme/css/a5ebec.pcss --dir _css --ext css --no-map",
+    "dev:css": "bun build-css.mjs --watch",
+    "prod:css": "bun build-css.mjs",
     "dev:swc": "swc theme/scripts/*.js -d _libs -w",
     "prod:swc": "swc theme/scripts/*.js -d _libs",
     "dev:franklin": "julia --project=. -O0 -e 'using Franklin;serve(clear=true, host=\"0.0.0.0\")'",
@@ -28,6 +23,8 @@
     "@cloudinary/url-gen": "1.21.0",
     "@textlint-ja/textlint-rule-no-synonyms": "1.3.0",
     "chokidar": "4.0.3",
+    "lightningcss": "^1.30.1",
+    "lightningcss-cli": "^1.30.1",
     "prettier": "3.5.3",
     "sudachi-synonyms-dictionary": "14.0.0",
     "textlint": "14.8.4",
@@ -40,11 +37,6 @@
   "dependencies": {
     "@swc/cli": "^0.7.0",
     "@swc/core": "^1.3.83",
-    "npm-run-all2": "^8.0.0",
-    "postcss": "^8.4.29",
-    "postcss-cli": "^11.0.0",
-    "postcss-color-mod-function": "^4.0.0",
-    "postcss-import": "^16.0.0",
-    "postcss-preset-env": "^10.0.0"
+    "npm-run-all2": "^8.0.0"
   }
 }
