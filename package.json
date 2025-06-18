@@ -16,6 +16,7 @@
     "dev:swc": "swc theme/scripts/*.js -d _libs -w",
     "prod:swc": "swc theme/scripts/*.js -d _libs",
     "format": "prettier --write . -u",
+    "format:check": "prettier --check .",
     "lint": "textlint posts/*.md",
     "lint:fix": "textlint --fix posts/*.md",
     "ogimage": "node ogimage.mjs"
