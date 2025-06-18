@@ -97,8 +97,6 @@ RustyKeysを始め、自作キーボードキットの組み立てにははん�
 お近くにお住まいの方は是非お越しください。開館スケジュールは[こちら](https://camph.net/schedule)になります。\\
 お待ちしております！
 
-{{ embed https://blog.camph.net/news/open-camphor-make/ }}
-
 ## 本体の組み立て
 
 RustyKeys本体の組み立てを行います。

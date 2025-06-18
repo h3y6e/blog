@@ -100,7 +100,7 @@ DevOps、生産性向上、及びSREやDBREを含む横断的チームに興味�
 
 ただし台本通りのPodcastが好きでなければ合わないと思う。
 
-{{ embed https://pitpa.jp/playlist/JxtCyoZTDZ "エンジニアトーク「ROLE MODEL」" }}
+{{ embed https://art19.com/shows/role-model "エンジニアトーク「ROLE MODEL」" }}
 
 ### Kyashfm
 株式会社Kyashのオウンドメディア。技術的な話をする回は聴いている。人によって音質悪いことがあるのはちょっと気になる。
