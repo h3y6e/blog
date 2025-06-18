@@ -77,7 +77,8 @@ body {
   background: #2f2f2f;
   background: var(--background);
   text-rendering: optimizeLegibility;
-  font-family: "Fira Code", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+  font-family:
+    "Fira Code", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
   font-feature-settings: "liga", "tnum", "case", "calt", "zero", "locl", "calt";
   font-variant-ligatures: contextual;
@@ -175,7 +176,12 @@ figure figcaption {
 
 code,
 kbd {
-  font-family: "Fira Code", Monaco, Consolas, Ubuntu Mono, monospace;
+  font-family:
+    "Fira Code",
+    Monaco,
+    Consolas,
+    Ubuntu Mono,
+    monospace;
   font-feature-settings: nomal;
   letter-spacing: 0em;
   background: rgba(165,235,236,0.14902);
@@ -843,7 +849,7 @@ pre {
 
 pre code.hljs {
     background: #212121;
-    color: #E0E2E2;
+    color: #e0e2e2;
     display: block;
     overflow-x: scroll;
     padding: 0.5em;
