@@ -23,11 +23,11 @@ rules:
   preset-ja-technical-writing:
     ja-no-weak-phrase: false
     no-exclamation-question-mark: false
-    ja-no-mixed-period:
-      allowEmojiAtEnd: true
+    no-mix-dearu-desumasu: false
+    ja-no-mixed-period: false
     sentence-length:
       max: 150
-      exclusionPatterns:
+      skipPatterns:
         - "/（.*?）。$/"
     ja-no-redundant-expression:
       dictOptions:
@@ -47,3 +47,5 @@ rules:
       - 足
       - リプ
       - まとめ
+      - ネット
+      - ポケモン

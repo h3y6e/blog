@@ -78,7 +78,7 @@ $$
 ## Nintendo Switchコントローラー
 Nintendo Switchは、2017年6月20日に配信開始された本体システムバージョン3.0.0以降、Nintendo Switch Proコントローラーの有線接続、及び他社製のコントローラーに対応しました。
 その結果、Nintendo Switchで使用出来るようになったホリ製の「『ポッ拳』専用コントローラーfor Wii U」をリバースエンジニアリングしたカスタムファイトスティックのPoC、[progmem/Switch-Fightstick](https://github.com/progmem/Switch-Fightstick) が作成されました。
-マイコンを用いたNintendo Switch用カスタムコントローラーの作成及び自動化はそこから広まりました。
+マイコンを用いたNintendo Switch用カスタムコントローラーの作成と自動化はそこから広まりました。
 
 ### USB HID
 Nintendo Switchのコントローラーは[USB HID](https://www.usb.org/hid)（Human Interface Devices）による通信をサポートしています[^参考]。

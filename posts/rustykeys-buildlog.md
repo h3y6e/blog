@@ -253,10 +253,10 @@ Darwin mbp2019.local 21.4.0 Darwin Kernel Version 21.4.0: Fri Mar 18 00:45:05 PD
 ジャンパ線で本体とデバッグアダプタを接続します。対応は以下です。
 
 | 本体側ピン | デバッグアダプタ側ピン |
-| :-- | :-- |
-| SWDIO | GP4（GPIO4） |
-| GND | GND |
-| SWCLK | GP2（GPIO2） |
+| :--------- | :--------------------- |
+| SWDIO      | GP4（GPIO4）           |
+| GND        | GND                    |
+| SWCLK      | GP2（GPIO2）           |
 
 デバッグアダプタ -> 本体の順に、2本のUSBケーブルで開発用PCに接続します。
 
