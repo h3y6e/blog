@@ -24,7 +24,7 @@ jobs:
         shell: julia --color=yes {0}
 
       - name: Build
-        run: bun prod
+        run: mise run prod
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

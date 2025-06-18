@@ -1,0 +1,26 @@
+[tools]
+bun = "1.2.16"
+julia = "1.11.5"
+
+[tasks."dev:franklin"]
+description = "Start Franklin.jl development server"
+run = "julia --project=. -O0 -e 'using Franklin;serve(clear=true, host=\"0.0.0.0\")'"
+
+[tasks."prod:franklin"]
+description = "Build Franklin.jl static site"
+run = "julia --project=. -e 'using Franklin;optimize()'"
+
+[tasks."dev:css"]
+run = "bun run dev:css"
+
+[tasks."prod:css"]
+run = "bun run prod:css"
+
+[tasks."dev:swc"]
+run = "bun run dev:swc"
+
+[tasks."prod:swc"]
+run = "bun run prod:swc"
+
+[tasks.prod]
+depends = ["prod:*"]

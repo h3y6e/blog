@@ -4,7 +4,13 @@ heyhoe's blog.
 
 [![Production](https://github.com/h3y6e/blog-spikey/workflows/Production/badge.svg)](https://github.com/h3y6e/blog-spikey/actions?query=workflow%3A%22Production%22)
 
-## Dev
+## Prerequisites
+
+- [mise](https://mise.jdx.dev/) for managing Julia and Bun versions
+- Julia packages: `julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate();'`
+- Node packages: `bun install`
+
+## Development
 
 ### Franklin.jl
 
@@ -23,16 +29,23 @@ julia> serve()
 or
 
 ```sh
-$ julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate();'
-$ bun i
-$ bun dev:franklin
+$ mise run dev:franklin
 ```
 
-### Style（PostCSS）
+### CSS, JS, etc.
 
 ```sh
-$ bun i
-$ bun dev:css
+# Watch CSS changes
+$ mise run dev:css
+# Watch JS changes
+$ mise run dev:swc
+```
+
+## Production Build
+
+```sh
+# Build everything for production
+$ mise run prod
 ```
 
 ## LICENSE
