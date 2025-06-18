@@ -26,7 +26,19 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://h3y6e.github.io/blog-spikey/index.html</loc>
+    <lastmod>2025-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://h3y6e.github.io/blog-spikey/posts/shape-from-shading-through-shape-evolution/index.html</loc>
+    <lastmod>2025-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://h3y6e.github.io/blog-spikey/tags/index.html</loc>
     <lastmod>2025-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
