@@ -8,7 +8,5 @@
     ":timezone(Asia/Tokyo)",
     "schedule:monthly"
   ],
-  "ignoreDeps": [
-    "julia"
-  ]
+  "ignoreDeps": ["julia"]
 }

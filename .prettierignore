@@ -8,3 +8,4 @@ _libs/
 node_modules/
 *.md
 !README.md
+Manifest.toml
