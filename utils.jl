@@ -87,20 +87,20 @@ function hfun_headline()
     return String(take!(io))
 end
 
-function hfun_allposts()
+@delay function hfun_allposts()
     rpaths = getpostpaths()
     bydate!(rpaths)
     return postlist(rpaths)
 end
 
-function hfun_taglist()
+@delay function hfun_taglist()
     tag = locvar(:fd_tag)
     rpaths = globvar(:fd_tag_pages)[tag]
     bydate!(rpaths)
     return postlist(rpaths)
 end
 
-function hfun_tagpage()
+@delay function hfun_tagpage()
     rpaths = getpostpaths()
     # Filter out nothing values and ensure we have valid tags
     all_tags = [pagevar(rpath, :tags) for rpath in rpaths]
