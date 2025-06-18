@@ -17,13 +17,15 @@ function headline(title, date, tags)
     )
     date == Date(1) || write(io, "<div class=\"date\">$date</div>")
     write(io, "<span class=\"tags\">")
-    for tag in tags
-        write(
-            io,
-            """
-            <a href="/$tag_page/$tag">#$tag</a>
-            """
-        )
+    if tags !== nothing
+        for tag in tags
+            write(
+                io,
+                """
+                <a href="/$tag_page/$tag">#$tag</a>
+                """
+            )
+        end
     end
     write(io, "</span></div>")
     return String(take!(io))
@@ -64,8 +66,8 @@ function postlist(rpaths)
 end
 
 function getpostpaths(path="posts")
-    posts = readdir(path)
-    return path .* rstrip.(get_url.(posts), '/')
+    posts = filter(p -> endswith(p, ".md"), readdir(path))
+    return [joinpath(path, replace(post, ".md" => "")) for post in posts]
 end
 
 hfun_year() = year(now())
@@ -100,7 +102,10 @@ end
 
 function hfun_tagpage()
     rpaths = getpostpaths()
-    tags = Iterators.flatten(pagevar.(rpaths, :tags))
+    # Filter out nothing values and ensure we have valid tags
+    all_tags = [pagevar(rpath, :tags) for rpath in rpaths]
+    valid_tags = filter(x -> x !== nothing, all_tags)
+    tags = Iterators.flatten(valid_tags)
     namesortedtags = collect(SortedDict(counter(tags)))
     countsortedtags = sort(namesortedtags; by=x -> x[2], rev=true)
     count = countsortedtags[1][2]
