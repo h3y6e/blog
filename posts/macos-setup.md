@@ -143,7 +143,7 @@ brew bundle --global
 ```sh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
-zpreztoの更新は `zprezto-update` で出来る。
+zpreztoの更新は `zprezto-update` でできる。
 
 ## chezmoiの編集
 ```sh

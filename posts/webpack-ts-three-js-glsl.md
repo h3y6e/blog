@@ -12,7 +12,7 @@ rss_description = "typescript + three.jsでGLSLをいい感じに編集したい
 
 
 ## はじめに
-three.jsで [ShaderMaterial](https://threejs.org/docs/#api/en/materials/ShaderMaterial) や [RawShaderMaterial](https://threejs.org/docs/#api/en/materials/RawShaderMaterial) を使うと、自作したGLSLを利用することが出来る。  
+three.jsで [ShaderMaterial](https://threejs.org/docs/#api/en/materials/ShaderMaterial) や [RawShaderMaterial](https://threejs.org/docs/#api/en/materials/RawShaderMaterial) を使うと、自作したGLSLを利用できる。  
 公式ドキュメントで紹介されている方法や、「[three.js glsl](https://lmgtfy.com/?q=three.js+glsl&s=g)」とかで検索して出てくる大抵の記事にはhtmlやjsに直書きしている例が見られる。
 しかし、これではシンタックスハイライトは効かないし見栄えも良くない。
 

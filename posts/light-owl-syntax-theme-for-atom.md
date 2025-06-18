@@ -57,9 +57,9 @@ Julia自体は以前から使っておりJunoの存在も認知していたの�
 ..。これだけで終わるのはあれなので、少し補足をします。  
 
 #### 作成開始時
-`Cmd+Shift+P` でコマンドパレットを表示し "Package Generator: Generate Syntax Theme" を選択すれば、`~/.atom/packages/` にシンボリックリンクの貼られたフォルダが作成されSyntax themeの作成を開始することが出来ます。しかし必要最低限の構成しか記述されていないので、この方法で真面目に作ろうとすると大変だと思います。
+`Cmd+Shift+P` でコマンドパレットを表示し "Package Generator: Generate Syntax Theme" を選択すれば、`~/.atom/packages/` にシンボリックリンクの貼られたフォルダが作成されSyntax themeの作成を開始できます。しかし必要最低限の構成しか記述されていないので、この方法で真面目に作ろうとすると大変だと思います。
 
-1からSyntax themeを作成する場合でも、信頼出来る既存テーマをベースにして作成するほうが楽に感じました。僕はAtomのコアテーマである[One Light](https://github.com/atom/atom/tree/master/packages/one-light-syntax)を参考にして作成しています。
+1からSyntax themeを作成する場合でも、信頼できる既存テーマをベースにして作成するほうが楽に感じました。僕はAtomのコアテーマである[One Light](https://github.com/atom/atom/tree/master/packages/one-light-syntax)を参考にして作成しています。
 
 `~/.atom/packages/` にシンボリックリンクを貼るにはリポジトリ直下で以下を実行します。
 ```shell
@@ -100,7 +100,7 @@ JavaScriptだとこんな感じ。
 ![atom screenshot](/img/2019-12-23/atom-screenshot.jpg)
 
 比較としてVSCodeのLight Owlも載せておきます。\\
-AtomとVSCodeではシンタックスハイライトの規則が異なる為、完全な移植は出来ませんが可能な限り忠実に移植出来ていると思います。
+AtomとVSCodeではシンタックスハイライトの規則が異なる為、完全な移植はできませんが可能な限り忠実に移植出来ていると思います。
 
 ![vscode screenshot](/img/2019-12-23/vscode-screenshot.jpg)
 

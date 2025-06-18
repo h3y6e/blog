@@ -27,7 +27,7 @@ rss_description = "今年聴いたPodcastで勧めたいやつを雑に紹介す
 
 ### Off Topic
 
-アメリカを中心としたテック、ビジネス、スタートアップ業界ニュース、カルチャーなどについて知ることが出来るPodcast。\\
+アメリカを中心としたテック、ビジネス、スタートアップ業界ニュース、カルチャーなどについて知ることができるPodcast。\\
 ビジネスの話はあまり好きでないがミーハーではあるので楽しく聴いている。
 
 ところでPodcastは作業中にながら聴きすることが多いのだが、このPodcastは2人のホストのうち一方の相槌に少し癖があり気になってしまうので作業中ではなく移動中などに聞いている。
@@ -62,7 +62,7 @@ DDDやアーキテクチャ、オブジェクト指向プログラミングや�
 <div style="max-width: 765px;"><div style="left: 0; width: 100%; height: 102px; position: relative;"><iframe src="https://anchor.fm/textafm/embed" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="encrypted-media;"></iframe></div></div>
 ~~~
 
-[^Ruby]: 今年の夏にバックエンドがRuby on Railsのチームに所属し開発をしていた為、現在は理解出来るようになった。
+[^Ruby]: 今年の夏にバックエンドがRuby on Railsのチームに所属し開発をしていた為、現在は理解できるようになった。
 
 ### Kamogawa.fm
 知り合い補正はかかっているがそうでなくても多分聴いていたであろうPodcast。

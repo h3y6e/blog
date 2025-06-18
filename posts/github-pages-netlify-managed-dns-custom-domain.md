@@ -7,7 +7,7 @@ rss_description =  "GitHub Pagesにもカスタムドメインを設定する。
 
 [これ](/posts/netlify-custom-domain)の続き。
 
-前回、カスタムネームサーバーを使用してDNSをNetlifyに移したのでGoogle DomainsのDNSからはカスタムリソースレコードの設定は出来ない。
+前回、カスタムネームサーバーを使用してDNSをNetlifyに移したのでGoogle DomainsのDNSからはカスタムリソースレコードの設定はできない。
 
 NetlifyのDomainsタブを開く。
 

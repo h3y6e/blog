@@ -26,7 +26,7 @@ SCHOOL OF LOCK!、オールナイトニッポン、SUNDAY NIGHT DREAMER、wktk�
 
 僕が購読しているPodcastはジャンルが様々ありますが、今回はITエンジニア志望の学生におすすめするという視点で幾つか紹介します。
 
-[^配信プラットフォーム]: 例えば[Spotify](https://www.spotify.com/jp/)は録音・編集・配信が出来るPodcastサービスである[Anchor](https://anchor.fm/)を買収したり、[Google Podcasts](https://podcasts.google.com/)にiOSアプリが登場したり、[Amazon MusicでPodcast](https://www.amazon.co.jp/music/lp/podcasts)が利用可能になったりしています。
+[^配信プラットフォーム]: 例えば[Spotify](https://www.spotify.com/jp/)は録音・編集・配信ができるPodcastサービスである[Anchor](https://anchor.fm/)を買収したり、[Google Podcasts](https://podcasts.google.com/)にiOSアプリが登場したり、[Amazon MusicでPodcast](https://www.amazon.co.jp/music/lp/podcasts)が利用可能になったりしています。
 
 ## Podcastで技術を知る
 IT/Tech系では英語圏のものだと沢山良いPodcastがあります[^英語圏の技術系podcasts] が、ここでは日本語のものをピックアップしています。
@@ -50,7 +50,7 @@ IT/Tech系では英語圏のものだと沢山良いPodcastがあります[^英�
 
 大別して2種類の回があり、Monthly/Yearly Web回とテーマ回があります。
 
-Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrome, Firefox, Safari, Edge）のアップデート内容やWeb標準・Web周辺の動向など、Webの最新動向をスナップショット的に知ることが出来ます。
+Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrome, Firefox, Safari, Edge）のアップデート内容やWeb標準・Web周辺の動向など、Webの最新動向をスナップショット的に知ることができます。
 
 テーマ回では、Web技術に関する特定のテーマについて深く掘り下げて議論しています。
 最新のテーマ回では[Semantic Web](https://mozaic.fm/episodes/73/semantic-web.html)について話されていました。
@@ -63,7 +63,7 @@ Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrom
 何らかの分野に特化したゲストの話をひたすら"深掘り"していくPodcastです。
 
 最初は入門的な話を訊き、面白いところを技術的に掘り下げていくスタイルを取っています。
-故にその分野に明るくなくても理解する事が出来、自分の知らない分野であるほど楽しく聴くことが出来ます。
+故にその分野に明るくなくても理解する事が出来、自分の知らない分野であるほど楽しく聴くことができます。
 
 1エピソードの長さも1時間弱くらいでテンポが良いので全て聴いてほしいのですが、
 印象に残っているものを1つ挙げるのであれば「[20. 技術力をいかに評価するか？インターンシップにおける採用・戦略とは？ w/ makoga](https://fukabori.fm/episode/20)」です。
@@ -74,19 +74,19 @@ Monthly/Yearly Webでは月単位及び年単位で、各種ブラウザ（Chrom
 ### Misreading Chat
 コンピュータサイエンス系の論文を紹介するPodcastです。
 
-僕は紹介される論文の内容を理解しているかと言われれば必ずしもそうではないのですが、どちらかというと論文の読み方や纏め方、説明の仕方を知ることが出来るので有り難いです。これも1エピソード1時間弱なので聴きやすいです。
+僕は紹介される論文の内容を理解しているかと言われれば必ずしもそうではないのですが、どちらかというと論文の読み方や纏め方、説明の仕方を知ることができるので有り難いです。これも1エピソード1時間弱なので聴きやすいです。
 
 あと[このエピソード](https://misreading.chat/2020/09/25/pre-81/)を聴いて、文献管理のために[Paperpile](https://paperpile.com/)というサービスを使い始めました。結構良いです。
 
 {{ embed https://misreading.chat/ "Misreading Chat" }}
 
 ### もぐラジオ
-ITエンジニア志望にお勧め出来るというか、個人的に役に立っている（所謂「俺得」な）ものです。
+ITエンジニア志望にお勧めできるというか、個人的に役に立っている（所謂「俺得」な）ものです。
 
 [Mogura VR](https://www.moguravr.com/)というVR/AR専門メディアによるPodcastです。
-VR/AR業界に関する毎週の動向について、その紹介と解説を音声で聴くことが出来ます。
+VR/AR業界に関する毎週の動向について、その紹介と解説を音声で聴くことができます。
 
-単純に僕はAR/VRガジェットが好きなのでそういう話が聴けるだけでも楽しいのですが、教授とのミーティング時にここで得た最新情報を話して盛り上がることが出来るので良いです。
+単純に僕はAR/VRガジェットが好きなのでそういう話が聴けるだけでも楽しいのですが、教授とのミーティング時にここで得た最新情報を話して盛り上がることができるので良いです。
 
 ~~~
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/6qarRfTFNB1waILnnTVYKo" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -100,8 +100,8 @@ VR/AR業界に関する毎週の動向について、その紹介と解説を音
 ### UIT INSIDE
 LINEのフロントエンド開発部門UIT（User Interface + Technology）に所属する開発者達が、毎週最新のフロントエンド動向を語るというPodcastです。
 
-最新のWeb標準の動向、開発フレームワークの変遷、UI/UXに関するアップデートをキャッチアップ出来ます。
-また、UIT室の人々がフロントエンドに対してどのような考え方を持っているかを強烈に感じることが出来ます。\\
+最新のWeb標準の動向、開発フレームワークの変遷、UI/UXに関するアップデートをキャッチアップできます。
+また、UIT室の人々がフロントエンドに対してどのような考え方を持っているかを強烈に感じることができます。\\
 フロントエンド志望であれば聴いて損はないと思います。
 
 {{ embed https://uit-inside.linecorp.com/ "UIT INSIDE" }}
@@ -113,7 +113,7 @@ mercariのオウンドメディアである[mercan](https://mercan.mercari.com/)
 ゲストはエンジニアだけではないため、話す内容は技術的なものに限りません。
 
 ジングルの音量が声量に比べてかなり大きかったので聴きづらさを感じていましたが、最近は改善されました。
-録音環境はもう少し改善出来ると思うので、その辺りも力を入れてほしいです。
+録音環境はもう少し改善できると思うので、その辺りも力を入れてほしいです。
 
 {{ embed https://mercan.mercari.com/tags/mercan-fm/ "mercan.fm" }}
 
@@ -137,7 +137,7 @@ VOYAGE GROUPのAJITOという社内バーで録音されているPodcastです�
 僕がPodcastを聞き始めるきっかけとなったもの。
 2013年のエピソード1からずっと聞き続けています。
 
-日本語と英語で交互に話すというスタイルなので、僕のような英語弱者でも英語を聞き取れている錯覚に陥ることが出来ます。
+日本語と英語で交互に話すというスタイルなので、僕のような英語弱者でも英語を聞き取れている錯覚に陥ることができます。
 また、ニュースの選択が独特なので英語学習とか関係無く普通に面白いです。
 宇宙に関する話題や、特別編で学者や宇宙産業従事者をゲストに招く回が好きです。
 
@@ -161,4 +161,4 @@ Podcastトーク、一緒にしませんか？
 
 ![CAMPHOR- Slack Podcast](/img/2020-12-20/camphor-slack_podcast.png)
 
-[^slack]: CAMPHOR-のSlackには[CAMPHOR- HOUSE](https://camph.net/#house)へ2回以上来ていただけると参加することが出来ます。\\学生の方は是非[普段の開館日](https://camph.net/schedule/)に作業や雑談などをしに来てください！
+[^slack]: CAMPHOR-のSlackには[CAMPHOR- HOUSE](https://camph.net/#house)へ2回以上来ていただけると参加できます。\\学生の方は是非[普段の開館日](https://camph.net/schedule/)に作業や雑談などをしに来てください！

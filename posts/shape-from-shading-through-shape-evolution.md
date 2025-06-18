@@ -23,7 +23,7 @@ rss_description = "論文読み : 形状進化による3Dデータを用いたSh
 ## Key idea
 
 #### Shape Representation
-初期形状は球、円柱、立方体、円錐の4つの形状で構成されており、それらは以下の函数で表すことが出来る。  
+初期形状は球、円柱、立方体、円錐の4つの形状で構成されており、それらは以下の函数で表すことができる。  
 ![Screenshot from 2019-08-30 06-38-36](https://user-images.githubusercontent.com/38322494/63978227-da9a0700-caf0-11e9-91b4-7af7e8d0c61d.png)  
 Computation graphで表現すると以下のようになる。  
 ![Screenshot from 2019-08-30 00-57-03](https://user-images.githubusercontent.com/38322494/63973257-5db56000-cae5-11e9-839a-020fa8a9a7b4.png)

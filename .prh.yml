@@ -15,8 +15,8 @@ rules:
     patterns: /[ヶか]所/
   - expected: 見てい$1
     patterns: /見て行(く|き)/
-  - expected: 出来$1
-    patterns: /でき([るまな])/
+  - expected: でき$1
+    patterns: /出来([るまな])/
   - expected: 括弧
     patterns:
       - かっこ
