@@ -8,12 +8,11 @@ global page variables
 @def generate_rss = true
 @def website_title = "#a5ebec"
 @def website_description = "へいほぅの殴り書き"
-@def website_url = "https://h3y6e.github.io/blog-spikey"
+@def website_url = "https://blog.h3y6e.com"
 @def tag_page_path = "tags"
 @def date_format = "yyyy-mm-dd"
 @def mintoclevel = 2
 @def maxtoclevel = 3
-
 
 <!--
 Add here files or directories that should be ignored by Franklin, otherwise
