@@ -30,11 +30,13 @@ notes without addressing readers directly.
    - Add concrete implementation with code examples
    - Match writing style of existing articles in `posts/` directory
    - Write as personal notes in Japanese without addressing readers
+   - Verify technical terms and concepts using WebSearch/WebFetch for accuracy
+   - Include reference URLs using markdown links or `{{ embed URL }}` macro
 
 4. Output Generation
    - Create article in Markdown format
    - Save to `posts/` directory with filename `$(date +%Y%m%d)-[slug].md`
-   - Run format and lint checks
+   - Run lint:fix and lint checks
 
 ## Commands
 
@@ -73,8 +75,7 @@ notes without addressing readers directly.
 ## Process Details
 
 ```bash
-# 1. Analyze writing style of recent articles
-ls -lt posts/*.md | head -5
+# 1. Analyze writing style of recent articles in `posts/` directory
 # Understand structure and style patterns of each article
 
 # 2. Fetch content from GitHub URL (supports multiple sources)
@@ -95,13 +96,7 @@ gh api repos/[owner]/[repo]/compare/[base]...[head]
 
 ## Writing Style Reference
 
-When generating articles, refer to recent article styles using this process:
-
-```bash
-# Get latest 5 articles and analyze style
-ls -lt posts/*.md | head -5 | awk '{print $9}'
-# Extract structure, style, and characteristic expressions from each article
-```
+When generating articles, refer to recent article styles in `posts/` directory.
 
 Elements to reference:
 
@@ -141,6 +136,12 @@ rss_description = "Script Command機能を使ってPLaMo翻訳CLIをRaycastか�
 - Structure multiple sources chronologically or logically
 - Organize performance data and measurements in tables
 - Honestly include failures and trial-and-error
+- Verify technical accuracy: Use `WebSearch`/`WebFetch` for unfamiliar terms,
+  APIs, libraries, and implementation patterns
+- Cross-reference official documentation when explaining technical concepts
+- Citation practice: Always include referenced URLs in article body, not just as
+  footnotes
+- Use embed macro for important references (official docs, GitHub issues, etc.)
 
 ## GitHub URL Formats
 
