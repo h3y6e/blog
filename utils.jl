@@ -159,23 +159,15 @@ function hfun_embed(params)
 
         domain = match(r"^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)", url).captures[1]
 
-        body = Dict(
-            "title" => title,
-            "description" => description,
-            "images" => [image],
-            "domain" => domain,
-            "url" => url
-        )
-
         return """
         <div class="embed" ontouchstart="">
-            <img src="$(body["images"][1])" alt="$(body["description"])" decoding="async" loading="lazy">
+            <img src="$image" decoding="async" loading="lazy">
             <div class="embed-content">
-                <b>$(body["title"])</b>
-                <p>$(body["description"])</p>
-                <div class="domain">$(body["domain"])</div>
+                <b>$title</b>
+                <p>$description</p>
+                <div class="domain">$domain</div>
             </div>
-            <a href="$(body["url"])" rel="noopener noreferrer nofollow" target="_blank" role="link"></a>
+            <a href="$url" rel="noopener noreferrer nofollow" target="_blank" role="link"></a>
         </div>
         """
     catch
