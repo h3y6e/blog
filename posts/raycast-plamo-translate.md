@@ -7,12 +7,12 @@ rss_description = "Script Command機能を使ってPLaMo翻訳CLIをRaycastか�
 
 ## tl;dr
 
-[Raycast Script Command](https://github.com/raycast/script-commands)機能を使って、日本語/英語の翻訳を即座に実行できるようにした。
+[Raycast Script Command](https://github.com/raycast/script-commands)機能を使って、日本語/英語の翻訳を即時実行できるようにした。
 PLaMo翻訳モデルをローカルで動かすことで、ネットワーク接続不要で比較的高速な翻訳が可能。
 
 ## 経緯
 
-これまで[Raycast](https://www.raycast.com/)の[AI機能](https://manual.raycast.com/ai)を使い、[Ollama](https://ollama.com/)をバックエンドにして[qwen3:4b](https://ollama.com/library/qwen3)で日英翻訳を行っていた。
+これまで[Raycast](https://www.raycast.com/)の[AI機能](https://manual.raycast.com/ai)を使い、[Ollama](https://ollama.com/)をバックエンドにして[qwen3:4b](https://ollama.com/library/qwen3)で日英翻訳していた。
 
 {{ embed https://mixi.social/@h3y6e/posts/c1d57e76-b435-4d70-a57d-ab8f5dfd90f8 }}
 
@@ -36,7 +36,7 @@ RaycastのScript Command機能は、任意のスクリプトをRaycastから実�
 
 ### スクリプト全体
 
-やっていることは単純で、引数として渡されたテキストを入力として`plamo-translate`コマンドを実行するだけ。
+やっていることは単純で、引数として渡されたテキストを入力として `plamo-translate` コマンドを実行するだけ。
 
 ```bash
 #!/usr/bin/env bash
@@ -78,7 +78,7 @@ dotfilesで公開している
 # @raycast.mode fullOutput
 ```
 
-翻訳結果は複数行になることがあるため、`fullOutput`モードを使用している。これにより、翻訳結果全体が表示される。
+翻訳結果は複数行になることがあるため、`fullOutput` モードを使用している。これにより、翻訳結果全体が表示される。
 
 #### mise経由でのコマンド実行
 
@@ -92,16 +92,16 @@ Raycastから実行される際は[PATHが通っていない](https://github.com
 ## セットアップ
 
 #### Raycast Script Commandの設定
-  1. スクリプトを`~/.config/raycast-script/`ディレクトリ(任意)に配置
+  1. スクリプトを `~/.config/raycast-script/` ディレクトリ（任意）に配置
   2. 実行権限を付与: `chmod +x plamo-translate.sh`
-  3. Raycastで`Extensions → Script Commands → Add Directories`を選択し、上記ディレクトリを追加
+  3. Raycastで `Extensions → Script Commands → Add Directories` を選択し、上記ディレクトリを追加
 
 #### plamo-translate-cliのインストール
 mise設定ファイル（`~/.config/mise/config.toml`）に以下を追加: 
 ```toml
 "pipx:pfnet/plamo-translate-cli" = { version = "latest", uvx_args = "-p 3.12" }
 ```
-そして`mise install`を実行
+そして `mise install` を実行
 
 ## おわり
 
