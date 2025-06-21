@@ -1,6 +1,7 @@
 using Dates
 using DataStructures
 using HTTP
+using HTTP.URIs
 using Gumbo
 using Cascadia
 using JSON
@@ -148,16 +149,16 @@ function hfun_embed(params)
         r = HTTP.get(url)
         html = parsehtml(String(r.body))
 
+        image = Cascadia.matchFirst(Selector("meta[property='og:image']"), html.root)
+        image = image === nothing ? "" : image.attributes["content"]
+
         title = Cascadia.matchFirst(Selector("title"), html.root)
         title = title === nothing ? "" : nodeText(title)
 
         description = Cascadia.matchFirst(Selector("meta[name='description']"), html.root)
         description = description === nothing ? "" : description.attributes["content"]
 
-        image = Cascadia.matchFirst(Selector("meta[property='og:image']"), html.root)
-        image = image === nothing ? "" : image.attributes["content"]
-
-        domain = match(r"^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)", url).captures[1]
+        domain = URI(url).host
 
         return """
         <div class="embed" ontouchstart="">
