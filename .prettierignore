@@ -7,5 +7,6 @@ _libs/
 .git/
 node_modules/
 *.md
+!.claude/**/*.md
 !README.md
 Manifest.toml
