@@ -16,9 +16,7 @@
     "prh": {
       "checkEmphasis": true,
       "checkHeader": true,
-      "rulePaths": [
-        "./.prh.yml"
-      ]
+      "rulePaths": ["./.prh.yml"]
     },
     "preset-ja-spacing": {
       "ja-space-between-half-and-full-width": {
@@ -36,9 +34,7 @@
       "ja-no-mixed-period": false,
       "sentence-length": {
         "max": 150,
-        "skipPatterns": [
-          "/（.*?）。$/"
-        ]
+        "skipPatterns": ["/（.*?）。$/"]
       },
       "ja-no-redundant-expression": {
         "dictOptions": {
@@ -53,21 +49,11 @@
       },
       "max-kanji-continuous-len": {
         "max": 6,
-        "allow": [
-          "主小行列固有値",
-          "平均単位取得率",
-          "宇宙産業従事者"
-        ]
+        "allow": ["主小行列固有値", "平均単位取得率", "宇宙産業従事者"]
       }
     },
     "@textlint-ja/no-synonyms": {
-      "allows": [
-        "足",
-        "リプ",
-        "まとめ",
-        "ネット",
-        "ポケモン"
-      ]
+      "allows": ["足", "リプ", "まとめ", "ネット", "ポケモン"]
     },
     "@textlint-ja/preset-ai-writing": {
       "no-ai-hype-expressions": {
