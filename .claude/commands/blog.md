@@ -105,6 +105,7 @@ Elements to reference:
 - Writing style (personal notes in Japanese, use of past tense)
 - Usage of embed macro
 - Code example placement and explanation method
+- Avoid using colons before lists (use periods or other punctuation instead)
 
 ## Output Structure
 
