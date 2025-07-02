@@ -36,7 +36,6 @@ notes without addressing readers directly.
 4. Output Generation
    - Create article in Markdown format
    - Save to `posts/` directory with filename `$(date +%Y%m%d)-[slug].md`
-   - Run lint:fix and lint checks
 
 ## Commands
 
@@ -100,7 +99,6 @@ When generating articles, refer to recent article styles in `posts/` directory.
 
 Elements to reference:
 
-- Frontmatter format
 - Section structure
 - Writing style (personal notes in Japanese, use of past tense)
 - Usage of embed macro

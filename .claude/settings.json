@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": ["Bash(bun:*)", "WebFetch(domain:franklinjl.org)"],
+    "deny": []
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Update|Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun run format"
+          },
+          {
+            "type": "command",
+            "command": "bun run lint:fix"
+          }
+        ]
+      }
+    ]
+  }
+}
