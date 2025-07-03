@@ -50,6 +50,10 @@
       "max-kanji-continuous-len": {
         "max": 6,
         "allow": ["主小行列固有値", "平均単位取得率", "宇宙産業従事者"]
+      },
+      "max-ten": {
+        "touten": ["、", "，", ","],
+        "kuten": ["。", "．", "."]
       }
     },
     "@textlint-ja/no-synonyms": {
