@@ -24,7 +24,7 @@ rss_description = "Claudeによるコードレビューに対する開発者の�
 
 - GitHub Actions（ワークフロー基盤）
 - AWS Bedrock（Claude APIアクセス）
-- `claude-code-base-action`（ファイル操作を含む自動化）
+- [`claude-code-base-action`](https://github.com/anthropics/claude-code-base-action/)（ファイル操作を含む自動化）
 - GitHub Apps（auto-merge権限）
 
 ## フィードバック収集の実装
@@ -119,6 +119,8 @@ interface PRWithReview {
 ### 分析プロセス
 
 収集したデータは、Claude自身で分析する。`claude-code-base-action` を使用することで、分析から更新まで一気通貫で自動化している。
+
+{{ embed https://github.com/anthropics/claude-code-base-action/ }}
 
 ```yaml
 - name: Analyze feedback and generate improvements
