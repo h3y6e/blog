@@ -27,7 +27,7 @@
     "@textlint-ja/textlint-rule-preset-ai-writing": "1.4.0",
     "chokidar": "4.0.3",
     "prettier": "3.5.3",
-    "sudachi-synonyms-dictionary": "14.0.0",
+    "sudachi-synonyms-dictionary": "16.0.0",
     "textlint": "14.8.4",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-filter-rule-comments": "1.2.2",
