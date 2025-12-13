@@ -2,7 +2,7 @@
 
 julia_version = "1.11.5"
 manifest_format = "2.0"
-project_hash = "1a616bd2f70e10c5af57619fdba5bbb0d6f138ea"
+project_hash = "22ce853a9183305eb43a03494c5735c5997b9ce2"
 
 [[deps.AbstractTrees]]
 git-tree-sha1 = "2d9c9a55f9c93e8887ad391fbae72f8ef55e1177"
@@ -116,7 +116,7 @@ deps = [
   "Pkg",
   "REPL",
   "Random",
-  "TOML",
+  "TOML"
 ]
 git-tree-sha1 = "e0eabc6747a67a78e72d45a874fec5d8ba6dc2ae"
 uuid = "713c75ef-9fc9-4b05-94a9-213340da978e"
@@ -157,7 +157,7 @@ deps = [
   "SimpleBufferStream",
   "Sockets",
   "URIs",
-  "UUIDs",
+  "UUIDs"
 ]
 git-tree-sha1 = "f93655dc73d7a0b4a368e3c0bce296ae035ad76e"
 uuid = "cd3eb016-35fb-5094-929b-558a96fad6f3"
@@ -198,7 +198,7 @@ deps = [
   "Libdl",
   "MbedTLS_jll",
   "Zlib_jll",
-  "nghttp2_jll",
+  "nghttp2_jll"
 ]
 uuid = "deac9b47-8bc7-5906-a0fe-35ac56dc84c0"
 version = "8.6.0+0"
@@ -261,7 +261,7 @@ deps = [
   "MozillaCACerts_jll",
   "NetworkOptions",
   "Random",
-  "Sockets",
+  "Sockets"
 ]
 git-tree-sha1 = "c067a280ddc25f196b5e7df3877c6b226d390aaf"
 uuid = "739be429-bea8-5141-9913-cc70e7f3736d"
@@ -329,7 +329,7 @@ deps = [
   "TOML",
   "Tar",
   "UUIDs",
-  "p7zip_jll",
+  "p7zip_jll"
 ]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 version = "1.11.0"

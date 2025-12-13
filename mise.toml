@@ -5,7 +5,7 @@ julia = "1.11.5"
 [hooks]
 postinstall = """
 bun install
-julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate();'
+julia -e 'using Pkg; Pkg.activate("."); Pkg.resolve(); Pkg.instantiate();'
 """
 
 [env]
