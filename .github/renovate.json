@@ -1,12 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:best-practices",
-    ":disableRateLimiting",
-    ":label(renovate)",
-    ":reviewer(h3y6e)",
-    ":timezone(Asia/Tokyo)",
-    "schedule:monthly"
-  ],
-  "ignoreDeps": ["julia"]
+  "extends": ["github>h3y6e/renovate-config"]
 }
