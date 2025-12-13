@@ -8,14 +8,12 @@ notes without addressing readers directly.
 ## Process
 
 1. Source Analysis
-
    - Parse single or multiple sources from arguments
    - Fetch diffs and context using `gh` command for each source
    - Automatically extract repository information from each source
    - Identify common themes, patterns, and technical insights across sources
 
 2. Article Structure
-
    - Adjust focus based on specified direction
    - Technical challenges and solutions
    - Key implementation points and learnings
@@ -23,7 +21,6 @@ notes without addressing readers directly.
    - Knowledge applicable to other developers
 
 3. Content Development
-
    - Generate compelling title from implementation
    - Document problems solved and learnings
    - Include technology stack used
