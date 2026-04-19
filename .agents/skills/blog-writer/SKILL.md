@@ -19,11 +19,19 @@ Treat the Obsidian `log` vault as the main source of truth. Use GitHub or web so
 1. Read the latest 3-5 relevant posts in `posts/`.
    Prefer files whose names do not start with `YYYYMMDD-` when learning voice.
    Use dated posts mainly for newer formatting or topic treatment.
+   If the closest voice match is exploratory, prefer that flow over a polished
+   essay voice.
 2. Search and read the relevant `log` notes.
-3. Decide the one pain, surprise, or realization that makes the article worth writing.
-4. Keep only the details that explain that point.
-5. Add GitHub or web sources when they improve accuracy, context, reproducibility, or concreteness.
-6. Draft the article in Japanese and save it to `posts/YYYYMMDD-<slug>.md`.
+   Do not stop at a single task note if the surrounding context is still thin.
+3. Expand to adjacent daily notes, related task notes, and nearby decisions until
+   you can explain why this work mattered.
+4. Decide the one pain, surprise, or realization that makes the article worth
+   writing.
+5. Build one story around that point, with enough setup that a reader without the
+   immediate work context can still follow it.
+6. Add GitHub or web sources when they improve accuracy, context,
+   reproducibility, or concreteness.
+7. Draft the article in Japanese and save it to `posts/YYYYMMDD-<slug>.md`.
 
 ## Source Gathering
 
@@ -31,6 +39,8 @@ Treat the Obsidian `log` vault as the main source of truth. Use GitHub or web so
   use `obsidian search:context vault=log query="..." path="task"` and `path="daily"`, then `obsidian read vault=log path="..."`.
   Prefer task notes for goals, decisions, validation, and conclusions.
   Prefer daily notes for chronology and surrounding context.
+  If one note explains the change but not the setup or motivation, keep searching
+  related notes until the story is understandable on its own.
 - GitHub and web:
   use them as supporting sources, not the only source.
   GitHub sources may be public or private if they are accessible in the current environment.
@@ -45,11 +55,23 @@ Treat the Obsidian `log` vault as the main source of truth. Use GitHub or web so
 - Write in Japanese as personal notes, not generic advice.
 - Start from the pain, constraint, or realization. Explain why before how.
   Prefer one strong angle over exhaustive coverage.
+- Prefer an exploratory flow when it fits the source material:
+  background, what you noticed, what you tried, and what still feels open.
+  Do not polish the article into a thesis if the repo's natural voice is closer
+  to thought process and experiment notes.
+- Each post should tell one story.
+  Do not stack several loosely related updates into one article.
+- Include the minimum setup needed for an outsider or future you to understand
+  why the article exists.
+  If that setup is missing, gather more notes before drafting.
 - Use one or two concrete moments from notes when they reveal the real decision. Cut details that are merely true but not important.
 - Avoid changelog-first structure unless the article is actually a checklist.
+- Avoid over-summarizing your own conclusion.
+  Let the observations, examples, and small turns in reasoning carry the story.
 - Keep the prose repo-specific and direct.
   If the strongest references are terse, keep the article terse too.
-  Short declarative sentences, judgment first, light casualness, and sparse transitions are fine when the source voice supports them.
+  Short declarative sentences, light casualness, sparse transitions, and a bit
+  of tentativeness are fine when the source voice supports them.
 - Keep English mostly to identifiers, commands, quoted text, and established terms. Prefer natural Japanese in normal prose.
 - Sanitize private notes before using them.
   Never publish secrets, private URLs, personal names, account identifiers, internal feature names, internal spec titles, local-only paths, or task note filenames unless the user explicitly wants them published.
@@ -66,6 +88,8 @@ Treat the Obsidian `log` vault as the main source of truth. Use GitHub or web so
 
 - The article matches recent `posts/` style.
 - The opening makes clear why the article exists.
+- The article stands on its own without assuming too much hidden context.
 - The main decision or realization is obvious.
+- The article reads as one coherent story rather than a bundle of notes.
 - The requested angle is preserved.
 - Private material has been sanitized.
