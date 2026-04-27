@@ -59,6 +59,15 @@ Treat the Obsidian `log` vault as the main source of truth. Use GitHub or web so
   background, what you noticed, what you tried, and what still feels open.
   Do not polish the article into a thesis if the repo's natural voice is closer
   to thought process and experiment notes.
+- When matching exploratory posts such as `posts/comment-on-nostr.md`, preserve the
+  author's position in the story: what they first misunderstood, why they reopened
+  the topic, what felt amusing or awkward, and what remains unresolved. The article
+  should feel like a person thinking through an experiment, not a finished product
+  memo.
+- Prefer thought-order structure over explanation-order structure when the source
+  material supports it. Useful shapes include: `はじめに` / context, question or
+  hypothesis, experiment or implementation, then issues or open questions. Avoid
+  section titles that are full-sentence takeaways; use short topic labels instead.
 - Each post should tell one story.
   Do not stack several loosely related updates into one article.
 - Include the minimum setup needed for an outsider or future you to understand
@@ -68,10 +77,17 @@ Treat the Obsidian `log` vault as the main source of truth. Use GitHub or web so
 - Avoid changelog-first structure unless the article is actually a checklist.
 - Avoid over-summarizing your own conclusion.
   Let the observations, examples, and small turns in reasoning carry the story.
+- Do not repeat the same takeaway in the body and conclusion. If the point has
+  already landed, end with the remaining uncertainty, next experiment, or operational
+  caveat instead of restating the thesis.
 - Keep the prose repo-specific and direct.
   If the strongest references are terse, keep the article terse too.
   Short declarative sentences, light casualness, sparse transitions, and a bit
   of tentativeness are fine when the source voice supports them.
+- Calibrate confidence carefully: verify technical facts and state them plainly,
+  but keep interpretations, product bets, and personal taste slightly provisional
+  when the source voice is exploratory. Avoid polished phrases that sound like an
+  explainer article rather than the author's own note.
 - Keep English mostly to identifiers, commands, quoted text, and established terms. Prefer natural Japanese in normal prose.
 - Sanitize private notes before using them.
   Never publish secrets, private URLs, personal names, account identifiers, internal feature names, internal spec titles, local-only paths, or task note filenames unless the user explicitly wants them published.
