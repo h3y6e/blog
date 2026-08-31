@@ -321,17 +321,22 @@ function slug(raw: string, ctx: Ctx): string {
   return id;
 }
 
-const CODESPAN = /^(`+)([\s\S]*?[^`])\1(?!`)/;
-const AUTOLINK = /^<(https?:\/\/[^\s<>]+)>/;
-const HTML_INLINE = /^<!--[\s\S]*?-->|^<\/?[a-zA-Z][a-zA-Z0-9-]*(?:\s[^<>]*?)?\/?>/;
-const BR = /^( {2,}|\\)\n(?!\s*$)/;
-const MATH_INLINE = /^\$([^$\n]+?)\$/;
-const FOOTNOTE_REF = /^\[\^([^\]]+)\]/;
-const STRONG = /^(\*\*|__)(?=\S)([\s\S]*?\S)\1/;
-const EM_STAR = /^\*(?=[^\s*])([^*]*[^\s*])\*/;
-const EM_UNDERSCORE = /^_(?=[^\s_])([^_]*[^\s_])_(?![\p{L}\p{N}])/u;
-const DEL = /^~~(?=\S)([\s\S]*?\S)~~/;
-const ESCAPE = /^\\([!-/:-@[-`{-~])/;
+// Inline tokens, matched with sticky regexes at the current offset so a long
+// paragraph is never re-sliced per character (the technique marked and
+// markdown-it use). Dispatch below is by first character; TEXT swallows a
+// whole run of characters that cannot start any token.
+const CODESPAN = /(`+)([\s\S]*?[^`])\1(?!`)/y;
+const AUTOLINK = /<(https?:\/\/[^\s<>]+)>/y;
+const HTML_INLINE = /<!--[\s\S]*?-->|<\/?[a-zA-Z][a-zA-Z0-9-]*(?:\s[^<>]*?)?\/?>/y;
+const BR = /( {2,}|\\)\n(?!\s*$)/y;
+const MATH_INLINE = /\$([^$\n]+?)\$/y;
+const FOOTNOTE_REF = /\[\^([^\]]+)\]/y;
+const STRONG = /(\*\*|__)(?=\S)([\s\S]*?\S)\1/y;
+const EM_STAR = /\*(?=[^\s*])([^*]*[^\s*])\*/y;
+const EM_UNDERSCORE = /_(?=[^\s_])([^_]*[^\s_])_(?![\p{L}\p{N}])/uy;
+const DEL = /~~(?=\S)([\s\S]*?\S)~~/y;
+const ESCAPE = /\\([!-/:-@[-`{-~])/y;
+const TEXT = /[^ `<[!*_~$\\]+/y;
 
 function parseInline(src: string, ctx: Ctx): string {
   let out = "";
@@ -341,97 +346,149 @@ function parseInline(src: string, ctx: Ctx): string {
     text = "";
   };
   let i = 0;
-  for (let ch = src[i]; ch !== undefined; ch = src[i]) {
-    const rest = src.slice(i);
-    const prev = src[i - 1] ?? "\n";
+  const at = (re: RegExp): RegExpExecArray | null => {
+    // Sticky regexes take their match offset through lastIndex by contract.
+    // oxlint-disable-next-line eslint/no-param-reassign
+    re.lastIndex = i;
+    return re.exec(src);
+  };
+  // Openers whose closer scan already ran off the end of src ("**", "~~",
+  // "`"+run length): a scan from any later offset covers a subset of the
+  // same text and can only fail again, so skip it. This keeps unclosed
+  // delimiters linear instead of one full scan per opener.
+  const dead = new Set<string>();
+  while (i < src.length) {
+    const ch = src[i]!;
     let m: RegExpExecArray | null;
-    if ((m = BR.exec(rest))) {
-      flush();
-      out += "<br>";
-      i += m[0].length;
-      continue;
-    }
-    if ((m = CODESPAN.exec(rest))) {
-      flush();
-      let code = m[2]!.replace(/\n/g, " ");
-      if (/^ .*[^ ].* $/.test(code)) code = code.slice(1, -1);
-      out += `<code>${escapeAll(code)}</code>`;
-      i += m[0].length;
-      continue;
-    }
-    if ((m = AUTOLINK.exec(rest))) {
-      flush();
-      const url = m[1]!;
-      out += `<a href="${cleanUrl(url)}">${escapeText(url)}</a>`;
-      i += m[0].length;
-      continue;
-    }
-    if (rest[0] === "<" && (m = HTML_INLINE.exec(rest))) {
-      flush();
-      out += m[0];
-      i += m[0].length;
-      continue;
-    }
-    if ((m = FOOTNOTE_REF.exec(rest))) {
-      flush();
-      out += footnoteRef(m[1]!, ctx);
-      i += m[0].length;
-      continue;
-    }
-    if (rest[0] === "!" && rest[1] === "[") {
-      const link = matchLink(rest.slice(1));
-      if (link) {
-        flush();
-        const title = link.title ? ` title="${escapeText(link.title)}"` : "";
-        out += `<img src="${cleanUrl(link.href)}" alt="${escapeText(unescape(link.text))}"${title}>`;
-        i += 1 + link.length;
-        continue;
+    switch (ch) {
+      case " ":
+      case "\\":
+        // A hard break needs "  \n" or "\\\n"; a lone space is plain text.
+        if (ch === " " && src[i + 1] !== " ") break;
+        if ((m = at(BR))) {
+          flush();
+          out += "<br>";
+          i += m[0].length;
+          continue;
+        }
+        if (ch === "\\" && (m = at(ESCAPE))) {
+          text += m[1]!;
+          i += 2;
+          continue;
+        }
+        break;
+      case "`": {
+        let run = 1;
+        while (src[i + run] === "`") run++;
+        if (dead.has(`\`${run}`)) break;
+        if ((m = at(CODESPAN))) {
+          flush();
+          let code = m[2]!.replace(/\n/g, " ");
+          if (/^ .*[^ ].* $/.test(code)) code = code.slice(1, -1);
+          out += `<code>${escapeAll(code)}</code>`;
+          i += m[0].length;
+          continue;
+        }
+        dead.add(`\`${run}`);
+        break;
       }
-    }
-    if (rest[0] === "[") {
-      const link = matchLink(rest);
-      if (link) {
-        flush();
-        const title = link.title ? ` title="${escapeText(link.title)}"` : "";
-        out += `<a href="${cleanUrl(link.href)}"${title}>${parseInline(link.text, ctx)}</a>`;
-        i += link.length;
-        continue;
+      case "<":
+        if ((m = at(AUTOLINK))) {
+          flush();
+          const url = m[1]!;
+          out += `<a href="${cleanUrl(url)}">${escapeText(url)}</a>`;
+          i += m[0].length;
+          continue;
+        }
+        if ((m = at(HTML_INLINE))) {
+          flush();
+          out += m[0];
+          i += m[0].length;
+          continue;
+        }
+        break;
+      case "[": {
+        if ((m = at(FOOTNOTE_REF))) {
+          flush();
+          out += footnoteRef(m[1]!, ctx);
+          i += m[0].length;
+          continue;
+        }
+        const link = matchLink(src, i);
+        if (link) {
+          flush();
+          const title = link.title ? ` title="${escapeText(link.title)}"` : "";
+          out += `<a href="${cleanUrl(link.href)}"${title}>${parseInline(link.text, ctx)}</a>`;
+          i += link.length;
+          continue;
+        }
+        break;
       }
-    }
-    if ((m = STRONG.exec(rest))) {
-      flush();
-      out += `<strong>${parseInline(m[2]!, ctx)}</strong>`;
-      i += m[0].length;
-      continue;
-    }
-    if ((m = EM_STAR.exec(rest))) {
-      flush();
-      out += `<em>${parseInline(m[1]!, ctx)}</em>`;
-      i += m[0].length;
-      continue;
-    }
-    if (!/[\p{L}\p{N}]/u.test(prev) && (m = EM_UNDERSCORE.exec(rest))) {
-      flush();
-      out += `<em>${parseInline(m[1]!, ctx)}</em>`;
-      i += m[0].length;
-      continue;
-    }
-    if ((m = DEL.exec(rest))) {
-      flush();
-      out += `<del>${parseInline(m[1]!, ctx)}</del>`;
-      i += m[0].length;
-      continue;
-    }
-    if (ctx.math && rest[0] === "$" && (m = MATH_INLINE.exec(rest))) {
-      flush();
-      out += ctx.math(m[1]!, false);
-      i += m[0].length;
-      continue;
-    }
-    if ((m = ESCAPE.exec(rest))) {
-      text += m[1]!;
-      i += 2;
-      continue;
+      case "!": {
+        const link = src[i + 1] === "[" ? matchLink(src, i + 1) : null;
+        if (link) {
+          flush();
+          const title = link.title ? ` title="${escapeText(link.title)}"` : "";
+          out += `<img src="${cleanUrl(link.href)}" alt="${escapeText(unescape(link.text))}"${title}>`;
+          i += 1 + link.length;
+          continue;
+        }
+        break;
+      }
+      case "*":
+      case "_": {
+        if (src[i + 1] === ch && !dead.has(ch + ch)) {
+          if ((m = at(STRONG))) {
+            flush();
+            out += `<strong>${parseInline(m[2]!, ctx)}</strong>`;
+            i += m[0].length;
+            continue;
+          }
+          // Only a passed (?=\S) lookahead means the closer scan ran to the
+          // end; a whitespace-follows failure is positional, not global.
+          if (/\S/.test(src.charAt(i + 2))) dead.add(ch + ch);
+        }
+        if (ch === "*" && (m = at(EM_STAR))) {
+          flush();
+          out += `<em>${parseInline(m[1]!, ctx)}</em>`;
+          i += m[0].length;
+          continue;
+        }
+        const prev = src[i - 1] ?? "\n";
+        if (ch === "_" && !/[\p{L}\p{N}]/u.test(prev) && (m = at(EM_UNDERSCORE))) {
+          flush();
+          out += `<em>${parseInline(m[1]!, ctx)}</em>`;
+          i += m[0].length;
+          continue;
+        }
+        break;
+      }
+      case "~":
+        if (src[i + 1] === "~" && !dead.has("~~")) {
+          if ((m = at(DEL))) {
+            flush();
+            out += `<del>${parseInline(m[1]!, ctx)}</del>`;
+            i += m[0].length;
+            continue;
+          }
+          if (/\S/.test(src.charAt(i + 2))) dead.add("~~");
+        }
+        break;
+      case "$":
+        if (ctx.math && (m = at(MATH_INLINE))) {
+          flush();
+          out += ctx.math(m[1]!, false);
+          i += m[0].length;
+          continue;
+        }
+        break;
+      default:
+        if ((m = at(TEXT))) {
+          text += m[0];
+          i += m[0].length;
+          continue;
+        }
+        break;
     }
     text += ch;
     i++;
@@ -447,18 +504,18 @@ type Link = {
   length: number;
 };
 
-// Matches [text](href "title") at the start of src, with nested brackets in
-// text and balanced parentheses in href.
-function matchLink(src: string): Link | null {
+// Matches [text](href "title") at src[start], with nested brackets in text
+// and balanced parentheses in href. `length` is relative to `start`.
+function matchLink(src: string, start: number): Link | null {
   let depth = 0;
-  let i = 0;
+  let i = start;
   for (; i < src.length; i++) {
     if (src[i] === "\\") i++;
     else if (src[i] === "[") depth++;
     else if (src[i] === "]" && --depth === 0) break;
   }
   if (depth !== 0 || src[i + 1] !== "(") return null;
-  const text = src.slice(1, i);
+  const text = src.slice(start + 1, i);
   let j = i + 2;
   let paren = 1;
   for (; j < src.length; j++) {
@@ -474,7 +531,7 @@ function matchLink(src: string): Link | null {
     text,
     href: unescape(t ? t[1]! : dest),
     ...(title !== undefined && { title: unescape(title) }),
-    length: j + 1,
+    length: j + 1 - start,
   };
 }
 
