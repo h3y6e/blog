@@ -38,5 +38,13 @@ function render(v: Value): string {
 }
 
 export function html(strings: TemplateStringsArray, ...values: Value[]): Raw {
-  return new Raw(strings.reduce((out, s, i) => out + render(values[i - 1]) + s));
+  // Literal segments only carry template scaffolding, so their line breaks
+  // and indentation (however the formatter reflows them) collapse to single
+  // spaces. Interpolated values — post bodies with <pre> blocks included —
+  // pass through untouched.
+  return new Raw(
+    strings
+      .map((s) => s.replace(/\s*\n\s*/g, " "))
+      .reduce((out, s, i) => out + render(values[i - 1]) + s),
+  );
 }

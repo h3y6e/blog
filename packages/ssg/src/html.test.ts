@@ -79,4 +79,24 @@ describe("html", () => {
     expect(out).toBeInstanceOf(Raw);
     expect(String(out)).toBe("<p>x</p>");
   });
+
+  it("when template literals span lines, collapses the indentation to single spaces", () => {
+    // Act
+    const out = html`<head>
+      <meta charset="utf-8" />
+      <title>${"t"}</title>
+    </head>`;
+    // Assert
+    expect(out.html).toBe('<head> <meta charset="utf-8" /> <title>t</title> </head>');
+  });
+
+  it("when interpolated values contain newlines, leaves them untouched (post bodies keep their pre blocks)", () => {
+    // Arrange (aliased tag: oxfmt reformats whitespace inside html`` literals)
+    const tag = html;
+    const body = raw("<pre>a\n  b</pre>");
+    // Act
+    const out = tag`<div>\n  ${body}\n</div>`;
+    // Assert
+    expect(out.html).toBe("<div> <pre>a\n  b</pre> </div>");
+  });
 });

@@ -8,6 +8,7 @@ export const MODERN_CSS_MARKERS = [
   "@view-transition",
   "animation-timeline",
   "@starting-style",
+  "content-visibility",
 ];
 
 /**

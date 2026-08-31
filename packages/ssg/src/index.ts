@@ -4,6 +4,7 @@ import { rewriteAssetUrls } from "./assets.ts";
 import { loadPosts } from "./content.ts";
 import { MODERN_CSS_MARKERS, checkCssLowering, inlineCss } from "./css.ts";
 import { type Dims, enhanceMedia, imageSize } from "./images.ts";
+import { inlineAssets } from "./inline.ts";
 import { checkOriginTrials } from "./origin-trials.ts";
 import { buildPages } from "./pages.ts";
 import type { SiteConfig } from "./types.ts";
@@ -52,12 +53,11 @@ const devScriptUrls = (html: string): string =>
   SCRIPT_URLS.reduce((h, [url, entry]) => h.replace(url, `/${entry}`), html);
 
 const TYPE_HTML = "text/html; charset=utf-8";
-const TYPE_XML = "application/xml; charset=utf-8";
 const TYPE_CSS = "text/css; charset=utf-8";
 
 const CONTENT_TYPES: Record<string, string> = {
   ".html": TYPE_HTML,
-  ".xml": TYPE_XML,
+  ".xml": "application/xml; charset=utf-8",
   ".css": TYPE_CSS,
   ".js": "text/javascript; charset=utf-8",
   ".png": "image/png",
@@ -72,11 +72,79 @@ const CONTENT_TYPES: Record<string, string> = {
   ".txt": "text/plain; charset=utf-8",
 };
 
-function walk(dir: string): string[] {
-  return readdirSync(dir).flatMap((name) => {
-    const path = join(dir, name);
-    return statSync(path).isDirectory() ? walk(path) : [path];
-  });
+const contentType = (path: string): string =>
+  CONTENT_TYPES[extname(path).toLowerCase()] ?? "application/octet-stream";
+
+/** Request path without query string, percent-decoded. split() always
+ * yields at least one element. */
+const reqPath = (url: string | undefined): string =>
+  decodeURIComponent((url ?? "/").split("?")[0]!);
+
+/** Page files a URL may resolve to, GitHub Pages style: the exact file, or
+ * the directory index (with or without the trailing slash). */
+const pageKeys = (url: string): string[] =>
+  url.endsWith("/") ? [`${url}index.html`] : [url, `${url}/index.html`];
+
+const walk = (dir: string): string[] =>
+  readdirSync(dir, { recursive: true, withFileTypes: true })
+    .filter((d) => d.isFile())
+    .map((d) => join(d.parentPath, d.name));
+
+type Harvest = {
+  css: string;
+  scripts: [url: string, code: string][];
+  /** Canonical /css/fonts/ URL → hashed URL. */
+  fonts: Map<string, string>;
+};
+
+/** Pull the page-inlined CSS and script sources plus the hashed font URLs
+ * out of the bundle, deleting the entries no page references anymore, and
+ * fail the build if the bundler lowered at-Baseline CSS (AGENTS.md policy):
+ * every modern marker in the theme must survive to dist. */
+function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harvest {
+  const cssPath = resolve(root, ENTRIES.a5ebec);
+  const scriptPaths = SCRIPT_URLS.map(([url, entry]) => [url, resolve(root, entry)] as const);
+  let css: string | undefined;
+  const scripts = new Map<string, string>();
+  const fonts = new Map<string, string>();
+  const themeDir = dirname(cssPath);
+  const themeCss = readdirSync(themeDir)
+    .filter((f) => f.endsWith(".css"))
+    .map((f) => readFileSync(join(themeDir, f), "utf8"))
+    .join("\n");
+  // Rollup's generateBundle contract requires mutating `bundle` in place.
+  // oxlint-disable eslint/no-param-reassign
+  for (const [key, entry] of Object.entries(bundle)) {
+    if (entry.type === "chunk") {
+      const script = scriptPaths.find(([, path]) => entry.facadeModuleId === path);
+      if (script) {
+        scripts.set(script[0], entry.code!.trimEnd());
+        delete bundle[key];
+      }
+      // The CSS entry's JS stub chunk serves no page; drop it.
+      if (entry.facadeModuleId === cssPath) delete bundle[key];
+    }
+    // Fonts are emitted from the CSS url()s; expose them at their canonical
+    // /css/fonts/ URLs so the head preload links rewrite to the hashed files.
+    if (entry.type === "asset" && entry.fileName.endsWith(".woff2")) {
+      for (const name of entry.names ?? []) fonts.set(`/css/fonts/${name}`, `/${entry.fileName}`);
+    }
+    if (entry.type === "asset" && entry.fileName.endsWith(".css")) {
+      css =
+        typeof entry.source === "string" ? entry.source : new TextDecoder().decode(entry.source);
+      checkCssLowering(
+        MODERN_CSS_MARKERS.filter((m) => themeCss.includes(m)),
+        css,
+      );
+      delete bundle[key];
+    }
+  }
+  // oxlint-enable eslint/no-param-reassign
+  if (css === undefined) throw new Error(`Bundle is missing the entry behind ${CSS_URL}`);
+  for (const [url] of SCRIPT_URLS) {
+    if (!scripts.has(url)) throw new Error(`Bundle is missing the entry behind ${url}`);
+  }
+  return { css, scripts: [...scripts.entries()], fonts };
 }
 
 const VIRTUAL_PREFIX = "virtual:ssg/";
@@ -110,11 +178,27 @@ type PreviewServer = {
   middlewares: DevServer["middlewares"];
 };
 
+type Res = {
+  statusCode: number;
+  setHeader: (k: string, v: string) => void;
+  end: (body: string | Uint8Array) => void;
+};
+
+/** Serve a file with its content type; fonts get Cache-Control (dev 1h,
+ * preview mirrors GitHub Pages' 600s) so font-display: optional doesn't fall
+ * back on every navigation. */
+function sendFile(res: Res, path: string, fontMaxAge: number): void {
+  res.setHeader("Content-Type", contentType(path));
+  if (path.endsWith(".woff2")) res.setHeader("Cache-Control", `max-age=${fontMaxAge}`);
+  res.end(readFileSync(path));
+}
+
 type BundleEntry = {
   type: "chunk" | "asset";
   fileName: string;
   facadeModuleId?: string | null;
   source?: string | Uint8Array;
+  code?: string;
   names?: string[];
 };
 
@@ -128,15 +212,7 @@ type DevServer = {
   transformIndexHtml: (url: string, html: string) => Promise<string>;
   middlewares: {
     use: (
-      handler: (
-        req: { url?: string },
-        res: {
-          statusCode: number;
-          setHeader: (k: string, v: string) => void;
-          end: (body: string | Uint8Array) => void;
-        },
-        next: (err?: unknown) => void,
-      ) => void,
+      handler: (req: { url?: string }, res: Res, next: (err?: unknown) => void) => void,
     ) => void;
   };
 };
@@ -178,46 +254,9 @@ export function ssg(options: SsgOptions): Plugin {
       // Expired origin trial tokens fail the build; soon-to-expire ones warn.
       for (const warning of checkOriginTrials(options.originTrials ?? [])) console.warn(warning);
 
+      const { css, scripts, fonts } = harvestBundle(bundle, root);
       // Canonical URL → hashed URL for everything Rollup emitted.
-      const assets = new Map<string, string>();
-      const cssPath = resolve(root, ENTRIES.a5ebec);
-      const scriptPaths = SCRIPT_URLS.map(([url, entry]) => [url, resolve(root, entry)] as const);
-      // Fail the build if the bundler lowered at-Baseline CSS (AGENTS.md
-      // policy): every modern marker in the theme must survive to dist.
-      const themeDir = dirname(cssPath);
-      const themeCss = readdirSync(themeDir)
-        .filter((f) => f.endsWith(".css"))
-        .map((f) => readFileSync(join(themeDir, f), "utf8"))
-        .join("\n");
-      for (const [key, entry] of Object.entries(bundle)) {
-        if (entry.type === "chunk") {
-          const script = scriptPaths.find(([, path]) => entry.facadeModuleId === path);
-          if (script) assets.set(script[0], `/${entry.fileName}`);
-        }
-        // Fonts are emitted from the CSS url()s; expose them at their canonical
-        // /css/fonts/ URLs so the head preload links rewrite to the hashed files.
-        if (entry.type === "asset" && entry.fileName.endsWith(".woff2")) {
-          for (const name of entry.names ?? [])
-            assets.set(`/css/fonts/${name}`, `/${entry.fileName}`);
-        }
-        if (entry.type === "asset" && entry.fileName.endsWith(".css")) {
-          assets.set(CSS_URL, `/${entry.fileName}`);
-          checkCssLowering(
-            MODERN_CSS_MARKERS.filter((m) => themeCss.includes(m)),
-            typeof entry.source === "string"
-              ? entry.source
-              : new TextDecoder().decode(entry.source),
-          );
-        }
-        // The CSS entry's JS stub chunk serves no page; drop it.
-        // Rollup's generateBundle contract requires mutating `bundle` in place.
-        // oxlint-disable-next-line eslint/no-param-reassign
-        if (entry.type === "chunk" && entry.facadeModuleId === cssPath) delete bundle[key];
-      }
-      for (const url of [CSS_URL, ...SCRIPT_URLS.map(([scriptUrl]) => scriptUrl)]) {
-        if (!assets.has(url)) throw new Error(`Bundle is missing the entry behind ${url}`);
-      }
-
+      const assets = new Map(fonts);
       const imageDims = new Map<string, Dims>();
       for (const [urlPrefix, dir] of ASSET_DIRS) {
         const abs = resolve(root, dir);
@@ -237,8 +276,8 @@ export function ssg(options: SsgOptions): Plugin {
       }
 
       // feed.xml stays byte-identical to the live Franklin feed; every other
-      // page gets media loading hints and its asset references pointed at the
-      // hashed files.
+      // page gets the CSS and theme scripts inlined, media loading hints, and
+      // its asset references pointed at the hashed files.
       for (const [fileName, source] of await pages()) {
         this.emitFile({
           type: "asset",
@@ -246,7 +285,11 @@ export function ssg(options: SsgOptions): Plugin {
           source:
             fileName === "feed.xml"
               ? source
-              : rewriteAssetUrls(enhanceMedia(source, imageDims), assets, options.siteUrl),
+              : rewriteAssetUrls(
+                  enhanceMedia(inlineAssets(source, css, scripts), imageDims),
+                  assets,
+                  options.siteUrl,
+                ),
         });
       }
     },
@@ -274,16 +317,7 @@ export function ssg(options: SsgOptions): Plugin {
         server.middlewares.use((req, res, next) => {
           void (async (): Promise<void> => {
             try {
-              // split() always yields at least one element.
-              const url = decodeURIComponent((req.url ?? "/").split("?")[0]!);
-
-              const sendFile = (path: string): void => {
-                res.setHeader(
-                  "Content-Type",
-                  CONTENT_TYPES[extname(path).toLowerCase()] ?? "application/octet-stream",
-                );
-                res.end(readFileSync(path));
-              };
+              const url = reqPath(req.url);
               const send = (body: string, type: string, status = 200): void => {
                 // http.ServerResponse's contract requires setting statusCode in place.
                 // oxlint-disable-next-line eslint/no-param-reassign
@@ -298,24 +332,18 @@ export function ssg(options: SsgOptions): Plugin {
               for (const [urlPrefix, dir] of DEV_STATIC_DIRS) {
                 if (url.startsWith(urlPrefix)) {
                   const path = resolve(root, dir, url.slice(urlPrefix.length));
-                  if (existsSync(path) && statSync(path).isFile()) return sendFile(path);
+                  if (existsSync(path) && statSync(path).isFile()) return sendFile(res, path, 3600);
                 }
               }
 
-              // Mirrors configurePreviewServer's candidate list, so an
-              // extensionless URL without a trailing slash (e.g. /posts/foo)
-              // resolves the same way in `vp dev` and `vp preview`.
-              const path = url.slice(1);
-              const candidates = url.endsWith("/")
-                ? [`${path}index.html`]
-                : [path, `${path}/index.html`];
               const pagesMap = await pages();
-              const match = candidates
-                .map((key): [string, string | undefined] => [key, pagesMap.get(key)])
+              // Pages are keyed without the leading slash.
+              const match = pageKeys(url)
+                .map((key): [string, string | undefined] => [key, pagesMap.get(key.slice(1))])
                 .find(([, page]) => page !== undefined);
               if (match) {
                 const [key, page] = match;
-                const type = CONTENT_TYPES[extname(key).toLowerCase()] ?? TYPE_HTML;
+                const type = contentType(key);
                 return type === TYPE_HTML
                   ? send(await server.transformIndexHtml(url, devScriptUrls(page!)), TYPE_HTML)
                   : send(page!, type);
@@ -342,26 +370,17 @@ export function ssg(options: SsgOptions): Plugin {
     configurePreviewServer(server) {
       const dist = resolve(server.config.root, "dist");
       server.middlewares.use((req, res, next) => {
-        // split() always yields at least one element.
-        const url = decodeURIComponent((req.url ?? "/").split("?")[0]!);
-        const candidates = url.endsWith("/") ? [`${url}index.html`] : [url, `${url}/index.html`];
-        for (const candidate of candidates) {
-          const path = join(dist, candidate);
-          if (existsSync(path) && statSync(path).isFile()) {
-            res.setHeader(
-              "Content-Type",
-              CONTENT_TYPES[extname(path).toLowerCase()] ?? "application/octet-stream",
-            );
-            res.end(readFileSync(path));
-            return;
-          }
+        const url = reqPath(req.url);
+        for (const key of pageKeys(url)) {
+          const path = join(dist, key);
+          if (existsSync(path) && statSync(path).isFile()) return sendFile(res, path, 600);
         }
         const notFound = join(dist, "404.html");
         if (extname(url) === "" && existsSync(notFound)) {
           // http.ServerResponse's contract requires setting statusCode in place.
           // oxlint-disable-next-line eslint/no-param-reassign
           res.statusCode = 404;
-          res.setHeader("Content-Type", CONTENT_TYPES[".html"]!);
+          res.setHeader("Content-Type", TYPE_HTML);
           res.end(readFileSync(notFound));
           return;
         }
