@@ -1,0 +1,38 @@
+/* Cross-document view transitions: the post title morphs between the list
+   link and the article headline via a view-transition-name — static on the
+   article, set at navigation time by vt.ts on the list. */
+@view-transition {
+  navigation: auto;
+}
+
+/* The root swaps instantly: cross-fading two structurally different pages
+   ghosts every line of text, and a sequential fade dips to the background.
+   Only the named title (below) animates. */
+::view-transition-old(root) {
+  animation: none;
+  opacity: 0;
+}
+
+::view-transition-new(root) {
+  animation: none;
+}
+
+/* Title morph: keep the text snapshots at their natural size instead of
+   stretching to the group box. Scoped by name — root stays the instant swap. */
+::view-transition-group(post-title) {
+  animation-duration: 0.2s;
+}
+
+::view-transition-old(post-title),
+::view-transition-new(post-title) {
+  height: 100%;
+  object-fit: none;
+  object-position: left top;
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}

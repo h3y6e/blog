@@ -1,0 +1,18 @@
+:root {
+  /* Dark by default; the inline head script overrides color-scheme with the
+     stored choice via the html style attribute. */
+  color-scheme: dark;
+
+  /* colors */
+  --background: light-dark(#fbfbfb, #2f2f2f);
+  --logo-color: light-dark(#fbfbfb, #2f2f2f);
+  --accent: light-dark(#2aa298, #a5ebec);
+  --toc-color: light-dark(#2aa298cc, #a5ebeccc);
+  --date-color: light-dark(#2aa298b3, #a5ebecb3);
+  --code-background: light-dark(#2aa29826, #a5ebec26);
+  --color: light-dark(#403f53, #d3d5d5);
+  --blockquote-color: light-dark(#403f53cc, #d3d5d5cc);
+  --tag-color: light-dark(#403f537f, #d3d5d57f);
+  --border-color: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+  --embed-background: light-dark(#ffffff, #212121);
+}

@@ -1,0 +1,31 @@
+/* Footnote popovers, anchored to their ref by the interest invoker markup
+   emitted at build time. `display: none` keeps them inert (and the refs plain
+   links) in browsers without Popover API / anchor positioning support. */
+.footnote-popover {
+  display: none;
+  position: fixed;
+  inset: auto;
+  position-area: block-start;
+  position-try-fallbacks: flip-block;
+  margin: 8px 0;
+  width: max-content;
+  max-width: min(45ch, 90vw);
+  padding: 5px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background: var(--embed-background);
+  color: var(--color);
+  font-size: 0.9rem;
+  transition:
+    opacity 0.15s,
+    translate 0.15s;
+}
+
+.footnote-popover:popover-open {
+  display: block;
+
+  @starting-style {
+    opacity: 0;
+    translate: 0 5px;
+  }
+}

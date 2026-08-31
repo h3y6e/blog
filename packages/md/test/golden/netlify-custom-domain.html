@@ -1,0 +1,21 @@
+<h2>カスタムドメインの購入</h2>
+<p><a href="https://domains.google.com">Google Domains</a>で流行りの <code>.dev</code> ドメインを購入。
+日本語対応してるので簡単。</p>
+<blockquote>
+<p>Google Domainsのサービスは、現在お住まいの国で営利目的または商用で使用する場合にのみご利用いただけます。</p>
+</blockquote>
+<p>って書かれてたんだけど、皆んな個人利用で使ってるし、そもそも <code>.dev</code> って開発者向けのドメインだから別にいいよね（？）</p>
+<p>ちなみに <a href="https://kyash.co/">Kyash</a>で買えた。嬉しい。</p>
+<h2>Netlifyにカスタムドメインを設定</h2>
+<p><img src="/img/2019-06-09/netlify_domains.png" alt="netlify_domain_management"></p>
+<p>このページで設定する。</p>
+<p>Add custom domainからお好きなカスタムドメインを追加。</p>
+<p>画像のように <code>blog</code> 等のサブドメインも可能。</p>
+<p>Check DNS configrationという警告が出るのでそれをクリックして出てきたメッセージに従う。</p>
+<p>（ググってよく出てくるのはカスタムリソースレコードのCNAMEの設定だが、そんなことをしなくてもカスタムネームサーバーを使用すればNetlifyのManaged DNSが勝手に設定してくれる）</p>
+<p>Netlifyに提示されたネームサーバーをGoogle DomainsのDNS &gt; ネームサーバー に追加する。</p>
+<h2>HTTPS化</h2>
+<p><img src="/img/2019-06-09/netlify_https.png" alt="netlify_https"></p>
+<p>自動的に設定される。</p>
+<p>Verify DNS configurationを押したらすぐ有効化された。</p>
+<p>さくっとできた。</p>

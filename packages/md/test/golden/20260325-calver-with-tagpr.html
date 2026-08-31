@@ -1,0 +1,83 @@
+<h2>この記事の対象</h2>
+<p>ライブラリやSDKであれば<a href="https://semver.org/">SemVer</a>が適している。公開APIの互換性を壊すならmajor、機能追加ならminor、バグ修正ならpatchと、意味が明確で、依存する側がバージョンを見て判断できる。</p>
+<p>一方、提供する機能とは関係なく定期的にリリースするプロダクトや、バージョンにSemVerのような意味付けがしにくいプロダクトもある。
+Webサービスや社内ツールなど、エンドユーザーがバージョン番号を見て依存関係を判断するわけではないものがこれにあたる。こうしたプロダクトでは何が公開APIなのかが曖昧で、major・minor・patchの判断に意味のないコストがかかりやすい。</p>
+<p>この記事は、そういったSemVerの意味付けがしにくく、定期的にリリースするプロダクトのバージョニングに絞って書いている。</p>
+<h2>CalVerという選択肢</h2>
+<p><a href="https://calver.org/">CalVer (Calendar Versioning)</a> では、リリース日をバージョン番号に組み込む。</p>
+<p>EMBED0</p>
+<p>たとえば <code>YYYY.MM.MICRO</code> というスキームを採用すると、2026年3月の最初のリリースは <code>v2026.3.0</code>、同月内の次のリリースは <code>v2026.3.1</code> になる。</p>
+<p>CalVerの利点は主に2つある。</p>
+<ul>
+<li>バージョン番号の決定にコミュニケーションが要らない: リリースすれば日付から自動的に番号が決まるので、majorやminorの判断が要らない</li>
+<li>リリース日が一目でわかる: CalVerはバージョン番号に日付を含むため、プロダクトのリリース時期を即座に読み取れる</li>
+</ul>
+<p>OSではUbuntu (<code>YY.0M.MICRO</code>) やiOS, macOS (<code>YY.MINOR</code>)、iOSアプリではBitwarden (<code>YYYY.MM.MICRO</code>) やMastodon (<code>YYYY.MINOR</code>) など、幅広く採用されている。開発ツールでもpip (<code>YY.MINOR.MICRO</code>) やUnity (<code>YYYY.MINOR.MICRO</code>) の採用例がある。</p>
+<h2>tagprでCalVer + monorepoを運用する</h2>
+<p><a href="https://github.com/Songmu/tagpr">tagpr</a>は、mainブランチへのpushをトリガーにリリースPRの自動作成・タグ付け・GitHub Releaseの作成を一貫して行ってくれる。
+tagpr自体の詳しい説明は<a href="https://songmu.jp/riji/entry/2022-09-05-tagpr.html">作者様のブログ記事</a>が大変わかりやすいので、そちらを参照するとよい。</p>
+<p>EMBED1</p>
+<p>もともとSemVerベースのツールだったが、<a href="https://github.com/Songmu/tagpr/issues/210">monorepo対応</a>と<a href="https://github.com/Songmu/tagpr/pull/288">CalVer対応</a>が入ったことで、monorepo構成のプロダクトでもCalVerの運用を自動化しやすくなった。</p>
+<h3>CalVer有効時の挙動</h3>
+<p>SemVerモードのtagprでは、マージされたPRに <code>major</code> / <code>minor</code> ラベルが付いていればそれに応じたバージョンbumpを行い、なければpatchのbumpになる。リリースPRに <code>tagpr:major</code> や <code>tagpr:minor</code> ラベルを手動で付けて調整できる。SemVerで使うとしても素直に使える。</p>
+<p>CalVerを有効にすると、この仕組みが変わる。</p>
+<ul>
+<li><strong>major/minorラベルは無視される</strong>。バージョンは日付から自動で決まる</li>
+<li>同じ年月内で複数リリースがある場合、MICROが自動インクリメントされる（<code>v2026.3.0</code> → <code>v2026.3.1</code> → ...）</li>
+<li>月が変われば <code>v2026.4.0</code> から再スタートする</li>
+</ul>
+<p>「次のバージョンは何にするか」という判断ポイントがなくなり、バージョニング議論を消せる。</p>
+<h3>monorepoでの設定</h3>
+<p>monorepoでは、各アプリのディレクトリに <code>.tagpr</code> を配置する。<code>tagPrefix</code> でタグを区別し、<code>calendarVersioning</code> でスキームを指定する。</p>
+<pre><code class="language-ini">	[tagpr]
+	releaseBranch = main
+	versionFile = apps/web/package.json
+	vPrefix = true
+	tagPrefix = web
+	changelog = false
+	calendarVersioning = YYYY.MM.MICRO
+</code></pre>
+<p>GitHub Actionsのワークフロー側では、matrixで各パッケージのconfigを指定する。</p>
+<pre><code class="language-yaml">jobs:
+  tagpr:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: [apps/web, apps/docs]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: Songmu/tagpr@v1
+        with:
+          config: ${{ matrix.package }}/.tagpr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+</code></pre>
+<h2>release-pleaseからの移行</h2>
+<p>以前、<a href="https://github.com/googleapis/release-please">release-please</a>でSemVerのリリースフローを組んでいたmonorepoを、tagpr + CalVerへ移行したことがある。ここでは <code>apps/</code> 以下に <code>docs</code> と <code>web</code> の2つのアプリがある構成を例にする。</p>
+<p>移行時にやったことは以下の通り。</p>
+<ol>
+<li>tagpr設定の追加: 各アプリのディレクトリに <code>.tagpr</code> を配置</li>
+<li>ブリッジタグの作成: <code>docs@v1.x.x</code> と同じコミットに <code>docs/v2026.3.0</code> のタグを打ち、タグ体系を接続</li>
+<li>package.jsonのバージョン更新: <code>1.x.x</code> を <code>2026.3.0</code> に変更。tagprは最新のgitタグからバージョンを決めるが、<code>versionFile</code> の値との不整合があるとリリースPRが正しく作られないため、合わせておく必要がある</li>
+<li>関連ワークフローのタグパターン変更: デプロイワークフローなどで <code>docs@v*</code> を参照していた箇所を <code>docs/v*</code> に変更</li>
+<li>release-please関連ファイルの削除: <code>release-please-config.json</code>、<code>.release-please-manifest.json</code>、ワークフローを削除</li>
+</ol>
+<h2>単一パッケージでの利用</h2>
+<p>もちろんmonorepoでなくても使える。
+自分が作っている <a href="https://github.com/h3y6e/skills">h3y6e/skills</a> はAgent Skillsを管理するCLIツールで、単一パッケージだがCalVerを採用している。</p>
+<pre><code class="language-ini">[tagpr]
+	releaseBranch = main
+	versionFile = -
+	vPrefix = true
+	calendarVersioning = YYYY.MM.MICRO
+	command = &quot;mise run prerelease&quot;
+</code></pre>
+<p><code>versionFile = -</code> とすれば、バージョンファイルを使わずgitタグだけで管理できる。</p>
+<h2>おわりに</h2>
+<p>この記事で言いたかったのは、SemVerの意味付けがしにくく定期的にリリースするプロダクトのバージョニングにはCalVerが噛み合いやすい、という点にある。
+tagprのCalVer + monorepo対応が入ったことで、この方針を実際の運用に乗せやすくなった。</p>
+<p>バージョニングに悩まされる時間があるなら、その分プロダクトそのものに集中したい。
+SemVerがしっくりこないと感じているなら、CalVerを試してみる価値はある。</p>

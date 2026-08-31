@@ -1,0 +1,27 @@
+/* Scroll-driven reading progress bar (post pages); invisible where
+   animation-timeline is unsupported. */
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--accent);
+  transform-origin: left;
+  scale: 0 1;
+  z-index: 1;
+}
+
+@supports (animation-timeline: scroll()) {
+  .reading-progress {
+    animation: reading-progress linear both;
+    animation-timeline: scroll();
+  }
+}
+
+@keyframes reading-progress {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1 1;
+  }
+}

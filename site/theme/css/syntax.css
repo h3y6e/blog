@@ -1,0 +1,86 @@
+/* Syntax theme for the token classes emitted by @blog/hl
+   (k keyword, b built-in, l literal, t type, s string, c comment, n number,
+   m meta, v variable, a attr/key, y symbol, h heading, g tag, u bullet,
+   q quote, d code span, f link, w strong, e emphasis).
+   Every color is a light-dark() pair harmonized with the site accent
+   (#2aa298 / #a5ebec) and meets WCAG AA against the code background. */
+
+pre {
+  margin: 20px 0px;
+  overflow: auto;
+  font-size: 0.9rem;
+  font-weight: lighter;
+
+  & code {
+    background: light-dark(#eef3f2, #212121);
+    color: light-dark(#403f53, #d3d5d5);
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    margin: 0;
+    border-radius: 5px;
+
+    /* Line numbers: @blog/hl wraps each code line in a .ln span and
+       CSS counters render the number column. */
+    counter-reset: ln;
+
+    & .ln::before {
+      --ln-color: light-dark(#2aa29880, #a5ebec80);
+      counter-increment: ln;
+      content: counter(ln);
+      display: inline-block;
+      min-width: 2ch;
+      text-align: right;
+      padding-left: 2px;
+      padding-right: 8px;
+      margin-right: 10px;
+      color: var(--ln-color);
+      border-right: 1px solid var(--ln-color);
+    }
+
+    & .k {
+      color: light-dark(#7c3aad, #c9a1fa);
+    }
+    & .s {
+      color: light-dark(#a05a1c, #e6b078);
+    }
+    & .n {
+      color: light-dark(#b34c1a, #efa27b);
+    }
+    & .b,
+    & .v {
+      color: light-dark(#4a7a1c, #a8d878);
+    }
+    & .t,
+    & .m,
+    & .y {
+      color: light-dark(#2458b3, #8ec1ff);
+    }
+    & .l,
+    & .f {
+      color: light-dark(#c22d52, #ff8aa4);
+    }
+    & .a,
+    & .g,
+    & .d {
+      color: light-dark(#17766b, #8fd8d2);
+    }
+    & .h {
+      color: light-dark(#3a4fc1, #9db8ff);
+    }
+    & .u {
+      color: light-dark(#4c5f57, #cfe8d8);
+    }
+    & .c,
+    & .q {
+      color: light-dark(#5f6b73, #9a9f9f);
+      font-style: italic;
+    }
+    & .e {
+      font-style: italic;
+    }
+    & .w {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,122 @@
+<h2>背景</h2>
+<p><a href="/posts/20250801-claude-review-feedback-tuning/">前回の記事</a>では、Claudeのレビューに対する開発者の反応を収集し、<code>.github/copilot-instructions.md</code> と <code>CLAUDE.md</code> を自動更新する仕組みを紹介した。</p>
+<p>この仕組み自体は、いまは所属チームの複数プロダクトでかなり広く使っている。
+GitHub Copilotなど既存の自動レビューよりも品質が圧倒的に高く、指摘の妥当性やコンテキスト理解の面で差がある。実際、リポジトリ次第では人間がほとんどレビューしておらず、Claudeとのやり取りを中心とした運用になっている。</p>
+<p>その後、実際に運用している <code>claude-review.yaml</code> と <code>claude-review-tuning.yaml</code> は大きく変わった。
+現在はpromptを直接育てるのではなく、<a href="https://agentskills.io">Agent Skills</a>を中心に据える構成である。
+自動レビューと、専用メンションによる対話が、同じ知識源を参照するようになっている。</p>
+<p>主な変更点は以下の3つ。</p>
+<ul>
+<li>チューニング対象がskillファイルに変わった</li>
+<li><code>claude-review</code> が自動レビューだけでなく、PR上での対話や修正依頼の入口にもなった</li>
+<li>contextをむやみに増やさず、最小限のskillに責務を分ける方向に変わった</li>
+</ul>
+<p>前回の記事の末尾では、「<code>direct_prompt</code> と <code>custom_instructions</code> が <code>prompt</code> に統合されたら工夫が必要そう」と書いていたが、知識や判断基準をskillへ分離する形に進んだため、この懸念はかなり薄くなっている。</p>
+<h2>以前の構成で課題だったこと</h2>
+<p>前回の構成でも、レビュー品質を継続的に改善するという目的は達成できていた。
+ただ、運用していくと次の点が気になってきた。</p>
+<ul>
+<li>レビュー基準とプロジェクト固有知識の責務がprompt周辺ファイルに分散していて見通しが悪い</li>
+<li>自動レビューで学習した内容を、PR上での追加質問や修正依頼でも同じように使いたい</li>
+<li>自動更新の差分が「長い指示文の変更」になりやすく、人間がレビューしづらい</li>
+</ul>
+<p>特に効いていたのは2つ目だった。
+レビューコメントを付ける場面だけでなく、開発者が専用メンションでClaudeと会話しながら「この指摘の意図は何か」「そのまま修正してほしい」とやり取りする場面でも、同じ判断基準と同じプロジェクト知識を参照してほしかったためだ。</p>
+<h2>役割ごとにskillを分けた</h2>
+<p>現在の <code>claude-review</code> は、以下の2つのskillを読む前提になっている。</p>
+<ul>
+<li><code>.agents/skills/code-review-guidelines/SKILL.md</code></li>
+<li><code>.agents/skills/project-knowledge/SKILL.md</code></li>
+</ul>
+<p>それぞれの役割は明確に分けている。</p>
+<ul>
+<li><code>code-review-guidelines</code>: プロジェクト非依存のレビュー基準。何を指摘し、何を指摘しないか</li>
+<li><code>project-knowledge</code>: そのリポジトリ固有の事実。構成、境界、制約、慣習など</li>
+</ul>
+<p><code>code-review-guidelines</code> には自動更新用のマーカーを入れている。</p>
+<pre><code class="language-markdown"># Code Review Guidelines
+
+&lt;!-- claude-review-tuning --&gt;
+
+&lt;!-- /claude-review-tuning --&gt;
+</code></pre>
+<p>人間が手で書く長期的な方針はこのマーカーの外に置き、自動チューニングはマーカー内だけを書き換える。
+これにより、「人間が決めた原則」と「最近のフィードバックから学んだ調整」を同じファイルに共存させやすくなった。</p>
+<h2>自動レビューと対話モードが同じskillを読む</h2>
+<p>現在の <code>claude-review</code> は、自動レビュー用と対話用の2経路を1つのreusable workflowにまとめている。</p>
+<p>自動レビュー側では、promptの中でskillを読むように明示している。</p>
+<pre><code class="language-yaml">prompt: |
+  ...
+  If the skills &quot;code-review-guidelines&quot; and &quot;project-knowledge&quot; are available, load them before starting the review.
+claude_args: &gt;-
+  --allowedTools &quot;...,Skill(code-review-guidelines),Skill(project-knowledge),...&quot;
+</code></pre>
+<p>PR作成や更新時にはこちらが動作する。
+トップレベルの要約コメントは必ず残し、具体的な問題はinline commentで返す。
+一方で <code>git add</code> / <code>git commit</code> / <code>git push</code> は禁止しており、あくまでレビュアーとして振る舞わせている。</p>
+<p>対話モードは、たとえば <code>@claude</code> のような専用メンションで起動する。</p>
+<pre><code class="language-yaml">trigger_phrase: &quot;@claude&quot;
+--append-system-prompt &quot;Only modify or edit code when the user explicitly requests a fix, change, or implementation.&quot;
+</code></pre>
+<p>ポイントは、レビューの再確認や説明依頼であればcomment-onlyのまま応答し、明示的に修正を依頼されたときだけコード変更に入るように分けられていることだ。</p>
+<p>つまり現在の <code>claude-review</code> は、</p>
+<ul>
+<li>通常時は自動でレビューする</li>
+<li>必要になったら同じPR上で会話できる</li>
+<li>明示的に依頼されたときだけ修正もさせられる</li>
+</ul>
+<p>という1本の入口になっている。</p>
+<h2>tuningもskillだけを更新する</h2>
+<p><code>claude-review-tuning</code> の役割も変わった。
+前回は <code>.github/copilot-instructions.md</code> や <code>CLAUDE.md</code> を更新していたが、現在はskillファイルだけを更新する。</p>
+<p>流れは次の通り。</p>
+<ol>
+<li><code>collect.ts</code> が前回のtuning PR以降にマージされたPRを収集する</li>
+<li>bot作成のPRは除外し、ClaudeとPR authorのコメントだけを時系列で並べる</li>
+<li><code>sync-skills.sh</code> で <code>.agents/skills</code> の体裁を揃える</li>
+<li>Claudeがskillを更新するPRを作り、自動マージする</li>
+</ol>
+<p>収集スクリプトが前回のtuning PR以降だけを見るようになっているため、毎回「最近の運用で実際に起きたこと」だけを材料にできる。
+毎回のチューニングが、直近の運用変化に追従しやすくなった。</p>
+<p>更新前には <code>sync-skills.sh</code> を必ず通している。
+これにより、<code>.agents/skills/&lt;name&gt;/SKILL.md</code> を正規形に保ちつつ、<code>.claude/skills</code> 側からも参照できる状態を維持できる。</p>
+<p>実際のtuning promptでは、skill間の責務分離をかなり強く縛っている。</p>
+<pre><code class="language-yaml">Goal: tune two skills with strict separation of concerns.
+
+Global constraints:
+- Do NOT modify YAML frontmatter
+- Each file must not exceed 150 lines
+- Do not duplicate the same point across files
+- If evidence is weak or one-off, do not add a new rule/fact
+</code></pre>
+<p>その上で、</p>
+<ul>
+<li><code>code-review-guidelines</code> にはproject-agnosticな判断基準だけを書く</li>
+<li><code>project-knowledge</code> にはrepository-specificな安定した事実だけを書く</li>
+</ul>
+<p>と明示している。
+これで、レビュー基準とリポジトリ固有知識が混ざりにくくなった。</p>
+<p>ここで、promptやrepository contextを自動的に太らせないのは意図的である。
+<a href="https://arxiv.org/abs/2602.11988">Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?</a> では、リポジトリ向けのcontextは推論コストを20%以上増やすと報告されている。
+その結果、タスク成功率をむしろ下げる傾向があるという。</p>
+<p>この結論は、自分たちの運用で見えていたことともよく一致している。以前はレビュー基準とプロジェクト知識をまとめて増やしていくと、重要ではない指摘や、チームとして意図している設計へのコメントが混ざりやすくなった。</p>
+<p>だからこそ現在のtuningでは、何でもかんでも知識を足すのではなく、繰り返し効いたルールを <code>code-review-guidelines</code> へ寄せている。
+リポジトリ固有で安定した事実は <code>project-knowledge</code> に集約している。
+前回のようにprompt本体を自動改善し続けるより、最小限だけをskillとして保つ方が安全だと考えている。</p>
+<h2>現在の構成の良いところ</h2>
+<p>まず、何を調整しているのかが前より見えやすくなった。
+以前はレビュー方針の変更もリポジトリ知識の追加も、どちらも「指示文の更新」に見えていた。
+現在はレビュー基準の調整なのか、プロジェクト知識の追加なのかを分けて読める。</p>
+<p>また、自動レビューと対話モードが同じ知識を読むため、定期tuningが形骸化しにくくなった。
+レビュー時に学んだことが、PR上の説明や修正依頼でもそのまま使われる。</p>
+<p>チューニング差分の意味も追いやすくなった。
+<code>.github/copilot-instructions.md</code> のような長い指示文より、<code>code-review-guidelines</code> と <code>project-knowledge</code> という責務の見えるファイルの方が、何を調整したのかを把握しやすい。</p>
+<p>運用ルールも前より説明しやすくなった。
+自動レビューではまずコメント中心、対話モードでは必要なときだけ修正へ進む、という役割分担にしている。
+細かい権限設計は自分たちの運用前提で割り切っている部分もあるが、少なくともどう振る舞ってほしいかは前より書き分けやすくなっている。</p>
+<h2>おわり</h2>
+<p>前回の記事では、「Claudeレビューをフィードバックで自己改善するループ」を作った話を書いた。
+今回のフォローアップで書きたかったのは、レビューを継続改善するときにはpromptを育て続けるより、最小限のskillへ責務を分離した方が運用しやすい、という点である。</p>
+<p>しばらく回してみても、この方向の方がレビューの継続改善を日常運用に乗せやすいと感じている。
+一方で、どこまでを <code>project-knowledge</code> に書かせるか、どのくらいの頻度でtuningするか、といったバランスはまだ試行錯誤中だ。
+今後は、リポジトリごとの差を吸収しつつ、最小限のcontextでどこまでレビュー品質を維持できるかを引き続き見ていけたらと思う。</p>

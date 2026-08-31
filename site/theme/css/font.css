@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/FiraCode-Regular.woff") format("woff");
+  font-display: optional;
+}
+
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 800;
+  src: url("./fonts/FiraCode-Bold.woff") format("woff");
+  font-display: optional;
+}
+
+/* Metric-compatible local fallback: Fira Code is monospace (advance 0.6em),
+   so size-adjust makes Menlo/Consolas produce the identical line layout.
+   First paints before the webfont arrives then keep the same geometry, which
+   stops text smearing during cross-document view-transition fades. */
+@font-face {
+  font-family: "Fira Code Fallback";
+  src: local("Menlo"), local("Consolas"), local("Monaco");
+  size-adjust: 99.66%;
+}

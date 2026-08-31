@@ -1,0 +1,8 @@
+{
+  "name": "@blog/hl",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}
