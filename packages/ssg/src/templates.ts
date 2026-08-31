@@ -65,6 +65,11 @@ export function ogImageUrl(post: Pick<Post, "title" | "date" | "tags">): string 
   );
 }
 
+// vt.js is a classic parser-blocking script in the head on purpose: its
+// pagereveal listener must be registered before the document reveals, or the
+// title morph silently skips whenever the reveal wins the race against a
+// deferred script. switcher.js needs the parsed DOM and stays a module at the
+// end of body.
 function head(site: SiteConfig, meta: PageMeta): Raw {
   return html`<head prefix="og: https://ogp.me/ns#">
     <meta charset="utf-8" />
@@ -111,11 +116,12 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
     ${(site.originTrials ?? []).map(
       (t) => html`<meta http-equiv="origin-trial" content="${t.token}" />`,
     )}
+    <script src="/libs/theme/scripts/vt.js"></script>
     <script type="speculationrules">
       {
         "prerender": [
           {
-            "where": { "href_matches": ["/posts/*", "/${site.tagPath}/*"] },
+            "where": { "href_matches": ["/", "/posts/*", "/${site.tagPath}/*"] },
             "eagerness": "moderate"
           }
         ]
@@ -229,7 +235,6 @@ function layout(site: SiteConfig, meta: PageMeta, body: Raw): string {
       <body>
         ${header(site)} ${body}
         <script type="module" src="/libs/theme/scripts/switcher.js"></script>
-        <script type="module" src="/libs/theme/scripts/vt.js"></script>
       </body>
     </html> `.html;
 }

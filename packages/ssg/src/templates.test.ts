@@ -220,7 +220,7 @@ describe("postPage", () => {
     const page = postPage(site, post());
     // Assert
     expect(page).toContain('<script type="speculationrules">');
-    expect(page).toContain('"href_matches": ["/posts/*", "/tags/*"]');
+    expect(page).toContain('"href_matches": ["/", "/posts/*", "/tags/*"]');
     expect(page).toContain('"eagerness": "moderate"');
   });
 

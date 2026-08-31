@@ -29,6 +29,10 @@ pre {
       counter-increment: ln;
       content: counter(ln);
       display: inline-block;
+      /* content-box: the inherited border-box would count the padding into
+         min-width, so the 2ch floor never bites and 1- vs 2-digit rows get
+         different gutter widths, shifting the code. */
+      box-sizing: content-box;
       min-width: 2ch;
       text-align: right;
       padding-left: 2px;
