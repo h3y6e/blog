@@ -26,4 +26,6 @@ export type Post = {
   cover?: string;
   /** rendered HTML body */
   html: string;
+  /** markdown body as authored (frontmatter stripped), for the LLM mirrors */
+  markdown: string;
 };

@@ -22,6 +22,7 @@ function parsePost(path: string, source: string, embeds: EmbedMap): Post {
     rssDescription: frontmatter.rss_description,
     ...(frontmatter.cover !== undefined && { cover: frontmatter.cover }),
     html,
+    markdown: body.trim(),
   };
 }
 

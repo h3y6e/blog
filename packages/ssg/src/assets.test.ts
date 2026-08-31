@@ -6,7 +6,7 @@ const assets = new Map([
   ["/assets/2f2f2f.jpg", "/assets/2f2f2f-Cx1YpF0a.jpg"],
   ["/assets/favicon/favicon.ico", "/assets/favicon-D4kW8mNz.ico"],
   ["/css/a5ebec.css", "/assets/a5ebec-Bq7Rt5Lm.css"],
-  ["/libs/theme/scripts/switcher.js", "/assets/switcher-CpZ2vH9d.js"],
+  ["/libs/client/switcher.js", "/assets/switcher-CpZ2vH9d.js"],
 ]);
 
 describe("rewriteAssetUrls", () => {
@@ -22,7 +22,7 @@ describe("rewriteAssetUrls", () => {
     const out = rewriteAssetUrls(
       '<link rel="icon" href="/assets/favicon/favicon.ico" />' +
         '<link rel="stylesheet" href="/css/a5ebec.css" />' +
-        '<script type="module" src="/libs/theme/scripts/switcher.js"></script>',
+        '<script type="module" src="/libs/client/switcher.js"></script>',
       assets,
     );
     // Assert
@@ -78,8 +78,8 @@ describe("rewriteAssetUrls", () => {
     expect(() => rewriteAssetUrls('<img src="/img/missing.png">', assets)).toThrow(
       "/img/missing.png",
     );
-    expect(() =>
-      rewriteAssetUrls('<script src="/libs/theme/scripts/gone.js"></script>', assets),
-    ).toThrow("/libs/theme/scripts/gone.js");
+    expect(() => rewriteAssetUrls('<script src="/libs/client/gone.js"></script>', assets)).toThrow(
+      "/libs/client/gone.js",
+    );
   });
 });

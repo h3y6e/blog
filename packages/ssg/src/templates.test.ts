@@ -31,6 +31,7 @@ const post = (over: Partial<Post> = {}): Post => ({
   tags: ["kmnac", "adventcalendar"],
   rssDescription: "寮のネットワークを改善している話。",
   html: "<p>body</p>",
+  markdown: "md",
   ...over,
 });
 
@@ -221,6 +222,7 @@ describe("postPage", () => {
     // Assert
     expect(page).toContain('<script type="speculationrules">');
     expect(page).toContain('"href_matches": ["/", "/posts/*", "/tags/*"]');
+    expect(page).toContain('"moderate_viewport_heuristics"');
     expect(page).toContain('"eagerness": "moderate"');
   });
 

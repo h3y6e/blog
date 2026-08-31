@@ -1,7 +1,7 @@
 /**
  * Page templates ported from the Franklin _layout: same class names
  * (.franklin-headline, .franklin-content, .postlist, .tagpage, ...) and asset
- * URLs (/css/a5ebec.css, /libs/theme/scripts/*) so the existing CSS and theme
+ * URLs (/css/a5ebec.css, /libs/client/*) so the existing CSS and theme
  * scripts keep working.
  */
 
@@ -116,9 +116,14 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
     ${(site.originTrials ?? []).map(
       (t) => html`<meta http-equiv="origin-trial" content="${t.token}" />`,
     )}
-    <script src="/libs/theme/scripts/vt.js"></script>
+    <script src="/libs/client/vt.js"></script>
     <script type="speculationrules">
       {
+        "moderate_viewport_heuristics": {
+          "distance_from_pointer_down": [-0.5, 0.2],
+          "largest_anchor_threshold": 0.1,
+          "delay": 200
+        },
         "prerender": [
           {
             "where": { "href_matches": ["/", "/posts/*", "/${site.tagPath}/*"] },
@@ -234,7 +239,8 @@ function layout(site: SiteConfig, meta: PageMeta, body: Raw): string {
       ${head(site, meta)}
       <body>
         ${header(site)} ${body}
-        <script type="module" src="/libs/theme/scripts/switcher.js"></script>
+        <script type="module" src="/libs/client/switcher.js"></script>
+        <script type="module" src="/libs/client/webmcp.js"></script>
       </body>
     </html> `.html;
 }

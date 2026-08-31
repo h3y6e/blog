@@ -20,6 +20,7 @@ const post = (over: Partial<Post>): Post => ({
   tags: [],
   rssDescription: "寮のネットワークを改善している話。",
   html: "",
+  markdown: "md",
   ...over,
 });
 

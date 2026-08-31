@@ -152,6 +152,8 @@ importers:
         specifier: 0.3.0
         version: 0.3.0(@types/node@26.4.0)(typescript@7.0.2)(vite@8.2.2(@types/node@26.4.0))
 
+  packages/client: {}
+
   packages/hl: {}
 
   packages/math: {}
@@ -160,6 +162,9 @@ importers:
 
   packages/ssg:
     dependencies:
+      '@blog/client':
+        specifier: workspace:*
+        version: link:../client
       '@blog/hl':
         specifier: workspace:*
         version: link:../hl

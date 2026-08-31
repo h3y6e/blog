@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { basename, dirname, extname, join, resolve, sep } from "node:path";
+import { fileURLToPath } from "node:url";
 import { rewriteAssetUrls } from "./assets.ts";
 import { loadPosts } from "./content.ts";
 import { MODERN_CSS_MARKERS, checkCssLowering, inlineCss } from "./css.ts";
@@ -15,23 +16,22 @@ export type { Post, SiteConfig } from "./types.ts";
 
 export type SsgOptions = SiteConfig;
 
-/** Build inputs, keyed by output chunk name. Both go through Rollup so the
- * output is minified and content-hashed (CSS pulls the fonts along via url()). */
-const ENTRIES = {
-  a5ebec: "theme/css/a5ebec.css",
-  switcher: "theme/scripts/switcher.ts",
-  vt: "theme/scripts/vt.ts",
-};
-
+/** The theme stylesheet is the site's visual design and stays site-owned; it
+ * goes through Rollup so the output is minified and the fonts it url()s are
+ * emitted as hashed assets. */
+const CSS_ENTRY = "theme/css/a5ebec.css";
 const CSS_URL = "/css/a5ebec.css";
-const SWITCHER_URL = "/libs/theme/scripts/switcher.js";
-const VT_URL = "/libs/theme/scripts/vt.js";
 
-/** Canonical page URL → build input, for every script entry. */
-const SCRIPT_URLS: [url: string, entry: string][] = [
-  [SWITCHER_URL, ENTRIES.switcher],
-  [VT_URL, ENTRIES.vt],
-];
+/** Browser-side scripts live in @blog/client: they are coupled to the markup
+ * and data this package emits (templates, posts.json, the markdown mirrors),
+ * not to the site's theme. Canonical page URL → absolute source path; the
+ * URLs only exist until inline.ts embeds the bundled code (build) or
+ * devScriptUrls points them at Vite's module graph (dev). */
+const SCRIPT_NAMES = ["switcher", "vt", "webmcp"] as const;
+const SCRIPTS: [url: string, path: string][] = SCRIPT_NAMES.map((name) => [
+  `/libs/client/${name}.js`,
+  fileURLToPath(import.meta.resolve(`@blog/client/${name}.ts`)),
+]);
 
 /** Files emitted through the asset pipeline at build; pages referencing them
  * are rewritten to the hashed URLs. */
@@ -47,10 +47,11 @@ const DEV_STATIC_DIRS: [urlPrefix: string, dir: string][] = [
   ["/css/fonts/", "theme/css/fonts"],
 ];
 
-/** Dev-only: point the module script at its real source so Vite's module
- * graph serves and transforms it (the canonical URL exists only in builds). */
+/** Dev-only: point the script tags at their real sources so Vite's module
+ * graph serves and transforms them (the canonical URLs exist only in builds;
+ * /@fs/ because the package sources live outside the site root). */
 const devScriptUrls = (html: string): string =>
-  SCRIPT_URLS.reduce((h, [url, entry]) => h.replace(url, `/${entry}`), html);
+  SCRIPTS.reduce((h, [url, path]) => h.replace(url, `/@fs${path}`), html);
 
 const TYPE_HTML = "text/html; charset=utf-8";
 const TYPE_CSS = "text/css; charset=utf-8";
@@ -60,6 +61,8 @@ const CONTENT_TYPES: Record<string, string> = {
   ".xml": "application/xml; charset=utf-8",
   ".css": TYPE_CSS,
   ".js": "text/javascript; charset=utf-8",
+  ".json": "application/json; charset=utf-8",
+  ".md": "text/markdown; charset=utf-8",
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
@@ -102,8 +105,7 @@ type Harvest = {
  * fail the build if the bundler lowered at-Baseline CSS (AGENTS.md policy):
  * every modern marker in the theme must survive to dist. */
 function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harvest {
-  const cssPath = resolve(root, ENTRIES.a5ebec);
-  const scriptPaths = SCRIPT_URLS.map(([url, entry]) => [url, resolve(root, entry)] as const);
+  const cssPath = resolve(root, CSS_ENTRY);
   let css: string | undefined;
   const scripts = new Map<string, string>();
   const fonts = new Map<string, string>();
@@ -116,7 +118,7 @@ function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harve
   // oxlint-disable eslint/no-param-reassign
   for (const [key, entry] of Object.entries(bundle)) {
     if (entry.type === "chunk") {
-      const script = scriptPaths.find(([, path]) => entry.facadeModuleId === path);
+      const script = SCRIPTS.find(([, path]) => entry.facadeModuleId === path);
       if (script) {
         scripts.set(script[0], entry.code!.trimEnd());
         delete bundle[key];
@@ -141,7 +143,7 @@ function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harve
   }
   // oxlint-enable eslint/no-param-reassign
   if (css === undefined) throw new Error(`Bundle is missing the entry behind ${CSS_URL}`);
-  for (const [url] of SCRIPT_URLS) {
+  for (const [url] of SCRIPTS) {
     if (!scripts.has(url)) throw new Error(`Bundle is missing the entry behind ${url}`);
   }
   return { css, scripts: [...scripts.entries()], fonts };
@@ -234,7 +236,9 @@ export function ssg(options: SsgOptions): Plugin {
       appType: "custom",
       build: {
         rollupOptions: {
-          input: Object.fromEntries(Object.keys(ENTRIES).map((k) => [k, VIRTUAL_PREFIX + k])),
+          input: Object.fromEntries(
+            ["a5ebec", ...SCRIPT_NAMES].map((k) => [k, VIRTUAL_PREFIX + k]),
+          ),
         },
       },
     }),
@@ -246,8 +250,9 @@ export function ssg(options: SsgOptions): Plugin {
     // The virtual ids exist only because the site root is unknown until
     // configResolved; they resolve to the real entry files.
     resolveId: (id) => {
-      const entry = Object.entries(ENTRIES).find(([key]) => VIRTUAL_PREFIX + key === id)?.[1];
-      return entry === undefined ? undefined : resolve(root, entry);
+      if (id === VIRTUAL_PREFIX + "a5ebec") return resolve(root, CSS_ENTRY);
+      const name = SCRIPT_NAMES.find((n) => VIRTUAL_PREFIX + n === id);
+      return name && fileURLToPath(import.meta.resolve(`@blog/client/${name}.ts`));
     },
 
     async generateBundle(_options, bundle) {
@@ -275,21 +280,21 @@ export function ssg(options: SsgOptions): Plugin {
         }
       }
 
-      // feed.xml stays byte-identical to the live Franklin feed; every other
-      // page gets the CSS and theme scripts inlined, media loading hints, and
-      // its asset references pointed at the hashed files.
+      // Every HTML page gets the CSS and theme scripts inlined, media loading
+      // hints, and its asset references pointed at the hashed files. The rest
+      // (posts.json, and feed.xml which stays byte-identical to the live
+      // Franklin feed) is emitted verbatim.
       for (const [fileName, source] of await pages()) {
         this.emitFile({
           type: "asset",
           fileName,
-          source:
-            fileName === "feed.xml"
-              ? source
-              : rewriteAssetUrls(
-                  enhanceMedia(inlineAssets(source, css, scripts), imageDims),
-                  assets,
-                  options.siteUrl,
-                ),
+          source: fileName.endsWith(".html")
+            ? rewriteAssetUrls(
+                enhanceMedia(inlineAssets(source, css, scripts), imageDims),
+                assets,
+                options.siteUrl,
+              )
+            : source,
         });
       }
     },
@@ -298,6 +303,8 @@ export function ssg(options: SsgOptions): Plugin {
       for (const dir of [options.postsDir, options.embedsFile, "theme", "img", "_assets"]) {
         server.watcher.add(resolve(server.config.root, dir));
       }
+      // The browser scripts live in @blog/client, outside the site root.
+      for (const [, path] of SCRIPTS) server.watcher.add(path);
       server.watcher.on("all", () => {
         cache = null;
         server.ws.send({ type: "full-reload" });
@@ -311,6 +318,23 @@ export function ssg(options: SsgOptions): Plugin {
       } catch (err) {
         console.warn(err instanceof Error ? err.message : String(err));
       }
+
+      // Registered before Vite's internals: Vite serves the source tree raw
+      // in dev, so /posts/<slug>.md would otherwise hit the frontmatter'd
+      // source file (with no charset) instead of the generated mirror.
+      server.middlewares.use((req, res, next) => {
+        void (async (): Promise<void> => {
+          try {
+            const url = reqPath(req.url);
+            const page = url.endsWith(".md") ? (await pages()).get(url.slice(1)) : undefined;
+            if (page === undefined) return next();
+            res.setHeader("Content-Type", CONTENT_TYPES[".md"]!);
+            res.end(page);
+          } catch (err) {
+            next(err);
+          }
+        })();
+      });
 
       // Register after Vite's internal middlewares so /@vite/* keeps working.
       return () => {
@@ -327,7 +351,7 @@ export function ssg(options: SsgOptions): Plugin {
               };
 
               if (url === CSS_URL) {
-                return send(inlineCss(resolve(root, ENTRIES.a5ebec)), TYPE_CSS);
+                return send(inlineCss(resolve(root, CSS_ENTRY)), TYPE_CSS);
               }
               for (const [urlPrefix, dir] of DEV_STATIC_DIRS) {
                 if (url.startsWith(urlPrefix)) {
