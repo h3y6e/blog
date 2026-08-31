@@ -1,0 +1,136 @@
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="ja" dir="ltr">掃除出来ない人間はコマンド叩いた時の多少のエラーとかは動けば放置してしまうから、いっそ定期的にリストアするぞくらいの気持ちのほうが良い</p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1049345182955528197?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>以前は<a href="https://github.com/lra/mackup">mackup</a>を使っていたが、ここまで厳密にファイルを同期させたくない事が多かったのと、Intel MacとARM Macを同時に使いたかったので、現在は<a href="https://github.com/twpayne/chezmoi">chezmoi</a> を使っている。</p>
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period --><h2>chezmoiについての軽い取説</h2>
+<p><code>$HOME/.local/share/chezmoi</code> 下で管理される。</p>
+<h3>管理対象の確認</h3>
+<pre><code class="language-sh">chezmoi managed
+</code></pre>
+<h3>追加</h3>
+<pre><code class="language-sh">chezmoi add $FILE
+chezmoi add --template $FILE # templateとして追加
+</code></pre>
+<p>管理対象のものを再追加する</p>
+<pre><code class="language-sh">chezmoi re-add
+</code></pre>
+<h3>反映</h3>
+<pre><code class="language-sh">chezmoi -v apply
+</code></pre>
+<h2>事前準備（初期化前）</h2>
+<h3>Homebrew</h3>
+<pre><code class="language-sh">brew bundle dump --force --file &#39;~/.Brewfile&#39;
+</code></pre>
+<h3>chezmoi</h3>
+<p>変更を https://github.com/h3y6e/dotfiles へ同期する。</p>
+<h2>起動直後</h2>
+<p>流れに沿ってデスクトップが表示されるところまで行く。</p>
+<h2>システム環境設定</h2>
+<h3>一般</h3>
+<ul>
+<li>スクロールバーの表示: スクロール時に表示</li>
+<li>スクロールバーのクリック時： クリックされた場所にジャンプ</li>
+<li>\checked{書類をとじるときに変更内容を保持するかどうかを確認}</li>
+</ul>
+<h3>Dockとメニューバー</h3>
+<h4>Dock</h4>
+<p>サイズ/拡大は適当に。</p>
+<ul>
+<li>ウィンドウをアプリケーションアイコンにしまう</li>
+<li>Dockを自動的に表示/非表示</li>
+</ul>
+<h4>サウンド</h4>
+<ul>
+<li>メニューバーに表示: 常に</li>
+</ul>
+<h4>バッテリー</h4>
+<ul>
+<li>割合（%）を表示</li>
+</ul>
+<h4>時計</h4>
+<ul>
+<li>時計のオプション: 秒を表示</li>
+</ul>
+<h4>Spotlight</h4>
+<ul>
+<li>\unchecked{メニューバーに表示}</li>
+</ul>
+<h3>スクリーンタイム</h3>
+<ul>
+<li>スクリーンタイム: オンにする</li>
+</ul>
+<h3>アクセスビリティ</h3>
+<ul>
+<li>ディスプレイ</li>
+<li>\checked{視差効果を減らす}</li>
+</ul>
+<h3>セキュリティとプライバシー</h3>
+<h4>ファイアウォール</h4>
+<ul>
+<li>ファイアウォールをオンにする</li>
+</ul>
+<h3>キーボード</h3>
+<ul>
+<li>キーボード<ul>
+<li>キーのリピート： 最速</li>
+<li>リピート入力認識までの時間： 最短</li>
+<li>環境光が暗い場合にキーボードの輝度を調整</li>
+<li>🌐キーを押して: 音声入力を開始（🌐キーを2回押す）</li>
+<li>修飾キー… &gt; Caps Lockキー: Control</li>
+</ul>
+</li>
+<li>ショートカット<ul>
+<li>\checked{Launchpadを表示： Control+Shift+L}</li>
+<li>\checked{デスクトップ[Num]へ切り替え}</li>
+<li>\unchecked{前の入力ソースを選択}</li>
+<li>\unchecked{入力メニューの次のソースを選択}</li>
+</ul>
+</li>
+</ul>
+<h3>トラックパッド</h3>
+<ul>
+<li>クリック： 弱い</li>
+<li>起動の速さ： 中心から1つ右</li>
+<li>\checked{サイレントクリック}</li>
+</ul>
+<h3>ディスプレイ</h3>
+<ul>
+<li>ディスプレイ<ul>
+<li>解像度： 変更 &gt; スペースを拡大</li>
+<li>\unchecked{輝度を自動調整}</li>
+</ul>
+</li>
+</ul>
+<h3>バッテリー</h3>
+<ul>
+<li>バッテリー<ul>
+<li>ディスプレイをオフにするまでの時間： 5分</li>
+</ul>
+</li>
+</ul>
+<h3>共有</h3>
+<p>コンピュータ名を変更する。</p>
+<h3>Time Machine</h3>
+<ul>
+<li>バックアップを自動生成</li>
+</ul>
+<h2>chezmoi</h2>
+<pre><code class="language-sh">sh -c &quot;$(curl -fsLS get.chezmoi.io)&quot; -- init --apply h3y6e
+</code></pre>
+<h2>Homebrew</h2>
+<p><a href="https://brew.sh/">Homebrew</a>をインストールする。</p>
+<pre><code class="language-sh">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+</code></pre>
+<p>Homebrew Packageのインストール。</p>
+<pre><code class="language-sh">brew bundle --global
+</code></pre>
+<h2>prezto</h2>
+<p><a href="https://github.com/sorin-ionescu/prezto">prezto</a>をインストールする。</p>
+<pre><code class="language-sh">git clone --recursive https://github.com/sorin-ionescu/prezto.git &quot;MATHINLINE0HOME}/.zprezto&quot;
+</code></pre>
+<p>zpreztoの更新は <code>zprezto-update</code> でできる。</p>
+<h2>chezmoiの編集</h2>
+<pre><code class="language-sh">chezmoi edit $FILE
+chezmoi execute-template &quot;{{ .chezmoi.os }}/{{ .chezmoi.arch }}&quot; # templateのtestとdebug
+</code></pre>
+<h2>各種App</h2>
+<p>Launchpadから起動する。</p>
+<h2>ssh</h2>
+<p><a href="/posts/ssh-keys">ssh keys</a></p>

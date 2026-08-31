@@ -4,25 +4,26 @@ on:
   pull_request:
     branches:
       - master
-  push:
-    branches:
-      - master
+
+permissions: {}
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  lint-and-format:
-    runs-on: ubuntu-24.04
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-
-      - name: Setup mise
-        uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Check formatting
-        run: bun run format:check
-
-      - name: Run linter
-        run: bun run lint
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - uses: voidzero-dev/setup-vp@07d0b0e993009eb3b908ea06e49e88e933b728a2 # v1.17.0
+        with:
+          cache: true
+          sfw: true
+      - run: vp check
+      - run: vp run lint
+      - run: vp test
+      - run: vp build

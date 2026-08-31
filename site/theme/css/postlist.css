@@ -1,0 +1,16 @@
+.postlist {
+  padding: 20px 0;
+  border-bottom: 2px solid var(--border-color);
+  /* The index inlines every entry; skip rendering the off-screen ones. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 14rem;
+
+  & p {
+    margin: 0;
+  }
+  & a.read-more {
+    display: flex;
+    text-decoration: none;
+    color: var(--accent);
+  }
+}

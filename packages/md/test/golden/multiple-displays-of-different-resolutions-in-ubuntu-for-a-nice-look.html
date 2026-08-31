@@ -1,0 +1,90 @@
+<p>解像度とサイズの違う2つのディスプレイをどうにかしていい感じに使いたい。</p>
+<h2>環境</h2>
+<p>OS: Ubuntu 18.04 LTS<br>display:  </p>
+<ul>
+<li>Dell 24inch FullHD 1920x1200（16:10）  </li>
+<li>BenQ 27inch WQHD 2560x1440（16:9）</li>
+</ul>
+<h2>XRandR</h2>
+<p>「エックス・アール・アンド・アール」と読むらしい。
+X Window Systemを再起動せずに解像度の変更・画面の回転・表示モニタの切り替え・マルチモニタの設定をするライブラリとコマンド。</p>
+<pre><code class="language-shell">&gt; xrandr
+</code></pre>
+<p>でディスプレイの情報を得られる。</p>
+<pre><code class="language-shell">Screen 0: minimum 8 x 8, current 4480 x 1440, maximum 32767 x 32767
+DVI-D-0 connected 1920x1200+0+0 (normal left inverted right x axis y axis) 518mm x 324mm
+   1920x1200     59.95*+
+   1920x1080     60.00  
+   1680x1050     59.95  
+   1600x1200     60.00  
+   1280x1024     60.02  
+   1280x960      60.00  
+   1024x768      60.00  
+   800x600       60.32  
+   640x480       59.94  
+HDMI-0 disconnected (normal left inverted right x axis y axis)
+DP-0 connected primary 2560x1440+1920+0 (normal left inverted right x axis y axis) 597mm x 336mm
+   2560x1440     59.95*+
+   1920x1080     60.00    59.94    50.00  
+   1680x1050     59.95  
+   1600x900      60.00  
+   1280x1024     75.02    60.02  
+   1280x800      59.81  
+   1280x720      60.00    59.94    50.00  
+   1024x768      75.03    60.00  
+   800x600       75.00    60.32  
+   720x576       50.00  
+   720x480       59.94  
+   640x480       75.00    59.94    59.93  
+DP-1 disconnected (normal left inverted right x axis y axis)
+DP-2 disconnected (normal left inverted right x axis y axis)
+DP-3 disconnected (normal left inverted right x axis y axis)
+DP-4 disconnected (normal left inverted right x axis y axis)
+DP-5 disconnected (normal left inverted right x axis y axis)
+</code></pre>
+<p>こんな。  </p>
+<ul>
+<li><code>DVI-D-0</code> や <code>DP-0</code> は接続端子</li>
+<li><code>connected</code>/<code>disconnected</code> はその端子の接続有無</li>
+<li><code>primary</code>/<code> </code> はプライマリか、否か</li>
+<li><code>1920x1200+0+0</code> や <code>2560x1400+1920+0</code> は解像度+x方向の位置+y方向の位置</li>
+<li><code>518mm x 324mm</code> や <code>597mm x 336mm</code> は実際のディスプレイサイズ</li>
+</ul>
+<h2>方針</h2>
+<ul>
+<li><p>実際のサイズ
+<img src="/img/2019-05-20/actual.png" alt="実際のサイズ"></p>
+</li>
+<li><p>解像度
+<img src="/img/2019-05-20/resolution.png" alt="解像度"></p>
+</li>
+</ul>
+<p>方法としては2つある。</p>
+<ol>
+<li>WQHDのディスプレイのスケールを小さくする。</li>
+<li>FullHDのディスプレイのスケールを大きくする。</li>
+</ol>
+<p>MATHBLOCK0</p>
+<p>MATHBLOCK1</p>
+<p>WQHDディスプレイの解像度を約0.864倍、またはFullHDディスプレイの解像度を約1.157倍すれば良いことが分かる。</p>
+<h2>シェルコマンド</h2>
+<ul>
+<li>WQHDのディスプレイのスケールを小さくし、全体の文字サイズを小さくする</li>
+</ul>
+<pre><code class="language-shell">xrandr --output DVI-D-0 --scale 1x1 --panning 1920x1200+0+0 --output DP-0 --scale 0.864x0.864 --pos 1920x0
+gsettings set org.gnome.desktop.interface text-scaling-factor 0.864
+</code></pre>
+<p>WQHDのディスプレイのスケールを小さくすると、そのディスプレイでは表示が拡大され、文字が非常に大きくなる。<br>それを修正するために、Universal Access機能を有効にしている。（二行目のコマンド）</p>
+<ul>
+<li>FullHDのディスプレイのスケールを大きくし、全体の文字サイズを大きくする</li>
+</ul>
+<pre><code class="language-shell">xrandr --output DVI-D-0 --scale 1.157x1.157 --pos 0x0 --output DP-0 --scale 1x1 --panning 2560x1440+2221+0
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.157
+</code></pre>
+<p>FullHDのディスプレイのスケールを小さくすると、そのディスプレイでは表示が縮小され、文字が非常に小さくなる。
+それを修正するために、Universal Access機能を有効にしている。</p>
+<p>2つとも試してみて後者を採用することにした。<br>無理に解像度を変更しているのでどちらにせよ滲んでしまうのだが、WQHDのディスプレイをメインで使うつもりなのでFullHDの方を犠牲にした。
+（シャープに表示できるかもしれないが見つけられなかった）</p>
+<h2>結論</h2>
+<p>マウスポインタの移動やウィンドウの移動で気持ち悪い思いをしなくて良くなったが、滲みが気になってしまって仕方がない。<br>
+慣れなのかもしれないが、これに慣れるくらいならマウスポインタ移動時の気持ち悪さに慣れるほうが良い気がしてくる。</p>

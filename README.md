@@ -4,57 +4,35 @@ heyhoe's blog.
 
 [![Production](https://github.com/h3y6e/blog/workflows/Production/badge.svg)](https://github.com/h3y6e/blog/actions?query=workflow%3A%22Production%22)
 
-## Prerequisites
+A static site built with [Vite+](https://viteplus.dev) and self-made packages.
 
-- [mise](https://mise.jdx.dev/) for managing Julia and Bun versions
-- Julia packages: `julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate();'`
-- Node packages: `bun install`
+## Setup
+
+Install `vp` with [mise](https://mise.jdx.dev). `vp` manages Node.js and pnpm by itself.
+
+```sh
+mise install
+vp install
+```
 
 ## Development
 
-### Franklin.jl
-
 ```sh
-julia> ]
-(blog) Pkg> activate .
-(blog) Pkg> instantiate
-julia> using Franklin
-julia> serve()
-→ Initial full pass...
-→ Starting the server...
-✓ LiveServer listening on http://localhost:8000/ ...
-  (use CTRL+C to shut down)
-```
-
-or
-
-```sh
-$ mise run dev:franklin
-```
-
-### CSS, JS, etc.
-
-```sh
-# Watch CSS changes
-$ mise run dev:css
-# Watch JS changes
-$ mise run dev:swc
+vp dev      # dev server
+vp test     # tests
+vp check    # format, lint, and type checks
+vp run lint # textlint for posts
 ```
 
 ## Production Build
 
 ```sh
-# Build everything for production
-$ mise run prod
+vp build    # outputs to site/dist
 ```
 
 ## LICENSE
 
 [MIT License](./LICENSE)
-
-`Blog` is built using the SSG
-[`Franklin.jl`](https://github.com/tlienart/Franklin.jl)
-[(MIT License)](https://github.com/tlienart/Franklin.jl/blob/master/LICENSE.md).
 
 `Blog`'s theme is derived from the
 [`hugo-theme-terminal`](https://github.com/panr/hugo-theme-terminal/)

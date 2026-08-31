@@ -1,0 +1,80 @@
+<h2>背景</h2>
+<p>最近チームでやっていることの1つに、普段コードを書かない人が<a href="https://openai.com/codex">Codex App</a>で働きやすい状態を作ることがある。</p>
+<p>EMBED0</p>
+<p>仕様書を書きたい、文言の差分を見たい、データを分析したい、といった仕事はある。ただ、そのたびに「このrepoを見て、その次にこのrepoも見て、必要ならこのドキュメントも見てください」と説明する負担は大きい。gitやshellに慣れていない人には、そこが最初の壁になる。</p>
+<p>やりたいのは、gitを覚えてもらうことではなく、Codex Appから自然言語で仕事を依頼できる状態を作ることにある。そのためにメタリポジトリを作り、横断で見る必要のあるrepoと <code>.agents/skills/</code> を1箇所に集めている。</p>
+<h2>何を置いているか</h2>
+<p>メタリポジトリ自体に実装はない。横断調査や仕様整理の起点として使い、実装やPRは各対象repoで行う。</p>
+<pre><code class="language-sh">.
+├── 📁 .agents/skills
+├── 📁 docs
+├── 📁 &lt;project-name&gt;-client
+├── 📁 &lt;project-name&gt;-proto
+├── 📁 &lt;project-name&gt;-server
+├── ...
+├── 📁 specs
+├── 📖 AGENTS.md
+├── ⚙️ mise.toml
+└── 🐚 setup.sh
+</code></pre>
+<p>client、server、protoなどのrepoをsubmoduleとしてぶら下げている。仕様書はメタリポジトリの <code>specs/</code> に置いていて、skillが実装や会話ログを参照しながらここに書き出す。初回セットアップや更新は <code>./setup.sh</code> と<a href="https://mise.jdx.dev/tasks/">mise tasks</a>に寄せている。</p>
+<p><code>AGENTS.md</code> では、メタリポジトリのスコープを「横断調査・情報整理・意思決定支援」に限定し、実装は対象repoで行うと明記している。普段コードを書かない人を第一に想定し、説明はシンプルに保つよう指示している。</p>
+<p>skillsとしては、たとえば次のようなものを置いている。実際にはプロダクト名をプレフィックスにしている。</p>
+<ul>
+<li><code>&lt;project-name&gt;-setup</code>: Codex Appでの初回セットアップや更新を進める</li>
+<li><code>&lt;project-name&gt;-spec-writer</code>: <code>specs/</code> に仕様書を書く</li>
+<li><code>&lt;project-name&gt;-i18n-checker</code>: mobileとwebの文言差分を見る</li>
+<li><code>&lt;project-name&gt;-bq-analysis</code>: BigQueryでの調査を安全に進める</li>
+<li><code>&lt;project-name&gt;-grafana-analysis</code>: 障害調査を進める</li>
+</ul>
+<p>setupスキルを例に見ると、想定ユーザーをCLIに不慣れな人と定義し、Codex App経由でのセットアップを前提にしている。skillが自分で実行し、権限ダイアログやSSHアクセスの問題など自分ではできないことだけユーザーに止めてもらう設計にしている。</p>
+<details><summary><b>setupスキル抜粋</b></summary><pre><code>---
+name: &lt;project-name&gt;-setup
+description: Set up or refresh the meta-repo on macOS so this repo and its related repos are ready for local work. Use this skill whenever the user wants this repo to become usable or up to date.
+---
+</code></pre>
+<p><strong><project-name>-setup</strong></p>
+<p>This repo is a meta-repo. Use this skill only for meta-repo bootstrap and refresh. If the issue moves into a submodule, switch to that repo&#39;s workflow.</p>
+<p>Assumed user: A non-engineer who primarily uses Japanese and is unfamiliar with the CLI. The setup process is assumed to be performed through a desktop application such as Codex App.</p>
+<ul>
+<li>Respond in simple Japanese by default</li>
+<li>Run setup steps yourself when possible; do not push shell commands onto the user</li>
+<li>Only stop for user actions you cannot do yourself, such as permission dialogs or SSH access recovery</li>
+</ul>
+<p><strong>Workflow</strong></p>
+<ol>
+<li>Confirm you are in the meta-repo root</li>
+<li>For first-time setup, trust the repo first, then run <code>./setup.sh</code></li>
+<li>If <code>./setup.sh</code> stops because <code>mise</code> is unavailable, fix the blocker and rerun</li>
+<li>After <code>mise.toml</code> changes, refresh local tools</li>
+<li>After pulling latest changes, align local submodules to the recorded commits</li>
+</ol>
+</details><p>また、submodule側（本体側）でも <code>newbie</code> というskillを置いている。メタリポジトリのskillが横断調査や仕様整理を担うのに対して、こちらはそのrepo内での具体的な作業をCodexが代わりに進める。</p>
+<h2>なぜCodexを入口にするのか</h2>
+<p>普段コードを書かない人にコマンド操作を理解してもらうより、Codexに仕事を渡す方が現実的だからだ。</p>
+<p>たとえば、次のように頼める状態を作りたい。</p>
+<ul>
+<li>「この機能の仕様書を書いて」</li>
+<li>「mobileとwebで文言がずれていないか見て」</li>
+<li>「この障害をログとメトリクスから見て」</li>
+</ul>
+<p>例えばChatGPTは社内知識にアクセスできるが、情報を確実に取得できるわけではない。
+仕様書、実装、文言、運用知識がファイルシステム上でつながっていれば、Codexは自分で必要なものを探せる。</p>
+<h2>まだ難しいところ</h2>
+<p>ただ、まだうまくいっていると言い切れる段階ではない。</p>
+<p>一番難しいのはsubmoduleである。人間にとって分かりづらいのはもちろん、AIエージェントにとってもrepoの境界をまたぐ操作は間違いやすい。</p>
+<p>セットアップについては、Codex Appなら <code>.codex/environments/environment.toml</code> にスクリプトを設定しておけばWorktree作成時に自動実行されるので、ユーザーが <code>setup.sh</code> を意識する必要はない。</p>
+<pre><code class="language-sh">version = 1
+name = &quot;&lt;project-name&gt;&quot;
+
+[setup]
+script = &#39;&#39;&#39;
+mise trust
+./setup.sh
+&#39;&#39;&#39;
+</code></pre>
+<p>ただし、ローカルで直接触る場合にはまだ <code>mise</code> の導入やshell設定の反映、GitHub権限、SSH鍵といった環境依存の問題が残る。</p>
+<p>それでも、普段コードを書かない人にrepo構造を理解してもらうより、Codex App越しにメタリポジトリを触ってもらう方が良さそうだと感じている。</p>
+<h2>所感</h2>
+<p>現時点で手応えがあるのは、メタリポジトリそのものではなく、「AIエージェントの入口を1つに寄せられること」にある。</p>
+<p>これが一番良い方法だとは思っていなくて、まだ実験段階だ。ただ、普段コードを書かない人が働きやすい状態を作るには、promptを工夫するより先にrepo構成とskillの置き方を整える方が良いという感触がある。</p>

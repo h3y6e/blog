@@ -25,7 +25,9 @@
       "ja-space-around-code": {
         "before": true,
         "after": true
-      }
+      },
+      "ja-space-around-link": false,
+      "ja-no-space-around-slash": false
     },
     "preset-ja-technical-writing": {
       "ja-no-weak-phrase": false,

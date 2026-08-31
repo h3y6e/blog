@@ -1,0 +1,148 @@
+<h2>経緯</h2>
+<p>コードレビューは開発プロセスで重要だが、時間がかかる。レビュー待ちがボトルネックになることがある。</p>
+<p>AnthropicsがClaude Code Actionというものをベータ版で公開している。これを使えば<a href="https://www.anthropic.com/claude-code">Claude Code</a>をGitHub Actionsに組み込める。</p>
+<p>EMBED1</p>
+<h2>Claude Code Actionの仕組み</h2>
+<p>Claude Code Actionは、GitHub上でClaude Codeを動かすためのアクション。コメントやPRのイベントをトリガーにして、コードの分析や修正提案ができる。</p>
+<p>複数のクラウドプロバイダーに対応しており、今回はAWS Bedrockを利用する。IAMロールでアクセス制御できるのが良い。</p>
+<h2>実装の流れ</h2>
+<h3>基本的なワークフロー</h3>
+<p>最初に作ったのは、シンプルなレビューワークフロー</p>
+<pre><code class="language-yaml">name: claude-review
+
+on:
+  workflow_call:
+    secrets:
+      AWS_BEDROCK_ROLE_ARN:
+        description: &quot;AWS role ARN for Bedrock access&quot;
+        required: true
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+
+jobs:
+  claude-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    continue-on-error: true
+</code></pre>
+<p>Reusable workflowにして、各リポジトリから呼び出せるようにした。</p>
+<p>Claude Code Actionの利用箇所ではAWS Bedrockを使うための設定が必要。</p>
+<pre><code class="language-yaml">- name: Run Claude Code
+  uses: anthropics/claude-code-action@beta
+  env:
+    ANTHROPIC_BEDROCK_BASE_URL: &quot;https://bedrock-runtime.ap-northeast-1.amazonaws.com&quot;
+  with:
+    model: &quot;apac.anthropic.claude-sonnet-4-20250514-v1:0&quot;
+    use_bedrock: true
+    direct_prompt: |
+      # レビュー用のプロンプト
+</code></pre>
+<p>環境変数 <code>ANTHROPIC_BEDROCK_BASE_URL</code> と <code>use_bedrock: true</code>、<code>model</code> を設定することで、Bedrockエンドポイントを使うようになる</p>
+<h3>古いコメントの最小化</h3>
+<p>PRを更新するたびに新しいコメントが増えると見づらい。そこで、古いコメントを自動で折りたたむ処理を追加した。</p>
+<pre><code class="language-bash">gh api /repos/MATHINLINE0{{ github.event.pull_request.number }}/comments \
+  --jq &#39;.[] | select(.user.login == &quot;claude[bot]&quot;) | .node_id&#39; | \
+while read -r node_id; do
+  gh api graphql -f query=&#39;
+    mutation {
+      minimizeComment(input: {subjectId: &quot;&#39;$node_id&#39;&quot;, classifier: OUTDATED}) {
+        minimizedComment { isMinimized }
+      }
+    }&#39;
+done
+</code></pre>
+<p>GitHub GraphQL APIの <code>minimizeComment</code> を使うと、コメントを削除せずに折りたためる。履歴として残しつつ、最新のレビューだけ目立たせられる。</p>
+<h3>プロンプト</h3>
+<p>レビューの品質を上げるために、プロンプトをカスタマイズした。</p>
+<pre><code class="language-yaml">direct_prompt: |
+  Review this PR and provide feedback in Japanese with severity levels (Critical/High/Medium/Low) and code examples.
+  For PRs with new commits, understand the full context first, then focus comments on the latest changes.
+  NOTE: Skip CI-related checks as they&#39;re handled separately.
+  IMPORTANT: Complete exclusion of positive evaluations.
+</code></pre>
+<p>重要度レベル（Critical/High/Medium/Low）を設定したのがポイント。これで「これはブロッカー」「これは改善提案」が一目でわかる。</p>
+<p>新しいコミットがあるPRの場合は、まず全体のコンテキストを理解してから最新の変更にフォーカスするよう指示している。これで修正漏れのチェックが効果的に行われる。</p>
+<p>別のCIで実行されるtestやlintについては言及しないように明記し、重複した指摘を避けている。
+また、肯定的な評価を完全に除外することで、問題点の指摘に集中させている。</p>
+<h2>トリガーイベント</h2>
+<h3>初期 - PRイベントのみ</h3>
+<p>最初は単純にPRのopenedとsynchronizeイベントで実行していた。</p>
+<pre><code class="language-yaml">on:
+  pull_request:
+    types: [opened, synchronize]
+</code></pre>
+<p>でも、これだと毎回のpushでCIが走ってしまう。レビュー中の細かい修正のたびに実行されるのは無駄。</p>
+<h3>改良 - 柔軟なトリガー条件</h3>
+<p>そこで、より柔軟なトリガー条件に変更した。</p>
+<pre><code class="language-yaml">if: |
+  github.event.sender.type != &#39;Bot&#39; &amp;&amp; (
+    (
+      github.event_name == &#39;issue_comment&#39; &amp;&amp;
+      github.event.issue.pull_request &amp;&amp;
+      contains(github.event.comment.body, &#39;@claude&#39;)
+    ) ||
+    (
+      github.event_name == &#39;pull_request_review_comment&#39; &amp;&amp;
+      contains(github.event.comment.body, &#39;@claude&#39;)
+    ) ||
+    (
+      github.event_name == &#39;pull_request_review&#39; &amp;&amp;
+      contains(github.event.review.body, &#39;@claude&#39;)
+    ) ||
+    (
+      github.event_name == &#39;pull_request&#39; &amp;&amp;
+      github.event.action != &#39;review_requested&#39; &amp;&amp;
+      github.event.pull_request.draft == false
+    ) ||
+    (
+      github.event_name == &#39;pull_request&#39; &amp;&amp;
+      github.event.action == &#39;review_requested&#39; &amp;&amp;
+      github.event.requested_team.name == &#39;claude&#39;
+    )
+  )
+</code></pre>
+<p>様々なケースで動作するようになった。PRの通常コメント（<code>issue_comment</code>）、レビューコメント、レビュー本文での <code>@claude</code> メンション、<code>claude</code> チームへのレビューリクエスト、通常のPRイベント（ドラフトは除外）など。</p>
+<p>工夫した点として、<code>claude[bot]</code> は直接レビュアーに指定できないため、<code>claude</code> というダミーチームを作成した。そのチームへのレビューリクエストでもワークフローが発火するようにした。</p>
+<h2>実際の導入例</h2>
+<p>実際にプロジェクトに導入してみた。Reusable workflowとして実装したので、各リポジトリから簡単に呼び出せる。</p>
+<pre><code class="language-yaml">name: claude-review
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, review_requested]
+  pull_request_review:
+    types: [submitted]
+  pull_request_review_comment:
+    types: [created]
+  issue_comment:
+    types: [created]
+
+jobs:
+  claude-review:
+    uses: my-org/actions/.github/workflows/claude-review.yaml@main
+    secrets:
+      AWS_BEDROCK_ROLE_ARN: ${{ secrets.AWS_BEDROCK_ROLE_ARN }}
+</code></pre>
+<p><code>uses:</code> で参照することで、ワークフローの本体を各リポジトリにコピーする必要がない。
+PR関連のすべてのイベントに対応できるように設定して、柔軟にレビューをトリガーできるようにした。</p>
+<h2>使ってみた感想</h2>
+<h3>良かったところ</h3>
+<p>実際に使ってみて、思った以上に便利だった。</p>
+<p>導入したプロジェクトではGitHub Copilotのレビュー機能も併用しているが、決定的な違いがある。
+Copilotは変更された差分のみを解析対象とするが、このworkflowは変更箇所だけでなくコードベース全体の文脈を理解した上でレビューする。変更が波及する可能性のある箇所まで含めて解析し、潜在的な副作用を指摘してくれる。</p>
+<p>特に、アーキテクチャ上の暗黙的な前提や、コード間の意味的な依存関係といった、型システムでは表現できない制約についての指摘が有用。人間がdiffだけを見てレビューする際に見落としがちな、システム全体の整合性に関わる問題も検出してくれることがある。</p>
+<h3>課題と改善点</h3>
+<p>とはいえ、完璧ではない。</p>
+<p>修正した箇所を見落としたり、PRのコメントで説明していることを読み飛ばしたりすることがある。逆に、コードに書いていないことを「実装されていない」と指摘してくることもある。</p>
+<p>これらの問題は、トークン数の増加に起因すると考えられる。適切にコンテキストを制御できれば改善する可能性はある。</p>
+<h2>これから</h2>
+<p>今後改善したい点がいくつかある。</p>
+<p>ファイルパターンでスキップできれば、自動生成ファイルなどをレビュー対象から除外できる。
+また、複数モデルの使い分けも検討したい。簡単なチェックは高速モデル、詳細レビューは高性能モデルといった使い分けができれば効率的だ。</p>
+<p>Critical/Highの問題がなければ自動的にApproveする機能もあると良さそう。</p>
+<h2>おわりに</h2>
+<p>Claude Code ActionとAWS Bedrockの組み合わせで、PRレビューの自動化ができた。</p>
+<p>完全に人間のレビューを置き換えるものではないが、機械的なチェックを任せることで、人間はより本質的なレビューへ集中できる。</p>
