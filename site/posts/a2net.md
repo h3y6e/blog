@@ -86,7 +86,7 @@ A2ネットはeo光で光回線を契約しているのですが、5/10Gbpsが�
 そのため、各クライアント側で他の端末と被らないようなIPアドレスを手動で固定してもらうという超原始的な方法を取っていました。
 基本的には1回設定してしまえばそれで良いのですが、新しい端末を接続する度にその設定をするのは面倒だと感じたので、DHCPサーバを別で建てることにしたというわけです。
 
-ソフトウェアには [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) を用いました。
+ソフトウェアには [Dnsmasq](https://www.thekelleys.org.uk/dnsmasq/doc.html) を用いました。
 この規模であればラズパイとDnsmasqを用いれば簡単に構築できるので良いですね。
 
 `dnsmasq.conf` の `conf-file=/etc/dnsmasq.more.conf` の行のコメントを外し、`dnsmasq.more.conf` に以下を記述しました。

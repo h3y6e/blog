@@ -20,7 +20,7 @@
 <p>バリデーションを実画像で行うため、実画像が持つ形状とかけ離れた形状を持つトレーニングデータは捨てられる。<br><img src="https://user-images.githubusercontent.com/38322494/63980943-0ff62300-caf8-11e9-8830-8dd2a6c71bf9.png" alt="Screenshot from 2019-08-30 07-30-14"></p>
 <p>shape-from-shadingネットワークは <a href="https://arxiv.org/pdf/1603.06937.pdf">Stacked Hourglass Network</a> を使用している。<br><img src="https://user-images.githubusercontent.com/38322494/63980458-af1a1b00-caf6-11e9-9f67-906a8270f5e7.png" alt="Screenshot from 2019-08-30 07-20-29"></p>
 <h2>How it is validated （experimental setup and results）</h2>
-<p><a href="http://www.cs.toronto.edu/~rgrosse/intrinsic/gallery.html">MIT-Berkeley Intrinsic Image</a> データセットを用いて
+<p><a href="https://www.cs.toronto.edu/~rgrosse/intrinsic/gallery.html">MIT-Berkeley Intrinsic Image</a> データセットを用いて
 SIRFS (<a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2013/EECS-2013-117.pdf">Shape, Illumination, and Reflectance from Shading</a>) と比較。
 提案手法は形状のみを進化させテクスチャは進化させないので、テクスチャレス画像を使用したSIRFSと比較する。
 <img src="https://user-images.githubusercontent.com/38322494/63975239-863f5900-cae9-11e9-82e3-98c87b0b5e88.png" alt="Screenshot from 2019-08-30 00-57-52"></p>

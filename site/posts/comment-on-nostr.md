@@ -79,7 +79,7 @@ blogを雑記として利用できないのはテキストを書くことが特�
 
 ↓何でも良いのでコメントしてみよう。
 
-<script src="https://nocomment.pages.dev/embed.js" id="nocomment" data-relays='["wss://nostr-pub.wellorder.net","wss://nostr-relay.untethr.me","wss://relay.damus.io"]'></script>
+<script async src="https://nocomment.pages.dev/embed.js" id="nocomment" data-relays='["wss://nostr-pub.wellorder.net","wss://nostr-relay.untethr.me","wss://relay.damus.io"]'></script>
 
 Nostrクライアント上では、[このコメント](https://snort.social/e/note18t79zypzf2dwlqavwd9tdyhzx38uut6jkkz393qm2r56k7fqcu7s03uj59)に返信しているように表示される。
 

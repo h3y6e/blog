@@ -47,7 +47,7 @@ shape-from-shadingネットワークは [Stacked Hourglass Network](https://arxi
 
 ## How it is validated （experimental setup and results）
 
-[MIT-Berkeley Intrinsic Image](http://www.cs.toronto.edu/~rgrosse/intrinsic/gallery.html) データセットを用いて
+[MIT-Berkeley Intrinsic Image](https://www.cs.toronto.edu/~rgrosse/intrinsic/gallery.html) データセットを用いて
 SIRFS ([Shape, Illumination, and Reflectance from Shading](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2013/EECS-2013-117.pdf)) と比較。
 提案手法は形状のみを進化させテクスチャは進化させないので、テクスチャレス画像を使用したSIRFSと比較する。
 ![Screenshot from 2019-08-30 00-57-52](https://user-images.githubusercontent.com/38322494/63975239-863f5900-cae9-11e9-82e3-98c87b0b5e88.png)

@@ -46,7 +46,7 @@ A2ネットを管理しているのですが、今年は色々改善したので
 <p>何故このようなことをしたのかというと、旧A2ネットでは無線LANルーター内蔵のDHCPサーバ機能を使っており、そのルーターでは最大16台までしかリースできないという仕様でした。
 そのため、各クライアント側で他の端末と被らないようなIPアドレスを手動で固定してもらうという超原始的な方法を取っていました。
 基本的には1回設定してしまえばそれで良いのですが、新しい端末を接続する度にその設定をするのは面倒だと感じたので、DHCPサーバを別で建てることにしたというわけです。</p>
-<p>ソフトウェアには <a href="http://www.thekelleys.org.uk/dnsmasq/doc.html">Dnsmasq</a> を用いました。
+<p>ソフトウェアには <a href="https://www.thekelleys.org.uk/dnsmasq/doc.html">Dnsmasq</a> を用いました。
 この規模であればラズパイとDnsmasqを用いれば簡単に構築できるので良いですね。</p>
 <p><code>dnsmasq.conf</code> の <code>conf-file=/etc/dnsmasq.more.conf</code> の行のコメントを外し、<code>dnsmasq.more.conf</code> に以下を記述しました。</p>
 <pre><code>#######
