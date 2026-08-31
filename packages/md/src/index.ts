@@ -352,6 +352,15 @@ function parseInline(src: string, ctx: Ctx): string {
     re.lastIndex = i;
     return re.exec(src);
   };
+  /** Emit a parsed token: flush pending text, append, advance. */
+  const token = (length: number, markup: string): boolean => {
+    flush();
+    out += markup;
+    i += length;
+    return true;
+  };
+  const linkTitle = (link: Link): string =>
+    link.title ? ` title="${escapeText(link.title)}"` : "";
   // Openers whose closer scan already ran off the end of src ("**", "~~",
   // "`"+run length): a scan from any later offset covers a subset of the
   // same text and can only fail again, so skip it. This keeps unclosed
@@ -365,12 +374,7 @@ function parseInline(src: string, ctx: Ctx): string {
       case "\\":
         // A hard break needs "  \n" or "\\\n"; a lone space is plain text.
         if (ch === " " && src[i + 1] !== " ") break;
-        if ((m = at(BR))) {
-          flush();
-          out += "<br>";
-          i += m[0].length;
-          continue;
-        }
+        if ((m = at(BR)) && token(m[0].length, "<br>")) continue;
         if (ch === "\\" && (m = at(ESCAPE))) {
           text += m[1]!;
           i += 2;
@@ -382,11 +386,9 @@ function parseInline(src: string, ctx: Ctx): string {
         while (src[i + run] === "`") run++;
         if (dead.has(`\`${run}`)) break;
         if ((m = at(CODESPAN))) {
-          flush();
           let code = m[2]!.replace(/\n/g, " ");
           if (/^ .*[^ ].* $/.test(code)) code = code.slice(1, -1);
-          out += `<code>${escapeAll(code)}</code>`;
-          i += m[0].length;
+          token(m[0].length, `<code>${escapeAll(code)}</code>`);
           continue;
         }
         dead.add(`\`${run}`);
@@ -394,32 +396,19 @@ function parseInline(src: string, ctx: Ctx): string {
       }
       case "<":
         if ((m = at(AUTOLINK))) {
-          flush();
-          const url = m[1]!;
-          out += `<a href="${cleanUrl(url)}">${escapeText(url)}</a>`;
-          i += m[0].length;
+          token(m[0].length, `<a href="${cleanUrl(m[1]!)}">${escapeText(m[1]!)}</a>`);
           continue;
         }
-        if ((m = at(HTML_INLINE))) {
-          flush();
-          out += m[0];
-          i += m[0].length;
-          continue;
-        }
+        if ((m = at(HTML_INLINE)) && token(m[0].length, m[0])) continue;
         break;
       case "[": {
-        if ((m = at(FOOTNOTE_REF))) {
-          flush();
-          out += footnoteRef(m[1]!, ctx);
-          i += m[0].length;
-          continue;
-        }
+        if ((m = at(FOOTNOTE_REF)) && token(m[0].length, footnoteRef(m[1]!, ctx))) continue;
         const link = matchLink(src, i);
         if (link) {
-          flush();
-          const title = link.title ? ` title="${escapeText(link.title)}"` : "";
-          out += `<a href="${cleanUrl(link.href)}"${title}>${parseInline(link.text, ctx)}</a>`;
-          i += link.length;
+          token(
+            link.length,
+            `<a href="${cleanUrl(link.href)}"${linkTitle(link)}>${parseInline(link.text, ctx)}</a>`,
+          );
           continue;
         }
         break;
@@ -427,10 +416,10 @@ function parseInline(src: string, ctx: Ctx): string {
       case "!": {
         const link = src[i + 1] === "[" ? matchLink(src, i + 1) : null;
         if (link) {
-          flush();
-          const title = link.title ? ` title="${escapeText(link.title)}"` : "";
-          out += `<img src="${cleanUrl(link.href)}" alt="${escapeText(unescape(link.text))}"${title}>`;
-          i += 1 + link.length;
+          token(
+            1 + link.length,
+            `<img src="${cleanUrl(link.href)}" alt="${escapeText(unescape(link.text))}"${linkTitle(link)}>`,
+          );
           continue;
         }
         break;
@@ -439,9 +428,7 @@ function parseInline(src: string, ctx: Ctx): string {
       case "_": {
         if (src[i + 1] === ch && !dead.has(ch + ch)) {
           if ((m = at(STRONG))) {
-            flush();
-            out += `<strong>${parseInline(m[2]!, ctx)}</strong>`;
-            i += m[0].length;
+            token(m[0].length, `<strong>${parseInline(m[2]!, ctx)}</strong>`);
             continue;
           }
           // Only a passed (?=\S) lookahead means the closer scan ran to the
@@ -449,16 +436,12 @@ function parseInline(src: string, ctx: Ctx): string {
           if (/\S/.test(src.charAt(i + 2))) dead.add(ch + ch);
         }
         if (ch === "*" && (m = at(EM_STAR))) {
-          flush();
-          out += `<em>${parseInline(m[1]!, ctx)}</em>`;
-          i += m[0].length;
+          token(m[0].length, `<em>${parseInline(m[1]!, ctx)}</em>`);
           continue;
         }
         const prev = src[i - 1] ?? "\n";
         if (ch === "_" && !/[\p{L}\p{N}]/u.test(prev) && (m = at(EM_UNDERSCORE))) {
-          flush();
-          out += `<em>${parseInline(m[1]!, ctx)}</em>`;
-          i += m[0].length;
+          token(m[0].length, `<em>${parseInline(m[1]!, ctx)}</em>`);
           continue;
         }
         break;
@@ -466,21 +449,15 @@ function parseInline(src: string, ctx: Ctx): string {
       case "~":
         if (src[i + 1] === "~" && !dead.has("~~")) {
           if ((m = at(DEL))) {
-            flush();
-            out += `<del>${parseInline(m[1]!, ctx)}</del>`;
-            i += m[0].length;
+            token(m[0].length, `<del>${parseInline(m[1]!, ctx)}</del>`);
             continue;
           }
           if (/\S/.test(src.charAt(i + 2))) dead.add("~~");
         }
         break;
       case "$":
-        if (ctx.math && (m = at(MATH_INLINE))) {
-          flush();
-          out += ctx.math(m[1]!, false);
-          i += m[0].length;
+        if (ctx.math && (m = at(MATH_INLINE)) && token(m[0].length, ctx.math(m[1]!, false)))
           continue;
-        }
         break;
       default:
         if ((m = at(TEXT))) {
