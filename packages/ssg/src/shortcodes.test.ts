@@ -11,7 +11,7 @@ const embeds = {
 };
 
 describe("expandShortcodes", () => {
-  it("when a line is an embed shortcode with known metadata, replaces it with a link-preview card", () => {
+  it("when a line is an embed shortcode whose metadata has no image, replaces it with an imageless card", () => {
     // Arrange
     const markdown = "before\n\n{{ embed https://calver.org }}\n\nafter\n";
     // Act
@@ -19,7 +19,7 @@ describe("expandShortcodes", () => {
     // Assert
     expect(out).toBe(
       "before\n\n" +
-        '<div class="embed" ontouchstart=""><img src="" decoding="async" loading="lazy"><div class="embed-content"><b>Calendar Versioning — CalVer</b><p>Timely Project Versioning</p><div class="domain">calver.org</div></div><a href="https://calver.org" rel="noopener noreferrer nofollow" target="_blank" role="link"></a></div>\n' +
+        '<div class="embed" ontouchstart=""><div class="embed-content"><b>Calendar Versioning — CalVer</b><p>Timely Project Versioning</p><div class="domain">calver.org</div></div><a href="https://calver.org" rel="noopener noreferrer nofollow" target="_blank" role="link"></a></div>\n' +
         "\nafter\n",
     );
   });

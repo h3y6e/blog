@@ -45,9 +45,12 @@ function embedCard(url: string, embeds: EmbedMap): string {
     throw new Error(`no embed metadata for ${url}; add it to the embeds file`);
   }
   if (meta === null) return "";
+  const img = meta.image
+    ? `<img src="${escapeHtml(meta.image)}" decoding="async" loading="lazy">`
+    : "";
   return (
     `<div class="embed" ontouchstart="">` +
-    `<img src="${escapeHtml(meta.image)}" decoding="async" loading="lazy">` +
+    img +
     `<div class="embed-content">` +
     `<b>${escapeHtml(meta.title)}</b>` +
     `<p>${escapeHtml(meta.description)}</p>` +

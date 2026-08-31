@@ -36,7 +36,7 @@ body {
   display: flex;
   flex-direction: column;
   max-width: 864px;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   @media (max-width: 684px) {
     padding: 10px;

@@ -3,6 +3,7 @@ import { basename, dirname, extname, join, resolve, sep } from "node:path";
 import { rewriteAssetUrls } from "./assets.ts";
 import { loadPosts } from "./content.ts";
 import { MODERN_CSS_MARKERS, checkCssLowering, inlineCss } from "./css.ts";
+import { type Dims, enhanceMedia, imageSize } from "./images.ts";
 import { checkOriginTrials } from "./origin-trials.ts";
 import { buildPages } from "./pages.ts";
 import type { SiteConfig } from "./types.ts";
@@ -195,7 +196,7 @@ export function ssg(options: SsgOptions): Plugin {
         }
         // Fonts are emitted from the CSS url()s; expose them at their canonical
         // /css/fonts/ URLs so the head preload links rewrite to the hashed files.
-        if (entry.type === "asset" && entry.fileName.endsWith(".woff")) {
+        if (entry.type === "asset" && entry.fileName.endsWith(".woff2")) {
           for (const name of entry.names ?? [])
             assets.set(`/css/fonts/${name}`, `/${entry.fileName}`);
         }
@@ -217,14 +218,12 @@ export function ssg(options: SsgOptions): Plugin {
         if (!assets.has(url)) throw new Error(`Bundle is missing the entry behind ${url}`);
       }
 
+      const imageDims = new Map<string, Dims>();
       for (const [urlPrefix, dir] of ASSET_DIRS) {
         const abs = resolve(root, dir);
         for (const file of walk(abs)) {
-          const ref = this.emitFile({
-            type: "asset",
-            name: basename(file),
-            source: readFileSync(file),
-          });
+          const source = readFileSync(file);
+          const ref = this.emitFile({ type: "asset", name: basename(file), source });
           // Canonical URLs always use "/"; normalize the OS-native separator
           // walk()'s path.join() may have produced (e.g. "\" on Windows).
           const relUrl = file
@@ -232,17 +231,22 @@ export function ssg(options: SsgOptions): Plugin {
             .split(sep)
             .join("/");
           assets.set(urlPrefix + relUrl, `/${this.getFileName(ref)}`);
+          const dims = imageSize(source);
+          if (dims) imageDims.set(urlPrefix + relUrl, dims);
         }
       }
 
       // feed.xml stays byte-identical to the live Franklin feed; every other
-      // page gets its asset references pointed at the hashed files.
+      // page gets media loading hints and its asset references pointed at the
+      // hashed files.
       for (const [fileName, source] of await pages()) {
         this.emitFile({
           type: "asset",
           fileName,
           source:
-            fileName === "feed.xml" ? source : rewriteAssetUrls(source, assets, options.siteUrl),
+            fileName === "feed.xml"
+              ? source
+              : rewriteAssetUrls(enhanceMedia(source, imageDims), assets, options.siteUrl),
         });
       }
     },

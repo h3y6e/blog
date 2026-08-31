@@ -29,7 +29,18 @@ type PageMeta = {
   ogUrl: string;
   ogImage: string;
   twitterCard: "summary" | "summary_large_image";
+  /** Third-party origins the page will hit early (embedded scripts). */
+  preconnect?: string[];
 };
+
+/** Origins of third-party scripts embedded in the page, for preconnect. */
+export function scriptOrigins(pageHtml: string): string[] {
+  const origins = new Set<string>();
+  for (const m of pageHtml.matchAll(/<script[^>]*\ssrc="((?:https:)?\/\/[^"/]+)/g)) {
+    origins.add(m[1]!.startsWith("//") ? `https:${m[1]!}` : m[1]!);
+  }
+  return [...origins];
+}
 
 // Mirrors site/ogimage.ts's encode(), which is verified byte-identical to
 // the legacy @cloudinary/url-gen output (site/ogimage.test.ts). encodeURI
@@ -57,7 +68,7 @@ export function ogImageUrl(post: Pick<Post, "title" | "date" | "tags">): string 
 function head(site: SiteConfig, meta: PageMeta): Raw {
   return html`<head prefix="og: https://ogp.me/ns#">
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       document.documentElement.style.colorScheme = localStorage.getItem("theme") || "dark";
     </script>
@@ -68,22 +79,23 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
     <link rel="me" href="https://fedibird.com/@h3y6e" />
     <link rel="me" href="https://www.threads.net/@h3y6e" />
     <meta name="theme-color" content="#2f2f2f" />
+    ${(meta.preconnect ?? []).map((origin) => html`<link rel="preconnect" href="${origin}" />`)}
     <link
       rel="preload"
-      href="/css/fonts/FiraCode-Regular.woff"
+      href="/css/fonts/FiraCode-Regular.woff2"
       as="font"
-      type="font/woff"
+      type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="/css/fonts/FiraCode-Bold.woff"
+      href="/css/fonts/FiraCode-Bold.woff2"
       as="font"
-      type="font/woff"
+      type="font/woff2"
       crossorigin
     />
     <link rel="stylesheet" href="/css/a5ebec.css" />
-    <link rel="icon" href="/assets/favicon/favicon.ico" />
+    <link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />
     <meta property="og:site_name" content="${site.title}" />
     <meta property="og:image" content="${meta.ogImage}" />
@@ -230,6 +242,7 @@ export function postPage(site: SiteConfig, post: Post): string {
     ogUrl: postFullUrl(site, post.slug),
     ogImage: post.cover ? `${site.siteUrl}${post.cover}` : ogImageUrl(post),
     twitterCard: "summary_large_image",
+    preconnect: scriptOrigins(post.html),
   };
   const body = html`<div class="reading-progress"></div>
     ${headline(site, post.title, post.date, post.tags, true)} ${toc(post.html)}

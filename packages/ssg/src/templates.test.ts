@@ -131,6 +131,41 @@ describe("postPage", () => {
     );
   });
 
+  it("when the post embeds third-party scripts, emits one preconnect per script origin", () => {
+    // Arrange
+    const body =
+      '<blockquote class="twitter-tweet"></blockquote>' +
+      '<script async src="https://platform.twitter.com/widgets.js"></script>' +
+      '<script async src="https://platform.twitter.com/widgets.js"></script>' +
+      '<script async src="//cdn.iframe.ly/embed.js"></script>';
+    // Act
+    const page = postPage(site, post({ html: body }));
+    // Assert
+    expect(page).toContain('<link rel="preconnect" href="https://platform.twitter.com" />');
+    expect(page).toContain('<link rel="preconnect" href="https://cdn.iframe.ly" />');
+    expect(page.match(/rel="preconnect" href="https:\/\/platform\.twitter\.com"/g)).toHaveLength(1);
+  });
+
+  it("when the post embeds no third-party script, emits no preconnect", () => {
+    // Act
+    const page = postPage(site, post());
+    // Assert
+    expect(page).not.toContain('rel="preconnect"');
+  });
+
+  it("when rendering any page, preloads the woff2 fonts, links the png favicon, and allows pinch zoom", () => {
+    // Act
+    const page = postPage(site, post());
+    // Assert
+    expect(page).toContain('href="/css/fonts/FiraCode-Regular.woff2"');
+    expect(page).toContain('type="font/woff2"');
+    expect(page).toContain(
+      '<link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />',
+    );
+    expect(page).toContain('content="width=device-width, initial-scale=1"');
+    expect(page).not.toContain("maximum-scale");
+  });
+
   it("when the post has code, includes no client-side highlight.js script", () => {
     // Act
     const page = postPage(site, post({ html: '<pre><code class="language-ts">x</code></pre>' }));
