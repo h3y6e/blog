@@ -34,7 +34,6 @@ export async function loadPosts(postsDir: string, embedsFile: string): Promise<P
   const paths = readdirSync(postsDir)
     .filter((f) => f.endsWith(".md"))
     .map((f) => join(postsDir, f));
-  // Read each post once and reuse it for both the embed-URL scan and parsing.
   const sources = paths.map((p) => readFileSync(p, "utf8"));
   const urls = sources.flatMap((s) => collectEmbedUrls(s));
   const embeds = await ensureEmbeds(urls, embedsFile);

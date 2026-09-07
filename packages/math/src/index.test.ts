@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vite-plus/test";
 import { texToMathML } from "./index.ts";
 
-// Minimal well-formedness check: balanced tags, no stray < > or bare & in text.
 function assertWellFormed(xml: string): void {
   const stack: string[] = [];
   const tag = /<(\/?)([a-z]+)((?:\s+[a-z:="./\w-]+)*)\s*(\/?)>/g;
@@ -13,13 +12,12 @@ function assertWellFormed(xml: string): void {
     last = tag.lastIndex;
     if (m[4]) continue;
     if (m[1]) expect(stack.pop()).toBe(m[2]);
-    else stack.push(m[2]!); // group 2 participates in any match
+    else stack.push(m[2]!);
   }
   expect(xml.slice(last)).toBe("");
   expect(stack).toEqual([]);
 }
 
-// Every math expression appearing in posts/*.md.
 const corpusInline = [
   "70\\%",
   "50\\%",

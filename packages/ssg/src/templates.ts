@@ -1,10 +1,3 @@
-/**
- * Page templates ported from the Franklin _layout: same class names
- * (.franklin-headline, .franklin-content, .postlist, .tagpage, ...) and asset
- * URLs (/css/a5ebec.css, /libs/client/*) so the existing CSS and theme
- * scripts keep working.
- */
-
 import { enhanceFootnotes } from "./footnotes.ts";
 import { html, raw, type Raw } from "./html.ts";
 import { toc } from "./toc.ts";
@@ -21,19 +14,14 @@ import {
 type PageMeta = {
   title: string;
   description: string;
-  /** Falls back to `description` when omitted; only tagPage diverges, since
-   * its <meta name="description"> carries a " :: site title" suffix that
-   * og:description never had. */
   ogDescription?: string;
   ogType: "article" | "website";
   ogUrl: string;
   ogImage: string;
   twitterCard: "summary" | "summary_large_image";
-  /** Third-party origins the page will hit early (embedded scripts). */
   preconnect?: string[];
 };
 
-/** Origins of third-party scripts embedded in the page, for preconnect. */
 export function scriptOrigins(pageHtml: string): string[] {
   const origins = new Set<string>();
   for (const m of pageHtml.matchAll(/<script[^>]*\ssrc="((?:https:)?\/\/[^"/]+)/g)) {
@@ -42,14 +30,9 @@ export function scriptOrigins(pageHtml: string): string[] {
   return [...origins];
 }
 
-// Mirrors site/ogimage.ts's encode(), which is verified byte-identical to
-// the legacy @cloudinary/url-gen output (site/ogimage.test.ts). encodeURI
-// leaves ,/#&;:@=+$? unescaped, so those are handled explicitly; kept in
-// sync manually since site/ (the consumer) can't be imported from here.
 const encodeCloudinary = (text: string): string =>
   encodeURI(text.replaceAll(",", "%2C").replaceAll("/", "%2F")).replaceAll("#", "%23");
 
-/** Port of hfun_ogimage_url: Cloudinary-generated OGP image for posts without a cover. */
 export function ogImageUrl(post: Pick<Post, "title" | "date" | "tags">): string {
   const title = encodeCloudinary(post.title);
   const date = encodeCloudinary(post.date);
@@ -65,11 +48,7 @@ export function ogImageUrl(post: Pick<Post, "title" | "date" | "tags">): string 
   );
 }
 
-// vt.js is a classic parser-blocking script in the head on purpose: its
-// pagereveal listener must be registered before the document reveals, or the
-// title morph silently skips whenever the reveal wins the race against a
-// deferred script. switcher.js needs the parsed DOM and stays a module at the
-// end of body.
+// vt.js must be parser-blocking: its pagereveal listener has to exist before reveal.
 function head(site: SiteConfig, meta: PageMeta): Raw {
   return html`<head prefix="og: https://ogp.me/ns#">
     <meta charset="utf-8" />
@@ -162,9 +141,6 @@ export function headline(
   tags: string[],
   named = false,
 ): Raw {
-  // The article title carries the shared "post-title" name on an inline span
-  // (same geometry as the list link); the list side gets the name at
-  // navigation time from vt.ts, so only the involved title ever morphs.
   const titleHtml = named
     ? html`<span style="view-transition-name: post-title">${title}</span>`
     : title;
@@ -192,8 +168,6 @@ export function postlist(site: SiteConfig, posts: Post[]): Raw {
   );
 }
 
-/** Like encodeURIComponent but also encodes !'()* — matches Julia's escapeuri
- * so intent URLs keep the exact %27 form of the live site. */
 function escapeUri(s: string): string {
   return encodeURIComponent(s).replace(
     /[!'()*]/g,
@@ -290,7 +264,6 @@ export function tagPage(site: SiteConfig, tag: string, posts: Post[]): string {
   return layout(site, meta, body);
 }
 
-/** Port of hfun_tagpage: tags grouped into table rows by post count. */
 export function tagTable(site: SiteConfig, posts: Post[]): Raw {
   const counts = new Map<string, number>();
   for (const post of posts)

@@ -1,6 +1,3 @@
-// Theme toggle. Colors are pure CSS (color-scheme + light-dark()); this only
-// covers what CSS cannot: persistence, button label, logo text, meta
-// theme-color, and twitter embeds.
 const style = document.documentElement.style;
 const byId = (id: string): HTMLElement => {
   const el = document.getElementById(id);
@@ -31,8 +28,7 @@ const stored = (): "light" | "dark" =>
 
 apply(stored());
 
-// Prerendered (speculation rules) and bfcached pages ran their scripts with
-// the theme of that moment; re-sync when they are actually shown.
+// Prerendered/bfcached pages: re-sync the theme when shown.
 addEventListener("prerenderingchange", () => apply(stored()));
 addEventListener("pageshow", (e) => {
   if (e.persisted) apply(stored());

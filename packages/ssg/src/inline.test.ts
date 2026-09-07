@@ -16,7 +16,7 @@ describe("inlineAssets", () => {
       ["/libs/client/switcher.js", 'console.log("s$&")'],
       ["/libs/client/vt.js", 'console.log("v")'],
     ]);
-    // Assert ($& in content must stay literal; vt stays classic, switcher stays module)
+    // Assert
     expect(out).toBe(
       "<head><style>body{color:red}$&</style>" +
         '<script>console.log("v")</script>' +

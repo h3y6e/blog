@@ -1,20 +1,14 @@
-// Zero-dependency Markdown → HTML renderer covering the constructs used by
-// the blog corpus. Output conventions follow marked (gfm) where they overlap;
-// deviations: heading ids on h2/h3, GFM-style footnotes, math delegation.
-
 export type Options = {
-  /** Renders $...$ / $$...$$ TeX. When absent, math text is left verbatim. */
   math?: (tex: string, display: boolean) => string;
-  /** Returns HTML for fenced code. When absent, content is escaped verbatim. */
   highlight?: (code: string, lang: string) => string;
 };
 
 type Ctx = {
   math?: Options["math"];
   highlight?: Options["highlight"];
-  notes: Map<string, string>; // footnote label -> definition markdown
-  used: string[]; // footnote labels in first-reference order
-  slugs: Set<string>; // ids already emitted, for uniqueness
+  notes: Map<string, string>;
+  used: string[];
+  slugs: Set<string>;
 };
 
 const escapeText = (s: string): string =>
@@ -41,12 +35,8 @@ const cleanUrl = (href: string): string => {
   }
 };
 
-// Resolves backslash-escaped punctuation (the same set parseInline's own
-// escape branch handles) in strings sliced raw out of link syntax and never
-// re-parsed inline, e.g. a link destination or an image's alt text.
 const unescape = (s: string): string => s.replace(/\\([!-/:-@[-`{-~])/g, "$1");
 
-// CommonMark type-6 HTML block tag names (subset relevant to the corpus).
 const BLOCK_TAGS =
   /^<\/?(?:address|article|aside|audio|blockquote|body|center|details|dialog|div|dl|dt|dd|fieldset|figcaption|figure|footer|form|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|nav|ol|p|script|section|source|style|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul|video)(?:[\s/>]|$)/i;
 
@@ -55,9 +45,6 @@ const HEADING = /^ {0,3}(#{1,6}) +(.*?)\s*#*\s*$/;
 const HR = /^ {0,3}(?:-{3,}|\*{3,}|_{3,})\s*$/;
 const LIST_ITEM = /^(\s*)([-*+]|\d+\.)( +)(.*)$/;
 const TABLE_DELIM = /^ *\|? *:?-+:? *(?:\| *:?-+:? *)*\|? *$/;
-
-// Non-null assertions on capture groups below are backed by the pattern:
-// every asserted group participates in any successful match.
 
 export function render(markdown: string, options: Options = {}): string {
   const ctx: Ctx = {
@@ -272,12 +259,11 @@ function parseList(
       continue;
     }
     if (cur && !pendingBlank && !m && !isBlockStart(line, ctx)) {
-      cur.push(line); // lazy paragraph continuation
+      cur.push(line);
       i++;
       continue;
     }
     if (cur && m && indent > base) {
-      // under-indented nested list: treat as child of the current item
       pendingBlank = false;
       cur.push(line.slice(Math.min(indent, contentIndent)));
       i++;
@@ -312,19 +298,12 @@ function slug(raw: string, ctx: Ctx): string {
     .trim()
     .replace(/[^\p{L}\p{N}\s_-]/gu, "")
     .replace(/\s+/g, "-");
-  // Suffix with the lowest -n not already emitted, so a heading whose own
-  // text collides with another heading's suffixed id (e.g. "A" and "A 1"
-  // both slugifying towards "a-1") still gets a unique id.
   let id = base;
   for (let n = 1; ctx.slugs.has(id); n++) id = `${base}-${n}`;
   ctx.slugs.add(id);
   return id;
 }
 
-// Inline tokens, matched with sticky regexes at the current offset so a long
-// paragraph is never re-sliced per character (the technique marked and
-// markdown-it use). Dispatch below is by first character; TEXT swallows a
-// whole run of characters that cannot start any token.
 const CODESPAN = /(`+)([\s\S]*?[^`])\1(?!`)/y;
 const AUTOLINK = /<(https?:\/\/[^\s<>]+)>/y;
 const HTML_INLINE = /<!--[\s\S]*?-->|<\/?[a-zA-Z][a-zA-Z0-9-]*(?:\s[^<>]*?)?\/?>/y;
@@ -340,19 +319,17 @@ const TEXT = /[^ `<[!*_~$\\]+/y;
 
 function parseInline(src: string, ctx: Ctx): string {
   let out = "";
-  let text = ""; // pending plain text, flushed with escaping
+  let text = "";
   const flush = (): void => {
     out += escapeText(text);
     text = "";
   };
   let i = 0;
   const at = (re: RegExp): RegExpExecArray | null => {
-    // Sticky regexes take their match offset through lastIndex by contract.
     // oxlint-disable-next-line eslint/no-param-reassign
     re.lastIndex = i;
     return re.exec(src);
   };
-  /** Emit a parsed token: flush pending text, append, advance. */
   const token = (length: number, markup: string): boolean => {
     flush();
     out += markup;
@@ -361,10 +338,7 @@ function parseInline(src: string, ctx: Ctx): string {
   };
   const linkTitle = (link: Link): string =>
     link.title ? ` title="${escapeText(link.title)}"` : "";
-  // Openers whose closer scan already ran off the end of src ("**", "~~",
-  // "`"+run length): a scan from any later offset covers a subset of the
-  // same text and can only fail again, so skip it. This keeps unclosed
-  // delimiters linear instead of one full scan per opener.
+  // Openers whose closer scan hit end of src; rescanning later can only fail again.
   const dead = new Set<string>();
   while (i < src.length) {
     const ch = src[i]!;
@@ -372,7 +346,6 @@ function parseInline(src: string, ctx: Ctx): string {
     switch (ch) {
       case " ":
       case "\\":
-        // A hard break needs "  \n" or "\\\n"; a lone space is plain text.
         if (ch === " " && src[i + 1] !== " ") break;
         if ((m = at(BR)) && token(m[0].length, "<br>")) continue;
         if (ch === "\\" && (m = at(ESCAPE))) {
@@ -431,8 +404,7 @@ function parseInline(src: string, ctx: Ctx): string {
             token(m[0].length, `<strong>${parseInline(m[2]!, ctx)}</strong>`);
             continue;
           }
-          // Only a passed (?=\S) lookahead means the closer scan ran to the
-          // end; a whitespace-follows failure is positional, not global.
+          // A whitespace-follows failure is positional, not a missing closer.
           if (/\S/.test(src.charAt(i + 2))) dead.add(ch + ch);
         }
         if (ch === "*" && (m = at(EM_STAR))) {
@@ -481,8 +453,6 @@ type Link = {
   length: number;
 };
 
-// Matches [text](href "title") at src[start], with nested brackets in text
-// and balanced parentheses in href. `length` is relative to `start`.
 function matchLink(src: string, start: number): Link | null {
   let depth = 0;
   let i = start;

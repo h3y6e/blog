@@ -10,7 +10,6 @@ function png(width: number, height: number): Uint8Array {
 }
 
 function jpeg(width: number, height: number, sof = 0xc0): Uint8Array {
-  // SOI, APP0 (2-byte length only), SOF marker with height/width big-endian.
   const buf = new Uint8Array([
     0xff,
     0xd8,

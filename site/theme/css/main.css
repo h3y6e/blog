@@ -175,7 +175,6 @@ ol {
   padding: 0;
   & > li {
     position: relative;
-    /* Loose lists (<li><p>) keep a modest gap instead of full ¶ spacing. */
     & > p {
       margin: 0.5em 0;
     }

@@ -4,7 +4,6 @@ import { indexPage, notFoundPage, postPage, tagPage, tagsIndexPage } from "./tem
 import type { Post, SiteConfig } from "./types.ts";
 import { byDateDesc, pageFile, postPath, tagPath, tagsIndexPath } from "./urls.ts";
 
-/** Post metadata index consumed by the WebMCP list_posts tool (webmcp.ts). */
 function postsJson(site: SiteConfig, posts: Post[]): string {
   return JSON.stringify(
     byDateDesc(posts).map((p) => ({
@@ -18,7 +17,6 @@ function postsJson(site: SiteConfig, posts: Post[]): string {
   );
 }
 
-/** Every generated page keyed by output file name (relative to dist). */
 export function buildPages(site: SiteConfig, posts: Post[]): Map<string, string> {
   const pages = new Map<string, string>();
   pages.set("index.html", indexPage(site, posts));
@@ -30,8 +28,6 @@ export function buildPages(site: SiteConfig, posts: Post[]): Map<string, string>
   pages.set(pageFile(tagsIndexPath(site)), tagsIndexPage(site, posts));
   for (const post of posts) {
     pages.set(pageFile(postPath(post.slug)), postPage(site, post));
-    // The markdown mirror answers at both guessable URLs:
-    // /posts/<slug>/index.md (page URL + index.md) and /posts/<slug>.md.
     const markdown = postMarkdown(site, post);
     pages.set(`${postPath(post.slug).slice(1)}index.md`, markdown);
     pages.set(`posts/${post.slug}.md`, markdown);

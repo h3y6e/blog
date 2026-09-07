@@ -1,10 +1,3 @@
-/**
- * LLM-facing markdown mirrors, following the llms.txt convention
- * (https://llmstxt.org): every post is also served as markdown at
- * /posts/<slug>/index.md, /llms.txt indexes them, and /llms-full.txt
- * concatenates them. The WebMCP get_post tool reads the per-post mirror.
- */
-
 import type { Post, SiteConfig } from "./types.ts";
 import { byDateDesc, postPath } from "./urls.ts";
 

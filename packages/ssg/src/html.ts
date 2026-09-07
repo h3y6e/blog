@@ -1,5 +1,3 @@
-/** HTML tagged template with auto-escaping. Wrap trusted markup in `raw()`. */
-
 const ESCAPES: Record<string, string> = {
   "&": "&amp;",
   "<": "&lt;",
@@ -9,11 +7,9 @@ const ESCAPES: Record<string, string> = {
 };
 
 export function escapeHtml(s: string): string {
-  // The regex matches exactly the keys of ESCAPES.
   return s.replace(/[&<>"']/g, (c) => ESCAPES[c]!);
 }
 
-/** Marks a string as already-safe HTML. `html\`\`` returns Raw, so nesting composes. */
 export class Raw {
   readonly html: string;
   constructor(markup: string) {
@@ -38,10 +34,7 @@ function render(v: Value): string {
 }
 
 export function html(strings: TemplateStringsArray, ...values: Value[]): Raw {
-  // Literal segments only carry template scaffolding, so their line breaks
-  // and indentation (however the formatter reflows them) collapse to single
-  // spaces. Interpolated values — post bodies with <pre> blocks included —
-  // pass through untouched.
+  // Whitespace in literal segments is formatter noise; interpolated values are untouched.
   return new Raw(
     strings
       .map((s) => s.replace(/\s*\n\s*/g, " "))

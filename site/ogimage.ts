@@ -1,6 +1,3 @@
-// Builds the Cloudinary OG image URL: title, date, and tags rendered in Firge35
-// over a5ebec-ogimage-left.png. Usage: node ogimage.ts <title> <date> <tags>
-
 const encode = (text: string): string =>
   encodeURI(text.replaceAll(",", "%2C").replaceAll("/", "%2F")).replaceAll("#", "%23");
 

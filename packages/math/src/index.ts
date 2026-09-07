@@ -1,6 +1,3 @@
-// Zero-dependency TeX → MathML Core converter.
-// Supports only the subset used by the blog posts; any other command throws.
-
 type Tok = { cmd: boolean; v: string };
 
 const GREEK: Record<string, string> = {
@@ -131,7 +128,6 @@ class Parser {
     this.toks = toks;
   }
 
-  /** Next significant token, skipping whitespace. */
   private peek(): Tok | undefined {
     let t: Tok | undefined;
     while ((t = this.toks[this.i]) !== undefined && t.v === " " && !t.cmd) this.i++;
@@ -197,9 +193,6 @@ class Parser {
     return t && !t.cmd ? t.v : "";
   }
 
-  /** Consumes tokens up to (not including) the next real `}` as plain text.
-   * An escaped `\}` (cmd token whose value is "}") is a literal brace
-   * character, not the group's closing delimiter, so it's consumed too. */
   private takeText(): string {
     let s = "";
     for (
@@ -211,7 +204,6 @@ class Parser {
     return s;
   }
 
-  /** Collects the next {...} group (or the rest of the current group) as plain text. */
   private parseText(): string {
     const t = this.peek();
     let s: string;

@@ -1,11 +1,3 @@
-/**
- * Build-time inlining of the page-wide CSS and the two theme module scripts.
- * GitHub Pages caps caching at max-age=600, so external hashed assets never
- * earn their extra round trips; inlined, a page first-paints off a single
- * request (fonts are font-display: optional with a metric-matched fallback).
- * Dev keeps the external references so Vite's module graph serves them.
- */
-
 export function inlineAssets(
   page: string,
   css: string,
@@ -19,8 +11,6 @@ export function inlineAssets(
     if (code.includes("</script>")) {
       throw new Error(`Bundled ${url} contains </script>; cannot inline`);
     }
-    // Preserve the tag form: type="module" stays deferred, a classic script
-    // stays parser-blocking (vt.js relies on that; see templates.ts).
     const forms: [tag: string, inlined: string][] = [
       [`<script type="module" src="${url}"></script>`, `<script type="module">${code}</script>`],
       [`<script src="${url}"></script>`, `<script>${code}</script>`],

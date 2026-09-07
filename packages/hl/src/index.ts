@@ -1,23 +1,18 @@
-// Zero-dependency build-time syntax highlighter emitting compact
-// <span class="x"> tokens styled by site/theme/css/syntax.css. Single-letter
-// classes are safe because the CSS scopes them under `pre code`:
+// Token classes:
 //   k keyword   b built-in   l literal   t type      s string   c comment
 //   n number    m meta       v variable  a attr/key  y symbol   h heading
 //   g tag       u bullet     q quote     d code span f link     w strong
 //   e emphasis
-// One generic lexer, parameterized per language: at each position the first
-// matching rule wins, then identifiers are classified via a keyword map, and
-// everything else passes through escaped.
 
 type Rule = {
-  re: RegExp; // sticky; may use m + lookbehind for line-start anchoring
-  cls?: string; // token class emitted verbatim
+  re: RegExp;
+  cls?: string;
 };
 
 type Lang = {
   rules: Rule[];
   keywords?: Record<string, string>;
-  ident?: RegExp; // sticky; default IDENT
+  ident?: RegExp;
 };
 
 const IDENT = /[A-Za-z_$][\w$]*/y;
@@ -52,7 +47,6 @@ const bash: Lang = {
 
 const yaml: Lang = {
   rules: [
-    // Block scalar body: lines after "key: |" sharing the first line's indent.
     {
       re: /(?<=[|>][ \t]*\n)(?:[ \t]*\n)*([ \t]+)[^\n]*(?:\n(?:[ \t]*(?=\n|$)|\1[^\n]*))*/my,
       cls: "s",
@@ -215,18 +209,12 @@ const esc = (s: string): string =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 
-// Splits at newlines so no emitted span ever crosses a line boundary
-// (withLineNumbers relies on this).
 const span = (text: string, cls?: string): string =>
   text
     .split("\n")
     .map((t) => (t && cls ? `<span class="${cls}">${esc(t)}</span>` : esc(t)))
     .join("\n");
 
-/**
- * Returns token markup for `code`. Unknown or empty `lang`
- * yields the escaped code unchanged.
- */
 export function highlight(code: string, lang: string): string {
   const name = lang.toLowerCase();
   const def = LANGS[ALIASES[name] ?? name];
@@ -257,10 +245,6 @@ export function highlight(code: string, lang: string): string {
   return out;
 }
 
-/**
- * Wraps each line in a numbered span for the CSS-counter line-number column.
- * `markup` must not contain tags crossing newlines (highlight() guarantees this).
- */
 export const withLineNumbers = (markup: string): string =>
   markup
     .split("\n")

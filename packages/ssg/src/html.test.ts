@@ -91,7 +91,7 @@ describe("html", () => {
   });
 
   it("when interpolated values contain newlines, leaves them untouched (post bodies keep their pre blocks)", () => {
-    // Arrange (aliased tag: oxfmt reformats whitespace inside html`` literals)
+    // Arrange
     const tag = html;
     const body = raw("<pre>a\n  b</pre>");
     // Act

@@ -1,20 +1,5 @@
-/**
- * Build-time media enhancement, applied to every HTML page before asset-URL
- * rewriting (dimensions are keyed by canonical URL):
- * - `width`/`height` from the image bytes, so the browser reserves the box
- *   before a single byte arrives (no layout shift).
- * - The first image a reader can hit is the LCP candidate and gets
- *   `fetchpriority="high"`; everything after it lazy-loads. An author-written
- *   `loading`/`fetchpriority` attribute always wins.
- * - `loading="lazy"` on iframes.
- *
- * Escaped markup in code blocks is untouched: the tag regexes only match a
- * literal `<`, never `&lt;`.
- */
-
 export type Dims = { width: number; height: number };
 
-/** Dimensions parsed from PNG/JPEG/GIF headers; null for other formats. */
 export function imageSize(buf: Uint8Array): Dims | null {
   const view = new DataView(buf.buffer, buf.byteOffset, buf.byteLength);
   if (buf.length >= 24 && view.getUint32(0) === 0x89504e47 && view.getUint32(4) === 0x0d0a1a0a) {
@@ -27,7 +12,6 @@ export function imageSize(buf: Uint8Array): Dims | null {
     for (let i = 2; i + 4 <= buf.length;) {
       if (buf[i] !== 0xff) return null;
       const marker = buf[i + 1]!;
-      // Fill bytes and standalone markers (SOI, TEM, RSTn) carry no segment.
       if (marker === 0xff) {
         i += 1;
         continue;
@@ -36,7 +20,6 @@ export function imageSize(buf: Uint8Array): Dims | null {
         i += 2;
         continue;
       }
-      // SOS/EOI: entropy-coded data follows, no SOF was seen.
       if (marker === 0xda || marker === 0xd9) return null;
       const isSof = marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker);
       if (isSof && i + 9 <= buf.length) {
@@ -78,7 +61,6 @@ export function enhanceMedia(html: string, dims: Map<string, Dims>): string {
       );
       first = false;
     } else if (hint !== "lazy") {
-      // An explicit eager/fetchpriority image is the author's LCP pick.
       first = false;
     }
     return out;

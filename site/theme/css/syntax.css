@@ -1,10 +1,3 @@
-/* Syntax theme for the token classes emitted by @blog/hl
-   (k keyword, b built-in, l literal, t type, s string, c comment, n number,
-   m meta, v variable, a attr/key, y symbol, h heading, g tag, u bullet,
-   q quote, d code span, f link, w strong, e emphasis).
-   Every color is a light-dark() pair harmonized with the site accent
-   (#2aa298 / #a5ebec) and meets WCAG AA against the code background. */
-
 pre {
   margin: 20px 0px;
   overflow: auto;
@@ -20,8 +13,6 @@ pre {
     margin: 0;
     border-radius: 5px;
 
-    /* Line numbers: @blog/hl wraps each code line in a .ln span and
-       CSS counters render the number column. */
     counter-reset: ln;
 
     & .ln::before {
@@ -29,9 +20,6 @@ pre {
       counter-increment: ln;
       content: counter(ln);
       display: inline-block;
-      /* content-box: the inherited border-box would count the padding into
-         min-width, so the 2ch floor never bites and 1- vs 2-digit rows get
-         different gutter widths, shifting the code. */
       box-sizing: content-box;
       min-width: 2ch;
       text-align: right;

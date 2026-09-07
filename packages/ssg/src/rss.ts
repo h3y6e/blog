@@ -1,15 +1,6 @@
-/**
- * RSS feed matching the live Franklin-generated /feed.xml byte-for-byte
- * (whitespace, entity escaping and item order included) so that existing
- * subscribers see no re-notification.
- */
-
 import type { Post, SiteConfig } from "./types.ts";
 import { byDateDescFeed, postFullUrl } from "./urls.ts";
 
-/** Franklin renders titles/descriptions through its markdown pipeline, which
- * emits these characters as entities even inside CDATA and turns paired
- * underscores into emphasis (even intraword). */
 export function franklinEscape(text: string): string {
   return text
     .replace(/&/g, "&amp;")
@@ -24,16 +15,12 @@ export function franklinEscape(text: string): string {
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-/** RFC1123 date at UTC midnight, e.g. "Fri, 17 May 2019 00:00:00 +0000". */
 export function rfc1123(isoDate: string): string {
   const d = new Date(`${isoDate}T00:00:00Z`);
   const day = String(d.getUTCDate()).padStart(2, "0");
   return `${DAYS[d.getUTCDay()]}, ${day} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()} 00:00:00 +0000`;
 }
 
-/* The trailing spaces and odd blank lines below reproduce Franklin's output
- * (collapsed template conditionals) and are load-bearing for the byte-exact
- * match — hence string concatenation instead of a template literal. */
 export function renderItem(site: SiteConfig, post: Post): string {
   const url = postFullUrl(site, post.slug);
   return (

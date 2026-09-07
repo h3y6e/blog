@@ -13,8 +13,6 @@
 @import "progress.css";
 @import "footnote.css";
 
-/* nocomment */
 @import "comment.css";
 
-/* code highlighting (tokens emitted by @blog/hl) */
 @import "syntax.css";

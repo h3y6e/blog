@@ -19,7 +19,6 @@ function fences(): Fence[] {
     let open: { fence: string; lang: string; code: string[] } | null = null;
     for (const line of lines) {
       const m = /^(`{3,})(.*)$/.exec(line);
-      // Both capture groups participate in any match.
       if (m && !open) open = { fence: m[1]!, lang: m[2]!.trim(), code: [] };
       else if (open && line.startsWith(open.fence)) {
         out.push({ file, lang: open.lang, code: open.code.join("\n") });
@@ -51,14 +50,13 @@ describe("highlighting the full post corpus", () => {
       // Act
       const html = highlight(code, lang);
       const label = `${file} (${lang || "plain"})`;
-      // Assert: only token spans, all balanced, none crossing a newline
+      // Assert
       for (const line of html.split("\n")) {
         expect(line.match(/<span class="[a-z]">/g)?.length ?? 0, label).toBe(
           line.match(/<\/span>/g)?.length ?? 0,
         );
       }
       expect(html.replace(/<span class="[a-z]">|<\/span>/g, ""), label).not.toMatch(/[<>]/);
-      // Assert: stripping spans and entities restores the input exactly
       expect(unescape(html.replace(/<span class="[a-z]">|<\/span>/g, "")), label).toBe(code);
     }
   });

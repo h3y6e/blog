@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vite-plus/test";
 import { highlight, withLineNumbers } from "./index.ts";
 
-/** Strips token spans and decodes entities; the result must equal the input code. */
 const plainText = (html: string): string =>
   html
     .replace(/<\/?span[^>]*>/g, "")

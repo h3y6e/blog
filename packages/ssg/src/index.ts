@@ -16,40 +16,25 @@ export type { Post, SiteConfig } from "./types.ts";
 
 export type SsgOptions = SiteConfig;
 
-/** The theme stylesheet is the site's visual design and stays site-owned; it
- * goes through Rollup so the output is minified and the fonts it url()s are
- * emitted as hashed assets. */
 const CSS_ENTRY = "theme/css/a5ebec.css";
 const CSS_URL = "/css/a5ebec.css";
 
-/** Browser-side scripts live in @blog/client: they are coupled to the markup
- * and data this package emits (templates, posts.json, the markdown mirrors),
- * not to the site's theme. Canonical page URL → absolute source path; the
- * URLs only exist until inline.ts embeds the bundled code (build) or
- * devScriptUrls points them at Vite's module graph (dev). */
 const SCRIPT_NAMES = ["switcher", "vt", "webmcp"] as const;
 const SCRIPTS: [url: string, path: string][] = SCRIPT_NAMES.map((name) => [
   `/libs/client/${name}.js`,
   fileURLToPath(import.meta.resolve(`@blog/client/${name}.ts`)),
 ]);
 
-/** Files emitted through the asset pipeline at build; pages referencing them
- * are rewritten to the hashed URLs. */
 const ASSET_DIRS: [urlPrefix: string, dir: string][] = [
   ["/img/", "img"],
   ["/assets/", "_assets"],
 ];
 
-/** Dev-only: serve the source files verbatim at the canonical URLs the
- * (unrewritten) pages reference. The build emits hashed assets instead. */
 const DEV_STATIC_DIRS: [urlPrefix: string, dir: string][] = [
   ...ASSET_DIRS,
   ["/css/fonts/", "theme/css/fonts"],
 ];
 
-/** Dev-only: point the script tags at their real sources so Vite's module
- * graph serves and transforms them (the canonical URLs exist only in builds;
- * /@fs/ because the package sources live outside the site root). */
 const devScriptUrls = (html: string): string =>
   SCRIPTS.reduce((h, [url, path]) => h.replace(url, `/@fs${path}`), html);
 
@@ -78,13 +63,9 @@ const CONTENT_TYPES: Record<string, string> = {
 const contentType = (path: string): string =>
   CONTENT_TYPES[extname(path).toLowerCase()] ?? "application/octet-stream";
 
-/** Request path without query string, percent-decoded. split() always
- * yields at least one element. */
 const reqPath = (url: string | undefined): string =>
   decodeURIComponent((url ?? "/").split("?")[0]!);
 
-/** Page files a URL may resolve to, GitHub Pages style: the exact file, or
- * the directory index (with or without the trailing slash). */
 const pageKeys = (url: string): string[] =>
   url.endsWith("/") ? [`${url}index.html`] : [url, `${url}/index.html`];
 
@@ -96,14 +77,9 @@ const walk = (dir: string): string[] =>
 type Harvest = {
   css: string;
   scripts: [url: string, code: string][];
-  /** Canonical /css/fonts/ URL → hashed URL. */
   fonts: Map<string, string>;
 };
 
-/** Pull the page-inlined CSS and script sources plus the hashed font URLs
- * out of the bundle, deleting the entries no page references anymore, and
- * fail the build if the bundler lowered at-Baseline CSS (AGENTS.md policy):
- * every modern marker in the theme must survive to dist. */
 function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harvest {
   const cssPath = resolve(root, CSS_ENTRY);
   let css: string | undefined;
@@ -114,7 +90,6 @@ function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harve
     .filter((f) => f.endsWith(".css"))
     .map((f) => readFileSync(join(themeDir, f), "utf8"))
     .join("\n");
-  // Rollup's generateBundle contract requires mutating `bundle` in place.
   // oxlint-disable eslint/no-param-reassign
   for (const [key, entry] of Object.entries(bundle)) {
     if (entry.type === "chunk") {
@@ -123,11 +98,8 @@ function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harve
         scripts.set(script[0], entry.code!.trimEnd());
         delete bundle[key];
       }
-      // The CSS entry's JS stub chunk serves no page; drop it.
       if (entry.facadeModuleId === cssPath) delete bundle[key];
     }
-    // Fonts are emitted from the CSS url()s; expose them at their canonical
-    // /css/fonts/ URLs so the head preload links rewrite to the hashed files.
     if (entry.type === "asset" && entry.fileName.endsWith(".woff2")) {
       for (const name of entry.names ?? []) fonts.set(`/css/fonts/${name}`, `/${entry.fileName}`);
     }
@@ -151,8 +123,6 @@ function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harve
 
 const VIRTUAL_PREFIX = "virtual:ssg/";
 
-// Structural subset of Vite's Plugin type; typing it locally keeps this
-// package dependent only on @blog/md and @blog/math.
 type Plugin = {
   name: string;
   config: () => Record<string, unknown>;
@@ -186,9 +156,6 @@ type Res = {
   end: (body: string | Uint8Array) => void;
 };
 
-/** Serve a file with its content type; fonts get Cache-Control (dev 1h,
- * preview mirrors GitHub Pages' 600s) so font-display: optional doesn't fall
- * back on every navigation. */
 function sendFile(res: Res, path: string, fontMaxAge: number): void {
   res.setHeader("Content-Type", contentType(path));
   if (path.endsWith(".woff2")) res.setHeader("Cache-Control", `max-age=${fontMaxAge}`);
@@ -247,8 +214,6 @@ export function ssg(options: SsgOptions): Plugin {
       root = config.root;
     },
 
-    // The virtual ids exist only because the site root is unknown until
-    // configResolved; they resolve to the real entry files.
     resolveId: (id) => {
       if (id === VIRTUAL_PREFIX + "a5ebec") return resolve(root, CSS_ENTRY);
       const name = SCRIPT_NAMES.find((n) => VIRTUAL_PREFIX + n === id);
@@ -256,11 +221,9 @@ export function ssg(options: SsgOptions): Plugin {
     },
 
     async generateBundle(_options, bundle) {
-      // Expired origin trial tokens fail the build; soon-to-expire ones warn.
       for (const warning of checkOriginTrials(options.originTrials ?? [])) console.warn(warning);
 
       const { css, scripts, fonts } = harvestBundle(bundle, root);
-      // Canonical URL → hashed URL for everything Rollup emitted.
       const assets = new Map(fonts);
       const imageDims = new Map<string, Dims>();
       for (const [urlPrefix, dir] of ASSET_DIRS) {
@@ -268,8 +231,6 @@ export function ssg(options: SsgOptions): Plugin {
         for (const file of walk(abs)) {
           const source = readFileSync(file);
           const ref = this.emitFile({ type: "asset", name: basename(file), source });
-          // Canonical URLs always use "/"; normalize the OS-native separator
-          // walk()'s path.join() may have produced (e.g. "\" on Windows).
           const relUrl = file
             .slice(abs.length + 1)
             .split(sep)
@@ -280,10 +241,6 @@ export function ssg(options: SsgOptions): Plugin {
         }
       }
 
-      // Every HTML page gets the CSS and theme scripts inlined, media loading
-      // hints, and its asset references pointed at the hashed files. The rest
-      // (posts.json, and feed.xml which stays byte-identical to the live
-      // Franklin feed) is emitted verbatim.
       for (const [fileName, source] of await pages()) {
         this.emitFile({
           type: "asset",
@@ -303,25 +260,18 @@ export function ssg(options: SsgOptions): Plugin {
       for (const dir of [options.postsDir, options.embedsFile, "theme", "img", "_assets"]) {
         server.watcher.add(resolve(server.config.root, dir));
       }
-      // The browser scripts live in @blog/client, outside the site root.
       for (const [, path] of SCRIPTS) server.watcher.add(path);
       server.watcher.on("all", () => {
         cache = null;
         server.ws.send({ type: "full-reload" });
       });
 
-      // Unlike the build, a near-expiry or expired token only warns here:
-      // failing outright would block `vp dev` on a problem the build already
-      // enforces before deploy.
       try {
         for (const warning of checkOriginTrials(options.originTrials ?? [])) console.warn(warning);
       } catch (err) {
         console.warn(err instanceof Error ? err.message : String(err));
       }
 
-      // Registered before Vite's internals: Vite serves the source tree raw
-      // in dev, so /posts/<slug>.md would otherwise hit the frontmatter'd
-      // source file (with no charset) instead of the generated mirror.
       server.middlewares.use((req, res, next) => {
         void (async (): Promise<void> => {
           try {
@@ -336,14 +286,12 @@ export function ssg(options: SsgOptions): Plugin {
         })();
       });
 
-      // Register after Vite's internal middlewares so /@vite/* keeps working.
       return () => {
         server.middlewares.use((req, res, next) => {
           void (async (): Promise<void> => {
             try {
               const url = reqPath(req.url);
               const send = (body: string, type: string, status = 200): void => {
-                // http.ServerResponse's contract requires setting statusCode in place.
                 // oxlint-disable-next-line eslint/no-param-reassign
                 res.statusCode = status;
                 res.setHeader("Content-Type", type);
@@ -361,7 +309,6 @@ export function ssg(options: SsgOptions): Plugin {
               }
 
               const pagesMap = await pages();
-              // Pages are keyed without the leading slash.
               const match = pageKeys(url)
                 .map((key): [string, string | undefined] => [key, pagesMap.get(key.slice(1))])
                 .find(([, page]) => page !== undefined);
@@ -389,8 +336,6 @@ export function ssg(options: SsgOptions): Plugin {
       };
     },
 
-    // appType "custom" turns off Vite's own HTML serving, so preview needs an
-    // equivalent static handler over the build output.
     configurePreviewServer(server) {
       const dist = resolve(server.config.root, "dist");
       server.middlewares.use((req, res, next) => {
@@ -401,7 +346,6 @@ export function ssg(options: SsgOptions): Plugin {
         }
         const notFound = join(dist, "404.html");
         if (extname(url) === "" && existsSync(notFound)) {
-          // http.ServerResponse's contract requires setting statusCode in place.
           // oxlint-disable-next-line eslint/no-param-reassign
           res.statusCode = 404;
           res.setHeader("Content-Type", TYPE_HTML);

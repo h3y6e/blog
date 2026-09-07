@@ -1,9 +1,6 @@
 :root {
-  /* Dark by default; the inline head script overrides color-scheme with the
-     stored choice via the html style attribute. */
   color-scheme: dark;
 
-  /* colors */
   --background: light-dark(#fbfbfb, #2f2f2f);
   --logo-color: light-dark(#fbfbfb, #2f2f2f);
   --accent: light-dark(#2aa298, #a5ebec);

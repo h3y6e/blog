@@ -1,5 +1,3 @@
-/* Scroll-driven reading progress bar (post pages); invisible where
-   animation-timeline is unsupported. */
 .reading-progress {
   position: fixed;
   inset: 0 0 auto;

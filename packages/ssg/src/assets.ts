@@ -1,4 +1,3 @@
-/** URL prefixes that must resolve to a Rollup-emitted asset in the build. */
 const ASSET_URL_PREFIXES = ["/img/", "/assets/", "/css/", "/libs/"];
 
 function rewriteOne(value: string, assets: Map<string, string>, siteUrl: string): string {
@@ -13,14 +12,6 @@ function rewriteOne(value: string, assets: Map<string, string>, siteUrl: string)
   return value;
 }
 
-/**
- * Rewrite src/href attribute values, and the <meta property="og:image">
- * content, through the emitted-asset map. Same-site absolute URLs (og:image)
- * keep their `siteUrl` prefix; foreign origins are untouched. Other
- * `content="..."` attributes hold prose (descriptions, viewport, ...), not
- * asset references, and are left alone. An asset-path reference with no
- * emitted file fails the build: every URL a page ships must exist in dist.
- */
 export function rewriteAssetUrls(html: string, assets: Map<string, string>, siteUrl = ""): string {
   return html
     .replace(

@@ -35,7 +35,6 @@ const post = (over: Partial<Post> = {}): Post => ({
   ...over,
 });
 
-/** Collapse formatting whitespace so assertions survive markup reflows. */
 const norm = (s: string): string => s.replace(/\s+/g, " ").replace(/ >/g, ">").trim();
 
 describe("headline", () => {
@@ -99,8 +98,6 @@ describe("ogImageUrl", () => {
   });
 
   it("when the title contains an ampersand, matches the legacy Cloudinary encoding (unescaped, not %26)", () => {
-    // Arrange: matches an actual post title (GitLab のアップデート & Zero downtime
-    // updates & Slack通知) that has no cover and so goes through this path.
     // Act
     const url = ogImageUrl({ title: "A & B", date: "2025-07-03", tags: [] });
     // Assert

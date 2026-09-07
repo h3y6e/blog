@@ -1,24 +1,7 @@
-/**
- * Franklin shortcode expansion, applied to post markdown before rendering:
- * - `{{ embed <url> [label] }}` → link-preview card (port of hfun_embed; the
- *   label was ignored there too). Card metadata comes from a cached map (see
- *   embeds.ts, which self-populates it locally) so CI builds stay offline and
- *   deterministic; `null` records a URL whose page was unreachable at harvest
- *   time (Franklin rendered nothing for those).
- * - `\figure{src}{caption}` → figure element (port of the \figure newcommand).
- *
- * Both are only recognized as full lines, matching how the posts use them;
- * indented (4-space) code-block lines and fenced (```) code blocks are left
- * alone, so a post documenting this syntax in an example doesn't get it
- * expanded.
- */
-
 import { escapeHtml } from "./html.ts";
 
 const FENCE = /^(`{3,})(.*)$/;
 
-/** Marks each line as inside a fenced code block, mirroring @blog/md's own
- * fence tracking so shortcode syntax in a fenced example is never expanded. */
 function fenceMask(lines: string[]): boolean[] {
   let inFence: string | null = null;
   return lines.map((line) => {
@@ -61,7 +44,6 @@ function embedCard(url: string, embeds: EmbedMap): string {
   );
 }
 
-/** URLs referenced by embed shortcodes, in order of appearance. */
 export function collectEmbedUrls(markdown: string): string[] {
   const lines = markdown.split("\n");
   const fenced = fenceMask(lines);
@@ -74,7 +56,6 @@ export function expandShortcodes(markdown: string, embeds: EmbedMap): string {
   return lines
     .map((line, i) => {
       if (fenced[i]) return line;
-      // Capture groups in EMBED and FIGURE always participate in a match.
       let m = EMBED.exec(line);
       if (m) return embedCard(m[1]!, embeds);
       m = FIGURE.exec(line);

@@ -1,9 +1,3 @@
-// Read-only WebMCP tool: in-browser agents can enumerate and filter the
-// blog's posts without scraping the DOM. Feature-detected — browsers without
-// WebMCP (everything outside the Chrome origin trial) pay nothing.
-// document.modelContext is current; navigator.modelContext was deprecated in
-// Chromium 150 and covers the earlier preview builds.
-
 type PostMeta = {
   slug: string;
   title: string;
@@ -25,8 +19,6 @@ type ModelContext = {
   registerTool: (tool: Tool<never>) => void;
 };
 
-// Script file (no imports/exports): these top-level interfaces merge into
-// lib.dom's globals. Merging requires `interface` and looks unused to lint.
 // oxlint-disable typescript/consistent-type-definitions, eslint/no-unused-vars
 interface Document {
   modelContext?: ModelContext;
@@ -62,7 +54,6 @@ if (modelContext && "registerTool" in modelContext) {
     async execute(input: { tag?: string; query?: string }) {
       const posts = await postsIndex();
       const q = input.query?.toLowerCase();
-      // Chrome's WebMCP examples return strings, so tools serialize themselves.
       return JSON.stringify(
         posts.filter(
           (p) =>
@@ -87,7 +78,6 @@ if (modelContext && "registerTool" in modelContext) {
       required: ["slug"],
     },
     async execute(input: { slug: string }) {
-      // Every post ships a markdown mirror (see @blog/ssg's llms.ts).
       const res = await fetch(`/posts/${encodeURIComponent(input.slug)}/index.md`);
       if (!res.ok) return `Unknown slug "${input.slug}"; pick one from list_posts.`;
       return res.text();

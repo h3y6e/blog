@@ -1,16 +1,8 @@
-/**
- * Footnote popovers: each footnote ref gets an interest invoker (`interestfor`)
- * opening a hint popover anchored to it, with the footnote text inlined.
- * Progressive enhancement only — the ref stays a plain in-page link, and the
- * popovers are `display: none` unless the Popover API opens them.
- */
-
 const DEFINITION =
   /<li id="fn-(\d+)">([\s\S]*?) <a href="#fnref-\1" class="footnote-backref">↩<\/a><\/li>/g;
 
 export function enhanceFootnotes(article: string): string {
   const defs = new Map<string, string>();
-  // Both capture groups participate in any match.
   for (const [, n, def] of article.matchAll(DEFINITION)) defs.set(n!, def!);
   if (defs.size === 0) return article;
 

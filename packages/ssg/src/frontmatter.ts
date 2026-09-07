@@ -1,9 +1,3 @@
-/**
- * Minimal YAML-subset parser for post frontmatter.
- * Supported keys: title, rss_description, cover (strings), date (ISO date),
- * tags (inline `[a, b]` or `- item` list). Anything else throws.
- */
-
 export type Frontmatter = {
   title: string;
   date: string;
@@ -23,8 +17,6 @@ function parseScalar(value: string, key: string): string {
   return value;
 }
 
-/** Splits a comma-separated list, respecting '...'/"..." quoted items so a
- * comma inside a quoted item doesn't end it early. */
 function splitList(inner: string): string[] {
   const items: string[] = [];
   let cur = "";
@@ -60,7 +52,6 @@ export function parseFrontmatter(source: string): {
   const match = source.match(/^---\n(.*?)\n---\n/s);
   if (!match) throw new Error("frontmatter: missing --- block");
   const body = source.slice(match[0].length);
-  // Both capture groups always participate in a successful match.
   const lines = match[1]!.split("\n").filter((l) => l.trim() !== "");
 
   const data: Record<string, string | string[]> = {};
@@ -94,9 +85,6 @@ export function parseFrontmatter(source: string): {
       data.date = value;
     } else if (STRING_KEYS.has(key)) {
       const scalar = parseScalar(value, key);
-      // cover feeds og:image as `${site.siteUrl}${cover}`; it must be a
-      // root-relative path, not already absolute, or the concatenation
-      // produces a malformed URL.
       if (key === "cover" && !scalar.startsWith("/")) {
         throw new Error(
           `frontmatter: cover must be a root-relative path starting with /: ${scalar}`,
@@ -111,7 +99,6 @@ export function parseFrontmatter(source: string): {
   for (const required of ["title", "date", "tags", "rss_description"]) {
     if (!(required in data)) throw new Error(`frontmatter: missing key: ${required}`);
   }
-  // The presence checks above are the runtime validation; the shape is now Frontmatter.
   // oxlint-disable-next-line typescript/no-unsafe-type-assertion, typescript/consistent-type-assertions
   return { frontmatter: data as unknown as Frontmatter, body };
 }

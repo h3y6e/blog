@@ -3,8 +3,6 @@ import { ssg } from "@blog/ssg";
 
 export default defineConfig({
   build: {
-    // Baseline Newly available browsers (AGENTS.md policy): keep modern CSS
-    // like light-dark() untranspiled instead of lowering to broken fallbacks.
     cssTarget: ["chrome123", "edge123", "firefox120", "safari17.5"],
   },
   plugins: [
@@ -17,8 +15,6 @@ export default defineConfig({
       postsDir: "posts",
       embedsFile: "embeds.json",
       tagPath: "tags",
-      // Chrome origin trial tokens (https://developer.chrome.com/origintrials);
-      // expired tokens fail the build, soon-to-expire ones warn.
       originTrials: [
         {
           feature: "WebMCP",
