@@ -1,0 +1,42 @@
+<blockquote class="twitter-tweet" data-lang="ja" data-theme="dark"><p lang="ja" dir="ltr">bashは`sudo apt install zsh`をする場所だと思っている</p>&mdash; へいほぅ (@h3y6e) <a href="https://twitter.com/h3y6e/status/1115124604538744832?ref_src=twsrc%5Etfw">2019年4月8日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><h2>zshインストール</h2>
+<p>UbuntuやDebianをインストールしたらまずターミナルを開いてこれを脳死で打つ。</p>
+<pre><code class="language-shell">$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install zsh
+</code></pre>
+<h2>prezto導入</h2>
+<p>zshを起動して以下を実行。</p>
+<pre><code class="language-shell">git clone --recursive https://github.com/sorin-ionescu/prezto.git &quot;MATHINLINE0HOME}/.zprezto&quot;
+chsh -s /usr/bin/zsh
+</code></pre>
+<p>以下を実行。</p>
+<pre><code class="language-shell">$ setopt EXTENDED_GLOB  
+for rcfile in &quot;MATHINLINE1HOME}&quot;/.zprezto/runcoms/^README.md(.N); do  
+  ln -s &quot;MATHINLINE2{ZDOTDIR:-MATHINLINE3{rcfile:t}&quot;  
+done
+</code></pre>
+<p>再起動。</p>
+<pre><code class="language-shell">sudo reboot
+</code></pre>
+<p>これでターミナルを開いたときにzshが起動されるはず。</p>
+<h2>テーマ変更</h2>
+<p>このまま使用してもよいが、preztoでは沢山のテーマが利用できるので好きなものに変える。<br>ちなみにデフォルトは <code>sorin</code> というテーマ。</p>
+<p>以下ですべてのテーマをプレビューできる。</p>
+<pre><code class="language-shell">~ ❯❯❯ prompt -p
+</code></pre>
+<p>みんな大好きpowerlineもある。</p>
+<p>テーマの設定は <code>.zpreztorc</code> ファイルの116行目に書かれている。<br>自分は <code>pure</code> が好きなので、<code>sorin</code> から <code>pure</code> に変更した。</p>
+<pre><code class="language-vim">zstyle &#39;:prezto:module:prompt&#39; theme &#39;pure&#39;
+</code></pre>
+<p>vimで変更する場合は以下のようにやると楽。</p>
+<pre><code class="language-shell">~ ❯❯❯ vim .zpreztorc
+</code></pre>
+<pre><code>// vimコマンド
+:%s/&#39;sorin/&#39;pure/
+:wq
+</code></pre>
+<p>最後にシェルを再起動して完成。</p>
+<pre><code class="language-shell">~ ❯❯❯ exec $SHELL -l
+</code></pre>
+<p>良いシェルライフを。</p>

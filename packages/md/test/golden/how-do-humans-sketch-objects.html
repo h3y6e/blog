@@ -1,0 +1,37 @@
+<ul>
+<li>How Do Humans Sketch Objects? </li>
+<li>Mathias Eitz, James Hays, Marc Alexa</li>
+<li>SIGGRAPH, 2012</li>
+<li><a href="http://cybertron.cg.tu-berlin.de/eitz/pdf/2012_siggraph_classifysketch.pdf">PDF</a></li>
+<li><a href="http://cybertron.cg.tu-berlin.de/eitz/projects/classifysketch/">Website</a></li>
+<li>video<br><a href="https://www.youtube.com/watch?v=zMzprmtJ6Ck"><img src="https://img.youtube.com/vi/zMzprmtJ6Ck/0.jpg" alt=""></a></li>
+</ul>
+<h2>What it is about</h2>
+<p>人間のスケッチのクラシフィケーション <br>
+※ スケッチ = 熟練者が描いたものではない抽象的な絵（ピクトグラフ）</p>
+<h2>Why it is worthy researching</h2>
+<ul>
+<li>人間が物体をどのようにスケッチし、そのようなスケッチを人間とコンピューターがどれだけうまく認識できるかについての正式な研究はこれまでなかった。人間のスケッチに対する最初の大規模な調査。</li>
+<li>Amazon Mechanical Turkというクラウドソーシングサービスを利用してデータセットを生成している。</li>
+<li>人間の認識精度もAmazon Mechanical Turkを用いて得ている。</li>
+<li>学習モデルとしてkNN法、SVMを使用。</li>
+</ul>
+<h2>Key idea</h2>
+<p>データセット
+<img src="https://user-images.githubusercontent.com/38322494/67061239-b1b1fc00-f19a-11e9-8c71-0e01dcb36a78.png" alt="fig2"></p>
+<ul>
+<li><p>250のカテゴリ：<br> 日常生活で見かける、形状だけで認識可能なオブジェクトを網羅している。  </p>
+</li>
+<li><p>20,000個のスケッチ：<br> スケッチされたストロークの空間的パラメータと時間的順序を保存する<br> (ただし、この研究では時間的順序は使用されていない）<br> 1カテゴリ毎に80個、合計20,000個のスケッチ。</p>
+</li>
+</ul>
+<h2>How it is validated （experimental setup and results）</h2>
+<p><img src="https://user-images.githubusercontent.com/38322494/67063550-22a8e200-f1a2-11e9-8161-1bc80112fc35.png" alt="fig10">
+56％の精度で未知のスケッチを識別できている。</p>
+<p><img src="https://user-images.githubusercontent.com/38322494/67061287-d3ab7e80-f19a-11e9-9b80-f15c48fd6528.png" alt="fig11">
+人間と計算機の認識精度の違いを示すマトリックス<br>赤： 人間の方が良い精度、 青： 計算機の方が良い精度<br>0は省略している。</p>
+<p><img src="https://user-images.githubusercontent.com/38322494/67061303-db6b2300-f19a-11e9-910c-78fec2eeb13a.png" alt="fig12"></p>
+<h2>Limitation</h2>
+<p>人間は73.1%なので人間のほうが圧倒的に精度は高い。</p>
+<h2>What you thought</h2>
+<p>2012年の論文なので人間のほうが認識精度は高いという結果になっているが、現在はどのくらい精度が上がっているのか、他の論文を読んでみたい。</p>

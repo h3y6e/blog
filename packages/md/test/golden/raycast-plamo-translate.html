@@ -1,0 +1,74 @@
+<h2>tl;dr</h2>
+<p><a href="https://github.com/raycast/script-commands">Raycast Script Command</a>機能を使って、日本語/英語の翻訳を即時実行できるようにした。
+PLaMo翻訳モデルをローカルで動かすことで、ネットワーク接続不要で比較的高速な翻訳が可能。</p>
+<h2>経緯</h2>
+<p>これまで<a href="https://www.raycast.com/">Raycast</a>の<a href="https://manual.raycast.com/ai">AI機能</a>を使い、<a href="https://ollama.com/">Ollama</a>をバックエンドにして<a href="https://ollama.com/library/qwen3">qwen3:4b</a>で日英翻訳していた。</p>
+<p>EMBED2</p>
+<p>ローカルでこの精度の翻訳ができることには感動ものなのだが、やはりプロプライエタリLLMと比較すると遅いし長文になると精度に難があるので少し不満があった。</p>
+<p>そこで、Preferred Networksが公開している<a href="https://github.com/pfnet/plamo-translate-cli">plamo-translate-cli</a>をRaycastの<a href="https://www.raycast.com/blog/getting-started-with-script-commands">Script Command</a>から呼び出せるようにしようと考えた。</p>
+<h2>Raycast Script Commandとは</h2>
+<p>RaycastのScript Command機能は、任意のスクリプトをRaycastから実行できる機能である。shell script以外にも対応している。
+メタデータをスクリプトのコメントとして埋め込み、フォルダを登録しておくことでRaycastが認識してくれる。</p>
+<p>EMBED3</p>
+<p>主要なパラメータ: </p>
+<ul>
+<li><code>@raycast.title</code>: Raycastで表示されるコマンド名</li>
+<li><code>@raycast.mode</code>: 出力モード（fullOutput, compact, silent, inline）</li>
+<li><code>@raycast.argument1</code>: コマンドの引数定義</li>
+</ul>
+<h2>実装</h2>
+<h3>スクリプト全体</h3>
+<p>やっていることは単純で、引数として渡されたテキストを入力として <code>plamo-translate</code> コマンドを実行するだけ。</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+set -Eeufo pipefail
+
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Translate ja &lt;-&gt; en with PLaMo
+# @raycast.mode fullOutput
+
+# Optional parameters:
+# @raycast.icon 🌐
+# @raycast.argument1 { &quot;type&quot;: &quot;text&quot;, &quot;placeholder&quot;: &quot;text (ja/en)&quot; }
+
+# Documentation:
+# @raycast.author h3y6e
+# @raycast.authorURL https://raycast.com/h3y6e
+
+export PATH=&quot;MATHINLINE0PATH&quot;
+
+if ! command -v plamo-translate &gt;/dev/null 2&gt;&amp;1; then
+  echo &gt;&amp;2 &quot;Error: plamo-translate not found&quot;
+  exit 1
+fi
+
+plamo-translate --input &quot;$1&quot;
+</code></pre>
+<p>dotfilesで公開している</p>
+<p>EMBED4</p>
+<h3>ポイント</h3>
+<h4>fullOutputモード</h4>
+<pre><code class="language-bash"># @raycast.mode fullOutput
+</code></pre>
+<p>翻訳結果は複数行になることがあるため、<code>fullOutput</code> モードを使用している。これにより、翻訳結果全体が表示される。</p>
+<h4>mise経由でのコマンド実行</h4>
+<pre><code class="language-bash">export PATH=&quot;MATHINLINE1PATH&quot;
+</code></pre>
+<p>自分は<a href="https://mise.jdx.dev/">mise</a>を使って<a href="https://github.com/h3y6e/dotfiles/blob/main/dot_config/mise/config.toml">各種runtimeを管理</a>している。
+Raycastから実行される際は<a href="https://github.com/raycast/script-commands#troubleshooting-and-faqs">PATHが通っていない</a>ため、明示的にmiseのshimsディレクトリをPATHに追加している。</p>
+<h2>セットアップ</h2>
+<h4>Raycast Script Commandの設定</h4>
+<ol>
+<li>スクリプトを <code>~/.config/raycast-script/</code> ディレクトリ（任意）に配置</li>
+<li>実行権限を付与: <code>chmod +x plamo-translate.sh</code></li>
+<li>Raycastで <code>Extensions → Script Commands → Add Directories</code> を選択し、上記ディレクトリを追加</li>
+</ol>
+<h4>plamo-translate-cliのインストール</h4>
+<p>mise設定ファイル（<code>~/.config/mise/config.toml</code>）に以下を追加: </p>
+<pre><code class="language-toml">&quot;pipx:pfnet/plamo-translate-cli&quot; = { version = &quot;latest&quot;, uvx_args = &quot;-p 3.12&quot; }
+</code></pre>
+<p>そして <code>mise install</code> を実行</p>
+<h2>おわり</h2>
+<p>Raycast Script CommandとPLaMo翻訳CLIの組み合わせで、開発中の翻訳作業が格段に楽になった。
+同様の仕組みで他のCLIツールもRaycastから呼び出せるようにできるので、色々試してみたい。</p>

@@ -1,0 +1,128 @@
+<h2>はじめに</h2>
+<p>本稿は遊舎工房ギルドの活動によるものです。
+遊舎工房ギルドの詳細については以下を参照してください。</p>
+<p>EMBED0</p>
+<p>遊舎工房ギルド本部から<a href="https://shop.yushakobo.jp/products/3685?variant=42393049497831">Navpad 1.0</a>と<a href="https://shop.yushakobo.jp/products/3685?variant=42393049530599">Aluminum feetセット</a>を提供していただきました。ありがとうございます🙇</p>
+<h2>Navpad 1.0の特徴</h2>
+<p>EMBED1</p>
+<p>このキーボードは、アルファベットや記号が打てる&quot;普通の&quot;キーボードとは違い、フルキーボードのnavigation clusterとnumpadのみを切り出したキーパッドです。<br>
+自作キーボードでは40%や60%などのコンパクトなキーボードが好まれているように思うのですが、3DCG制作ソフトウェアなどではテンキー等を欲しくなることが多いです。
+その時に使えそうですね。<br>
+また、最近の自作キーボードキットにはよくあるロータリーエンコーダもちゃんと搭載可能なのが嬉しいです。</p>
+<h2>ビルドガイド</h2>
+<p>ビルドガイドは以下になります。<strong>作業の前に、必ず一読するようにしましょう。</strong></p>
+<p>EMBED2</p>
+<h2>内容物の確認</h2>
+<p>まずは内容物の確認をします。不足があっても1週間以内であれば対応していただけるので、届いたら早めに確認しましょう。</p>
+<p>今回はキーボードキットだけでなくAluminum feetセットもあるので、2つの袋があります。</p>
+<p><img src="/img/2022-03-15/two_pouches.jpg" alt="2つの袋"></p>
+<h3>キーボードキット</h3>
+<p>内容物は以下のようになっています。</p>
+<p><img src="/img/2022-03-15/keyboard_kit.jpg" alt="キット"></p>
+<ul>
+<li>PCB: 1枚</li>
+<li>トッププレート: 1枚</li>
+<li>ボトムプレート: 1枚</li>
+<li>ダイオード: 36個</li>
+<li>ProMicro: 1個</li>
+<li>ピンヘッダ: 2本</li>
+<li>タクトスイッチ: 1個</li>
+<li>M2 4mmネジ: 22本</li>
+<li>M2 7mmスペーサー: 9個</li>
+<li>M2 5mmスペーサー: 2個</li>
+<li>ゴム脚: 4個</li>
+</ul>
+<p>Aluminum feetセットを使う場合、M2 7mmスペーサーは使用しません。</p>
+<h3>Aluminum feetセット</h3>
+<p>内容物は以下のようになっています。</p>
+<p><img src="/img/2022-03-15/aluminum_feet_kit.jpg" alt="チルト用 Aluminum feet セット"></p>
+<ul>
+<li>M2 8mmスペーサー: 9個</li>
+<li>M4 6mmスリムヘッド小ねじ: 2個</li>
+<li>Anodized CNC Aluminum Feet: 1セット</li>
+</ul>
+<p>この内、写真に写っている白いシールは使用しません。</p>
+<h2>自分で用意するもの</h2>
+<h3>必須</h3>
+<ul>
+<li>キースイッチ
+今回は<a href="https://shop.yushakobo.jp/collections/all-switches/products/gateron-ink-switches?variant=37665670299809">Gateron Ink Blue</a>を用いました。
+何気にクリッキーな軸でキーボードを組むのは初めてです。</li>
+</ul>
+<p><img src="/img/2022-03-15/gateron_ink_blue.jpg" alt="キースイッチ"></p>
+<ul>
+<li>キーキャップ
+キーキャップには<a href="https://shop.yushakobo.jp/products/dsa-lightcycle?variant=37665700970657">DSA LightCycle - Freedom For The Users</a>を使いました。
+色合いがとても好きでお気に入りのキーキャップです。</li>
+</ul>
+<p><img src="/img/2022-03-15/keycaps.JPG" alt="キーキャップ"></p>
+<h3>オプション</h3>
+<ul>
+<li><p>コンスルー: 2本
+ProMicroの取り付けに用います。もげ対策済みProMicro とコンスルーが余っていたので今回はそれを用いました。</p>
+</li>
+<li><p>スタビライザー 2Uサイズ: 3個
+<code>0</code> キー、<code>+</code> キー、<code>Enter</code> キーを2Uで使うために必要です。
+<a href="https://shop.yushakobo.jp/products/a0500st?variant=37665699430561">MXスイッチ スタビライザー</a>を使いました。</p>
+</li>
+</ul>
+<p><img src="/img/2022-03-15/stab.jpg" alt="スタビライザー"></p>
+<ul>
+<li>LED（SK6812MINI-E）: 9個
+<a href="https://shop.yushakobo.jp/products/sk6812mini-e-10">SK6812MINI-E</a>です。
+<a href="https://shop.yushakobo.jp/products/sk6812mini-10">SK68912MINI</a>とのピン互換は無いので注意してください。</li>
+</ul>
+<p><img src="/img/2022-03-15/led.jpg" alt="LED"></p>
+<ul>
+<li>ロータリーエンコーダ: 1個</li>
+<li>ロータリーエンコーダ用ノブ: 1個</li>
+</ul>
+<p>Amazonで適当に買ったやつを使いました。</p>
+<h2>組み立て</h2>
+<h3>ダイオードのはんだ付け</h3>
+<p>付属のダイオードは表面実装ではなくリード線のあるものです。
+向きを確認して差し込み、マスキングテープ等で固定します。
+<img src="/img/2022-03-15/diode.jpg" alt="ダイオード"></p>
+<p><img src="/img/2022-03-15/maskingtape.jpg" alt="マスキングテープ側"></p>
+<p>はんだ付けをしていきます。</p>
+<p><img src="/img/2022-03-15/solder_diodes.jpg" alt="ダイオード はんだ付け"></p>
+<p>全てのダイオードのはんだ付けが完了したら、リード線をペンチで取り除きます。
+セロハンテープ等でリード線を纏めておけば、散らばることが無い為おすすめです。</p>
+<p><img src="/img/2022-03-15/remove_lead_wire.jpg" alt="ダイオード リード線除去"></p>
+<h3>リセットスイッチのはんだ付け</h3>
+<p>基盤右上の <code>Reset</code> にタクトスイッチをはんだ付けします。</p>
+<p><img src="/img/2022-03-15/reset_switch.jpg" alt="リセットスイッチ"></p>
+<h3>ProMicroの取り付け</h3>
+<p>前述したように、もげ対策済みProMicroが余っていたのでそれを付けます。コンスルーを用いているので差し込むだけです。</p>
+<p><img src="/img/2022-03-15/promicro.jpg" alt="ProMicro"></p>
+<h3>LEDのはんだ付け</h3>
+<p>はんだごてを270℃以下に設定し、LEDを取り付けます。
+今まで<a href="https://shop.yushakobo.jp/products/sk6812mini-10/">SK6812MINI</a>などの足が無いものを扱っていた為、足付きのはんだ付けのしやすさに驚きました。</p>
+<p>また、LEDが正常に動作するかを確認するため、この段階でファームウェアを書き込みます。今回は<a href="https://github.com/qmk/qmk_toolbox">QMK Toolbox</a>を用いました。</p>
+<p><img src="/img/2022-03-15/qmk_toolbox.png" alt="QMK Toolbox"></p>
+<p><img src="/img/2022-03-15/check_leds.jpg" alt="LEDの確認"></p>
+<h3>プレートの準備</h3>
+<p>ProMicroカバーとロータリーエンコーダカバーを外します。</p>
+<p><img src="/img/2022-03-15/plate.jpg" alt="プレート"></p>
+<h3>キースイッチ、ロータリーエンコーダの取り付け</h3>
+<p>Gateron Ink Blueを取り付けます。<br>
+<code>0</code> キー、<code>+</code> キー、<code>Enter</code> キーを2Uで使う為、スタビライザーも用意します。</p>
+<p><img src="/img/2022-03-15/set_keyswitches.jpg" alt="キースイッチ"></p>
+<p>スタビライザーをルブして、取り付けます。</p>
+<p><img src="/img/2022-03-15/lub.jpg" alt="ルブ"></p>
+<p>ロータリーエンコーダとキースイッチをはんだ付けします。</p>
+<p><img src="/img/2022-03-15/rotary_encoder.jpg" alt="ロータリーエンコーダ"></p>
+<p><img src="/img/2022-03-15/soldering.jpg" alt="はんだ付け"></p>
+<h3>ProMicroカバーの取り付け</h3>
+<p><img src="/img/2022-03-15/cover_mounting.jpg" alt="カバー取り付け"></p>
+<h3>ボトムプレート、Aluminum feetの取り付け</h3>
+<p>今回は<a href="https://shop.yushakobo.jp/products/3685?variant=42393049530599">チルト用Aluminum feetセット</a>を使用します。</p>
+<p>ビルドガイドは以下になります。</p>
+<p>EMBED3</p>
+<p><img src="/img/2022-03-15/bottom_plate.jpg" alt="ボトムプレート"></p>
+<p><img src="/img/2022-03-15/aluminum_feet.jpg" alt="aluminum feet"></p>
+<h2>完成</h2>
+<p><img src="/img/2022-03-15/kansei.jpg" alt="完成"></p>
+<p><img src="/img/2022-03-15/navpad_10_rev1_red.jpg" alt="完成2"></p>
+<p>キーキャップ、キースイッチが青系なのでいい感じに収まったのではないかと思います。</p>
+<p>ロータリーエンコーダで音量を調節できるの便利ですね。次組むキーボードはロータリーエンコーダ付きのものにしようかな。</p>

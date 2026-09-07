@@ -1,0 +1,123 @@
+<ul>
+<li><a href="https://arxiv.org/pdf/1908.03795.pdf">Eigenvectors from Eigenvalues</a></li>
+<li>Peter B. Denton, Stephen J. Parke, Terence Tao, Xining Zhang</li>
+</ul>
+<p>MATHINLINE2 番煎じだと思うが、 Juliaで検証してみる。</p>
+<p>この論文の重要な部分は <strong>Lemma 2</strong> である。</p>
+<p>MATHBLOCK0</p>
+<ul>
+<li>MATHINLINE3 : MATHINLINE4 のエルミート行列</li>
+<li>MATHINLINE5 : MATHINLINE6 の MATHINLINE7 番目の固有値</li>
+<li>MATHINLINE8 : MATHINLINE9 に対する固有ベクトル MATHINLINE10 の MATHINLINE11 番目の要素</li>
+<li>MATHINLINE12 : MATHINLINE13 から第 MATHINLINE14 行と第 MATHINLINE15 列を除去して得られた主小行列</li>
+</ul>
+<p>この関係式により、固有値（と主小行列固有値）から固有ベクトル（の成分の二乗ノルム）を計算できる。</p>
+<h2>実行環境</h2>
+<pre><code class="language-julia">versioninfo()
+</code></pre>
+<pre><code>Julia Version 1.2.0  
+Commit c6da87ff4b (2019-08-20 00:03 UTC)  
+Platform Info:  
+  OS: macOS (x86_64-apple-darwin18.6.0)  
+  CPU: Intel(R) Core(TM) i7-8569U CPU @ 2.80GHz  
+  WORD_SIZE: 64  
+  LIBM: libopenlibm  
+  LLVM: libLLVM-6.0.1 (ORCJIT, skylake)
+</code></pre>
+<h2>準備</h2>
+<p>行列をシンプルに表示するため、<code>printarr</code> 関数を作成しておく。</p>
+<pre><code class="language-julia">using Test
+using LinearAlgebra
+using RandomMatrices
+printarr(arr) = Base.print_array(IOContext(stdout, :compact =&gt; true), arr)
+</code></pre>
+<h2>エルミート行列 MATHINLINE16 を生成</h2>
+<p><a href="https://github.com/JuliaMath/RandomMatrices.jl">JuliaMath/RandomMatrices.jl</a> パッケージの <code>GaussianHermite</code> を用いてランダムなエルミート行列を生成する。</p>
+<pre><code class="language-julia">N = 3
+A = rand(GaussianHermite(2), N)
+printarr(A)
+</code></pre>
+<pre><code>-0.28791+0.0im         -0.33357-0.328261im  0.145503-0.673825im  
+ -0.33357+0.328261im  -0.0486213+0.0im       0.517909-0.340381im  
+ 0.145503+0.673825im    0.517909+0.340381im  0.910566+0.0im   
+</code></pre>
+<h2>MATHINLINE17 の固有値、 固有ベクトルを求める</h2>
+<p>固有値及び固有ベクトルはStandard Libraryである <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/">LinearAlgebra</a> の <code>eigvals</code> 関数と <code>eigvecs</code> 関数で求められる。また、<code>eigen</code> 関数でも取得できる。</p>
+<pre><code class="language-julia">println(&quot;固有値(eigvals)&quot;)
+λ = eigvals(A)
+printarr(λ)
+println(&quot;\n固有ベクトル(eigvecs)&quot;)
+v = eigvecs(A)
+printarr(v)
+println(&quot;\nまたは，\n固有値(eigen)&quot;)
+F = eigen(A)
+printarr(F.values)
+println(&quot;\n固有ベクトル(eigen)&quot;)
+printarr(F.vectors)
+</code></pre>
+<pre><code>固有値(eigvals)
+ -0.944382 
+  0.0428349
+  1.47558  
+固有ベクトル(eigvecs)
+ -0.441809+0.582701im   -0.52481-0.228541im  -0.0214358-0.370334im
+ -0.178221+0.52824im    0.665628+0.309546im    0.371178-0.112014im
+  0.393018-0.0im       -0.365327-0.0im         0.843844+0.0im     
+または，
+固有値(eigen)
+ -0.944382 
+  0.0428349
+  1.47558  
+固有ベクトル(eigen)
+ -0.441809+0.582701im   -0.52481-0.228541im  -0.0214358-0.370334im
+ -0.178221+0.52824im    0.665628+0.309546im    0.371178-0.112014im
+  0.393018-0.0im       -0.365327-0.0im         0.843844+0.0im     
+</code></pre>
+<h2>MATHINLINE18 の主小行列 MATHINLINE19</h2>
+<pre><code class="language-julia">A[1:N .!= j, 1:N .!= j]
+</code></pre>
+<p>または、以下のように記述する。</p>
+<pre><code class="language-julia">A[setdiff(1:N, j), setdiff(1:N, j)]
+</code></pre>
+<p>MATHINLINE20 を表現できる。</p>
+<pre><code class="language-julia">M = zeros(Complex{Float64}, N-1, N-1, N)
+for j = 1:N
+    M[:,:,j] = A[1:N .!= j, 1:N .!= j]
+    println(&quot;j = $j&quot;)
+    printarr(M[:,:,j])
+    println()
+end
+</code></pre>
+<pre><code>j = 1
+ -0.0486213+0.0im       0.517909-0.340381im
+   0.517909+0.340381im  0.910566+0.0im     
+j = 2
+ -0.28791+0.0im       0.145503-0.673825im
+ 0.145503+0.673825im  0.910566+0.0im     
+j = 3
+ -0.28791+0.0im         -0.33357-0.328261im
+ -0.33357+0.328261im  -0.0486213+0.0im   
+</code></pre>
+<h2>Lemma 2 (再掲）</h2>
+<p>MATHBLOCK1</p>
+<h3>左辺</h3>
+<pre><code class="language-julia">lhs = abs2.(v) .* [prod(λ[i] - λ[k] for k = 1:N if k != i) for j = 1:N, i = 1:N]
+printarr(lhs)
+</code></pre>
+<pre><code> 1.2775    -0.463448  0.477111
+ 0.742511  -0.762209  0.521191
+ 0.369018  -0.188776  2.4689  
+</code></pre>
+<h3>右辺</h3>
+<pre><code class="language-julia">rhs = [prod(λ[i] - eigvals(M[:,:,j])[k] for k = 1:N-1) for j = 1:N, i = 1:N]
+printarr(rhs)
+</code></pre>
+<pre><code> 1.2775    -0.463448  0.477111
+ 0.742511  -0.762209  0.521191
+ 0.369018  -0.188776  2.4689  
+</code></pre>
+<h2>両辺比較</h2>
+<pre><code class="language-julia">@test lhs ≈ rhs
+</code></pre>
+<pre><code>Test Passed
+</code></pre>

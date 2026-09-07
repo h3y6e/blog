@@ -1,0 +1,14 @@
+{
+  "name": "@blog/ssg",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@blog/client": "workspace:*",
+    "@blog/hl": "workspace:*",
+    "@blog/math": "workspace:*",
+    "@blog/md": "workspace:*"
+  }
+}

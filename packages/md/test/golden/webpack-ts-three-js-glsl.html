@@ -1,0 +1,61 @@
+<h2>まとめ</h2>
+<ul>
+<li>型定義ファイルを用意</li>
+<li><code>raw-loader</code> を使用</li>
+</ul>
+<h2>はじめに</h2>
+<p>three.jsで <a href="https://threejs.org/docs/#api/en/materials/ShaderMaterial">ShaderMaterial</a> や <a href="https://threejs.org/docs/#api/en/materials/RawShaderMaterial">RawShaderMaterial</a> を使うと、自作したGLSLを利用できる。<br>公式ドキュメントで紹介されている方法や、「<a href="https://lmgtfy.com/?q=three.js+glsl&s=g">three.js glsl</a>」とかで検索して出てくる大抵の記事にはhtmlやjsに直書きしている例が見られる。
+しかし、これではシンタックスハイライトは効かないし見栄えも良くない。</p>
+<h2>.d.ts</h2>
+<p>型定義ファイル (<code>.d.ts</code>) を <code>.(frag|vert)</code> ファイルと同じ場所に用意。 </p>
+<pre><code>:
+├── src
+│   ├── glsl
+│   │   ├── glsl.d.ts
+│   │   ├── hoge.frag
+│   │   └── hoge.vert
+│   └── index.ts
+:
+</code></pre>
+<p>ファイル名は適当で良いが、自分は <code>glsl.d.ts</code> とした。<br>内容は以下の通り。</p>
+<pre><code class="language-ts">declare module &#39;*.vert&#39; {
+    const src: string;
+    export default src;
+}
+declare module &#39;*.frag&#39; {
+    const src: string;
+    export default src;
+}
+</code></pre>
+<p><code>.(vert|frag)</code> ファイルを外部モジュールとして <code>declare</code> キーワードでアンビエント宣言している。</p>
+<p><code>.ts</code> ファイルにimportする際のコードは以下のようになる。</p>
+<pre><code class="language-ts">import hoge_frag from &quot;./glsl/hoge.frag&quot;;
+import hoge_vert from &quot;./glsl/hoge.vert&quot;;
+</code></pre>
+<h2>raw-loader</h2>
+<p><code>.(ts|js)</code> ではないファイルをimportしたいので、 loaderが必要。</p>
+<p>npmjs.comで <a href="https://www.npmjs.com/search?q=shader%20loader%20webpack">&quot;shader loader webpack&quot;</a> と検索してみると、パッケージが10個ほど（2019/11/15現在）出てくる。  </p>
+<p>が、単に <code>.vert</code> と <code>.frag</code> をimportしたいだけであれば、これらを使う必要はない。<br>テキストをそのまま <code>string</code> として読み込みたいので、 <a href="https://github.com/webpack-contrib/raw-loader">webpack-contrib/raw-loader</a> を用いる。</p>
+<pre><code class="language-shell">yarn add --dev raw-loader
+</code></pre>
+<p><code>webpack.config.js</code> には以下のように記述する。</p>
+<pre><code class="language-js">// (略)
+module: {
+  rules: [
+    {
+      test: /.(ts|tsx|js)$/,
+      use: &#39;ts-loader&#39;,
+      include: [path.resolve(__dirname, &#39;src&#39;)],
+      exclude: /node_modules/
+    },
+    {
+      test: /.(vert|frag)$/,
+      use: &#39;raw-loader&#39;,
+      include: [path.resolve(__dirname, &#39;src&#39;)],
+      exclude: /node_modules/
+    }
+  ]
+},
+// (略)
+</code></pre>
+<p>完成。<br>よいシェーダーライフを。</p>

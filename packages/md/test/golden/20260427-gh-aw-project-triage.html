@@ -1,0 +1,104 @@
+<h2>Projectの空欄</h2>
+<p>GitHub Projectsにissueを集める運用は便利である。複数リポジトリに散らばった作業を、ひとまず1つのProjectで見られる。</p>
+<p>ただ、issueを集めるだけだと、Priority、Size、Statusなどのフィールドがすぐ空になる。人間が毎回埋めるには細かすぎるし、放っておくとProjectが単なる一覧になる。</p>
+<p>ここは特定のProjectだけの問題ではないと思う。Projectをタスク管理の中心に置くと、同じような手入れが発生する。</p>
+<p>そこで、Project上の既存itemを定期的に見て、未設定のフィールドだけを埋めるworkflowを作った。</p>
+<p>対象はProject運用の穴埋めである。新しい管理方法を作るのではなく、今あるProjectを保守する。</p>
+<ul>
+<li>Projectにあるitemだけを見る</li>
+<li>PriorityとSizeが空ならissue本文から推定して埋める</li>
+<li>Statusは会話やlinked PRを見て前進方向にだけ更新する</li>
+<li>Start date / Target dateは本文に明記があるときだけ埋める</li>
+<li>issueへのコメント投稿や、Projectへの新規追加はしない</li>
+</ul>
+<h2>Markdown workflow</h2>
+<p><a href="https://github.blog/changelog/2026-02-13-github-agentic-workflows-are-now-in-technical-preview/">GitHub Agentic Workflows</a> は、名前だけ見ると大きな仕組みに見える。</p>
+<p>EMBED0</p>
+<p>でも、使う側から見ると、やっていることはもっと小さい。</p>
+<p><code>.github/workflows/</code> にfrontmatter付きのMarkdownを置く。<code>gh aw compile</code> を実行する。すると通常のGitHub Actions workflowである <code>.lock.yml</code> が生成される。</p>
+<p>公式docsでも、<code>gh aw compile</code> はMarkdown workflowからGitHub Actionsの <code>.lock.yml</code> を生成する処理として説明されている。</p>
+<p>EMBED1</p>
+<p>Projectの手入れも、このMarkdown workflowとして書いた。</p>
+<pre><code class="language-markdown">---
+on:
+  schedule:
+    - cron: daily
+  workflow_dispatch:
+
+github-app:
+  app-id: ${{ vars.APP_ID }}
+  private-key: ${{ secrets.APP_PRIVATE_KEY }}
+  owner: &lt;org&gt;
+  repositories:
+    - &lt;control-repo&gt;
+    - &lt;target-repo&gt;
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+  organization-projects: read
+
+tools:
+  github:
+    toolsets: [default, projects]
+    min-integrity: none
+
+safe-outputs:
+  update-project:
+    project: https://github.com/orgs/&lt;org&gt;/projects/&lt;number&gt;
+    max: 100
+    allowed-repos:
+      - &lt;org&gt;/&lt;target-repo&gt;
+---
+
+# Issue Triage
+
+Auto-triage existing items only in the project.
+
+1. Fetch all project items.
+2. If project items cannot be fetched, stop.
+3. Read issue details and comments as needed.
+4. Update only fields that need changing.
+</code></pre>
+<p>frontmatter側には、いつ動くか、どのGitHub Appを使うか、どのpermissionが必要か、どのGitHub toolsを使えるか、どのsafe outputを許可するかを書く。</p>
+<p>本文側には、agentに読ませる手順や制約を書く。</p>
+<p>それをcompileすると、activation、agent、detection、safe outputs、conclusionなどのjobを持つGitHub Actions workflowになる。実行ログを見ても、普通にGitHub Actionsとして動いている。成功したrunでは、agent jobがissueとProjectを読んだあと、safe outputs jobが <code>update_project</code> を処理していた。</p>
+<p>つまり、gh-awを入れるというより、「Markdownで書いた運用手順をGitHub Actionsに変換して、AIが必要な判断部分だけを担当する」くらいに捉える方が実態に近い。</p>
+<p>これはProject triageに限らない。issueの整理、古いPRの確認、labelの見直し、定期的な棚卸しなど、GitHub上で繰り返している小さな運用作業に向いている。</p>
+<h2>認証の分離</h2>
+<p>gh-awはCopilot専用の仕組みではない。Copilot、Claude、Codexなど複数のengineを選べる。さらに、Markdownを <code>.lock.yml</code> にcompileすること自体は、単なるworkflow生成である。</p>
+<p>なので、「gh-awを使う」ということと「Copilotを使う」ということは分けて考えた方がよい。gh-awのMarkdownを書いてcompileするだけなら、Copilotのpremium requestは消費しないし、Copilotの利用そのものでもない。</p>
+<p>デフォルトのCopilot engineでworkflowを実行する場合は、別の認証が必要になる。</p>
+<p>公式の認証docsでは、Copilot engineには <code>COPILOT_GITHUB_TOKEN</code> が必要で、これはCopilot Requests permissionを持つfine-grained PATだと書かれている。また、GitHub AppやOAuth tokenはこのsecretには使えない。</p>
+<p>EMBED2</p>
+<p>ここで認証を二層に分けた。</p>
+<p>Projectやissueを読む、safe outputでProjectを更新する、といったGitHub側の操作はGitHub Appでできる。実際、workflowのfrontmatterには <code>github-app:</code> を置き、App tokenをmintして使う形にした。</p>
+<p>一方で、Copilot CLIを動かすための認証はGitHub Appでは代替できない。個人アカウントのPATが必要になる。Copilotの推論は個人のCopilot権利に紐づき、その人のpremium requestを消費するためである。</p>
+<ul>
+<li>GitHubのAPI操作: GitHub Appでよい。むしろAppの方がscopeと失効が扱いやすい</li>
+<li>Copilot engineの実行: 現状は個人PATが必要。GitHub Appでは置き換えられない</li>
+</ul>
+<p>workflowを組むときは、<code>APP_ID</code> / <code>APP_PRIVATE_KEY</code> と <code>COPILOT_GITHUB_TOKEN</code> を別物として扱う必要がある。</p>
+<h2>停止条件</h2>
+<p>最初の実装では、単に「Projectのitemを見て必要なフィールドを更新する」くらいの指示だった。</p>
+<p>しかし運用してみると、Project itemを取得できなかったときに、agentが別の方法でissue一覧を見に行き、未登録issueに対して <code>update_project</code> を呼ぼうとすることがあった。<code>update_project</code> は未登録issueをProjectに追加してしまう。</p>
+<p>そこでworkflow本文に停止条件を入れた。</p>
+<p>この書き方は、Agent Skillsの <a href="https://github.com/h3y6e/dotfiles/blob/main/dot_agents/exact_skills/writing-skills/SKILL.md"><code>writing-skills</code></a> にある <code>Create Red Flags List</code> を流用している。元のskillでは、agentがルールを破りそうな兆候を <code>Red Flags</code> として列挙し、見つけたら止まる形にしている。今回も同じで、Project外のissueを拾いに行きそうな条件を先に書いた。</p>
+<pre><code class="language-markdown">## Red Flags - STOP and return `noop`
+
+- `projects_list` returned an error or empty result -&gt; STOP. Do NOT fall back to listing issues.
+- You are about to call `update_project` for an issue not present in the project item list -&gt; STOP.
+- You are about to include a field that already has a value in the `fields` parameter -&gt; STOP.
+</code></pre>
+<p>これは普通のGitHub Actionsだけで書くなら、APIの戻り値と条件分岐を細かく実装するところだと思う。</p>
+<p>gh-awでは、agentが判断する部分を自然言語で書き、書き込みだけはsafe outputに閉じ込める。今回でいうと、agentはProject itemやissueを読んで「何を更新したいか」を出す。実際にProjectを更新するのはsafe outputs jobで、<code>update-project</code> の許可範囲と <code>max</code> に縛られる。</p>
+<p>この分離が扱いやすかった。</p>
+<p>判断の質が悪ければMarkdown本文を直す。権限や出力範囲が足りなければfrontmatterを直してcompileする。どちらを触っているのかが分かりやすい。</p>
+<p>この分かれ方が、Project以外の運用にも使いやすそうだった。</p>
+<h2>おわり</h2>
+<p>gh-awの面白さは、AIが賢くissueを読んでくれることだけではなかった。</p>
+<p>むしろ、既存のGitHub運用を壊さずに差し込める。issueはissueのまま、ProjectはProjectのまま、実行基盤はGitHub Actionsのまま。その上に、frontmatter付きMarkdownとgenerated workflowを1枚挟む。</p>
+<p>名前はGitHub Agentic Workflowsで、仰々しい。ただ、自分の理解では、これは「MarkdownからGitHub Actionsを生成し、agentの読み取りとsafe outputの書き込みを分けるツール」である。</p>
+<p>この粒度で見る方が、既存のGitHub運用にどこまで入れるかを判断しやすい。</p>
+<p>ただし、Copilot engineを使う場合だけは別である。<code>COPILOT_GITHUB_TOKEN</code> は個人PATになり、GitHub Appでは置き換えられない。誰のCopilot requestを使うのかを最初に決めておく必要がある。</p>

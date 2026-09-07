@@ -1,0 +1,76 @@
+<p>バイト先でGitLabをGCP上にホスティングしているのだが、GitLabのアップデートが暫くされていなかったので、やった。</p>
+<p>ついでにZero downtime updates（GitLabインスタンスをオフラインにすることなくGitLabを新しいバージョンにアップグレードできる方法）に対応したシェルスクリプトを書いた。</p>
+<h2>新しいGPG Keyの入手</h2>
+<p>とりあえずLinuxインスタンスにSSH接続して以下を実行。</p>
+<pre><code class="language-bash">$ sudo apt-get update &amp;&amp; sudo apt-get install gitlab-ee
+</code></pre>
+<p>したがうまくいかなかった。</p>
+<p><a href="https://docs.gitlab.com/omnibus/update/package_signatures.html#fetching-new-keys-after-2020-04-06">2020/04/06にGitLab OmnibusのGPG Keyが更新されていた</a>ようなので新しい鍵を取得。</p>
+<pre><code class="language-bash">$ curl https://packages.gitlab.com/gpg.key -o /tmp/omnibus_gitlab_gpg.key
+$ sudo apt-key add /tmp/omnibus_gitlab_gpg.key
+</code></pre>
+<p>再び <code>$ sudo apt-get install gitlab-ee</code> を実行したが <code>No space left on device</code> と言われたので以下を実行。</p>
+<pre><code class="language-bash">$ sudo apt-get autoremove
+</code></pre>
+<h2>Zero downtime updates</h2>
+<p>以下のシェルスクリプトを <code>gitlab-update.sh</code> に書いた。</p>
+<p>と言っても殆どこれを参考にしている↓<br><a href="https://qiita.com/ynott/items/7e3d730d12a09e7fdd8b">【2019年版】GitLab CE/EEのゼロダウンタイムアップグレード</a></p>
+<pre><code class="language-bash">#!/bin/bash
+
+export LANG=en_US.UTF-8
+SLACK_WEBHOOK_API_URL=xxxxx
+
+# check update
+sudo apt update
+
+# get versions
+GITLAB_VERSIONS=$(apt-cache policy gitlab-ee | grep -1 Installed | sed -r &#39;s/(^  )//&#39; | grep -v &quot;gitlab-ee:&quot;)
+INSTALLED_VERSION=MATHINLINE0GITLAB_VERSIONS | sed -r &#39;s/Installed: (.*?) Candidate: .*/\1/g&#39;)
+CANDIDATE_VERSION=MATHINLINE1GITLAB_VERSIONS | sed -r &#39;s/Installed: .* Candidate: (.*?)/\1/g&#39;)
+
+# check if you can upgrade
+if [ &quot;MATHINLINE2CANDIDATE_VERSION&quot; ];
+then
+   echo &quot;Installed: MATHINLINE3CANDIDATE_VERSION&quot;
+   echo &quot;Exit&quot;
+   exit 0;
+fi
+
+echo &quot;Installed: $INSTALLED_VERSION&quot;
+echo &quot;Candidate: $CANDIDATE_VERSION&quot;
+echo &quot;Update version&quot;
+
+sudo apt-get install gitlab-ee
+sudo apt-mark unhold gitlab-ee
+sudo SKIP_POST_DEPLOYMENT_MIGRATIONS=true sudo gitlab-ctl reconfigure
+sudo gitlab-rake db:migrate
+sudo gitlab-ctl hup puma
+sudo gitlab-ctl restart sidekiq
+MSG=&quot;{
+        \&quot;blocks\&quot;: [
+                {
+                        \&quot;type\&quot;: \&quot;section\&quot;,
+                        \&quot;text\&quot;: {
+                                \&quot;type\&quot;: \&quot;mrkdwn\&quot;,
+                                \&quot;text\&quot;: \&quot;*Update GitLab version* :tada: \&quot;
+                        }
+                },
+                {
+                        \&quot;type\&quot;: \&quot;section\&quot;,
+                        \&quot;text\&quot;: {
+                                \&quot;type\&quot;: \&quot;plain_text\&quot;,
+                                \&quot;text\&quot;: \&quot;MATHINLINE4{CANDIDATE_VERSION}\&quot;
+                        }
+                }
+        ]
+}&quot;
+curl -X POST -H &#39;Content-type: application/json&#39; --data &quot;MATHINLINE5SLACK_WEBHOOK_API_URL
+sudo apt-mark hold gitlab-ee
+</code></pre>
+<p>更新通知はSlackで受け取るようにした。</p>
+<p>以下のコマンドを実行して完了。</p>
+<pre><code class="language-bash">$ chmod +x gitlab-update.sh
+</code></pre>
+<p>次回以降のアップデートは以下を実行することで完了する。</p>
+<pre><code class="language-bash">$ ./gitlab-update.sh
+</code></pre>

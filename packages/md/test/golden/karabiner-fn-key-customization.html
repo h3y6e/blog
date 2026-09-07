@@ -1,0 +1,54 @@
+<h2>経緯</h2>
+<p>キーボードのfnキーがもったいないと感じていた。ほとんど使っていなかったので、もっと活用できないかと考えた。</p>
+<p>Karabiner-Elementsを使えば、単一のキーに複数の機能を持たせることができる。今回はfnキーに3つの動作を割り当てることにした。</p>
+<h2>実装</h2>
+<p>作成した設定は以下の通り。</p>
+<pre><code class="language-json">{
+  &quot;description&quot;: &quot;fn単体 → Mission Control、組み合わせ → Prox key (Alt+Ctrl+⌘)、長押し → fn&quot;,
+  &quot;manipulators&quot;: [
+    {
+      &quot;from&quot;: {
+        &quot;key_code&quot;: &quot;fn&quot;,
+        &quot;modifiers&quot;: { &quot;optional&quot;: [&quot;left_shift&quot;] }
+      },
+      &quot;to&quot;: [
+        {
+          &quot;key_code&quot;: &quot;left_command&quot;,
+          &quot;modifiers&quot;: [&quot;left_control&quot;, &quot;left_option&quot;]
+        }
+      ],
+      &quot;to_if_alone&quot;: [{ &quot;key_code&quot;: &quot;mission_control&quot; }],
+      &quot;to_if_held_down&quot;: [
+        {
+          &quot;halt&quot;: true,
+          &quot;key_code&quot;: &quot;fn&quot;
+        }
+      ],
+      &quot;type&quot;: &quot;basic&quot;
+    }
+  ]
+},
+</code></pre>
+<p>この設定により、fnキーは以下のように動作する。</p>
+<ol>
+<li>単体で押した場合: Mission Controlが起動</li>
+<li>他のキーと組み合わせた場合: <code>Alt+Ctrl+⌘</code>（ProxKey）として動作</li>
+<li>長押しの場合: 通常のfnキーになる</li>
+</ol>
+<h2>使い道</h2>
+<h3>Mission Control</h3>
+<p>fnキーを軽くタップするだけでMission Controlが起動できる。開いているウィンドウを一覧表示できるので、アプリケーション間の切り替えが楽になった。</p>
+<h3>ProxKey</h3>
+<p><code>Alt+Ctrl+⌘</code> の組み合わせは「ProxKey」と呼ぶことにした。Hyper key（<code>Ctrl+Shift+Alt+⌘</code>）やMeh key（<code>Ctrl+Shift+Alt</code>）とは異なる組み合わせで、特定のアプリケーションでの使用を想定している。名前は「Proximity」（近接性）から。</p>
+<p>ProxKeyは他のアプリケーションとキーバインドが競合しにくいため、主にRaycastのショートカットに利用している。</p>
+<ul>
+<li>ウィンドウスナップ（画面の左半分、右半分への配置など）</li>
+<li>クリップボード履歴の呼び出し</li>
+<li>その他Raycast経由の各種機能</li>
+</ul>
+<p>Raycastのホットキー設定でProxKeyとの組み合わせを割り当てることで、統一的なショートカット体系を構築できた。</p>
+<h3>fn</h3>
+<p>長押しすれば通常のfnキーとして動作するので、<code>fn+Delete</code>（前方削除）や <code>fn+矢印キー</code>（Home/End）もそのまま使える。</p>
+<h2>まとめ</h2>
+<p>Karabinerの <code>to_if_alone</code> と <code>to_if_held_down</code> を使うことで、1つのキーに3つの役割を持たせることができた。</p>
+<p>EMBED0</p>
