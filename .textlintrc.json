@@ -13,6 +13,16 @@
     }
   },
   "rules": {
+    "@blog/preset-style": {
+      "marker-repetition": {
+        "severity": "warning",
+        "markers": ["良い", "と思う", "面白い", "ちなみに", "便利", "最高", "嬉しい", "いい感じ"]
+      },
+      "self-copy": {
+        "severity": "warning",
+        "allow": ["AdventCalendar", "CAMPHOR-の運営メンバー"]
+      }
+    },
     "prh": {
       "checkEmphasis": true,
       "checkHeader": true,

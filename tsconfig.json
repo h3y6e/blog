@@ -16,6 +16,7 @@
   },
   "include": [
     "packages/*/src",
+    "packages/*/bin",
     "packages/*/test",
     "site/*.ts",
     "site/theme/scripts",
