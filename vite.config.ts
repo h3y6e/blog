@@ -50,7 +50,11 @@ export default defineConfig({
     },
   },
   fmt: {
-    ignorePatterns: ["packages/md/test/golden/", "*.md"],
+    ignorePatterns: [
+      "packages/md/test/golden/",
+      "packages/textlint-rule-preset-style/generated/",
+      "*.md",
+    ],
     sortImports: {
       newlinesBetween: false,
       customGroups: [{ groupName: "workspace", elementNamePattern: ["@blog/**"] }],
@@ -68,6 +72,11 @@ export default defineConfig({
   run: {
     tasks: {
       textlint: "textlint site/posts/*.md",
+      "calibrate-style": {
+        command: "calibrate-style",
+        input: ["site/posts/*.md", "packages/textlint-rule-preset-style/{src,bin}/**/*.ts"],
+        output: ["packages/textlint-rule-preset-style/generated/thresholds.json"],
+      },
       lint: {
         command: "vp lint",
         dependsOn: ["textlint"],

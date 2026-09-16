@@ -1,0 +1,19 @@
+{
+  "name": "@blog/textlint-rule-preset-style",
+  "private": true,
+  "bin": {
+    "calibrate-style": "./bin/calibrate.ts"
+  },
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "kuromojin": "3.0.1"
+  },
+  "devDependencies": {
+    "@textlint/ast-node-types": "15.8.0",
+    "@textlint/types": "15.8.0"
+  }
+}
