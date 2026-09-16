@@ -51,6 +51,7 @@ export default defineConfig({
   },
   fmt: {
     ignorePatterns: [
+      ".mise/locks/",
       "packages/md/test/golden/",
       "packages/textlint-rule-preset-style/generated/",
       "*.md",
