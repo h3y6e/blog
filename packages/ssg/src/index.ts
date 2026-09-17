@@ -37,13 +37,10 @@ const devStaticDirs = (postsDir: string): [urlPrefix: string, dir: string][] => 
 const devScriptUrls = (html: string): string =>
   SCRIPTS.reduce((h, [url, path]) => h.replace(url, `/@fs${path}`), html);
 
-const TYPE_HTML = "text/html; charset=utf-8";
-const TYPE_CSS = "text/css; charset=utf-8";
-
 const CONTENT_TYPES: Record<string, string> = {
-  ".html": TYPE_HTML,
+  ".html": "text/html; charset=utf-8",
   ".xml": "application/xml; charset=utf-8",
-  ".css": TYPE_CSS,
+  ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".md": "text/markdown; charset=utf-8",
@@ -312,7 +309,7 @@ export function ssg(options: SsgOptions): Plugin {
               };
 
               if (url === CSS_URL) {
-                return send(inlineCss(resolve(root, CSS_ENTRY)), TYPE_CSS);
+                return send(inlineCss(resolve(root, CSS_ENTRY)), CONTENT_TYPES[".css"]!);
               }
               for (const [urlPrefix, dir] of devStaticDirs(options.postsDir)) {
                 if (url.startsWith(urlPrefix)) {
@@ -328,15 +325,15 @@ export function ssg(options: SsgOptions): Plugin {
               if (match) {
                 const [key, page] = match;
                 const type = contentType(key);
-                return type === TYPE_HTML
-                  ? send(await server.transformIndexHtml(url, devScriptUrls(page!)), TYPE_HTML)
+                return key.endsWith(".html")
+                  ? send(await server.transformIndexHtml(url, devScriptUrls(page!)), type)
                   : send(page!, type);
               }
               if (extname(url) === "" || url.endsWith(".html")) {
                 const notFound = pagesMap.get("404.html")!;
                 return send(
                   await server.transformIndexHtml("/404.html", devScriptUrls(notFound)),
-                  TYPE_HTML,
+                  CONTENT_TYPES[".html"]!,
                   404,
                 );
               }
@@ -361,7 +358,7 @@ export function ssg(options: SsgOptions): Plugin {
         if (extname(url) === "" && existsSync(notFound)) {
           // oxlint-disable-next-line eslint/no-param-reassign
           res.statusCode = 404;
-          res.setHeader("Content-Type", TYPE_HTML);
+          res.setHeader("Content-Type", CONTENT_TYPES[".html"]!);
           res.end(readFileSync(notFound));
           return;
         }
