@@ -47,10 +47,15 @@ describe("buildPages", () => {
       "llms-full.txt",
       "llms.txt",
       "posts.json",
+      "posts/2026/01/01/index.html",
       "posts/2026/01/01/one/index.html",
       "posts/2026/01/01/one/index.md",
+      "posts/2026/01/02/index.html",
       "posts/2026/01/02/two/index.html",
       "posts/2026/01/02/two/index.md",
+      "posts/2026/01/index.html",
+      "posts/2026/index.html",
+      "posts/index.html",
       "posts/one/index.html",
       "tags/a/index.html",
       "tags/b/index.html",
@@ -97,6 +102,18 @@ describe("buildPages", () => {
     // Assert
     expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/2026/01/01/one/index.html </guid>");
     expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/2026/01/02/two/index.html </guid>");
+  });
+
+  it("when posts share a month, the month archive lists them and the day archive lists only its own", () => {
+    // Act
+    const pages = buildPages(site, posts);
+    // Assert
+    const month = pages.get("posts/2026/01/index.html")!;
+    expect(month).toContain("/posts/2026/01/01/one/");
+    expect(month).toContain("/posts/2026/01/02/two/");
+    const day = pages.get("posts/2026/01/01/index.html")!;
+    expect(day).toContain("/posts/2026/01/01/one/");
+    expect(day).not.toContain("/posts/2026/01/02/two/");
   });
 
   it("when a post declares an alias, that path gets a page redirecting to the current URL", () => {

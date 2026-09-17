@@ -8,4 +8,4 @@
 
 - `feed.xml` must stay byte-identical to the live feed; `rss.ts` uses plain string literals since the `html` tagged template gets reformatted by oxfmt.
 - Posts live at `site/posts/YYYY/MM/DD/<slug>/index.md` with their media beside them, referenced relatively; the directory must match `date`.
-- Page URLs (`/posts/YYYY/MM/DD/<slug>/`, `/tags/<tag>/`) and post media URLs (`/posts/YYYY/MM/DD/<slug>/<file>`) are permanent. A moved post keeps its old paths in `aliases`, which build into redirect pages. CSS/JS/font URLs are hashed and free to change.
+- Page URLs (`/posts/YYYY/MM/DD/<slug>/`, its `/posts/`, year, month and day archives, `/tags/<tag>/`) and post media URLs (`/posts/YYYY/MM/DD/<slug>/<file>`) are permanent. A moved post keeps its old paths in `aliases`, which build into redirect pages. CSS/JS/font URLs are hashed and free to change.

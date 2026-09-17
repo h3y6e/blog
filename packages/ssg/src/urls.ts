@@ -18,16 +18,18 @@ export function tagPath(site: SiteConfig, tag: string): string {
   return `/${site.tagPath}/${tag}/`;
 }
 
-export function tagFullUrl(site: SiteConfig, tag: string): string {
-  return `${site.siteUrl}${tagPath(site, tag)}index.html`;
-}
-
 export function tagsIndexPath(site: SiteConfig): string {
   return `/${site.tagPath}/`;
 }
 
 export function tagsIndexFullUrl(site: SiteConfig): string {
   return `${site.siteUrl}${tagsIndexPath(site)}index.html`;
+}
+
+/** `/posts/`, `/posts/YYYY/`, `/posts/YYYY/MM/` and `/posts/YYYY/MM/DD/` for a date. */
+export function archivePaths(date: string): string[] {
+  const parts = date.split("-");
+  return [0, 1, 2, 3].map((n) => ["/posts", ...parts.slice(0, n), ""].join("/"));
 }
 
 export function pageFile(urlPath: string): string {

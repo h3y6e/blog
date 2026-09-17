@@ -7,7 +7,7 @@ import {
   ogImageUrl,
   postlist,
   postPage,
-  tagPage,
+  listPage,
   tagsIndexPage,
   tagTable,
 } from "./templates.ts";
@@ -272,10 +272,10 @@ describe("indexPage", () => {
   });
 });
 
-describe("tagPage", () => {
-  it("when rendering a tag page, og:description carries the plain site description without the title suffix", () => {
+describe("listPage", () => {
+  it("when rendering a list page, og:description carries the plain site description without the title suffix", () => {
     // Act
-    const page = tagPage(site, "kmnac", [post()]);
+    const page = listPage(site, "Tag: #kmnac", "/tags/kmnac/", [post()]);
     // Assert
     expect(page).toContain(
       `<meta name="description" content="${site.description} :: ${site.title}" />`,
@@ -283,12 +283,13 @@ describe("tagPage", () => {
     expect(page).toContain(`<meta property="og:description" content="${site.description}" />`);
   });
 
-  it("when rendering a tag page, og:url is the tag's canonical index.html URL", () => {
+  it("when rendering a list page, the title and og:url follow the given path", () => {
     // Act
-    const page = tagPage(site, "kmnac", [post()]);
+    const page = listPage(site, "2020/12", "/posts/2020/12/", [post()]);
     // Assert
+    expect(page).toContain("<title>2020/12</title>");
     expect(page).toContain(
-      '<meta property="og:url" content="https://blog.h3y6e.com/tags/kmnac/index.html" />',
+      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/index.html" />',
     );
   });
 });

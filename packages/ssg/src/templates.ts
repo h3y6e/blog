@@ -2,15 +2,7 @@ import { enhanceFootnotes } from "./footnotes.ts";
 import { html, raw, type Raw } from "./html.ts";
 import { toc } from "./toc.ts";
 import type { Post, SiteConfig } from "./types.ts";
-import {
-  byDateDesc,
-  postDir,
-  postFullUrl,
-  postPath,
-  tagFullUrl,
-  tagPath,
-  tagsIndexFullUrl,
-} from "./urls.ts";
+import { byDateDesc, postDir, postFullUrl, postPath, tagPath, tagsIndexFullUrl } from "./urls.ts";
 
 type PageMeta = {
   title: string;
@@ -278,13 +270,13 @@ export function indexPage(site: SiteConfig, posts: Post[]): string {
   return layout(site, meta, body);
 }
 
-export function tagPage(site: SiteConfig, tag: string, posts: Post[]): string {
+export function listPage(site: SiteConfig, title: string, path: string, posts: Post[]): string {
   const meta: PageMeta = {
-    title: `Tag: #${tag}`,
+    title,
     description: `${site.description} :: ${site.title}`,
     ogDescription: site.description,
     ogType: "website",
-    ogUrl: tagFullUrl(site, tag),
+    ogUrl: `${site.siteUrl}${path}index.html`,
     ogImage: `${site.siteUrl}/assets/2f2f2f.jpg`,
     twitterCard: "summary",
   };

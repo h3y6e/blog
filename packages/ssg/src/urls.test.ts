@@ -7,7 +7,7 @@ import {
   postDir,
   postFullUrl,
   postPath,
-  tagFullUrl,
+  archivePaths,
   tagPath,
   tagsIndexFullUrl,
   tagsIndexPath,
@@ -38,10 +38,15 @@ describe("postPath / postFullUrl / tagPath", () => {
   });
 });
 
-describe("tagFullUrl / tagsIndexPath / tagsIndexFullUrl", () => {
-  it("when given a tag, builds the same index.html canonical URL shape as postFullUrl", () => {
+describe("archivePaths / tagsIndexPath / tagsIndexFullUrl", () => {
+  it("when given a date, lists the posts root and its year, month and day archive paths", () => {
     // Act & Assert
-    expect(tagFullUrl(site, "kmnac")).toBe("https://blog.h3y6e.com/tags/kmnac/index.html");
+    expect(archivePaths("2020-12-18")).toEqual([
+      "/posts/",
+      "/posts/2020/",
+      "/posts/2020/12/",
+      "/posts/2020/12/18/",
+    ]);
   });
 
   it("when given the site config, builds the tags landing page path and canonical URL", () => {
