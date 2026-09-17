@@ -31,7 +31,7 @@ OSではUbuntu (`YY.0M.MICRO`) やiOS, macOS (`YY.MINOR`)、iOSアプリではBi
 
 ## tagprでCalVer + monorepoを運用する
 [tagpr](https://github.com/Songmu/tagpr)は、mainブランチへのpushをトリガーにリリースPRの自動作成・タグ付け・GitHub Releaseの作成を一貫して行ってくれる。
-tagpr自体の詳しい説明は[作者様のブログ記事](https://songmu.jp/riji/entry/2022-09-05-tagpr.html)が大変わかりやすいので、そちらを参照するとよい。
+tagpr自体の説明は[作者様のブログ記事](https://songmu.jp/riji/entry/2022-09-05-tagpr.html)がわかりやすいので、そちらを参照するとよい。
 
 {{ embed https://github.com/Songmu/tagpr }}
 

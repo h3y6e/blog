@@ -35,7 +35,7 @@ rss_description: "普段コードを書かない人がCodex Appから仕様書�
 
 client、server、protoなどのrepoをsubmoduleとしてぶら下げている。仕様書はメタリポジトリの `specs/` に置いていて、skillが実装や会話ログを参照しながらここに書き出す。初回セットアップや更新は `./setup.sh` と[mise tasks](https://mise.jdx.dev/tasks/)に寄せている。
 
-`AGENTS.md` では、メタリポジトリのスコープを「横断調査・情報整理・意思決定支援」に限定し、実装は対象repoで行うと明記している。普段コードを書かない人を第一に想定し、説明はシンプルに保つよう指示している。
+`AGENTS.md` では、メタリポジトリのスコープを「横断調査・情報整理・意思決定支援」に限定し、実装は対象repoで行うと明記している。第一の想定読者は普段コードを書かない人。説明もできるだけシンプルに保つよう指示している。
 
 skillsとしては、たとえば次のようなものを置いている。実際にはプロダクト名をプレフィックスにしている。
 
@@ -49,14 +49,13 @@ setupスキルを例に見ると、想定ユーザーをCLIに不慣れな人と
 
 <details><summary><b>setupスキル抜粋</b></summary>
 
-```
+```markdown
 ---
 name: <project-name>-setup
 description: Set up or refresh the meta-repo on macOS so this repo and its related repos are ready for local work. Use this skill whenever the user wants this repo to become usable or up to date.
 ---
-```
 
-**<project-name>-setup**
+# <project-name>-setup
 
 This repo is a meta-repo. Use this skill only for meta-repo bootstrap and refresh. If the issue moves into a submodule, switch to that repo's workflow.
 
@@ -66,13 +65,14 @@ Assumed user: A non-engineer who primarily uses Japanese and is unfamiliar with 
 - Run setup steps yourself when possible; do not push shell commands onto the user
 - Only stop for user actions you cannot do yourself, such as permission dialogs or SSH access recovery
 
-**Workflow**
+## Workflow
 
 1. Confirm you are in the meta-repo root
 2. For first-time setup, trust the repo first, then run `./setup.sh`
 3. If `./setup.sh` stops because `mise` is unavailable, fix the blocker and rerun
 4. After `mise.toml` changes, refresh local tools
 5. After pulling latest changes, align local submodules to the recorded commits
+```
 
 </details>
 
