@@ -34,6 +34,13 @@ const isUrlOnly = (node: AnyTxtNode): boolean => {
 
 const DROPPED = new Set(["Image", "Html", "Comment"]);
 
+// Markup, not prose: the SSG expands these into HTML (packages/ssg/src/shortcodes.ts).
+const SHORTCODE_LINE = /^(?:\{\{ \S+ .*\}\}|\\figure\{[^}]*\}\{[^}]*\})$/gm;
+
+/** Blanked rather than cut, so offsets still point at the source. */
+const dropShortcodes = (text: string): string =>
+  text.replace(SHORTCODE_LINE, (line) => " ".repeat(line.length));
+
 const toSegment = (node: AnyTxtNode): Segment | null => {
   if (isUrlOnly(node)) return null;
   let text = "";
@@ -52,6 +59,7 @@ const toSegment = (node: AnyTxtNode): Segment | null => {
     text += valueOf(current);
   };
   walk(node);
+  text = dropShortcodes(text);
   if (text.trim() === "") return null;
   return { text, masked, offset: node.range[0] };
 };
