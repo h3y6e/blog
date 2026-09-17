@@ -4,9 +4,11 @@ export type Frontmatter = {
   tags: string[];
   rss_description: string;
   cover?: string;
+  aliases?: string[];
 };
 
 const STRING_KEYS = new Set(["title", "rss_description", "cover"]);
+const LIST_KEYS = new Set(["tags", "aliases"]);
 
 function parseScalar(value: string, key: string): string {
   const quoted = value.match(/^"(.*)"$/s) ?? value.match(/^'(.*)'$/s);
@@ -63,9 +65,9 @@ export function parseFrontmatter(source: string): {
     const key = kv[1]!;
     const value = kv[2]!;
     if (Object.hasOwn(data, key)) throw new Error(`frontmatter: duplicate key: ${key}`);
-    if (key === "tags") {
+    if (LIST_KEYS.has(key)) {
       if (value.startsWith("[") && value.endsWith("]")) {
-        data.tags = parseInlineList(value, key);
+        data[key] = parseInlineList(value, key);
       } else if (value === "") {
         const items: string[] = [];
         for (
@@ -75,22 +77,22 @@ export function parseFrontmatter(source: string): {
         ) {
           items.push(parseScalar(next.replace(/^\s*-\s*/, ""), key));
         }
-        data.tags = items;
+        data[key] = items;
       } else {
-        throw new Error(`frontmatter: tags must be a list: ${value}`);
+        throw new Error(`frontmatter: ${key} must be a list: ${value}`);
+      }
+      if (key === "aliases") {
+        for (const alias of data[key]) {
+          if (!/^\/.*\/$/.test(alias))
+            throw new Error(`frontmatter: alias must be a page path like /posts/x/: ${alias}`);
+        }
       }
     } else if (key === "date") {
       if (!/^\d{4}-\d{2}-\d{2}$/.test(value))
         throw new Error(`frontmatter: date must be YYYY-MM-DD: ${value}`);
       data.date = value;
     } else if (STRING_KEYS.has(key)) {
-      const scalar = parseScalar(value, key);
-      if (key === "cover" && !scalar.startsWith("/")) {
-        throw new Error(
-          `frontmatter: cover must be a root-relative path starting with /: ${scalar}`,
-        );
-      }
-      data[key] = scalar;
+      data[key] = parseScalar(value, key);
     } else {
       throw new Error(`frontmatter: unknown key: ${key}`);
     }

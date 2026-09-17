@@ -43,7 +43,7 @@ describe("postMarkdown", () => {
       "# One\n\n" +
         "- date: 2026-01-01\n" +
         "- tags: a, b\n" +
-        "- url: https://blog.h3y6e.com/posts/one/\n\n" +
+        "- url: https://blog.h3y6e.com/posts/2026/01/01/one/\n\n" +
         "body **one**\n",
     );
   });
@@ -58,8 +58,8 @@ describe("llmsTxt", () => {
       "# #a5ebec\n\n" +
         "> へいほぅの殴り書き\n\n" +
         "## Posts\n\n" +
-        "- [Two](https://blog.h3y6e.com/posts/two/index.md): d2\n" +
-        "- [One](https://blog.h3y6e.com/posts/one/index.md): d1\n",
+        "- [Two](https://blog.h3y6e.com/posts/2026/01/02/two/index.md): d2\n" +
+        "- [One](https://blog.h3y6e.com/posts/2026/01/01/one/index.md): d1\n",
     );
   });
 });

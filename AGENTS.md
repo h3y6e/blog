@@ -7,4 +7,5 @@
 - Origin Trials encouraged, if the page works after token expiry. Tokens live in `originTrials` in `site/vite.config.ts`; build warns near expiry, fails on expired.
 
 - `feed.xml` must stay byte-identical to the live feed; `rss.ts` uses plain string literals since the `html` tagged template gets reformatted by oxfmt.
-- Page URLs (`/posts/<slug>/`, `/tags/<tag>/`) are permanent; asset URLs are hashed and free to change.
+- Posts live at `site/posts/YYYY/MM/DD/<slug>/index.md` with their media beside them, referenced relatively; the directory must match `date`.
+- Page URLs (`/posts/YYYY/MM/DD/<slug>/`, `/tags/<tag>/`) and post media URLs (`/posts/YYYY/MM/DD/<slug>/<file>`) are permanent. A moved post keeps its old paths in `aliases`, which build into redirect pages. CSS/JS/font URLs are hashed and free to change.

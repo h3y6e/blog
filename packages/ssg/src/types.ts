@@ -19,6 +19,8 @@ export type Post = {
   tags: string[];
   rssDescription: string;
   cover?: string;
+  /** Former page paths that redirect here, e.g. `/posts/a2net/`. */
+  aliases?: string[];
   html: string;
   markdown: string;
 };

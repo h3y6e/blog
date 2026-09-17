@@ -4,6 +4,7 @@ import { toc } from "./toc.ts";
 import type { Post, SiteConfig } from "./types.ts";
 import {
   byDateDesc,
+  postDir,
   postFullUrl,
   postPath,
   tagFullUrl,
@@ -20,6 +21,8 @@ type PageMeta = {
   ogImage: string;
   twitterCard: "summary" | "summary_large_image";
   preconnect?: string[];
+  /** Page path this page has moved to; rendered as canonical plus an immediate refresh. */
+  redirect?: string;
 };
 
 export function scriptOrigins(pageHtml: string): string[] {
@@ -86,6 +89,12 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
     <meta name="twitter:card" content="${meta.twitterCard}" />
     <meta name="twitter:site" content="@h3y6e" />
     <meta name="twitter:creator" content="@h3y6e" />
+    ${
+      meta.redirect === undefined
+        ? ""
+        : html`<link rel="canonical" href="${meta.redirect}" />
+            <meta http-equiv="refresh" content="0; url=${meta.redirect}" />`
+    }
     <title>${meta.title}</title>
     <meta name="description" content="${meta.description}" />
     <meta property="og:type" content="${meta.ogType}" />
@@ -156,7 +165,7 @@ export function postlist(site: SiteConfig, posts: Post[]): Raw {
   return raw(
     byDateDesc(posts)
       .map((post) => {
-        const url = postPath(post.slug);
+        const url = postPath(post);
         const linkTitle = html`<a href="${url}">${post.title}</a>`;
         return html`<div class="postlist">
           ${headline(site, linkTitle, post.date, post.tags)}
@@ -179,7 +188,7 @@ function pageFoot(site: SiteConfig, post?: Post): Raw {
   const intents =
     post &&
     ((): Raw => {
-      const url = postFullUrl(site, post.slug);
+      const url = postFullUrl(site, post);
       const twitter = `https://twitter.com/intent/tweet?text=${escapeUri(
         `Reading @h3y6e's ${url}`,
       )}`;
@@ -191,7 +200,9 @@ function pageFoot(site: SiteConfig, post?: Post): Raw {
           <a href="${elk}">Mastodon</a>
         </p>
         <p>
-          <a href="https://github.com/h3y6e/blog/blob/master/site/${site.postsDir}/${post.slug}.md">
+          <a
+            href="https://github.com/h3y6e/blog/blob/master/site/${site.postsDir}/${postDir(post)}/index.md"
+          >
             ${raw("&#xE0A0;")} Edit this page on GitHub
           </a>
         </p> `;
@@ -224,8 +235,8 @@ export function postPage(site: SiteConfig, post: Post): string {
     title: `${post.title} :: ${site.title}`,
     description: post.rssDescription,
     ogType: "article",
-    ogUrl: postFullUrl(site, post.slug),
-    ogImage: post.cover ? `${site.siteUrl}${post.cover}` : ogImageUrl(post),
+    ogUrl: postFullUrl(site, post),
+    ogImage: post.cover ? `${site.siteUrl}${postPath(post)}${post.cover}` : ogImageUrl(post),
     twitterCard: "summary_large_image",
     preconnect: scriptOrigins(post.html),
   };
@@ -234,6 +245,25 @@ export function postPage(site: SiteConfig, post: Post): string {
     <div class="franklin-content">
       ${raw(enhanceFootnotes(post.html))} ${pageFoot(site, post)}
     </div>`;
+  return layout(site, meta, body);
+}
+
+/** Stands in at a former URL of `post` and forwards visitors to its current one. */
+export function redirectPage(site: SiteConfig, post: Post): string {
+  const url = postPath(post);
+  const meta: PageMeta = {
+    title: `${post.title} :: ${site.title}`,
+    description: post.rssDescription,
+    ogType: "article",
+    ogUrl: postFullUrl(site, post),
+    ogImage: post.cover ? `${site.siteUrl}${url}${post.cover}` : ogImageUrl(post),
+    twitterCard: "summary_large_image",
+    redirect: url,
+  };
+  const body = html`<div class="franklin-content">
+    <p>Moved to <a href="${url}">${url}</a></p>
+    ${pageFoot(site)}
+  </div>`;
   return layout(site, meta, body);
 }
 

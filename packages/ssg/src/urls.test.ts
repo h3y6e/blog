@@ -4,6 +4,7 @@ import {
   byDateDesc,
   byDateDescFeed,
   pageFile,
+  postDir,
   postFullUrl,
   postPath,
   tagFullUrl,
@@ -24,10 +25,15 @@ const site: SiteConfig = {
 };
 
 describe("postPath / postFullUrl / tagPath", () => {
-  it("when given a slug, builds the trailing-slash page path and the index.html canonical URL", () => {
+  it("when given a dated post, builds the YYYY/MM/DD/slug page path and the index.html canonical URL", () => {
+    // Arrange
+    const post = { date: "2020-12-18", slug: "a2net" };
     // Act & Assert
-    expect(postPath("a2net")).toBe("/posts/a2net/");
-    expect(postFullUrl(site, "a2net")).toBe("https://blog.h3y6e.com/posts/a2net/index.html");
+    expect(postDir(post)).toBe("2020/12/18/a2net");
+    expect(postPath(post)).toBe("/posts/2020/12/18/a2net/");
+    expect(postFullUrl(site, post)).toBe(
+      "https://blog.h3y6e.com/posts/2020/12/18/a2net/index.html",
+    );
     expect(tagPath(site, "kmnac")).toBe("/tags/kmnac/");
   });
 });
@@ -48,7 +54,7 @@ describe("tagFullUrl / tagsIndexPath / tagsIndexFullUrl", () => {
 describe("pageFile", () => {
   it("when given a trailing-slash URL path, strips the leading slash and appends index.html", () => {
     // Act & Assert
-    expect(pageFile("/posts/a2net/")).toBe("posts/a2net/index.html");
+    expect(pageFile("/posts/2020/12/18/a2net/")).toBe("posts/2020/12/18/a2net/index.html");
     expect(pageFile("/tags/")).toBe("tags/index.html");
   });
 });

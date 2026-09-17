@@ -102,10 +102,11 @@ const formBands = (articles: Article[]): Record<string, Band> =>
   );
 
 const main = async (): Promise<void> => {
-  const sources = readdirSync(POSTS)
-    .filter((name) => name.endsWith(".md"))
+  const sources = readdirSync(POSTS, { recursive: true, withFileTypes: true })
+    .filter((d) => d.isFile() && d.name === "index.md")
+    .map((d) => join(d.parentPath, d.name))
     .toSorted()
-    .map((name) => readFileSync(join(POSTS, name), "utf8"));
+    .map((path) => readFileSync(path, "utf8"));
   const articles = await Promise.all(sources.map((markdown) => measure(markdown)));
   const corpus = articles.filter((article) => Number.isFinite(article.sentLenMedian));
   const polite = corpus.filter(

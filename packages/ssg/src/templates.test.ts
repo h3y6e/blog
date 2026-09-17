@@ -68,9 +68,9 @@ describe("postlist", () => {
     expect(out.indexOf("Newer")).toBeLessThan(out.indexOf("A2ネット"));
     expect(out).toContain(
       '<div class="postlist"> <div class="franklin-headline"> ' +
-        '<h1 class="title"><a href="/posts/a2net/">A2ネットを改善しよう</a></h1>',
+        '<h1 class="title"><a href="/posts/2020/12/18/a2net/">A2ネットを改善しよう</a></h1>',
     );
-    expect(out).toContain('<a class="read-more" href="/posts/a2net/">Read more →</a>');
+    expect(out).toContain('<a class="read-more" href="/posts/2020/12/18/a2net/">Read more →</a>');
   });
 });
 
@@ -114,7 +114,7 @@ describe("postPage", () => {
     expect(page).toContain("<title>A2ネットを改善しよう :: #a5ebec</title>");
     expect(page).toContain('<meta property="og:type" content="article" />');
     expect(page).toContain(
-      '<meta property="og:url" content="https://blog.h3y6e.com/posts/a2net/index.html" />',
+      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/18/a2net/index.html" />',
     );
     expect(page).toContain("res.cloudinary.com");
     expect(page).toContain('<meta name="twitter:card" content="summary_large_image" />');
@@ -122,10 +122,10 @@ describe("postPage", () => {
 
   it("when the post has a cover, uses it as the absolute og:image", () => {
     // Act
-    const page = postPage(site, post({ cover: "/img/2020-12-18/rack.jpg" }));
+    const page = postPage(site, post({ cover: "rack.jpg" }));
     // Assert
     expect(page).toContain(
-      '<meta property="og:image" content="https://blog.h3y6e.com/img/2020-12-18/rack.jpg" />',
+      '<meta property="og:image" content="https://blog.h3y6e.com/posts/2020/12/18/a2net/rack.jpg" />',
     );
   });
 
@@ -180,12 +180,14 @@ describe("postPage", () => {
     expect(themeScript).toBeGreaterThan(-1);
     expect(themeScript).toBeLessThan(page.indexOf('rel="stylesheet"'));
     expect(page).toContain(
-      "https://twitter.com/intent/tweet?text=Reading%20%40h3y6e%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2Fa2net%2Findex.html",
+      "https://twitter.com/intent/tweet?text=Reading%20%40h3y6e%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2Findex.html",
     );
     expect(page).toContain(
-      "https://elk.zone/intent/post?text=Reading%20%40h3y6e%40threads.net%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2Fa2net%2Findex.html",
+      "https://elk.zone/intent/post?text=Reading%20%40h3y6e%40threads.net%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2Findex.html",
     );
-    expect(page).toContain("https://github.com/h3y6e/blog/blob/master/site/posts/a2net.md");
+    expect(page).toContain(
+      "https://github.com/h3y6e/blog/blob/master/site/posts/2020/12/18/a2net/index.md",
+    );
   });
 
   it("when rendering any post, names an inline title span for view transitions and adds the reading progress bar", () => {

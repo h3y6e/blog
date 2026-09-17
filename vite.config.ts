@@ -72,10 +72,10 @@ export default defineConfig({
   },
   run: {
     tasks: {
-      textlint: "textlint site/posts/*.md",
+      textlint: "textlint 'site/posts/**/index.md'",
       "calibrate-style": {
         command: "calibrate-style",
-        input: ["site/posts/*.md", "packages/textlint-rule-preset-style/{src,bin}/**/*.ts"],
+        input: ["site/posts/**/index.md", "packages/textlint-rule-preset-style/{src,bin}/**/*.ts"],
         output: ["packages/textlint-rule-preset-style/generated/thresholds.json"],
       },
       lint: {
@@ -83,7 +83,7 @@ export default defineConfig({
         dependsOn: ["textlint"],
       },
       "textlint:fix": {
-        command: "textlint --fix site/posts/*.md",
+        command: "textlint --fix 'site/posts/**/index.md'",
         cache: false,
       },
       "lint:fix": {
