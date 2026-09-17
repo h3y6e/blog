@@ -2,7 +2,7 @@ import { describe, expect, it } from "vite-plus/test";
 import { rewriteAssetUrls } from "./assets.ts";
 
 const assets = new Map([
-  ["/img/2022-03-15/plate.jpg", "/assets/plate-B3v9xQ2k.jpg"],
+  ["/assets/plate.jpg", "/assets/plate-B3v9xQ2k.jpg"],
   ["/assets/2f2f2f.jpg", "/assets/2f2f2f-Cx1YpF0a.jpg"],
   ["/assets/favicon/favicon.ico", "/assets/favicon-D4kW8mNz.ico"],
   ["/css/a5ebec.css", "/assets/a5ebec-Bq7Rt5Lm.css"],
@@ -12,7 +12,7 @@ const assets = new Map([
 describe("rewriteAssetUrls", () => {
   it("when an img src uses a mapped root-relative path, it is rewritten to the hashed URL", () => {
     // Act
-    const out = rewriteAssetUrls('<img src="/img/2022-03-15/plate.jpg" alt="plate">', assets);
+    const out = rewriteAssetUrls('<img src="/assets/plate.jpg" alt="plate">', assets);
     // Assert
     expect(out).toBe('<img src="/assets/plate-B3v9xQ2k.jpg" alt="plate">');
   });
@@ -49,9 +49,10 @@ describe("rewriteAssetUrls", () => {
   it("when attributes reference pages, external URLs, or non-asset paths, they pass through unchanged", () => {
     // Arrange
     const html =
-      '<a href="/posts/a2net/">a</a><a href="/feed.xml">rss</a>' +
+      '<a href="/posts/2020/12/18/a2net/">a</a><a href="/feed.xml">rss</a>' +
+      '<img src="/posts/2020/12/18/a2net/rack.jpg" />' +
       '<a href="https://example.com/img/x.png">ext</a>' +
-      '<meta content="https://blog.h3y6e.com/posts/a2net/index.html" />' +
+      '<meta content="https://blog.h3y6e.com/posts/2020/12/18/a2net/index.html" />' +
       '<meta name="viewport" content="width=device-width, initial-scale=1" />';
     // Act & Assert
     expect(rewriteAssetUrls(html, assets, "https://blog.h3y6e.com")).toBe(html);
@@ -59,7 +60,7 @@ describe("rewriteAssetUrls", () => {
 
   it("when prose or code blocks mention an asset path outside an attribute, the text is left untouched", () => {
     // Arrange
-    const html = "<code>curl /img/2022-03-15/plate.jpg</code><p>see /assets/2f2f2f.jpg</p>";
+    const html = "<code>curl /assets/plate.jpg</code><p>see /assets/2f2f2f.jpg</p>";
     // Act & Assert
     expect(rewriteAssetUrls(html, assets)).toBe(html);
   });
@@ -75,8 +76,8 @@ describe("rewriteAssetUrls", () => {
 
   it("when an attribute references an asset path with no emitted file, rewriting throws", () => {
     // Act & Assert
-    expect(() => rewriteAssetUrls('<img src="/img/missing.png">', assets)).toThrow(
-      "/img/missing.png",
+    expect(() => rewriteAssetUrls('<img src="/assets/missing.png">', assets)).toThrow(
+      "/assets/missing.png",
     );
     expect(() => rewriteAssetUrls('<script src="/libs/client/gone.js"></script>', assets)).toThrow(
       "/libs/client/gone.js",

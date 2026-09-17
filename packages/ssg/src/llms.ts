@@ -6,14 +6,14 @@ export function postMarkdown(site: SiteConfig, post: Post): string {
     `# ${post.title}\n\n` +
     `- date: ${post.date}\n` +
     `- tags: ${post.tags.join(", ")}\n` +
-    `- url: ${site.siteUrl}${postPath(post.slug)}\n\n` +
+    `- url: ${site.siteUrl}${postPath(post)}\n\n` +
     `${post.markdown}\n`
   );
 }
 
 export function llmsTxt(site: SiteConfig, posts: Post[]): string {
   const lines = byDateDesc(posts).map(
-    (p) => `- [${p.title}](${site.siteUrl}${postPath(p.slug)}index.md): ${p.rssDescription}`,
+    (p) => `- [${p.title}](${site.siteUrl}${postPath(p)}index.md): ${p.rssDescription}`,
   );
   return `# ${site.title}\n\n> ${site.description}\n\n## Posts\n\n${lines.join("\n")}\n`;
 }

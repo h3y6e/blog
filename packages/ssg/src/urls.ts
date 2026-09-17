@@ -1,19 +1,21 @@
 import type { SiteConfig } from "./types.ts";
 
-export function postPath(slug: string): string {
-  return `/posts/${slug}/`;
+type PostRef = { date: string; slug: string };
+
+export function postDir(post: PostRef): string {
+  return `${post.date.replaceAll("-", "/")}/${post.slug}`;
 }
 
-export function postFullUrl(site: SiteConfig, slug: string): string {
-  return `${site.siteUrl}${postPath(slug)}index.html`;
+export function postPath(post: PostRef): string {
+  return `/posts/${postDir(post)}/`;
+}
+
+export function postFullUrl(site: SiteConfig, post: PostRef): string {
+  return `${site.siteUrl}${postPath(post)}index.html`;
 }
 
 export function tagPath(site: SiteConfig, tag: string): string {
   return `/${site.tagPath}/${tag}/`;
-}
-
-export function tagFullUrl(site: SiteConfig, tag: string): string {
-  return `${site.siteUrl}${tagPath(site, tag)}index.html`;
 }
 
 export function tagsIndexPath(site: SiteConfig): string {
@@ -22,6 +24,12 @@ export function tagsIndexPath(site: SiteConfig): string {
 
 export function tagsIndexFullUrl(site: SiteConfig): string {
   return `${site.siteUrl}${tagsIndexPath(site)}index.html`;
+}
+
+/** `/posts/`, `/posts/YYYY/`, `/posts/YYYY/MM/` and `/posts/YYYY/MM/DD/` for a date. */
+export function archivePaths(date: string): string[] {
+  const parts = date.split("-");
+  return [0, 1, 2, 3].map((n) => ["/posts", ...parts.slice(0, n), ""].join("/"));
 }
 
 export function pageFile(urlPath: string): string {

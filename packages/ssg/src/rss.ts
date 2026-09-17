@@ -22,7 +22,7 @@ export function rfc1123(isoDate: string): string {
 }
 
 export function renderItem(site: SiteConfig, post: Post): string {
-  const url = postFullUrl(site, post.slug);
+  const url = postFullUrl(site, post);
   return (
     "<item>\n" +
     "  <title>\n" +

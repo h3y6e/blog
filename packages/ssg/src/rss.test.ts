@@ -52,21 +52,21 @@ describe("renderItem", () => {
   it("when rendering a post, reproduces the live feed item bytes including trailing whitespace", () => {
     // Arrange
     const p = post({
-      slug: "20260427-gh-aw-project-triage",
+      slug: "gh-aw-project-triage",
       title: "gh-awでProjectの手入れをGitHub Actionsに乗せる",
       date: "2026-04-27",
       rssDescription: "Markdown workflowでProjectの空欄を安全に埋める",
     });
     // Act
     const item = renderItem(site, p);
-    // Assert — copied verbatim from https://blog.h3y6e.com/feed.xml
+    // Assert
     expect(item).toBe(
       "<item>\n" +
         "  <title>\n" +
         "    <![CDATA[  gh-awでProjectの手入れをGitHub Actionsに乗せる  ]]>\n" +
         "  </title>\n" +
-        "  <link> https://blog.h3y6e.com/posts/20260427-gh-aw-project-triage/index.html </link>\n" +
-        "  <guid> https://blog.h3y6e.com/posts/20260427-gh-aw-project-triage/index.html </guid>\n" +
+        "  <link> https://blog.h3y6e.com/posts/2026/04/27/gh-aw-project-triage/index.html </link>\n" +
+        "  <guid> https://blog.h3y6e.com/posts/2026/04/27/gh-aw-project-triage/index.html </guid>\n" +
         "  <description>\n" +
         "    <![CDATA[  Markdown workflowでProjectの空欄を安全に埋める  ]]>\n" +
         "  </description>  \n" +

@@ -4,9 +4,10 @@ import {
   byDateDesc,
   byDateDescFeed,
   pageFile,
+  postDir,
   postFullUrl,
   postPath,
-  tagFullUrl,
+  archivePaths,
   tagPath,
   tagsIndexFullUrl,
   tagsIndexPath,
@@ -24,18 +25,28 @@ const site: SiteConfig = {
 };
 
 describe("postPath / postFullUrl / tagPath", () => {
-  it("when given a slug, builds the trailing-slash page path and the index.html canonical URL", () => {
+  it("when given a dated post, builds the YYYY/MM/DD/slug page path and the index.html canonical URL", () => {
+    // Arrange
+    const post = { date: "2020-12-18", slug: "a2net" };
     // Act & Assert
-    expect(postPath("a2net")).toBe("/posts/a2net/");
-    expect(postFullUrl(site, "a2net")).toBe("https://blog.h3y6e.com/posts/a2net/index.html");
+    expect(postDir(post)).toBe("2020/12/18/a2net");
+    expect(postPath(post)).toBe("/posts/2020/12/18/a2net/");
+    expect(postFullUrl(site, post)).toBe(
+      "https://blog.h3y6e.com/posts/2020/12/18/a2net/index.html",
+    );
     expect(tagPath(site, "kmnac")).toBe("/tags/kmnac/");
   });
 });
 
-describe("tagFullUrl / tagsIndexPath / tagsIndexFullUrl", () => {
-  it("when given a tag, builds the same index.html canonical URL shape as postFullUrl", () => {
+describe("archivePaths / tagsIndexPath / tagsIndexFullUrl", () => {
+  it("when given a date, lists the posts root and its year, month and day archive paths", () => {
     // Act & Assert
-    expect(tagFullUrl(site, "kmnac")).toBe("https://blog.h3y6e.com/tags/kmnac/index.html");
+    expect(archivePaths("2020-12-18")).toEqual([
+      "/posts/",
+      "/posts/2020/",
+      "/posts/2020/12/",
+      "/posts/2020/12/18/",
+    ]);
   });
 
   it("when given the site config, builds the tags landing page path and canonical URL", () => {
@@ -48,7 +59,7 @@ describe("tagFullUrl / tagsIndexPath / tagsIndexFullUrl", () => {
 describe("pageFile", () => {
   it("when given a trailing-slash URL path, strips the leading slash and appends index.html", () => {
     // Act & Assert
-    expect(pageFile("/posts/a2net/")).toBe("posts/a2net/index.html");
+    expect(pageFile("/posts/2020/12/18/a2net/")).toBe("posts/2020/12/18/a2net/index.html");
     expect(pageFile("/tags/")).toBe("tags/index.html");
   });
 });

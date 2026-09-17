@@ -12,7 +12,8 @@ describe("parseFrontmatter", () => {
         "date: 2020-12-18",
         'tags: ["kmnac", "adventcalendar"]',
         'rss_description: "寮のネットワークを改善している話。"',
-        'cover: "/img/2020-12-18/rack.jpg"',
+        'cover: "rack.jpg"',
+        'aliases: ["/posts/a2net/"]',
       ].join("\n"),
     );
     // Act
@@ -23,7 +24,8 @@ describe("parseFrontmatter", () => {
       date: "2020-12-18",
       tags: ["kmnac", "adventcalendar"],
       rss_description: "寮のネットワークを改善している話。",
-      cover: "/img/2020-12-18/rack.jpg",
+      cover: "rack.jpg",
+      aliases: ["/posts/a2net/"],
     });
     expect(body).toBe("hello\n");
   });
@@ -148,33 +150,18 @@ describe("parseFrontmatter", () => {
     expect(() => parseFrontmatter(source)).toThrow(/unknown key: constructor/);
   });
 
-  it("when cover has no leading slash, throws", () => {
+  it("when an alias is not a trailing-slash page path, parsing throws", () => {
     // Arrange
     const source = fm(
       [
         'title: "t"',
-        "date: 2026-01-01",
+        "date: 2020-12-18",
         "tags: []",
         'rss_description: "d"',
-        'cover: "img/foo.jpg"',
+        'aliases: ["/posts/a2net"]',
       ].join("\n"),
     );
     // Act & Assert
-    expect(() => parseFrontmatter(source)).toThrow(/cover must be a root-relative path/);
-  });
-
-  it("when cover is already an absolute URL, throws", () => {
-    // Arrange
-    const source = fm(
-      [
-        'title: "t"',
-        "date: 2026-01-01",
-        "tags: []",
-        'rss_description: "d"',
-        'cover: "https://cdn.example.com/foo.jpg"',
-      ].join("\n"),
-    );
-    // Act & Assert
-    expect(() => parseFrontmatter(source)).toThrow(/cover must be a root-relative path/);
+    expect(() => parseFrontmatter(source)).toThrow("alias must be a page path");
   });
 });

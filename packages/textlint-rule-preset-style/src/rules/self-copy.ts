@@ -1,5 +1,5 @@
 import { readFileSync, readdirSync } from "node:fs";
-import { basename, join, resolve } from "node:path";
+import { join, relative, resolve } from "node:path";
 import type { TxtDocumentNode } from "@textlint/ast-node-types";
 import { proseSegments } from "../prose.ts";
 import type { ConfiguredRule, RuleContext, RuleHandlers } from "../rule.ts";
@@ -23,9 +23,11 @@ let corpus: Map<string, string> | null = null;
 const loadCorpus = (dir: string, n: number): Map<string, string> => {
   if (corpus !== null) return corpus;
   const grams = new Map<string, string>();
-  for (const name of readdirSync(dir)) {
-    if (!name.endsWith(".md")) continue;
-    const text = normalize(readFileSync(join(dir, name), "utf8"));
+  for (const entry of readdirSync(dir, { recursive: true, withFileTypes: true })) {
+    if (!entry.isFile() || entry.name !== "index.md") continue;
+    const path = join(entry.parentPath, entry.name);
+    const name = relative(dir, path);
+    const text = normalize(readFileSync(path, "utf8"));
     for (let i = 0; i + n <= text.length; i += 1) {
       const gram = text.slice(i, i + n);
       if (!grams.has(gram)) grams.set(gram, name);
@@ -47,7 +49,7 @@ const rule: ConfiguredRule<Options> = (context: RuleContext, options = {}): Rule
   return {
     Document(node: TxtDocumentNode): void {
       const filePath = getFilePath();
-      const self = filePath === undefined ? null : basename(filePath);
+      const self = filePath === undefined ? null : relative(dir, filePath);
       const grams = loadCorpus(dir, n);
       for (const segment of proseSegments(node)) {
         const text = normalize(segment.text);

@@ -19,6 +19,7 @@ export type Post = {
   tags: string[];
   rssDescription: string;
   cover?: string;
+  aliases?: string[];
   html: string;
   markdown: string;
 };

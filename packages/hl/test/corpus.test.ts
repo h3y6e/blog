@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vite-plus/test";
 import { highlight, withLineNumbers } from "../src/index.ts";
@@ -14,8 +14,11 @@ type Fence = {
 
 function fences(): Fence[] {
   const out: Fence[] = [];
-  for (const file of readdirSync(postsDir).filter((f) => f.endsWith(".md"))) {
-    const lines = readFileSync(join(postsDir, file), "utf8").split("\n");
+  const entries = readdirSync(postsDir, { recursive: true, withFileTypes: true });
+  for (const entry of entries.filter((d) => d.isFile() && d.name === "index.md")) {
+    const path = join(entry.parentPath, entry.name);
+    const file = relative(postsDir, path);
+    const lines = readFileSync(path, "utf8").split("\n");
     let open: { fence: string; lang: string; code: string[] } | null = null;
     for (const line of lines) {
       const m = /^(`{3,})(.*)$/.exec(line);

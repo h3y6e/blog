@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
-import { basename, dirname, extname, join, resolve, sep } from "node:path";
+import { basename, dirname, extname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { rewriteAssetUrls } from "./assets.ts";
 import { loadPosts } from "./content.ts";
@@ -8,7 +8,8 @@ import { type Dims, enhanceMedia, imageSize } from "./images.ts";
 import { inlineAssets } from "./inline.ts";
 import { checkOriginTrials } from "./origin-trials.ts";
 import { buildPages } from "./pages.ts";
-import type { SiteConfig } from "./types.ts";
+import type { Post, SiteConfig } from "./types.ts";
+import { postDir } from "./urls.ts";
 
 export { html, raw, Raw } from "./html.ts";
 export type { OriginTrial } from "./origin-trials.ts";
@@ -25,26 +26,21 @@ const SCRIPTS: [url: string, path: string][] = SCRIPT_NAMES.map((name) => [
   fileURLToPath(import.meta.resolve(`@blog/client/${name}.ts`)),
 ]);
 
-const ASSET_DIRS: [urlPrefix: string, dir: string][] = [
-  ["/img/", "img"],
-  ["/assets/", "_assets"],
-];
+const ASSET_DIRS: [urlPrefix: string, dir: string][] = [["/assets/", "_assets"]];
 
-const DEV_STATIC_DIRS: [urlPrefix: string, dir: string][] = [
+const devStaticDirs = (postsDir: string): [urlPrefix: string, dir: string][] => [
   ...ASSET_DIRS,
+  ["/posts/", postsDir],
   ["/css/fonts/", "theme/css/fonts"],
 ];
 
 const devScriptUrls = (html: string): string =>
   SCRIPTS.reduce((h, [url, path]) => h.replace(url, `/@fs${path}`), html);
 
-const TYPE_HTML = "text/html; charset=utf-8";
-const TYPE_CSS = "text/css; charset=utf-8";
-
 const CONTENT_TYPES: Record<string, string> = {
-  ".html": TYPE_HTML,
+  ".html": "text/html; charset=utf-8",
   ".xml": "application/xml; charset=utf-8",
-  ".css": TYPE_CSS,
+  ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".md": "text/markdown; charset=utf-8",
@@ -190,11 +186,13 @@ export function ssg(options: SsgOptions): Plugin {
   let root = "";
   const postsDir = (): string => resolve(root, options.postsDir);
 
-  let cache: Promise<Map<string, string>> | null = null;
-  const pages = (): Promise<Map<string, string>> =>
-    (cache ??= loadPosts(postsDir(), resolve(root, options.embedsFile)).then((posts) =>
-      buildPages(options, posts),
-    ));
+  let cache: Promise<{ posts: Post[]; pages: Map<string, string> }> | null = null;
+  const site = (): Promise<{ posts: Post[]; pages: Map<string, string> }> =>
+    (cache ??= loadPosts(postsDir(), resolve(root, options.embedsFile)).then((posts) => ({
+      posts,
+      pages: buildPages(options, posts),
+    })));
+  const pages = (): Promise<Map<string, string>> => site().then((s) => s.pages);
 
   return {
     name: "blog:ssg",
@@ -241,7 +239,19 @@ export function ssg(options: SsgOptions): Plugin {
         }
       }
 
-      for (const [fileName, source] of await pages()) {
+      const { posts, pages: pageMap } = await site();
+      for (const post of posts) {
+        const dir = resolve(postsDir(), postDir(post));
+        for (const file of walk(dir).filter((f) => basename(f) !== "index.md")) {
+          const source = readFileSync(file);
+          const url = `/posts/${postDir(post)}/${relative(dir, file).split(sep).join("/")}`;
+          this.emitFile({ type: "asset", fileName: url.slice(1), source });
+          const dims = imageSize(source);
+          if (dims) imageDims.set(url, dims);
+        }
+      }
+
+      for (const [fileName, source] of pageMap) {
         this.emitFile({
           type: "asset",
           fileName,
@@ -257,7 +267,7 @@ export function ssg(options: SsgOptions): Plugin {
     },
 
     configureServer(server) {
-      for (const dir of [options.postsDir, options.embedsFile, "theme", "img", "_assets"]) {
+      for (const dir of [options.postsDir, options.embedsFile, "theme", "_assets"]) {
         server.watcher.add(resolve(server.config.root, dir));
       }
       for (const [, path] of SCRIPTS) server.watcher.add(path);
@@ -299,9 +309,9 @@ export function ssg(options: SsgOptions): Plugin {
               };
 
               if (url === CSS_URL) {
-                return send(inlineCss(resolve(root, CSS_ENTRY)), TYPE_CSS);
+                return send(inlineCss(resolve(root, CSS_ENTRY)), CONTENT_TYPES[".css"]!);
               }
-              for (const [urlPrefix, dir] of DEV_STATIC_DIRS) {
+              for (const [urlPrefix, dir] of devStaticDirs(options.postsDir)) {
                 if (url.startsWith(urlPrefix)) {
                   const path = resolve(root, dir, url.slice(urlPrefix.length));
                   if (existsSync(path) && statSync(path).isFile()) return sendFile(res, path, 3600);
@@ -315,15 +325,15 @@ export function ssg(options: SsgOptions): Plugin {
               if (match) {
                 const [key, page] = match;
                 const type = contentType(key);
-                return type === TYPE_HTML
-                  ? send(await server.transformIndexHtml(url, devScriptUrls(page!)), TYPE_HTML)
+                return key.endsWith(".html")
+                  ? send(await server.transformIndexHtml(url, devScriptUrls(page!)), type)
                   : send(page!, type);
               }
               if (extname(url) === "" || url.endsWith(".html")) {
                 const notFound = pagesMap.get("404.html")!;
                 return send(
                   await server.transformIndexHtml("/404.html", devScriptUrls(notFound)),
-                  TYPE_HTML,
+                  CONTENT_TYPES[".html"]!,
                   404,
                 );
               }
@@ -348,7 +358,7 @@ export function ssg(options: SsgOptions): Plugin {
         if (extname(url) === "" && existsSync(notFound)) {
           // oxlint-disable-next-line eslint/no-param-reassign
           res.statusCode = 404;
-          res.setHeader("Content-Type", TYPE_HTML);
+          res.setHeader("Content-Type", CONTENT_TYPES[".html"]!);
           res.end(readFileSync(notFound));
           return;
         }

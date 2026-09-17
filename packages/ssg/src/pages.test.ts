@@ -20,6 +20,7 @@ const posts: Post[] = [
     date: "2026-01-01",
     tags: ["a", "b"],
     rssDescription: "d1",
+    aliases: ["/posts/one/"],
     html: "<p>1</p>",
     markdown: "md",
   },
@@ -46,12 +47,16 @@ describe("buildPages", () => {
       "llms-full.txt",
       "llms.txt",
       "posts.json",
-      "posts/one.md",
+      "posts/2026/01/01/index.html",
+      "posts/2026/01/01/one/index.html",
+      "posts/2026/01/01/one/index.md",
+      "posts/2026/01/02/index.html",
+      "posts/2026/01/02/two/index.html",
+      "posts/2026/01/02/two/index.md",
+      "posts/2026/01/index.html",
+      "posts/2026/index.html",
+      "posts/index.html",
       "posts/one/index.html",
-      "posts/one/index.md",
-      "posts/two.md",
-      "posts/two/index.html",
-      "posts/two/index.md",
       "tags/a/index.html",
       "tags/b/index.html",
       "tags/index.html",
@@ -69,7 +74,7 @@ describe("buildPages", () => {
         date: "2026-01-02",
         tags: ["a"],
         description: "d2",
-        url: "https://blog.h3y6e.com/posts/two/",
+        url: "https://blog.h3y6e.com/posts/2026/01/02/two/",
       },
       {
         slug: "one",
@@ -77,7 +82,7 @@ describe("buildPages", () => {
         date: "2026-01-01",
         tags: ["a", "b"],
         description: "d1",
-        url: "https://blog.h3y6e.com/posts/one/",
+        url: "https://blog.h3y6e.com/posts/2026/01/01/one/",
       },
     ]);
   });
@@ -87,15 +92,36 @@ describe("buildPages", () => {
     const pages = buildPages(site, posts);
     // Assert
     const tagB = pages.get("tags/b/index.html")!;
-    expect(tagB).toContain("/posts/one/");
-    expect(tagB).not.toContain("/posts/two/");
+    expect(tagB).toContain("/posts/2026/01/01/one/");
+    expect(tagB).not.toContain("/posts/2026/01/02/two/");
   });
 
   it("when the feed is generated, each item carries the canonical index.html GUID", () => {
     // Act
     const feed = buildPages(site, posts).get("feed.xml")!;
     // Assert
-    expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/one/index.html </guid>");
-    expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/two/index.html </guid>");
+    expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/2026/01/01/one/index.html </guid>");
+    expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/2026/01/02/two/index.html </guid>");
+  });
+
+  it("when posts share a month, the month archive lists them and the day archive lists only its own", () => {
+    // Act
+    const pages = buildPages(site, posts);
+    // Assert
+    const month = pages.get("posts/2026/01/index.html")!;
+    expect(month).toContain("/posts/2026/01/01/one/");
+    expect(month).toContain("/posts/2026/01/02/two/");
+    const day = pages.get("posts/2026/01/01/index.html")!;
+    expect(day).toContain("/posts/2026/01/01/one/");
+    expect(day).not.toContain("/posts/2026/01/02/two/");
+  });
+
+  it("when a post declares an alias, that path gets a page redirecting to the current URL", () => {
+    // Act
+    const page = buildPages(site, posts).get("posts/one/index.html")!;
+    // Assert
+    expect(page).toContain('<link rel="canonical" href="/posts/2026/01/01/one/" />');
+    expect(page).toContain('<meta http-equiv="refresh" content="0; url=/posts/2026/01/01/one/" />');
+    expect(page).toContain('<a href="/posts/2026/01/01/one/">');
   });
 });

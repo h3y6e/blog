@@ -48,7 +48,7 @@ GitHub や Web は素材を補うために使う。非公開リポジトリも�
 
 ## 出力
 
-`site/posts/YYYYMMDD-<slug>.md` に保存する。frontmatter は `title`、`date`、`tags`、`rss_description` で、tags は実際の題材から決める。公開できる参照は本文に置き、`{{ embed URL }}` は特に重要なものだけに使う。
+`site/posts/YYYY/MM/DD/<slug>/index.md` に保存し、画像は同じディレクトリに置いて相対パスで参照する。frontmatter は `title`、`date`、`tags`、`rss_description` で、tags は実際の題材から決める。公開できる参照は本文に置き、`{{ embed URL }}` は特に重要なものだけに使う。
 
 ## 仕上げ
 
