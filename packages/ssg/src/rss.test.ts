@@ -59,7 +59,7 @@ describe("renderItem", () => {
     });
     // Act
     const item = renderItem(site, p);
-    // Assert — item bytes copied verbatim from the pre-2026-09 live feed; only the URL shape changed since
+    // Assert
     expect(item).toBe(
       "<item>\n" +
         "  <title>\n" +

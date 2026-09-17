@@ -9,7 +9,6 @@ import { mask, normalize } from "./mask.ts";
 // math, footnotes, embeds, heading ids, strong markers — is in src/index.test.ts.
 const posts = join(import.meta.dirname, "../../../site/posts");
 const golden = join(import.meta.dirname, "golden");
-// Goldens are named by slug; posts live at <posts>/YYYY/MM/DD/<slug>/index.md.
 const bySlug = new Map(
   readdirSync(posts, { recursive: true, withFileTypes: true })
     .filter((d) => d.isFile() && d.name === "index.md")

@@ -2,7 +2,6 @@ import type { SiteConfig } from "./types.ts";
 
 type PostRef = { date: string; slug: string };
 
-/** Source and URL directory of a post, relative to the posts root: `YYYY/MM/DD/<slug>`. */
 export function postDir(post: PostRef): string {
   return `${post.date.replaceAll("-", "/")}/${post.slug}`;
 }

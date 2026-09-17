@@ -11,7 +11,6 @@ import { postDir, postPath } from "./urls.ts";
 
 const RELATIVE_SRC = /\ssrc="(?![a-z]+:|\/|#)([^"]*)"/g;
 
-/** Points relative `src` attributes at the post's URL directory, checking each file exists. */
 function absolutizeMedia(html: string, dir: string, urlDir: string): string {
   return html.replace(RELATIVE_SRC, (_m, src: string) => {
     if (!existsSync(join(dir, src))) throw new Error(`${dir}: media not found: ${src}`);

@@ -21,7 +21,6 @@ type PageMeta = {
   ogImage: string;
   twitterCard: "summary" | "summary_large_image";
   preconnect?: string[];
-  /** Page path this page has moved to; rendered as canonical plus an immediate refresh. */
   redirect?: string;
 };
 
@@ -248,7 +247,6 @@ export function postPage(site: SiteConfig, post: Post): string {
   return layout(site, meta, body);
 }
 
-/** Stands in at a former URL of `post` and forwards visitors to its current one. */
 export function redirectPage(site: SiteConfig, post: Post): string {
   const url = postPath(post);
   const meta: PageMeta = {

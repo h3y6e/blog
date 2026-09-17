@@ -28,7 +28,6 @@ const SCRIPTS: [url: string, path: string][] = SCRIPT_NAMES.map((name) => [
 
 const ASSET_DIRS: [urlPrefix: string, dir: string][] = [["/assets/", "_assets"]];
 
-/** Post media is served unhashed at the post's own URL, mirroring its source directory. */
 const devStaticDirs = (postsDir: string): [urlPrefix: string, dir: string][] => [
   ...ASSET_DIRS,
   ["/posts/", postsDir],

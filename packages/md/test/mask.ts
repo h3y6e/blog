@@ -15,7 +15,7 @@ export function normalize(html: string): string {
       .replace(/<(h[23]) id="[^"]*"/g, "<$1")
       // marked rejects ** flanked by CJK punctuation; compare content only.
       .replace(/<\/?strong>|\*\*/g, "")
-      // Goldens predate the YYYY/MM/DD layout: compare media by file name and post links by slug.
+      // Goldens predate the dated layout.
       .replace(/\/img\/\d{4}-\d{2}-\d{2}\//g, "")
       .replace(/ href="\/posts\/(?:[^"]*\/)?([^/"]+)\/?"/g, ' href="/posts/$1/"')
       .replace(/>\s+</g, "><")
