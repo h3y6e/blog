@@ -24,8 +24,8 @@ body {
   background: var(--background);
   text-rendering: optimizeLegibility;
   font-family:
-    "Firge35Nerd Console", "Firge35Nerd Console Fallback", "Helvetica Neue", Arial,
-    "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    "a5ebec Mono", "a5ebec Mono Fallback", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
   font-feature-settings: "tnum", "case", "zero", "locl";
   text-wrap: pretty;
   text-spacing-trim: trim-start;
@@ -110,8 +110,8 @@ figure {
 code,
 kbd {
   font-family:
-    "Firge35Nerd Console",
-    "Firge35Nerd Console Fallback",
+    "a5ebec Mono",
+    "a5ebec Mono Fallback",
     Monaco,
     Consolas,
     Ubuntu Mono,

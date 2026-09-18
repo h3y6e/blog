@@ -155,7 +155,7 @@ describe("postPage", () => {
     // Act
     const page = postPage(site, post());
     // Assert
-    expect(page).toContain('href="/fonts/Firge35NerdConsole-Regular.woff2"');
+    expect(page).toContain('href="/fonts/a5ebecMono-Regular.woff2"');
     expect(page).toContain('type="font/woff2"');
     expect(page).toContain(
       '<link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />',

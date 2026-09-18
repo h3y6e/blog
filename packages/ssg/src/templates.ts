@@ -24,7 +24,7 @@ export function scriptOrigins(pageHtml: string): string[] {
   return [...origins];
 }
 
-const PRELOADED_FONTS = ["Firge35NerdConsole-Regular.woff2", "Firge35NerdConsole-Bold.woff2"];
+const PRELOADED_FONTS = ["a5ebecMono-Regular.woff2", "a5ebecMono-Bold.woff2"];
 
 const encodeCloudinary = (text: string): string =>
   encodeURI(text.replaceAll(",", "%2C").replaceAll("/", "%2F")).replaceAll("#", "%23");

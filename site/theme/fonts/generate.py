@@ -2,7 +2,7 @@
 # requires-python = ">=3.12"
 # dependencies = ["fonttools[woff]"]
 # ///
-"""Subset Firge35Nerd Console to the characters the site uses.
+"""Subset Firge35Nerd Console to the characters the site uses, as "a5ebec Mono".
 
 Run: uv run site/theme/fonts/generate.py
 """
@@ -15,7 +15,12 @@ from pathlib import Path
 from fontTools import subset
 from fontTools.ttLib import TTFont
 
-RELEASE = "https://github.com/yuru7/Firge/releases/download/v0.3.0/FirgeNerd_v0.3.0.zip"
+VERSION = "v0.3.0"
+RELEASE = f"https://github.com/yuru7/Firge/releases/download/{VERSION}/FirgeNerd_{VERSION}.zip"
+LICENSE = f"https://raw.githubusercontent.com/yuru7/Firge/{VERSION}/LICENSE"
+# "Firge" is a Reserved Font Name, so the subset gets its own name (OFL 1.1 condition 3).
+FAMILY = "a5ebec Mono"
+FILE_STEM = "a5ebecMono"
 WEIGHTS = {"Regular": 400, "Bold": 700}
 # Latin, symbols, box drawing, Powerline.
 BASE_RANGES = "0020-007E,00A0-00FF,0100-017F,2000-206F,20A0-20CF,2190-21FF,2200-22FF,2500-257F,25A0-25FF,E0A0-E0B3"
@@ -27,40 +32,57 @@ ROOT = HERE.parents[2]
 TEXT_SOURCES = ["site/posts/**/*.md", "site/embeds.json", "packages/ssg/src/*.ts"]
 
 
+def fetch(url: str) -> bytes:
+    with urllib.request.urlopen(url) as r:
+        return r.read()
+
+
 def site_text() -> str:
     return "".join(p.read_text() for g in TEXT_SOURCES for p in ROOT.glob(g))
 
 
-def subset_font(ttf: bytes, codepoints: set[int]) -> TTFont:
+def subset_font(ttf: bytes, codepoints: set[int], weight_name: str) -> TTFont:
     font = TTFont(io.BytesIO(ttf))
     subsetter = subset.Subsetter(subset.Options(flavor="woff2"))
     subsetter.populate(unicodes=codepoints)
     subsetter.subset(font)
+    names = font["name"]
+    for name_id, value in {
+        1: FAMILY,
+        3: f"{FAMILY} {weight_name} {VERSION}",
+        4: f"{FAMILY} {weight_name}",
+        6: f"{FILE_STEM}-{weight_name}",
+        10: f"Subset of Firge35Nerd Console {VERSION} by Yuko OTAWARA for blog.h3y6e.com.",
+        13: "This Font Software is licensed under the SIL Open Font License, Version 1.1.",
+        14: "https://openfontlicense.org",
+    }.items():
+        names.setName(value, name_id, 3, 1, 0x409)
     return font
 
 
 def main() -> None:
-    with urllib.request.urlopen(RELEASE) as r:
-        zipped = zipfile.ZipFile(io.BytesIO(r.read()))
+    zipped = zipfile.ZipFile(io.BytesIO(fetch(RELEASE)))
+    (HERE / "LICENSE").write_bytes(fetch(LICENSE))
     codepoints = set(subset.parse_unicodes(BASE_RANGES)) | {ord(c) for c in site_text() if not c.isspace()}
     faces = []
     for weight_name, weight in WEIGHTS.items():
-        font = subset_font(zipped.read(f"FirgeNerd_v0.3.0/Firge35NerdConsole-{weight_name}.ttf"), codepoints)
-        name = f"Firge35NerdConsole-{weight_name}.woff2"
+        ttf = zipped.read(f"FirgeNerd_{VERSION}/Firge35NerdConsole-{weight_name}.ttf")
+        font = subset_font(ttf, codepoints, weight_name)
+        name = f"{FILE_STEM}-{weight_name}.woff2"
         font.save(HERE / name)
         faces.append(
             "@font-face {\n"
-            '  font-family: "Firge35Nerd Console";\n'
+            f'  font-family: "{FAMILY}";\n'
             "  font-style: normal;\n"
             f"  font-weight: {weight};\n"
             f'  src: url("../fonts/{name}") format("woff2");\n'
             "  font-display: swap;\n"
             "}\n"
         )
-    (HERE / "Firge35NerdConsole.chars.txt").write_text("".join(map(chr, sorted(codepoints))) + "\n")
+    (HERE / f"{FILE_STEM}.chars.txt").write_text("".join(map(chr, sorted(codepoints))) + "\n")
     fallback = (
         "@font-face {\n"
-        '  font-family: "Firge35Nerd Console Fallback";\n'
+        f'  font-family: "{FAMILY} Fallback";\n'
         '  src: local("Menlo"), local("Consolas"), local("Monaco");\n'
         f"  size-adjust: {FALLBACK_SIZE_ADJUST};\n"
         "}\n"
