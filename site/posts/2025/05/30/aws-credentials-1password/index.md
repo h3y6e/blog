@@ -16,7 +16,7 @@ op pluginは独自の認証メカニズムを使用しており、AWS CLIの標�
 
 {{ embed https://github.com/1Password/shell-plugins/issues/213 }}
 
-この問題は、素の `op` コマンドを直接 `credential_process` で呼び出すことで回避できる。
+素の `op` コマンドを直接 `credential_process` で呼び出せば回避できる。
 
 ## 設定方法
 
