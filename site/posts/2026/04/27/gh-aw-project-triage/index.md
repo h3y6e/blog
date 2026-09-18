@@ -86,7 +86,7 @@ Auto-triage existing items only in the project.
 
 フロントマター側には、いつ動くか、どのGitHub Appを使うか、どのpermissionが必要か、どのGitHub toolsを使えるか、どのsafe outputを許可するかを書く。
 
-本文側には、エージェントに読ませる手順や制約を書く。
+本文側に書くのは、エージェントに読ませる手順や制約だ。
 
 それをコンパイルすると、activation、エージェント、detection、safe outputs、conclusionなどのジョブを持つGitHub Actionsのワークフローになる。実行ログを見ても、普通のActionsとして動いている。成功した実行では、エージェントジョブがissueとProjectを読んだあと、safe outputsジョブが `update_project` を処理していた。
 
