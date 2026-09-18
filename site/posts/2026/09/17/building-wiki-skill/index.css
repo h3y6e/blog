@@ -1,0 +1,90 @@
+wiki-flow {
+  display: block;
+  margin: 1.5em 0;
+}
+
+wiki-flow svg {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+wiki-flow .nodes rect {
+  fill: var(--code-background);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+wiki-flow text {
+  fill: var(--color);
+  font-family: inherit;
+}
+
+wiki-flow .nodes text {
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+wiki-flow .edges path {
+  fill: none;
+  stroke: var(--tag-color);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+  transition: stroke 0.3s;
+}
+
+wiki-flow marker path {
+  fill: context-stroke;
+}
+
+wiki-flow .labels text {
+  transition: fill 0.3s;
+}
+
+wiki-flow[data-op="ingest"] .edges [data-op="ingest"],
+wiki-flow[data-op="query"] .edges [data-op="query"],
+wiki-flow[data-op="lint"] .edges [data-op="lint"] {
+  stroke: var(--accent);
+}
+
+wiki-flow[data-op="ingest"] .labels [data-op="ingest"],
+wiki-flow[data-op="query"] .labels [data-op="query"],
+wiki-flow[data-op="lint"] .labels [data-op="lint"] {
+  fill: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  wiki-flow[data-op="ingest"] .edges [data-op="ingest"],
+  wiki-flow[data-op="query"] .edges [data-op="query"],
+  wiki-flow[data-op="lint"] .edges [data-op="lint"] {
+    animation: wiki-flow-dash 0.8s linear infinite;
+  }
+}
+
+@keyframes wiki-flow-dash {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+wiki-flow .ops {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+wiki-flow .ops button[aria-selected="true"] {
+  background: var(--accent);
+  color: var(--logo-color);
+}
+
+wiki-flow .caption {
+  min-height: 1.5em;
+  margin: 0.5em 0 0;
+  color: var(--blockquote-color);
+  font-size: 0.9em;
+  text-align: center;
+}

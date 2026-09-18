@@ -10,20 +10,36 @@ rss_description: "一次情報からエージェントがwikiを編纂して維�
 
 [`building-wiki`](https://github.com/h3y6e/agent-skills/blob/main/skills/building-wiki/SKILL.md) は、リポジトリの `docs/` を知識ベースとして立ち上げ、運用するためのAgent Skillである。一次情報を人間が渡し、ページの編纂と保守はエージェントが担う。
 
-```
-┌──────────────┐
-│   sources    │
-└───────┬──────┘
-        │ Ingest
-        ▼
-┌──────────────┐        ┌──────────────┐
-│     wiki     │◀───────│    schema    │
-└───────┬──────┘        └──────────────┘
-        │
-        ├── Query ──▶ answer
-        │
-        └── Lint ───▶ findings
-```
+<wiki-flow>
+  <svg viewBox="0 0 520 300" role="img" aria-label="sources から Ingest で wiki を更新し、schema が wiki の構造を定める。wiki から Query で answer、Lint で findings を得て、どちらも wiki に書き戻す">
+    <defs>
+      <marker id="wf-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" />
+      </marker>
+    </defs>
+    <g class="edges" marker-end="url(#wf-arrow)">
+      <path data-op="ingest" d="M120 70V128" />
+      <path data-op="ingest" d="M320 155H202" />
+      <path data-op="query" marker-start="url(#wf-arrow)" d="M120 182V230H298" />
+      <path data-op="lint" marker-start="url(#wf-arrow)" d="M120 182V270H298" />
+    </g>
+    <g class="labels">
+      <text data-op="ingest" x="130" y="104">Ingest</text>
+      <text data-op="query" x="200" y="224">Query</text>
+      <text data-op="query" x="310" y="235">answer</text>
+      <text data-op="lint" x="200" y="264">Lint</text>
+      <text data-op="lint" x="310" y="275">findings</text>
+    </g>
+    <g class="nodes">
+      <rect x="40" y="20" width="160" height="50" rx="4" />
+      <text x="120" y="45">sources</text>
+      <rect x="40" y="130" width="160" height="50" rx="4" />
+      <text x="120" y="155">wiki</text>
+      <rect x="320" y="130" width="160" height="50" rx="4" />
+      <text x="400" y="155">schema</text>
+    </g>
+  </svg>
+</wiki-flow>
 
 ## きっかけ
 
