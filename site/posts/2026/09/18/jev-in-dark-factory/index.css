@@ -1,0 +1,393 @@
+jev-pipeline {
+  --line: color-mix(in srgb, var(--color) 28%, var(--background));
+  --hairline: color-mix(in srgb, var(--color) 18%, transparent);
+  --paper: var(--background);
+  --tint: color-mix(in srgb, var(--accent) 12%, var(--background));
+  --gap: 3.2rem;
+  display: block;
+  margin: 1.5em 0;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+jev-pipeline .flow {
+  display: grid;
+  grid-template-columns: minmax(0, 22rem) minmax(0, 12rem);
+  justify-content: center;
+  align-items: center;
+  column-gap: var(--gap);
+  margin: 0;
+  padding: 1.25rem 1rem;
+  list-style: none;
+}
+
+jev-pipeline .flow > li {
+  position: relative;
+  grid-column: 1;
+  list-style: none;
+}
+
+jev-pipeline .node {
+  padding: 0.55rem 0.9rem 0.6rem 1.1rem;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  background: var(--paper);
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+}
+
+jev-pipeline .node::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  border-radius: 3px 0 0 3px;
+  background: var(--line);
+}
+
+jev-pipeline .node.llm {
+  border-style: dashed;
+}
+
+jev-pipeline .node.jev {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  cursor: pointer;
+}
+
+jev-pipeline .node.jev::before {
+  background: var(--accent);
+}
+
+jev-pipeline .kind {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blockquote-color);
+}
+
+jev-pipeline .title {
+  display: block;
+  font-weight: 700;
+}
+
+jev-pipeline .example {
+  display: none;
+  margin-top: 0.15rem;
+  font-size: 0.85rem;
+  color: var(--blockquote-color);
+}
+
+jev-pipeline .label {
+  position: absolute;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: var(--blockquote-color);
+}
+
+/* connectors: one pseudo-element per line, shaped as stem + arrowhead */
+jev-pipeline .edge::after,
+jev-pipeline .side::after,
+jev-pipeline .edge::before,
+jev-pipeline .loop::before {
+  content: "";
+  position: absolute;
+  background: var(--line);
+  transition: background 0.3s;
+}
+
+jev-pipeline .edge {
+  height: 2.4rem;
+}
+
+jev-pipeline .edge::after {
+  left: 50%;
+  top: 0;
+  width: 9px;
+  height: 100%;
+  translate: -50% 0;
+  clip-path: polygon(
+    4px 0,
+    5px 0,
+    5px calc(100% - 6px),
+    9px calc(100% - 6px),
+    4.5px 100%,
+    0 calc(100% - 6px),
+    4px calc(100% - 6px)
+  );
+}
+
+jev-pipeline .edge .label {
+  left: calc(50% + 0.6rem);
+  top: 50%;
+  translate: 0 -50%;
+}
+
+jev-pipeline .flow > .side {
+  grid-column: 2;
+}
+
+jev-pipeline .side::after {
+  left: calc(-1 * var(--gap));
+  top: 50%;
+  width: var(--gap);
+  height: 9px;
+  translate: 0 -50%;
+  clip-path: polygon(
+    0 4px,
+    calc(100% - 6px) 4px,
+    calc(100% - 6px) 0,
+    100% 4.5px,
+    calc(100% - 6px) 9px,
+    calc(100% - 6px) 5px,
+    0 5px
+  );
+}
+
+jev-pipeline .side .label {
+  left: calc(-1 * var(--gap) + 0.2rem);
+  bottom: calc(50% + 0.35rem);
+}
+
+/* verify-no: leaves Gate 2 on the right, climbs, and re-enters Worker */
+jev-pipeline .flow > .loop {
+  grid-column: 2;
+  grid-row: span 3;
+  align-self: stretch;
+  justify-self: start;
+  width: calc(var(--gap) + 1.2rem);
+  margin: 1.1rem 0 1.1rem calc(-1 * var(--gap));
+  border: 1px solid var(--line);
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+  transition: border-color 0.3s;
+}
+
+jev-pipeline .loop::before {
+  left: 0;
+  top: -0.5px;
+  width: 6px;
+  height: 9px;
+  translate: 0 -50%;
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+jev-pipeline .loop .label {
+  left: 100%;
+  top: 50%;
+  translate: 0.4rem -50%;
+  writing-mode: vertical-rl;
+}
+
+@media (max-width: 684px) {
+  jev-pipeline .flow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  jev-pipeline .flow > .side,
+  jev-pipeline .flow > .loop {
+    grid-column: 1;
+    margin: 0.4rem 0 0 2.5rem;
+  }
+
+  jev-pipeline .side::after {
+    display: none;
+  }
+
+  jev-pipeline .flow > .loop {
+    grid-row: 9;
+    align-self: auto;
+    justify-self: auto;
+    width: auto;
+    padding: 0.4rem 0.9rem;
+    border: 1px dashed var(--line);
+    border-radius: 3px;
+  }
+
+  jev-pipeline .loop::before {
+    display: none;
+  }
+
+  jev-pipeline .side .label,
+  jev-pipeline .loop .label {
+    position: static;
+    display: block;
+    translate: none;
+    writing-mode: horizontal-tb;
+  }
+
+  jev-pipeline .side .label::before,
+  jev-pipeline .loop .label::before {
+    content: "↳ ";
+  }
+}
+
+/* active state: every element whose data-on lists the current state */
+jev-pipeline
+  :is(
+    jev-pipeline[data-state="triage-yes"] [data-on~="triage-yes"],
+    jev-pipeline[data-state="triage-no"] [data-on~="triage-no"],
+    jev-pipeline[data-state="verify-yes"] [data-on~="verify-yes"],
+    jev-pipeline[data-state="verify-no"] [data-on~="verify-no"],
+    jev-pipeline[data-state="risk-yes"] [data-on~="risk-yes"],
+    jev-pipeline[data-state="risk-no"] [data-on~="risk-no"]
+  ) {
+  --line: var(--accent);
+}
+
+jev-pipeline
+  :is(
+    jev-pipeline[data-state="triage-yes"] .node[data-on~="triage-yes"],
+    jev-pipeline[data-state="triage-no"] .node[data-on~="triage-no"],
+    jev-pipeline[data-state="verify-yes"] .node[data-on~="verify-yes"],
+    jev-pipeline[data-state="verify-no"] .node[data-on~="verify-no"],
+    jev-pipeline[data-state="risk-yes"] .node[data-on~="risk-yes"],
+    jev-pipeline[data-state="risk-no"] .node[data-on~="risk-no"]
+  ) {
+  border-color: var(--accent);
+  background: var(--tint);
+}
+
+jev-pipeline .example[data-on$="-yes"] {
+  display: block;
+  opacity: 0.55;
+}
+
+jev-pipeline[data-state="triage-no"] .example[data-on~="triage-yes"],
+jev-pipeline[data-state="verify-no"] .example[data-on~="verify-yes"],
+jev-pipeline[data-state="risk-no"] .example[data-on~="risk-yes"] {
+  display: none;
+}
+
+jev-pipeline
+  :is(
+    jev-pipeline[data-state="triage-yes"] .example[data-on~="triage-yes"],
+    jev-pipeline[data-state="triage-no"] .example[data-on~="triage-no"],
+    jev-pipeline[data-state="verify-yes"] .example[data-on~="verify-yes"],
+    jev-pipeline[data-state="verify-no"] .example[data-on~="verify-no"],
+    jev-pipeline[data-state="risk-yes"] .example[data-on~="risk-yes"],
+    jev-pipeline[data-state="risk-no"] .example[data-on~="risk-no"]
+  ) {
+  display: block;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  jev-pipeline .edge::before {
+    left: 50%;
+    top: 0;
+    width: 7px;
+    height: 7px;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+  }
+
+  jev-pipeline
+    :is(
+      jev-pipeline[data-state="triage-yes"] .edge[data-on~="triage-yes"],
+      jev-pipeline[data-state="triage-no"] .edge[data-on~="triage-no"],
+      jev-pipeline[data-state="verify-yes"] .edge[data-on~="verify-yes"],
+      jev-pipeline[data-state="verify-no"] .edge[data-on~="verify-no"],
+      jev-pipeline[data-state="risk-yes"] .edge[data-on~="risk-yes"],
+      jev-pipeline[data-state="risk-no"] .edge[data-on~="risk-no"]
+    )::before {
+    animation: jev-pipeline-flow 1.2s ease-in-out infinite;
+  }
+}
+
+@keyframes jev-pipeline-flow {
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* phase strip */
+jev-pipeline .steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 40rem;
+  margin: 0.5rem auto 0;
+  padding: 0 1rem;
+}
+
+jev-pipeline .name {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blockquote-color);
+}
+
+jev-pipeline .choices {
+  display: flex;
+  gap: 1px;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  background: var(--hairline);
+  overflow: hidden;
+}
+
+jev-pipeline .choices button {
+  flex: 1;
+  min-height: 2rem;
+  padding: 0.2rem 0.4rem;
+  white-space: nowrap;
+  border: 0;
+  background: var(--background);
+  color: var(--blockquote-color);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+jev-pipeline .choices button:hover {
+  background: var(--tint);
+  color: var(--color);
+}
+
+jev-pipeline .choices button[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 1px var(--accent);
+  background: var(--tint);
+  color: var(--color);
+  font-weight: 700;
+}
+
+jev-pipeline .caption {
+  min-height: 1.5em;
+  margin: 0;
+  padding: 0.6rem 1rem 0;
+  font-size: 0.85rem;
+  color: var(--blockquote-color);
+  text-align: center;
+}
+
+@media (max-width: 684px) {
+  jev-pipeline .steps {
+    gap: 0.4rem;
+  }
+
+  jev-pipeline .choices button {
+    padding: 0.2rem 0.1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0;
+  }
+}
