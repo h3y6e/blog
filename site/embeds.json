@@ -160,11 +160,6 @@
     "title": "mozaic.fm",
     "description": ""
   },
-  "https://newsletter.pragmaticengineer.com/p/openai-software-factory": {
-    "image": "https://substackcdn.com/image/fetch/$s_!Eiw9!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e73721e-e4d8-473f-a5a1-b6211c14f6ca_2048x1762.png",
-    "title": "Inside OpenAI’s agentic software factory",
-    "description": "A deepdive into how Codex has “taken over” OpenAI, how the frontier lab builds its agentic software factory, and the engineering challenges of one billion users. Details from inside OpenAI"
-  },
   "https://normalize.fm": {
     "image": "https://normalize.fm/resource/normalize-logo.jpg",
     "title": "normalize.fm",
@@ -216,11 +211,6 @@
     "title": "潤滑剤",
     "description": "スイッチの感触をスムーズにするためのルブです。 ※輸送中に潤滑剤によって容器のフタが緩み、チャック袋内で漏れることがあります。この理由による交換には応じかねますのでご了承ください。 GPL 205 G0リニア/スタビライザー向け粘度が高い塗りすぎると動作が重くなるグリス系 3204全てのスイッチ向け3023に比べて粘度が少し高いグリス系 3203タクタイル/クリッキー向け一番粘度が低いグリス系 GPL 105スイッチのバネ用バネの金属音を防ぐ効果があるオイル系 参考URLhttps://scrapbox.io/self-made-kbds-ja/Krytox_GPLhttps://scrapbox.io/self-made-kbds"
   },
-  "https://typesafe.ai/blog/introducing-system-one-models-and-jev": {
-    "image": "https://framerusercontent.com/images/RtIGTDwO43jR4ZDilesXiR5znc.jpg",
-    "title": "Introducing System One Models & Jev - TypeSafe AI Blog",
-    "description": "TypeSafe AI is an AI lab building machine-native intelligence infrastructure for automation, designed to make decisions within software. Try our first System One Model, Jev, in early access."
-  },
   "https://uit-inside.linecorp.com/": {
     "image": "https://uit-inside.linecorp.com/assets/images/brand.png",
     "title": "UIT INSIDE - LINEヤフー UIT の開発者による「最新のフロントエンド」をキャッチアップできる Podcast",
@@ -240,15 +230,5 @@
     "image": "https://yushakobo.jp/wp-content/uploads/2022/02/a766a7e35ac343414698f8dcd08c3976-1.jpg",
     "title": "遊舎工房ギルドメンバーを募集します！ | 遊舎工房",
     "description": "遊舎工房ギルドメンバーとは 自作キーボードが好きで遊舎工房の商品・サービスの魅力を広めて頂ける方(ギルドメンバー)を募集します。遊舎工房公式Discordサーバー(https://discord.gg/qFJwQMmndJ) に参加されてい"
-  },
-  "https://zenn.dev/mizchi/articles/jev-is-gpu-for-llms": {
-    "image": "https://res.cloudinary.com/zenn/image/upload/s--A3IX07SH--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:%25E6%2597%25A2%25E5%25AD%2598%25E3%2581%25AE%2520LLM%2520%25E3%2581%258C%2520CPU%2520%25E3%2581%25AA%25E3%2582%2589%25E3%2580%2581%2520Jev%2520%25E3%2581%25AF%25E3%2581%259D%25E3%2581%25AE%2520GPU%2520%25E7%2589%2588%25E3%2581%25BF%25E3%2581%259F%25E3%2581%2584%25E3%2581%25AA%25E3%2582%2584%25E3%2581%25A4%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:mizchi%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2liclRHT052Z3d3ay1fNGxlcVk4TGNGSlNuX0FoWnpEWVlKaXJNcWc9czI1MC1j%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png?_a=BACMTiAE",
-    "title": "既存の LLM が CPU なら、 Jev はその GPU 版みたいなやつ",
-    "description": ""
-  },
-  "https://zenn.dev/nwn/articles/824026c76116e0": {
-    "image": "https://res.cloudinary.com/zenn/image/upload/s--nA63RXC3--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:TypeSafe%25E3%2581%25AEJev%25E3%2582%2592%25E6%25AD%25A3%25E3%2581%2597%25E3%2581%258F%25E9%25A9%259A%25E3%2581%258F%25E3%2580%2581%25E3%2581%259D%25E3%2582%258C%25E3%2581%25A3%25E3%2581%25A6LLM%25E3%2581%25A7%25E3%2581%25A7%25E3%2581%258D%25E3%2581%25BE%25E3%2581%259B%25E3%2582%2593%25E3%2581%258B%25EF%25BC%259F%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:%25E3%2583%25A8%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9zdGF0aWMuemVubi5zdHVkaW8vdXNlci11cGxvYWQvYXZhdGFyLzllY2U3NmI3N2IuanBlZw==%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png?_a=BACMTiAE",
-    "title": "TypeSafeのJevを正しく驚く、それってLLMでできませんか？",
-    "description": ""
   }
 }
