@@ -82,6 +82,15 @@
         "disableStructureGuidance": true,
         "enableDocumentAnalysis": true
       }
+    },
+    "preset-ai-words-ja": {
+      "no-ai-words": {
+        "severity": "warning",
+        "allows": ["部品", "実測"]
+      },
+      "no-short-topic-comma": {
+        "severity": "warning"
+      }
     }
   }
 }
