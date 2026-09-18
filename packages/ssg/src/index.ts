@@ -31,7 +31,7 @@ const ASSET_DIRS: [urlPrefix: string, dir: string][] = [["/assets/", "_assets"]]
 const devStaticDirs = (postsDir: string): [urlPrefix: string, dir: string][] => [
   ...ASSET_DIRS,
   ["/posts/", postsDir],
-  ["/css/fonts/", "theme/css/fonts"],
+  ["/fonts/", "theme/fonts"],
 ];
 
 const devScriptUrls = (html: string): string =>
@@ -97,7 +97,7 @@ function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harve
       if (entry.facadeModuleId === cssPath) delete bundle[key];
     }
     if (entry.type === "asset" && entry.fileName.endsWith(".woff2")) {
-      for (const name of entry.names ?? []) fonts.set(`/css/fonts/${name}`, `/${entry.fileName}`);
+      for (const name of entry.names ?? []) fonts.set(`/fonts/${name}`, `/${entry.fileName}`);
     }
     if (entry.type === "asset" && entry.fileName.endsWith(".css")) {
       css =

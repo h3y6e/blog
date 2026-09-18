@@ -24,6 +24,8 @@ export function scriptOrigins(pageHtml: string): string[] {
   return [...origins];
 }
 
+const PRELOADED_FONTS = ["Firge35NerdConsole-Regular.woff2", "Firge35NerdConsole-Bold.woff2"];
+
 const encodeCloudinary = (text: string): string =>
   encodeURI(text.replaceAll(",", "%2C").replaceAll("/", "%2F")).replaceAll("#", "%23");
 
@@ -58,20 +60,10 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
     <link rel="me" href="https://www.threads.net/@h3y6e" />
     <meta name="theme-color" content="#2f2f2f" />
     ${(meta.preconnect ?? []).map((origin) => html`<link rel="preconnect" href="${origin}" />`)}
-    <link
-      rel="preload"
-      href="/css/fonts/FiraCode-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/css/fonts/FiraCode-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    ${PRELOADED_FONTS.map(
+      (file) =>
+        html`<link rel="preload" href="/fonts/${file}" as="font" type="font/woff2" crossorigin />`,
+    )}
     <link rel="stylesheet" href="/css/a5ebec.css" />
     <link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />

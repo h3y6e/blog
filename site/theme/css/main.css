@@ -24,10 +24,9 @@ body {
   background: var(--background);
   text-rendering: optimizeLegibility;
   font-family:
-    "Fira Code", "Fira Code Fallback", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans", Meiryo, sans-serif;
-  font-feature-settings: "liga", "tnum", "case", "calt", "zero", "locl";
-  font-variant-ligatures: contextual;
+    "Firge35Nerd Console", "Firge35Nerd Console Fallback", "Helvetica Neue", Arial,
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-feature-settings: "tnum", "case", "zero", "locl";
   text-wrap: pretty;
   text-spacing-trim: trim-start;
   -webkit-font-smoothing: antialiased;
@@ -111,13 +110,12 @@ figure {
 code,
 kbd {
   font-family:
-    "Fira Code",
-    "Fira Code Fallback",
+    "Firge35Nerd Console",
+    "Firge35Nerd Console Fallback",
     Monaco,
     Consolas,
     Ubuntu Mono,
     monospace;
-  font-feature-settings: nomal;
   letter-spacing: 0em;
   background: var(--code-background);
   border-radius: 2px;
