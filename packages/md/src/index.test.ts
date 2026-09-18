@@ -155,6 +155,14 @@ describe("blocks", () => {
       '<div class="x">\n**raw**\n</div><p>after</p>\n',
     );
   });
+  it("when a block starts with a custom element tag alone on its line, it passes through verbatim", () => {
+    expect(render("<x-y>\n<ol>\n</ol>\n</x-y>\n\nafter")).toBe(
+      "<x-y>\n<ol>\n</ol>\n</x-y><p>after</p>\n",
+    );
+  });
+  it("when a custom element tag follows paragraph text, it does not interrupt the paragraph", () => {
+    expect(render("a\n<x-y>")).toBe("<p>a\n<x-y></p>\n");
+  });
   it("when a paragraph contains inline HTML, the tags pass through unescaped", () => {
     expect(render("a <kbd>⌘</kbd> b <!-- c -->")).toBe("<p>a <kbd>⌘</kbd> b <!-- c --></p>\n");
   });
