@@ -14,12 +14,5 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": [
-    "packages/*/src",
-    "packages/*/bin",
-    "packages/*/test",
-    "site/*.ts",
-    "site/theme/scripts",
-    "vite.config.ts"
-  ]
+  "include": ["packages", "site", "vite.config.ts"]
 }
