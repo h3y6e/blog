@@ -2,7 +2,7 @@
 - `packages/*` stay zero-dependency (workspace deps only): extend md/math/hl instead of adding libraries.
 - `packages/md/test/golden/` was generated once with marked (since removed); do not regenerate — adjust normalization in `mask.ts` for divergences.
 - Support target: Baseline Newly available, used natively, no fallback/polyfills; browsers below unsupported.
-- Sub-Baseline (limited availability, Chromium-only) features are optional enhancements only: must degrade to "feature absent" at zero cost to unsupported browsers, else not adopted.
+- This site is a testbed for new web standards: adopt sub-Baseline (limited availability, single-engine) features whenever they degrade to "feature absent" at zero cost to unsupported browsers. One that cannot is never adopted.
   - Exception: a ponyfill polluting no globals; global-mutating polyfills never adopted, at any Baseline level.
 - Origin Trials encouraged, if the page works after token expiry. Tokens live in `originTrials` in `site/vite.config.ts`; build warns near expiry, fails on expired.
 
