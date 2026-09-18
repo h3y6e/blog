@@ -5,7 +5,9 @@ tags: ["jev", "flue"]
 rss_description: "if文では書けないがLLMに任せるには重い判定をTypeSafeのJevに答えさせた。Flueで組んだDark Factoryのトリアージ・出力検証・リスク分類で検証。危険側の誤りは一件も出なかったが、合否を一発で答えさせると精度が伸びず、狭い質問に分解して答えを組み合わせる必要があった"
 ---
 
-[TypeSafe](https://typesafe.ai)の[Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev)を、[Flue](https://flueframework.com/)で組んだDark Factoryに組み込んで検証しました。
+[TypeSafe](https://typesafe.ai)のJevを、[Flue](https://flueframework.com/)で組んだDark Factoryに組み込んで検証しました。
+
+{{ embed https://typesafe.ai/blog/introducing-system-one-models-and-jev }}
 
 ## 検証対象: Dark Factory
 
