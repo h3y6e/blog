@@ -2,7 +2,16 @@ import { enhanceFootnotes } from "./footnotes.ts";
 import { html, raw, type Raw } from "./html.ts";
 import { toc } from "./toc.ts";
 import type { Post, SiteConfig } from "./types.ts";
-import { byDateDesc, postDir, postFullUrl, postPath, tagPath, tagsIndexFullUrl } from "./urls.ts";
+import {
+  byDateDesc,
+  postDir,
+  postFullUrl,
+  postPath,
+  postScriptUrl,
+  postStyleUrl,
+  tagPath,
+  tagsIndexFullUrl,
+} from "./urls.ts";
 
 type PageMeta = {
   title: string;
@@ -13,6 +22,7 @@ type PageMeta = {
   ogImage: string;
   twitterCard: "summary" | "summary_large_image";
   preconnect?: string[];
+  stylesheet?: string;
   redirect?: string;
 };
 
@@ -65,6 +75,7 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
         html`<link rel="preload" href="/fonts/${file}" as="font" type="font/woff2" crossorigin />`,
     )}
     <link rel="stylesheet" href="/css/a5ebec.css" />
+    ${meta.stylesheet && html`<link rel="stylesheet" href="${meta.stylesheet}" />`}
     <link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />
     <meta property="og:site_name" content="${site.title}" />
@@ -222,12 +233,12 @@ export function postPage(site: SiteConfig, post: Post): string {
     ogImage: post.cover ? `${site.siteUrl}${postPath(post)}${post.cover}` : ogImageUrl(post),
     twitterCard: "summary_large_image",
     preconnect: scriptOrigins(post.html),
+    ...(post.style && { stylesheet: postStyleUrl(post) }),
   };
   const body = html`<div class="reading-progress"></div>
     ${headline(site, post.title, post.date, post.tags, true)} ${toc(post.html)}
-    <div class="franklin-content">
-      ${raw(enhanceFootnotes(post.html))} ${pageFoot(site, post)}
-    </div>`;
+    <div class="franklin-content">${raw(enhanceFootnotes(post.html))} ${pageFoot(site, post)}</div>
+    ${post.script && html`<script type="module" src="${postScriptUrl(post)}"></script>`}`;
   return layout(site, meta, body);
 }
 

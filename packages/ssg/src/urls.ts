@@ -10,6 +10,14 @@ export function postPath(post: PostRef): string {
   return `/posts/${postDir(post)}/`;
 }
 
+export function postScriptUrl(post: PostRef): string {
+  return `${postPath(post)}index.js`;
+}
+
+export function postStyleUrl(post: PostRef): string {
+  return `${postPath(post)}index.css`;
+}
+
 export function postFullUrl(site: SiteConfig, post: PostRef): string {
   return `${site.siteUrl}${postPath(post)}index.html`;
 }

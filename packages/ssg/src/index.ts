@@ -2,14 +2,14 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { basename, dirname, extname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { rewriteAssetUrls } from "./assets.ts";
-import { loadPosts } from "./content.ts";
+import { loadPosts, type PostEntry, postEntries } from "./content.ts";
 import { MODERN_CSS_MARKERS, checkCssLowering, inlineCss } from "./css.ts";
 import { type Dims, enhanceMedia, imageSize } from "./images.ts";
 import { inlineAssets } from "./inline.ts";
 import { checkOriginTrials } from "./origin-trials.ts";
 import { buildPages } from "./pages.ts";
 import type { Post, SiteConfig } from "./types.ts";
-import { postDir } from "./urls.ts";
+import { pageFile, postDir, postPath, postScriptUrl, postStyleUrl } from "./urls.ts";
 
 export { html, raw, Raw } from "./html.ts";
 export type { OriginTrial } from "./origin-trials.ts";
@@ -26,6 +26,8 @@ const SCRIPTS: [url: string, path: string][] = SCRIPT_NAMES.map((name) => [
   fileURLToPath(import.meta.resolve(`@blog/client/${name}.ts`)),
 ]);
 
+const SOURCE_EXTS = new Set([".ts", ".css"]);
+
 const ASSET_DIRS: [urlPrefix: string, dir: string][] = [["/assets/", "_assets"]];
 
 const devStaticDirs = (postsDir: string): [urlPrefix: string, dir: string][] => [
@@ -34,8 +36,8 @@ const devStaticDirs = (postsDir: string): [urlPrefix: string, dir: string][] => 
   ["/fonts/", "theme/fonts"],
 ];
 
-const devScriptUrls = (html: string): string =>
-  SCRIPTS.reduce((h, [url, path]) => h.replace(url, `/@fs${path}`), html);
+const devScriptUrls = (html: string, scripts: [url: string, path: string][]): string =>
+  scripts.reduce((h, [url, path]) => h.replace(url, `/@fs${path}`), html);
 
 const CONTENT_TYPES: Record<string, string> = {
   ".html": "text/html; charset=utf-8",
@@ -71,57 +73,68 @@ const walk = (dir: string): string[] =>
     .map((d) => join(d.parentPath, d.name));
 
 type Harvest = {
-  css: string;
-  scripts: [url: string, code: string][];
+  inlined: Map<string, string>;
   fonts: Map<string, string>;
 };
 
-function harvestBundle(bundle: Record<string, BundleEntry>, root: string): Harvest {
+const text = (source: string | Uint8Array): string =>
+  typeof source === "string" ? source : new TextDecoder().decode(source);
+
+function harvestBundle(
+  bundle: Record<string, BundleEntry>,
+  root: string,
+  entries: PostEntry[],
+): Harvest {
   const cssPath = resolve(root, CSS_ENTRY);
-  let css: string | undefined;
-  const scripts = new Map<string, string>();
+  const targets: [url: string, path: string][] = [
+    [CSS_URL, cssPath],
+    ...SCRIPTS,
+    ...entries.map((e): [string, string] => [e.url, e.path]),
+  ];
+  const inlined = new Map<string, string>();
+  const cssOwner = new Map<string, string>();
   const fonts = new Map<string, string>();
+  // oxlint-disable eslint/no-param-reassign
+  for (const [key, entry] of Object.entries(bundle)) {
+    if (entry.type !== "chunk") continue;
+    const url = targets.find(([, path]) => entry.facadeModuleId === path)?.[0];
+    if (url === undefined) continue;
+    if (url.endsWith(".js")) inlined.set(url, entry.code!.trimEnd());
+    else for (const f of entry.viteMetadata?.importedCss ?? []) cssOwner.set(f, url);
+    delete bundle[key];
+  }
+  for (const [key, entry] of Object.entries(bundle)) {
+    if (entry.type !== "asset") continue;
+    if (entry.fileName.endsWith(".woff2")) {
+      for (const name of entry.names ?? []) fonts.set(`/fonts/${name}`, `/${entry.fileName}`);
+    }
+    if (!entry.fileName.endsWith(".css")) continue;
+    const owner = cssOwner.get(entry.fileName);
+    if (owner === undefined) throw new Error(`Bundle has an unowned stylesheet ${entry.fileName}`);
+    inlined.set(owner, text(entry.source!));
+    delete bundle[key];
+  }
+  // oxlint-enable eslint/no-param-reassign
+  for (const [url] of targets) {
+    if (!inlined.has(url)) throw new Error(`Bundle is missing the entry behind ${url}`);
+  }
   const themeDir = dirname(cssPath);
   const themeCss = readdirSync(themeDir)
     .filter((f) => f.endsWith(".css"))
     .map((f) => readFileSync(join(themeDir, f), "utf8"))
     .join("\n");
-  // oxlint-disable eslint/no-param-reassign
-  for (const [key, entry] of Object.entries(bundle)) {
-    if (entry.type === "chunk") {
-      const script = SCRIPTS.find(([, path]) => entry.facadeModuleId === path);
-      if (script) {
-        scripts.set(script[0], entry.code!.trimEnd());
-        delete bundle[key];
-      }
-      if (entry.facadeModuleId === cssPath) delete bundle[key];
-    }
-    if (entry.type === "asset" && entry.fileName.endsWith(".woff2")) {
-      for (const name of entry.names ?? []) fonts.set(`/fonts/${name}`, `/${entry.fileName}`);
-    }
-    if (entry.type === "asset" && entry.fileName.endsWith(".css")) {
-      css =
-        typeof entry.source === "string" ? entry.source : new TextDecoder().decode(entry.source);
-      checkCssLowering(
-        MODERN_CSS_MARKERS.filter((m) => themeCss.includes(m)),
-        css,
-      );
-      delete bundle[key];
-    }
-  }
-  // oxlint-enable eslint/no-param-reassign
-  if (css === undefined) throw new Error(`Bundle is missing the entry behind ${CSS_URL}`);
-  for (const [url] of SCRIPTS) {
-    if (!scripts.has(url)) throw new Error(`Bundle is missing the entry behind ${url}`);
-  }
-  return { css, scripts: [...scripts.entries()], fonts };
+  checkCssLowering(
+    MODERN_CSS_MARKERS.filter((m) => themeCss.includes(m)),
+    inlined.get(CSS_URL)!,
+  );
+  return { inlined, fonts };
 }
 
 const VIRTUAL_PREFIX = "virtual:ssg/";
 
 type Plugin = {
   name: string;
-  config: () => Record<string, unknown>;
+  config: (config: { root?: string }) => Record<string, unknown>;
   configResolved: (config: { root: string }) => void;
   resolveId: (id: string) => string | undefined;
   generateBundle: (
@@ -165,6 +178,7 @@ type BundleEntry = {
   source?: string | Uint8Array;
   code?: string;
   names?: string[];
+  viteMetadata?: { importedCss: Set<string> };
 };
 
 type DevServer = {
@@ -185,6 +199,11 @@ type DevServer = {
 export function ssg(options: SsgOptions): Plugin {
   let root = "";
   const postsDir = (): string => resolve(root, options.postsDir);
+  let entries: PostEntry[] = [];
+  const scriptList = (): [url: string, path: string][] => [
+    ...SCRIPTS,
+    ...entries.filter((e) => e.url.endsWith(".js")).map((e): [string, string] => [e.url, e.path]),
+  ];
 
   let cache: Promise<{ posts: Post[]; pages: Map<string, string> }> | null = null;
   const site = (): Promise<{ posts: Post[]; pages: Map<string, string> }> =>
@@ -197,16 +216,20 @@ export function ssg(options: SsgOptions): Plugin {
   return {
     name: "blog:ssg",
 
-    config: () => ({
-      appType: "custom",
-      build: {
-        rollupOptions: {
-          input: Object.fromEntries(
-            ["a5ebec", ...SCRIPT_NAMES].map((k) => [k, VIRTUAL_PREFIX + k]),
-          ),
+    config: (config) => {
+      entries = postEntries(resolve(config.root ?? ".", options.postsDir));
+      return {
+        appType: "custom",
+        build: {
+          rollupOptions: {
+            input: Object.fromEntries([
+              ...["a5ebec", ...SCRIPT_NAMES].map((k) => [k, VIRTUAL_PREFIX + k]),
+              ...entries.map(({ url, path }) => [url.slice(1), path]),
+            ]),
+          },
         },
-      },
-    }),
+      };
+    },
 
     configResolved(config) {
       root = config.root;
@@ -221,7 +244,9 @@ export function ssg(options: SsgOptions): Plugin {
     async generateBundle(_options, bundle) {
       for (const warning of checkOriginTrials(options.originTrials ?? [])) console.warn(warning);
 
-      const { css, scripts, fonts } = harvestBundle(bundle, root);
+      const { inlined, fonts } = harvestBundle(bundle, root, entries);
+      const pick = (urls: string[]): [url: string, code: string][] =>
+        urls.map((u) => [u, inlined.get(u)!]);
       const assets = new Map(fonts);
       const imageDims = new Map<string, Dims>();
       for (const [urlPrefix, dir] of ASSET_DIRS) {
@@ -242,7 +267,10 @@ export function ssg(options: SsgOptions): Plugin {
       const { posts, pages: pageMap } = await site();
       for (const post of posts) {
         const dir = resolve(postsDir(), postDir(post));
-        for (const file of walk(dir).filter((f) => basename(f) !== "index.md")) {
+        const media = walk(dir).filter(
+          (f) => basename(f) !== "index.md" && !SOURCE_EXTS.has(extname(f)),
+        );
+        for (const file of media) {
           const source = readFileSync(file);
           const url = `/posts/${postDir(post)}/${relative(dir, file).split(sep).join("/")}`;
           this.emitFile({ type: "asset", fileName: url.slice(1), source });
@@ -251,13 +279,22 @@ export function ssg(options: SsgOptions): Plugin {
         }
       }
 
+      const ownPost = new Map(posts.map((post) => [pageFile(postPath(post)), post]));
+      const inline = (fileName: string, page: string): string => {
+        const post = ownPost.get(fileName);
+        return inlineAssets(
+          page,
+          pick([CSS_URL, ...(post?.style ? [postStyleUrl(post)] : [])]),
+          pick([...SCRIPTS.map(([u]) => u), ...(post?.script ? [postScriptUrl(post)] : [])]),
+        );
+      };
       for (const [fileName, source] of pageMap) {
         this.emitFile({
           type: "asset",
           fileName,
           source: fileName.endsWith(".html")
             ? rewriteAssetUrls(
-                enhanceMedia(inlineAssets(source, css, scripts), imageDims),
+                enhanceMedia(inline(fileName, source), imageDims),
                 assets,
                 options.siteUrl,
               )
@@ -270,7 +307,7 @@ export function ssg(options: SsgOptions): Plugin {
       for (const dir of [options.postsDir, options.embedsFile, "theme", "_assets"]) {
         server.watcher.add(resolve(server.config.root, dir));
       }
-      for (const [, path] of SCRIPTS) server.watcher.add(path);
+      for (const [, path] of scriptList()) server.watcher.add(path);
       server.watcher.on("all", () => {
         cache = null;
         server.ws.send({ type: "full-reload" });
@@ -326,13 +363,19 @@ export function ssg(options: SsgOptions): Plugin {
                 const [key, page] = match;
                 const type = contentType(key);
                 return key.endsWith(".html")
-                  ? send(await server.transformIndexHtml(url, devScriptUrls(page!)), type)
+                  ? send(
+                      await server.transformIndexHtml(url, devScriptUrls(page!, scriptList())),
+                      type,
+                    )
                   : send(page!, type);
               }
               if (extname(url) === "" || url.endsWith(".html")) {
                 const notFound = pagesMap.get("404.html")!;
                 return send(
-                  await server.transformIndexHtml("/404.html", devScriptUrls(notFound)),
+                  await server.transformIndexHtml(
+                    "/404.html",
+                    devScriptUrls(notFound, scriptList()),
+                  ),
                   CONTENT_TYPES[".html"]!,
                   404,
                 );

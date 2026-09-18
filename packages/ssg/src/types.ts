@@ -20,6 +20,8 @@ export type Post = {
   rssDescription: string;
   cover?: string;
   aliases?: string[];
+  script?: string;
+  style?: string;
   html: string;
   markdown: string;
 };
