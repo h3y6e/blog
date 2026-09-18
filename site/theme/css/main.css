@@ -27,8 +27,10 @@ body {
     "a5ebec Mono", "a5ebec Mono Fallback", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
   font-feature-settings: "tnum", "case", "zero", "locl";
-  text-wrap: pretty;
   text-spacing-trim: trim-start;
+  /* Japanese body wants flush line ends; text-wrap: pretty ruins them. */
+  hanging-punctuation: allow-end;
+  line-break: strict;
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
   -webkit-text-size-adjust: 100%;
