@@ -40,6 +40,9 @@ const unescape = (s: string): string => s.replace(/\\([!-/:-@[-`{-~])/g, "$1");
 const BLOCK_TAGS =
   /^<\/?(?:address|article|aside|audio|blockquote|body|center|details|dialog|div|dl|dt|dd|fieldset|figcaption|figure|footer|form|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|nav|ol|p|script|section|source|style|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul|video)(?:[\s/>]|$)/i;
 
+// CommonMark HTML block type 7: any complete tag alone on its line, e.g. a custom element.
+const TAG_LINE = /^<\/?[a-zA-Z][a-zA-Z0-9-]*(?:\s[^<>]*?)?\/?>\s*$/;
+
 const FENCE = /^(`{3,})(.*)$/;
 const HEADING = /^ {0,3}(#{1,6}) +(.*?)\s*#*\s*$/;
 const HR = /^ {0,3}(?:-{3,}|\*{3,}|_{3,})\s*$/;
@@ -99,7 +102,7 @@ function parseBlocks(lines: string[], ctx: Ctx): string {
       out.push(raw.join("\n"));
       continue;
     }
-    if (BLOCK_TAGS.test(line)) {
+    if (BLOCK_TAGS.test(line) || TAG_LINE.test(line)) {
       const raw: string[] = [];
       for (let l: string | undefined; (l = lines[i]) !== undefined && l.trim(); i++) raw.push(l);
       out.push(raw.join("\n"));

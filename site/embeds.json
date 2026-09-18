@@ -29,10 +29,20 @@
     "title": "ChatGPT desktop app | ChatGPT Learn",
     "description": "Use the ChatGPT desktop app for projects, files, and long-running work."
   },
+  "https://docs.typesafe.ai/concepts/use-case-map": {
+    "image": "https://ts-docs.mintlify.app/mintlify-assets/_next/image?url=%2F_mintlify%2Fapi%2Fog%3Fdivision%3DTypeSafe%2Bfoundations%26title%3DExample%2Buse%2Bcases%26description%3DExplore%2BTypeSafe%2Buse%2Bcases%2Bby%2Bindustry%2Band%2Bturn%2Bpromising%2Bideas%2Binto%2Bsoftware%2Bworkflows.%26theme%3Df0580ae664a0195833f0555d&w=1200&q=100",
+    "title": "Example use cases - TypeSafe AI",
+    "description": "Explore TypeSafe use cases by industry and turn promising ideas into software workflows."
+  },
   "https://e34.fm/": {
     "image": "https://e34.fm/images/logo-beta.png",
     "title": "e34.fm - e34.fm",
     "description": "A podcast hosted by @deeeet and @rrreeeyyy. We talk about infrastructure, SRE, and platform engineering. Please reach us on Twitter at @e34fm or by email at hello@e34.fm."
+  },
+  "https://flueframework.com": {
+    "image": "https://flueframework.com/og3.jpg",
+    "title": "Flue — The Open Agent Framework",
+    "description": "Build durable AI agents with Flue's programmable TypeScript harness. Write once, deploy anywhere, use any LLM."
   },
   "https://fukabori.fm/": {
     "image": "https://fukabori.fm/images/ogp.jpg",
@@ -205,6 +215,11 @@
     "image": "https://uit-inside.linecorp.com/assets/images/brand.png",
     "title": "UIT INSIDE - LINEヤフー UIT の開発者による「最新のフロントエンド」をキャッチアップできる Podcast",
     "description": "LINEヤフー UIT の開発者による「最新のフロントエンド」をキャッチアップできる Podcast"
+  },
+  "https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/": {
+    "image": "",
+    "title": "The Five Levels: from Spicy Autocomplete to the Dark Factory – Dan Shapiro's Blog",
+    "description": ""
   },
   "https://www.ted.com/about/programs-initiatives/ted-talks/ted-talks-daily": {
     "image": "https://pl.tedcdn.com/social/ted-logo-fb.png",
