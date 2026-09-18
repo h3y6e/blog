@@ -9,11 +9,9 @@ const SITE = join(FONTS, "../..");
 
 const codepoints = (text: string): string[] => Array.from(text).filter((c) => !/\s/.test(c));
 
-test("when a character appears on the site, the Firge35Nerd Console subset was generated with it", () => {
+test("when a character appears on the site, the a5ebec Mono subset was generated with it", () => {
   // Arrange
-  const known = new Set(
-    codepoints(readFileSync(join(FONTS, "Firge35NerdConsole.chars.txt"), "utf8")),
-  );
+  const known = new Set(codepoints(readFileSync(join(FONTS, "a5ebecMono.chars.txt"), "utf8")));
   const files = TEXT_SOURCES.flatMap((pattern) => globSync(pattern, { cwd: SITE }));
   const used = new Set(files.flatMap((file) => codepoints(readFileSync(join(SITE, file), "utf8"))));
 

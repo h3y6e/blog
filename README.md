@@ -38,5 +38,7 @@ vp build    # outputs to site/dist
 [`hugo-theme-terminal`](https://github.com/panr/hugo-theme-terminal/)
 [(MIT License)](https://github.com/panr/hugo-theme-terminal/blob/master/LICENSE.md).
 
-The font for `Blog`'s OG images is [`Firge35`](https://github.com/yuru7/Firge)
-[(SIL OPEN FONT LICENSE)](https://github.com/yuru7/Firge/blob/master/LICENSE).
+`Blog`'s web font ([`site/theme/fonts/`](./site/theme/fonts/)) is a renamed subset of
+[`Firge35Nerd Console`](https://github.com/yuru7/Firge) under the
+[SIL Open Font License](./site/theme/fonts/LICENSE).
+The font for `Blog`'s OG images is `Firge35` from the same project.
