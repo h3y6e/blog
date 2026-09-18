@@ -29,6 +29,8 @@ function parsePost(postsDir: string, path: string, source: string, embeds: Embed
   if (frontmatter.cover !== undefined && !existsSync(join(dir, frontmatter.cover))) {
     throw new Error(`${path}: cover not found: ${frontmatter.cover}`);
   }
+  const script = join(dir, "index.ts");
+  const style = join(dir, "index.css");
   const rendered = render(expandShortcodes(body, embeds), {
     math: texToMathML,
     highlight: (code, lang) => withLineNumbers(highlight(code, lang)),
@@ -40,6 +42,8 @@ function parsePost(postsDir: string, path: string, source: string, embeds: Embed
     rssDescription: frontmatter.rss_description,
     ...(frontmatter.cover !== undefined && { cover: frontmatter.cover }),
     ...(frontmatter.aliases !== undefined && { aliases: frontmatter.aliases }),
+    ...(existsSync(script) && { script }),
+    ...(existsSync(style) && { style }),
     html: absolutizeMedia(rendered, dir, postPath(ref)),
     markdown: body.trim(),
   };
@@ -50,6 +54,24 @@ export function postPaths(postsDir: string): string[] {
     .filter((d) => d.isFile() && d.name === "index.md")
     .map((d) => join(d.parentPath, d.name))
     .toSorted();
+}
+
+export type PostEntry = { url: string; path: string };
+
+const ENTRY_FILES: [file: string, url: string][] = [
+  ["index.ts", "index.js"],
+  ["index.css", "index.css"],
+];
+
+export function postEntries(postsDir: string): PostEntry[] {
+  return postPaths(postsDir).flatMap((p) => {
+    const dir = dirname(p);
+    const urlDir = `/posts/${relative(postsDir, dir).split(sep).join("/")}/`;
+    return ENTRY_FILES.flatMap(([file, url]) => {
+      const path = join(dir, file);
+      return existsSync(path) ? [{ url: urlDir + url, path }] : [];
+    });
+  });
 }
 
 export async function loadPosts(postsDir: string, embedsFile: string): Promise<Post[]> {

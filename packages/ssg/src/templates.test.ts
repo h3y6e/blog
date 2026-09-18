@@ -144,6 +144,19 @@ describe("postPage", () => {
     expect(page.match(/rel="preconnect" href="https:\/\/platform\.twitter\.com"/g)).toHaveLength(1);
   });
 
+  it("when the post has a script and a style, links both from the post URL; otherwise emits neither tag", () => {
+    // Act
+    const both = postPage(site, post({ script: "/abs/index.ts", style: "/abs/index.css" }));
+    const neither = postPage(site, post());
+    // Assert
+    expect(both).toContain(
+      '<script type="module" src="/posts/2020/12/18/a2net/index.js"></script>',
+    );
+    expect(both).toContain('<link rel="stylesheet" href="/posts/2020/12/18/a2net/index.css" />');
+    expect(neither).not.toContain("/posts/2020/12/18/a2net/index.js");
+    expect(neither).not.toContain("/posts/2020/12/18/a2net/index.css");
+  });
+
   it("when the post embeds no third-party script, emits no preconnect", () => {
     // Act
     const page = postPage(site, post());

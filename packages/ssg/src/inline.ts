@@ -1,12 +1,14 @@
-export function inlineAssets(
-  page: string,
-  css: string,
-  scripts: [url: string, code: string][],
-): string {
-  if (css.includes("</style>")) throw new Error("Bundled CSS contains </style>; cannot inline");
-  const link = /<link rel="stylesheet" href="[^"]*" \/>/;
-  if (!link.test(page)) throw new Error("Page has no stylesheet link to inline into");
-  let out = page.replace(link, () => `<style>${css}</style>`);
+type Inlined = [url: string, code: string][];
+
+export function inlineAssets(page: string, styles: Inlined, scripts: Inlined): string {
+  let out = page;
+  for (const [url, css] of styles) {
+    if (css.includes("</style>"))
+      throw new Error(`Bundled ${url} contains </style>; cannot inline`);
+    const link = `<link rel="stylesheet" href="${url}" />`;
+    if (!out.includes(link)) throw new Error(`Page has no stylesheet link for ${url}`);
+    out = out.replace(link, () => `<style>${css}</style>`);
+  }
   for (const [url, code] of scripts) {
     if (code.includes("</script>")) {
       throw new Error(`Bundled ${url} contains </script>; cannot inline`);

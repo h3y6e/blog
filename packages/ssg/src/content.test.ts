@@ -2,7 +2,7 @@ import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vite-plus/test";
-import { loadPosts } from "./content.ts";
+import { loadPosts, postEntries } from "./content.ts";
 
 const FRONTMATTER = '---\ntitle: "t"\ndate: 2020-12-18\ntags: []\nrss_description: "d"\n';
 
@@ -56,5 +56,39 @@ describe("loadPosts", () => {
     await expect(loadPosts(root, join(root, "embeds.json"))).rejects.toThrow(
       "media not found: rack.jpg",
     );
+  });
+
+  it("when index.ts and index.css sit beside index.md, the post records their paths; otherwise it has none", async () => {
+    // Arrange
+    const root = site("2020/12/18/a2net", "", ["index.ts", "index.css"]);
+    const plain = site("2020/12/18/plain", "");
+    // Act
+    const [both] = await loadPosts(root, join(root, "embeds.json"));
+    const [neither] = await loadPosts(plain, join(plain, "embeds.json"));
+    // Assert
+    expect(both).toMatchObject({
+      script: join(root, "2020/12/18/a2net/index.ts"),
+      style: join(root, "2020/12/18/a2net/index.css"),
+    });
+    expect(neither!.script).toBeUndefined();
+    expect(neither!.style).toBeUndefined();
+  });
+});
+
+describe("postEntries", () => {
+  it("when scanning the posts dir, maps each index.ts / index.css beside an index.md to its page URL and ignores other files", () => {
+    // Arrange
+    const root = site("2020/12/18/a2net", "", ["index.ts", "other.ts"]);
+    mkdirSync(join(root, "2020/12/19/styled"), { recursive: true });
+    writeFileSync(join(root, "2020/12/19/styled/index.md"), `${FRONTMATTER}---\n`);
+    writeFileSync(join(root, "2020/12/19/styled/index.css"), "");
+    // Act & Assert
+    expect(postEntries(root)).toEqual([
+      { url: "/posts/2020/12/18/a2net/index.js", path: join(root, "2020/12/18/a2net/index.ts") },
+      {
+        url: "/posts/2020/12/19/styled/index.css",
+        path: join(root, "2020/12/19/styled/index.css"),
+      },
+    ]);
   });
 });

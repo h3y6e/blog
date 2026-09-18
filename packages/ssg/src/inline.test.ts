@@ -12,10 +12,14 @@ const page =
 describe("inlineAssets", () => {
   it("when given bundled css and script code, replaces the external references inline preserving each tag form", () => {
     // Act
-    const out = inlineAssets(page, "body{color:red}$&", [
-      ["/libs/client/switcher.js", 'console.log("s$&")'],
-      ["/libs/client/vt.js", 'console.log("v")'],
-    ]);
+    const out = inlineAssets(
+      page,
+      [["/css/a5ebec.css", "body{color:red}$&"]],
+      [
+        ["/libs/client/switcher.js", 'console.log("s$&")'],
+        ["/libs/client/vt.js", 'console.log("v")'],
+      ],
+    );
     // Assert
     expect(out).toBe(
       "<head><style>body{color:red}$&</style>" +
@@ -28,17 +32,19 @@ describe("inlineAssets", () => {
 
   it("when the page lacks the stylesheet link or a script tag, inlining throws", () => {
     // Act & Assert
-    expect(() => inlineAssets("<head></head>", "css", [])).toThrow("stylesheet");
-    expect(() => inlineAssets(page, "css", [["/libs/client/gone.js", "x"]])).toThrow(
+    expect(() => inlineAssets("<head></head>", [["/css/a5ebec.css", "css"]], [])).toThrow(
+      "/css/a5ebec.css",
+    );
+    expect(() => inlineAssets(page, [], [["/libs/client/gone.js", "x"]])).toThrow(
       "/libs/client/gone.js",
     );
   });
 
   it("when inlined code would terminate its own tag early, inlining throws", () => {
     // Act & Assert
-    expect(() => inlineAssets(page, "a{}</style>", [])).toThrow("</style>");
-    expect(() =>
-      inlineAssets(page, "css", [["/libs/client/switcher.js", 'x="</script>"']]),
-    ).toThrow("</script>");
+    expect(() => inlineAssets(page, [["/css/a5ebec.css", "a{}</style>"]], [])).toThrow("</style>");
+    expect(() => inlineAssets(page, [], [["/libs/client/switcher.js", 'x="</script>"']])).toThrow(
+      "</script>",
+    );
   });
 });
