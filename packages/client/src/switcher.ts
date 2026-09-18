@@ -12,8 +12,6 @@ const theme = (): "light" | "dark" => (style.colorScheme === "light" ? "light" :
 const apply = (target: "light" | "dark"): void => {
   style.colorScheme = target;
   metaThemeColor.setAttribute("content", target === "dark" ? "#2f2f2f" : "#fbfbfb");
-  const logo = document.querySelector<HTMLElement>(".logo");
-  if (logo) logo.innerText = target === "dark" ? "#a5ebec" : "#2aa298";
   switcher.innerText = target === "dark" ? "light" : "dark";
   for (const tweet of document.querySelectorAll(".twitter-tweet")) {
     tweet.setAttribute("data-theme", target);
