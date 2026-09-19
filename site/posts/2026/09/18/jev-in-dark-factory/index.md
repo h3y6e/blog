@@ -1,6 +1,7 @@
 ---
 title: "JevをDark Factoryに組み込む"
 date: 2026-09-18
+type: "Report"
 tags: ["jev", "flue"]
 rss_description: "if文では書けないがLLMに任せるには重い判定をTypeSafe AIのJevに答えさせた。Flueで組んだDark Factoryのトリアージ・出力検証・リスク分類で検証。危険側の誤りは一件も出なかったが、合否を一発で答えさせると精度が伸びず、狭い質問に分解して答えを組み合わせる必要があった"
 ---

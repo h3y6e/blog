@@ -1,8 +1,9 @@
 ---
 title: "GitLabのアップデート & Zero downtime updates & Slack通知"
 date: 2020-05-08
+type: "Guide"
 aliases: ["/posts/gitlab-zero-downtime-updates/"]
-tags: ["gitlab", "slack"]
+tags: ["gitlab"]
 rss_description: "重い腰を上げてGitLabをアップデートした。そのついでにZero downtime updatesに対応させた。"
 ---
 

@@ -1,8 +1,9 @@
 ---
 title: "セキュリティ・キャンプ2019起床記"
 date: 2019-08-17
+type: "Report"
 aliases: ["/posts/seccamp2019-wakeup/"]
-tags: ["seccamp", "wakeup"]
+tags: ["seccamp"]
 rss_description: "セキュリティ・キャンプ全国大会2019に参加した話起床編"
 ---
 

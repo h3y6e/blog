@@ -1,8 +1,9 @@
 ---
 title: "Netlify +  GitHub ActionsでHugo製ブログの予約投稿"
 date: 2019-12-07
+type: "Guide"
 aliases: ["/posts/netlify-github-timed-post/"]
-tags: ["hugo", "netlify", "githubactions", "ci"]
+tags: ["hosting", "gha"]
 rss_description: "NetlifyでホスティングしているHugo製ブログで予約投稿したいなと思ってGitHub Actions使ったらめちゃ簡単だった。"
 ---
 

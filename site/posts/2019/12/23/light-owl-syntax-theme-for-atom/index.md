@@ -1,8 +1,9 @@
 ---
 title: "誰得なAtomのSyntax themeを作った"
 date: 2019-12-23
+type: "Report"
 aliases: ["/posts/light-owl-syntax-theme-for-atom/"]
-tags: ["camphor", "adventcalendar", "atom", "vscode", "julia"]
+tags: ["camphor", "adventcalendar", "editor", "julia"]
 rss_description: "Atomは好きですか？ライトテーマは好きですか？Juliaは好きですか？"
 cover: "light-owl-syntax.jpg"
 ---

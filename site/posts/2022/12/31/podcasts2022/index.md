@@ -1,6 +1,7 @@
 ---
 title: "2022年に聴いていたPodcast"
 date: 2022-12-31
+type: "Essay"
 aliases: ["/posts/podcasts2022/"]
 tags: ["podcast"]
 rss_description: "今年聴いたPodcastで勧めたいやつを雑に紹介する。"

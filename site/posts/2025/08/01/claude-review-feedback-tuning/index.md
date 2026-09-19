@@ -1,8 +1,9 @@
 ---
 title: "Claudeによるコードレビューをフィードバックで自己改善する仕組み"
 date: 2025-08-01
+type: "Report"
 aliases: ["/posts/20250801-claude-review-feedback-tuning/"]
-tags: ["github", "claude"]
+tags: ["claude", "review", "gha"]
 rss_description: "Claudeによるコードレビューに対する開発者のフィードバックを収集・分析し、レビュー品質を自動的に改善するワークフローを実装した"
 ---
 

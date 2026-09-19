@@ -1,8 +1,9 @@
 ---
 title: "ClaudeによるコードレビューをAgent Skillsで育てる"
 date: 2026-03-24
+type: "Report"
 aliases: ["/posts/20260324-claude-review-agent-skills/"]
-tags: ["github", "claude"]
+tags: ["claude", "review", "agentskills"]
 rss_description: "Claudeレビューの自己改善ループをAgent Skills中心に再設計し、自動レビューと対話モードで同じ知識を共有するようにした"
 ---
 

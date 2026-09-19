@@ -1,6 +1,7 @@
 ---
 title: "LLM Wikiを日々の開発に組み込む"
 date: 2026-09-17
+type: "Report"
 aliases: ["/posts/20260917-building-wiki-skill/"]
 tags: ["wiki", "okf", "agentskills"]
 rss_description: "一次情報からエージェントがwikiを編纂して維持するための運用ルールを、building-wikiというAgent Skillにまとめた"

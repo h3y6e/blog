@@ -1,8 +1,9 @@
 ---
 title: "ブラックフライデーで買ったサービス"
 date: 2024-11-29
+type: "Essay"
 aliases: ["/posts/black-friday-services-2024/"]
-tags: ["subscription"]
+tags: ["shopping"]
 rss_description: "2024年のブラックフライデーで購入したサービスと、購入を見送ったサービスについて"
 ---
 

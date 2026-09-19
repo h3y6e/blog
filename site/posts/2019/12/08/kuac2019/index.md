@@ -1,8 +1,9 @@
 ---
 title: "メインアカウントにbot機能を搭載して運用してるけど意外と上手くやってる"
 date: 2019-12-08
+type: "Report"
 aliases: ["/posts/kuac2019/"]
-tags: ["kuac", "adventcalendar", "twitter", "bot"]
+tags: ["kuac", "adventcalendar", "automation"]
 rss_description: "僕のTwitterアカウントに付属している単位取得率botと降水量を教えてくれるbotについて"
 ---
 

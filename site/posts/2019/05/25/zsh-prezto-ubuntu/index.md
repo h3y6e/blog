@@ -1,8 +1,9 @@
 ---
 title: "Ubuntu,Debianにzsh+prezto導入&テーマ変更"
 date: 2019-05-25
+type: "Guide"
 aliases: ["/posts/zsh-prezto-ubuntu/"]
-tags: ["ubuntu", "debian", "zsh", "prezto", "shell"]
+tags: ["linux", "shell"]
 rss_description: "ググればすぐ出てくるけど何回も同じ作業するのでいい加減まとめたほうがいい気がした。"
 ---
 

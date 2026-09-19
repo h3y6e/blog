@@ -1,8 +1,9 @@
 ---
 title: "nvtopを非rootでインストール"
 date: 2020-01-28
+type: "Guide"
 aliases: ["/posts/non-root-nvtop/"]
-tags: ["memo"]
+tags: ["linux"]
 rss_description: "nvtopを研究室のGPUサーバーにインストールした。"
 ---
 

@@ -7,9 +7,19 @@ import {
   redirectPage,
   listPage,
   tagsIndexPage,
+  typesIndexPage,
 } from "./templates.ts";
 import type { Post, SiteConfig } from "./types.ts";
-import { archivePaths, byDateDesc, pageFile, postPath, tagPath, tagsIndexPath } from "./urls.ts";
+import {
+  archivePaths,
+  byDateDesc,
+  pageFile,
+  postPath,
+  tagPath,
+  tagsIndexPath,
+  typePath,
+  typesIndexPath,
+} from "./urls.ts";
 
 function postsJson(site: SiteConfig, posts: Post[]): string {
   return JSON.stringify(
@@ -17,6 +27,7 @@ function postsJson(site: SiteConfig, posts: Post[]): string {
       slug: p.slug,
       title: p.title,
       date: p.date,
+      type: p.type,
       tags: p.tags,
       description: p.rssDescription,
       url: `${site.siteUrl}${postPath(p)}`,
@@ -33,6 +44,7 @@ export function buildPages(site: SiteConfig, posts: Post[]): Map<string, string>
   pages.set("llms.txt", llmsTxt(site, posts));
   pages.set("llms-full.txt", llmsFullTxt(site, posts));
   pages.set(pageFile(tagsIndexPath(site)), tagsIndexPage(site, posts));
+  pages.set(pageFile(typesIndexPath(site)), typesIndexPage(site, posts));
   for (const post of posts) {
     pages.set(pageFile(postPath(post)), postPage(site, post));
     pages.set(`${postPath(post).slice(1)}index.md`, postMarkdown(site, post));
@@ -47,6 +59,10 @@ export function buildPages(site: SiteConfig, posts: Post[]): Map<string, string>
       pageFile(tagPath(site, tag)),
       listPage(site, `Tag: #${tag}`, tagPath(site, tag), tagged),
     );
+  }
+  for (const type of new Set(posts.map((p) => p.type))) {
+    const typed = posts.filter((p) => p.type === type);
+    pages.set(pageFile(typePath(site, type)), listPage(site, type, typePath(site, type), typed));
   }
   const archives = new Set(posts.flatMap((p) => archivePaths(p.date)));
   for (const path of archives) {

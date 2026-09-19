@@ -1,8 +1,9 @@
 ---
 title: "RustyKeys ビルドログ"
 date: 2022-05-02
+type: "Build"
 aliases: ["/posts/rustykeys-buildlog/"]
-tags: ["keyboard", "buildlog"]
+tags: ["keyboard"]
 rss_description:  "RustyKeysのビルドログです。"
 cover: "rustykeys.jpg"
 ---

@@ -1,13 +1,14 @@
 export type Frontmatter = {
   title: string;
   date: string;
+  type: string;
   tags: string[];
   rss_description: string;
   cover?: string;
   aliases?: string[];
 };
 
-const STRING_KEYS = new Set(["title", "rss_description", "cover"]);
+const STRING_KEYS = new Set(["title", "type", "rss_description", "cover"]);
 const LIST_KEYS = new Set(["tags", "aliases"]);
 
 function parseScalar(value: string, key: string): string {
@@ -98,7 +99,7 @@ export function parseFrontmatter(source: string): {
     }
   }
 
-  for (const required of ["title", "date", "tags", "rss_description"]) {
+  for (const required of ["title", "date", "type", "tags", "rss_description"]) {
     if (!(required in data)) throw new Error(`frontmatter: missing key: ${required}`);
   }
   // oxlint-disable-next-line typescript/no-unsafe-type-assertion, typescript/consistent-type-assertions

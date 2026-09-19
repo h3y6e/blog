@@ -39,7 +39,8 @@
     color: #a5ecca;
   }
 
-  & table.tagpage {
+  & table.tagpage,
+  & table.typepage {
     border: none;
     margin: 0;
     & .count {

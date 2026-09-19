@@ -1,8 +1,9 @@
 ---
 title: "Windows 10のためのTerminal"
 date: 2019-05-19
+type: "Guide"
 aliases: ["/posts/terminals-for-windows/"]
-tags: ["windows", "terminal", "shell"]
+tags: ["windows", "shell"]
 rss_description: "WindowsのTerminal探し。「日本語入力対応、タブ機能あり、高速、お洒落」"
 ---
 

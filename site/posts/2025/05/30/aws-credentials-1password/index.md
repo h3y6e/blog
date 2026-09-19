@@ -1,6 +1,7 @@
 ---
 title: "1PasswordでAWSクレデンシャルを扱うならop pluginより素のopコマンド"
 date: 2025-05-30
+type: "Guide"
 aliases: ["/posts/aws-credentials-1password/"]
 tags: ["aws", "1password"]
 rss_description: "1Passwordでcredential_processを使う際は、op pluginを経由せず素のopコマンドを使う方が柔軟で便利"

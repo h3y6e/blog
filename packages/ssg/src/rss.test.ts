@@ -11,12 +11,18 @@ const site: SiteConfig = {
   postsDir: "posts",
   embedsFile: "embeds.json",
   tagPath: "tags",
+  typePath: "types",
+  postTypes: [
+    { name: "Report", description: "r" },
+    { name: "Essay", description: "e" },
+  ],
 };
 
 const post = (over: Partial<Post>): Post => ({
   slug: "a2net",
   title: "A2ネットを改善しよう",
   date: "2020-12-18",
+  type: "Report",
   tags: [],
   rssDescription: "寮のネットワークを改善している話。",
   html: "",

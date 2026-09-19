@@ -1,6 +1,7 @@
 ---
 title: "Podcastことはじめ"
 date: 2022-12-09
+type: "Guide"
 aliases: ["/posts/getting-started-with-podcasting/"]
 tags: ["camphor", "adventcalendar", "podcast"]
 rss_description: "CAMPHOR-でPodcastを始めたので収録から配信までの知見を書く。"

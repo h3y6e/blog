@@ -1,8 +1,9 @@
 ---
 title: "Netlifyでさくっとカスタムドメイン"
 date: 2019-06-09
+type: "Guide"
 aliases: ["/posts/netlify-custom-domain/"]
-tags: ["netlify", "domain"]
+tags: ["hosting"]
 rss_description:  "院試勉強の疲れからか気がついたらドメイン買ってnetlifyに設定してしまったので殴り書く。"
 ---
 

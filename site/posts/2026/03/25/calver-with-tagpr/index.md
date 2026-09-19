@@ -1,8 +1,9 @@
 ---
 title: "バージョニングで悩みたくないならCalVer"
 date: 2026-03-25
+type: "Essay"
 aliases: ["/posts/20260325-calver-with-tagpr/"]
-tags: ["github", "calver"]
+tags: ["versioning", "gha"]
 rss_description: "SemVerの意味付けがしにくく定期的にリリースするプロダクトのバージョニングにはCalVerを採用しよう"
 ---
 

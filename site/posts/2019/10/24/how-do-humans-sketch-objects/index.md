@@ -1,8 +1,9 @@
 ---
 title: "[論文読み] How Do Humans Sketch Objects? "
 date: 2019-10-24
+type: "Report"
 aliases: ["/posts/how-do-humans-sketch-objects/"]
-tags: ["paper", "cv"]
+tags: ["cv"]
 rss_description: "人間はどのように物体をスケッチするか"
 ---
 

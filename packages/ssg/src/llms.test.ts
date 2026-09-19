@@ -11,6 +11,11 @@ const site: SiteConfig = {
   postsDir: "posts",
   embedsFile: "embeds.json",
   tagPath: "tags",
+  typePath: "types",
+  postTypes: [
+    { name: "Report", description: "r" },
+    { name: "Essay", description: "e" },
+  ],
 };
 
 const posts: Post[] = [
@@ -18,6 +23,7 @@ const posts: Post[] = [
     slug: "one",
     title: "One",
     date: "2026-01-01",
+    type: "Report",
     tags: ["a", "b"],
     rssDescription: "d1",
     html: "<p>1</p>",
@@ -27,6 +33,7 @@ const posts: Post[] = [
     slug: "two",
     title: "Two",
     date: "2026-01-02",
+    type: "Essay",
     tags: ["a"],
     rssDescription: "d2",
     html: "<p>2</p>",
@@ -42,6 +49,7 @@ describe("postMarkdown", () => {
     expect(md).toBe(
       "# One\n\n" +
         "- date: 2026-01-01\n" +
+        "- type: Report\n" +
         "- tags: a, b\n" +
         "- url: https://blog.h3y6e.com/posts/2026/01/01/one/\n\n" +
         "body **one**\n",

@@ -1,8 +1,9 @@
 ---
 title: "買って（良|悪）かったもの2020"
 date: 2020-12-31
+type: "Essay"
 aliases: ["/posts/stuff2020/"]
-tags: ["stuff", "life"]
+tags: ["shopping"]
 rss_description: "2020年に買ったものを紹介する。"
 ---
 

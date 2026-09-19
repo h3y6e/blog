@@ -1,8 +1,9 @@
 ---
 title: "Ubuntuで解像度の異なる複数のディスプレイを同時に、いい感じに使いたい"
 date: 2019-05-20
+type: "Guide"
 aliases: ["/posts/multiple-displays-of-different-resolutions-in-ubuntu-for-a-nice-look/"]
-tags: ["ubuntu", "display"]
+tags: ["linux"]
 rss_description: "研究室で与えられたディスプレイの解像度が異なっていて気持ち悪かったので修正した（?)ときのメモ。"
 ---
 

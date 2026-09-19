@@ -207,10 +207,9 @@ export function ssg(options: SsgOptions): Plugin {
 
   let cache: Promise<{ posts: Post[]; pages: Map<string, string> }> | null = null;
   const site = (): Promise<{ posts: Post[]; pages: Map<string, string> }> =>
-    (cache ??= loadPosts(postsDir(), resolve(root, options.embedsFile)).then((posts) => ({
-      posts,
-      pages: buildPages(options, posts),
-    })));
+    (cache ??= loadPosts(postsDir(), resolve(root, options.embedsFile), options.postTypes).then(
+      (posts) => ({ posts, pages: buildPages(options, posts) }),
+    ));
   const pages = (): Promise<Map<string, string>> => site().then((s) => s.pages);
 
   return {

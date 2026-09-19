@@ -1,8 +1,9 @@
 ---
 title: "GitHub Pages + Netlify DNSでカスタムドメイン"
 date: 2019-06-09
+type: "Guide"
 aliases: ["/posts/github-pages-netlify-managed-dns-custom-domain/"]
-tags: ["netlify", "domain", "githubpages"]
+tags: ["hosting"]
 rss_description:  "GitHub Pagesにもカスタムドメインを設定する。"
 ---
 

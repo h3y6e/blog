@@ -1,8 +1,9 @@
 ---
 title: "issueを出したら実装される世界をgh-awで見た"
 date: 2026-04-24
+type: "Report"
 aliases: ["/posts/20260424-gh-aw-issue-driven-agentic-workflow/"]
-tags: ["github", "copilot", "gh-aw"]
+tags: ["copilot", "gha"]
 rss_description: "GitHub WorkflowsでAI Agentの出入り口を設計する方法"
 ---
 
