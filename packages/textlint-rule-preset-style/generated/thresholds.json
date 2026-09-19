@@ -36,8 +36,8 @@
         "hardMax": 0.3211009174311927
       },
       "latin": {
-        "warnMin": 0.06436406822819307,
-        "warnMax": 0.31559202919964646,
+        "warnMin": 0.0639627717186485,
+        "warnMax": 0.3151907326901019,
         "hardMin": 0,
         "hardMax": 0.6620689655172414
       }
@@ -45,8 +45,8 @@
   },
   "sentenceEnd": {
     "politeThreshold": 0.5,
-    "maxConsecutiveWarn": 26,
-    "maxConsecutiveHard": 38,
+    "maxConsecutiveWarn": 20,
+    "maxConsecutiveHard": 34,
     "register": {
       "plain": {
         "nArticles": 36,
@@ -108,7 +108,7 @@
             "warnMin": 0,
             "warnMax": 0.10859477124183006,
             "hardMin": 0,
-            "hardMax": 0.16935239277315317
+            "hardMax": 0.16264912413168228
           },
           "jotai_adj": {
             "warnMin": 0,
