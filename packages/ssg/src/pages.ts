@@ -60,9 +60,10 @@ export function buildPages(site: SiteConfig, posts: Post[]): Map<string, string>
       listPage(site, `Tag: #${tag}`, tagPath(site, tag), tagged),
     );
   }
-  for (const type of new Set(posts.map((p) => p.type))) {
-    const typed = posts.filter((p) => p.type === type);
-    pages.set(pageFile(typePath(site, type)), listPage(site, type, typePath(site, type), typed));
+  // Every configured type, not just the ones in use: the types landing page links all of them.
+  for (const { name } of site.postTypes) {
+    const typed = posts.filter((p) => p.type === name);
+    pages.set(pageFile(typePath(site, name)), listPage(site, name, typePath(site, name), typed));
   }
   const archives = new Set(posts.flatMap((p) => archivePaths(p.date)));
   for (const path of archives) {

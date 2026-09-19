@@ -104,6 +104,15 @@ describe("loadPosts", () => {
     );
   });
 
+  it("when a tag is not one lowercase word, loading throws naming it", async () => {
+    // Arrange
+    const root = site("2020/12/18/a2net", "", [], { tags: '["gh-aw"]' });
+    // Act & Assert
+    await expect(loadPosts(root, join(root, "embeds.json"), POST_TYPES)).rejects.toThrow(
+      "tag is not one lowercase word: gh-aw",
+    );
+  });
+
   it("when a postTypes entry is not one capitalized word, loading throws naming it", async () => {
     // Arrange
     const root = site("2020/12/18/a2net", "");

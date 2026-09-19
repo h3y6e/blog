@@ -82,6 +82,19 @@ describe("buildPages", () => {
     expect(report).not.toContain("/posts/2026/01/02/two/");
   });
 
+  it("when a configured type has no posts yet, its page still exists so the types landing page has no dead link", () => {
+    // Arrange
+    const withUnused = {
+      ...site,
+      postTypes: [...site.postTypes, { name: "Build", description: "b" }],
+    };
+    // Act
+    const pages = buildPages(withUnused, posts);
+    // Assert
+    expect(pages.get("types/index.html")).toContain('href="/types/build/"');
+    expect(pages.has("types/build/index.html")).toBe(true);
+  });
+
   it("when the posts index is generated, it lists metadata newest first for the WebMCP tool", () => {
     // Act
     const index = JSON.parse(buildPages(site, posts).get("posts.json")!);

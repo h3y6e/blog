@@ -35,6 +35,9 @@ function parsePost(
   if (!postTypes.some((t) => t.name === frontmatter.type)) {
     throw new Error(`${path}: unknown type: ${frontmatter.type}`);
   }
+  for (const tag of frontmatter.tags) {
+    if (!/^[a-z0-9]+$/.test(tag)) throw new Error(`${path}: tag is not one lowercase word: ${tag}`);
+  }
   if (frontmatter.cover !== undefined && !existsSync(join(dir, frontmatter.cover))) {
     throw new Error(`${path}: cover not found: ${frontmatter.cover}`);
   }
