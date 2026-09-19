@@ -10,6 +10,7 @@ import {
   listPage,
   tagsIndexPage,
   tagTable,
+  typeTable,
 } from "./templates.ts";
 import type { Post, SiteConfig } from "./types.ts";
 
@@ -22,12 +23,18 @@ const site: SiteConfig = {
   postsDir: "posts",
   embedsFile: "embeds.json",
   tagPath: "tags",
+  typePath: "types",
+  postTypes: [
+    { name: "Report", description: "r" },
+    { name: "Essay", description: "e" },
+  ],
 };
 
 const post = (over: Partial<Post> = {}): Post => ({
   slug: "a2net",
   title: "A2ネットを改善しよう",
   date: "2020-12-18",
+  type: "Report",
   tags: ["kmnac", "adventcalendar"],
   rssDescription: "寮のネットワークを改善している話。",
   html: "<p>body</p>",
@@ -38,20 +45,20 @@ const post = (over: Partial<Post> = {}): Post => ({
 const norm = (s: string): string => s.replace(/\s+/g, " ").replace(/ >/g, ">").trim();
 
 describe("headline", () => {
-  it("when given title, date and tags, renders the .franklin-headline block with /tags/ links", () => {
+  it("when given title, date, type and tags, puts the type on the date line and the tags in their own span", () => {
     // Act
-    const out = norm(headline(site, "T", "2020-12-18", ["kmnac"]).html);
+    const out = norm(headline(site, "T", "2020-12-18", "Build", ["kmnac"]).html);
     // Assert
     expect(out).toBe(
       '<div class="franklin-headline"> <h1 class="title">T</h1> ' +
-        '<div class="date">2020-12-18</div><span class="tags">' +
-        '<a href="/tags/kmnac/">#kmnac</a> </span> </div>',
+        '<div class="date">2020-12-18 <a class="type" href="/types/build/">Build</a></div>' +
+        '<span class="tags"><a href="/tags/kmnac/">#kmnac</a> </span> </div>',
     );
   });
 
-  it("when date is null, omits the date div but keeps the tags span", () => {
+  it("when date and type are null, omits the date div but keeps the tags span", () => {
     // Act
-    const out = norm(headline(site, "T", null, []).html);
+    const out = norm(headline(site, "T", null, null, []).html);
     // Assert
     expect(out).not.toContain('class="date"');
     expect(out).toContain('<span class="tags"></span>');
@@ -75,15 +82,20 @@ describe("postlist", () => {
 });
 
 describe("ogImageUrl", () => {
-  it("when given a post, builds the Cloudinary URL with encoded title, date and tags", () => {
+  it("when given a post, builds the Cloudinary URL with encoded title, date, type and tags", () => {
     // Act
-    const url = ogImageUrl({ title: "球化するUI", date: "2025-07-03", tags: ["ui"] });
+    const url = ogImageUrl({
+      title: "球化するUI",
+      date: "2025-07-03",
+      type: "Essay",
+      tags: ["ui"],
+    });
     // Assert
     expect(url).toBe(
       "https://res.cloudinary.com/dzugrdlkb/image/upload/" +
         "c_fit,w_840,co_rgb:a5ebec,l_text:Firge35-Bold.ttf_50:%E7%90%83%E5%8C%96%E3%81%99%E3%82%8BUI/" +
         "fl_layer_apply,g_south_west,x_180,y_355/" +
-        "co_rgb:a5ebec7f,l_text:Firge35-Regular.ttf_30:2025-07-03/" +
+        "co_rgb:a5ebec7f,l_text:Firge35-Regular.ttf_30:2025-07-03%20%5BEssay%5D/" +
         "fl_layer_apply,g_north_west,x_180,y_565/" +
         "c_fit,w_840,co_rgb:d3d5d57f,l_text:Firge35-Regular.ttf_30:%23ui/" +
         "fl_layer_apply,g_north_west,x_180,y_605/a5ebec-ogimage-left.png",
@@ -92,14 +104,15 @@ describe("ogImageUrl", () => {
 
   it("when given multiple tags, joins them with a space and percent-encodes each # and space", () => {
     // Act
-    const url = ogImageUrl({ title: "t", date: "2025-07-03", tags: ["a", "b"] });
+    const url = ogImageUrl({ title: "t", date: "2025-07-03", type: "Guide", tags: ["a", "b"] });
     // Assert
+    expect(url).toContain("l_text:Firge35-Regular.ttf_30:2025-07-03%20%5BGuide%5D/");
     expect(url).toContain("l_text:Firge35-Regular.ttf_30:%23a%20%23b/");
   });
 
   it("when the title contains an ampersand, matches the legacy Cloudinary encoding (unescaped, not %26)", () => {
     // Act
-    const url = ogImageUrl({ title: "A & B", date: "2025-07-03", tags: [] });
+    const url = ogImageUrl({ title: "A & B", date: "2025-07-03", type: "Essay", tags: [] });
     // Assert
     expect(url).toContain("l_text:Firge35-Bold.ttf_50:A%20&%20B/");
     expect(url).not.toContain("%26");
@@ -233,7 +246,7 @@ describe("postPage", () => {
     const page = postPage(site, post());
     // Assert
     expect(page).toContain('<script type="speculationrules">');
-    expect(page).toContain('"href_matches": ["/", "/posts/*", "/tags/*"]');
+    expect(page).toContain('"href_matches": ["/", "/posts/*", "/tags/*", "/types/*"]');
     expect(page).toContain('"moderate_viewport_heuristics"');
     expect(page).toContain('"eagerness": "moderate"');
   });
@@ -318,6 +331,22 @@ describe("tagTable", () => {
       '<table class="tagpage"> <tr><th>count</th><th>name</th></tr> ' +
         '<tr><td class="count">2</td> <td class="block"> <a href="/tags/a/">#a</a> </td></tr> ' +
         '<tr><td class="count">1</td> <td class="block"> <a href="/tags/b/">#b</a> </td></tr></table>',
+    );
+  });
+});
+
+describe("typeTable", () => {
+  it("when rendering the types landing page, lists every configured type in order with its count and meaning", () => {
+    // Arrange
+    const posts = [post({ type: "Report" }), post({ slug: "p2", type: "Report" })];
+    // Act
+    const out = norm(typeTable(site, posts).html);
+    // Assert
+    expect(out).toBe(
+      '<table class="typepage"> <tr> <th>count</th> <th>name</th> <th>meaning</th> </tr> ' +
+        '<tr> <td class="count">2</td> <td><a href="/types/report/">Report</a></td> <td>r</td> </tr>' +
+        '<tr> <td class="count">0</td> <td><a href="/types/essay/">Essay</a></td> <td>e</td> </tr> ' +
+        "</table>",
     );
   });
 });

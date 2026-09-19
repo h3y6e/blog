@@ -2,6 +2,7 @@ type PostMeta = {
   slug: string;
   title: string;
   date: string;
+  type: string;
   tags: string[];
   description: string;
   url: string;
@@ -39,11 +40,15 @@ if (modelContext && "registerTool" in modelContext) {
   modelContext.registerTool({
     name: "list_posts",
     description:
-      "Lists this blog's posts, newest first, as {slug, title, date (YYYY-MM-DD), tags, description, url}. " +
+      "Lists this blog's posts, newest first, as {slug, title, date (YYYY-MM-DD), type, tags, description, url}. " +
       "Posts are written in Japanese. Returns every post unless filtered.",
     inputSchema: {
       type: "object",
       properties: {
+        type: {
+          type: "string",
+          description: 'Return only posts of this kind: "Build", "Guide", "Report" or "Essay".',
+        },
         tag: { type: "string", description: "Return only posts carrying exactly this tag." },
         query: {
           type: "string",
@@ -51,12 +56,13 @@ if (modelContext && "registerTool" in modelContext) {
         },
       },
     },
-    async execute(input: { tag?: string; query?: string }) {
+    async execute(input: { type?: string; tag?: string; query?: string }) {
       const posts = await postsIndex();
       const q = input.query?.toLowerCase();
       return JSON.stringify(
         posts.filter(
           (p) =>
+            (!input.type || p.type === input.type) &&
             (!input.tag || p.tags.includes(input.tag)) &&
             (!q || `${p.title} ${p.description} ${p.tags.join(" ")}`.toLowerCase().includes(q)),
         ),
@@ -68,7 +74,7 @@ if (modelContext && "registerTool" in modelContext) {
   modelContext.registerTool({
     name: "get_post",
     description:
-      "Fetches one post's full content as Markdown (Japanese), including its title, date, " +
+      "Fetches one post's full content as Markdown (Japanese), including its title, date, type, " +
       "tags and canonical URL. Take the slug from list_posts.",
     inputSchema: {
       type: "object",

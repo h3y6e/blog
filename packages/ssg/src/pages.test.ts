@@ -11,6 +11,11 @@ const site: SiteConfig = {
   postsDir: "posts",
   embedsFile: "embeds.json",
   tagPath: "tags",
+  typePath: "types",
+  postTypes: [
+    { name: "Report", description: "r" },
+    { name: "Essay", description: "e" },
+  ],
 };
 
 const posts: Post[] = [
@@ -18,6 +23,7 @@ const posts: Post[] = [
     slug: "one",
     title: "One",
     date: "2026-01-01",
+    type: "Report",
     tags: ["a", "b"],
     rssDescription: "d1",
     aliases: ["/posts/one/"],
@@ -28,6 +34,7 @@ const posts: Post[] = [
     slug: "two",
     title: "Two",
     date: "2026-01-02",
+    type: "Essay",
     tags: ["a"],
     rssDescription: "d2",
     html: "<p>2</p>",
@@ -36,7 +43,7 @@ const posts: Post[] = [
 ];
 
 describe("buildPages", () => {
-  it("when given posts, produces index, 404, feed, tags landing, per-post and per-tag pages", () => {
+  it("when given posts, produces index, 404, feed, tags and types landings, per-post, per-tag and per-type pages", () => {
     // Act
     const pages = buildPages(site, posts);
     // Assert
@@ -60,7 +67,32 @@ describe("buildPages", () => {
       "tags/a/index.html",
       "tags/b/index.html",
       "tags/index.html",
+      "types/essay/index.html",
+      "types/index.html",
+      "types/report/index.html",
     ]);
+  });
+
+  it("when a type page is generated, it lists only posts of that type", () => {
+    // Act
+    const pages = buildPages(site, posts);
+    // Assert
+    const report = pages.get("types/report/index.html")!;
+    expect(report).toContain("/posts/2026/01/01/one/");
+    expect(report).not.toContain("/posts/2026/01/02/two/");
+  });
+
+  it("when a configured type has no posts yet, its page still exists so the types landing page has no dead link", () => {
+    // Arrange
+    const withUnused = {
+      ...site,
+      postTypes: [...site.postTypes, { name: "Build", description: "b" }],
+    };
+    // Act
+    const pages = buildPages(withUnused, posts);
+    // Assert
+    expect(pages.get("types/index.html")).toContain('href="/types/build/"');
+    expect(pages.has("types/build/index.html")).toBe(true);
   });
 
   it("when the posts index is generated, it lists metadata newest first for the WebMCP tool", () => {
@@ -72,6 +104,7 @@ describe("buildPages", () => {
         slug: "two",
         title: "Two",
         date: "2026-01-02",
+        type: "Essay",
         tags: ["a"],
         description: "d2",
         url: "https://blog.h3y6e.com/posts/2026/01/02/two/",
@@ -80,6 +113,7 @@ describe("buildPages", () => {
         slug: "one",
         title: "One",
         date: "2026-01-01",
+        type: "Report",
         tags: ["a", "b"],
         description: "d1",
         url: "https://blog.h3y6e.com/posts/2026/01/01/one/",

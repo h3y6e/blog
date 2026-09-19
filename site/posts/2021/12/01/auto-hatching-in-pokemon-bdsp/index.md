@@ -1,8 +1,9 @@
 ---
 title: "【ポケモンBDSP】自動孵化装置を作って高個体値色違いイーブイを手に入れる(夢を見た)"
 date: 2021-12-01
+type: "Build"
 aliases: ["/posts/auto-hatching-in-pokemon-bdsp/"]
-tags: ["camphor", "adventcalendar", "automation", "pokemon"]
+tags: ["camphor", "adventcalendar", "automation"]
 rss_description: "Pro Micro(Arduino Leonardo互換機)でポケモンBDSP版自動孵化装置を作成する。"
 cover: "6v.jpg"
 ---

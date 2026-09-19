@@ -1,8 +1,9 @@
 ---
 title: "macOSで初期状態からのセットアップ"
 date: 2022-12-05
+type: "Guide"
 aliases: ["/posts/macos-setup/"]
-tags: ["macos", "setup"]
+tags: ["macos"]
 rss_description: "新しいMacを買ったときとか、macOSをファクトリーリセットしたい衝動に駆られたときに。"
 ---
 

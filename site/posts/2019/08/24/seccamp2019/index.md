@@ -1,6 +1,7 @@
 ---
 title: "セキュリティ・キャンプ2019参加記"
 date: 2019-08-24
+type: "Report"
 aliases: ["/posts/seccamp2019/"]
 tags: ["seccamp", "julia"]
 rss_description: "セキュリティ・キャンプ全国大会2019に参加した話本編"

@@ -1,8 +1,9 @@
 ---
 title: "A2ネットを改善しよう"
 date: 2020-12-18
+type: "Build"
 aliases: ["/posts/a2net/"]
-tags: ["kmnac", "adventcalendar"]
+tags: ["kmnac", "adventcalendar", "networking"]
 rss_description: "寮のネットワークを改善している話。"
 cover: "rack.jpg"
 ---

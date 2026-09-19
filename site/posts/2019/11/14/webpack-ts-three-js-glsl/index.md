@@ -1,8 +1,9 @@
 ---
 title: "webpack + typescript + three.jsでGLSL (.frag|.vert) を外部モジュールとしてimportする"
 date: 2019-11-14
+type: "Guide"
 aliases: ["/posts/webpack-ts-three-js-glsl/"]
-tags: ["webpack", "typescript", "threejs", "glsl"]
+tags: ["typescript", "webgl"]
 rss_description: "typescript + three.jsでGLSLをいい感じに編集したい。"
 ---
 

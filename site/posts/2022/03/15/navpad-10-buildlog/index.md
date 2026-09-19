@@ -1,8 +1,9 @@
 ---
 title: "Navpad 1.0 ビルドログ"
 date: 2022-03-15
+type: "Build"
 aliases: ["/posts/navpad-10-buildlog/"]
-tags: ["keyboard", "buildlog", "yushakobo_guild"]
+tags: ["keyboard", "yushakobo"]
 rss_description:  "遊舎工房様より提供していただいたNavpad 1.0のビルドログです。"
 cover: "navpad_10_rev1_red.jpg"
 ---

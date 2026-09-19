@@ -1,8 +1,9 @@
 ---
 title: "[論文読み] Shape from Shading through Shape Evolution"
 date: 2019-08-29
+type: "Report"
 aliases: ["/posts/shape-from-shading-through-shape-evolution/"]
-tags: ["paper", "cv"]
+tags: ["cv"]
 rss_description: "論文読み : 形状進化による3Dデータを用いたShape-from-Shading"
 ---
 

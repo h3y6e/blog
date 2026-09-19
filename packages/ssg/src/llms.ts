@@ -5,6 +5,7 @@ export function postMarkdown(site: SiteConfig, post: Post): string {
   return (
     `# ${post.title}\n\n` +
     `- date: ${post.date}\n` +
+    `- type: ${post.type}\n` +
     `- tags: ${post.tags.join(", ")}\n` +
     `- url: ${site.siteUrl}${postPath(post)}\n\n` +
     `${post.markdown}\n`

@@ -11,6 +11,8 @@ import {
   postStyleUrl,
   tagPath,
   tagsIndexFullUrl,
+  typePath,
+  typesIndexFullUrl,
 } from "./urls.ts";
 
 type PageMeta = {
@@ -36,12 +38,15 @@ export function scriptOrigins(pageHtml: string): string[] {
 
 const PRELOADED_FONTS = ["a5ebecMono-Regular.woff2", "a5ebecMono-Bold.woff2"];
 
+/** OG image only; the page draws the same brackets in CSS so they can animate. */
+const typeLabel = (type: string): string => `[${type}]`;
+
 const encodeCloudinary = (text: string): string =>
   encodeURI(text.replaceAll(",", "%2C").replaceAll("/", "%2F")).replaceAll("#", "%23");
 
-export function ogImageUrl(post: Pick<Post, "title" | "date" | "tags">): string {
+export function ogImageUrl(post: Pick<Post, "title" | "date" | "type" | "tags">): string {
   const title = encodeCloudinary(post.title);
-  const date = encodeCloudinary(post.date);
+  const date = encodeCloudinary(`${post.date} ${typeLabel(post.type)}`);
   const tags = encodeCloudinary(post.tags.map((t) => `#${t}`).join(" "));
   return (
     "https://res.cloudinary.com/dzugrdlkb/image/upload/" +
@@ -108,7 +113,9 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
         },
         "prerender": [
           {
-            "where": { "href_matches": ["/", "/posts/*", "/${site.tagPath}/*"] },
+            "where": {
+              "href_matches": ["/", "/posts/*", "/${site.tagPath}/*", "/${site.typePath}/*"]
+            },
             "eagerness": "moderate"
           }
         ]
@@ -141,15 +148,17 @@ export function headline(
   site: SiteConfig,
   title: Raw | string,
   date: string | null,
+  type: string | null,
   tags: string[],
   named = false,
 ): Raw {
   const titleHtml = named
     ? html`<span style="view-transition-name: post-title">${title}</span>`
     : title;
+  const typeLink = type && html` <a class="type" href="${typePath(site, type)}">${type}</a>`;
   return html`<div class="franklin-headline">
     <h1 class="title">${titleHtml}</h1>
-    ${date && html`<div class="date">${date}</div>`}<span class="tags"
+    ${date && html`<div class="date">${date}${typeLink}</div>`}<span class="tags"
       >${tags.map((tag) => html`<a href="${tagPath(site, tag)}">#${tag}</a> `)}</span
     >
   </div>`;
@@ -162,7 +171,7 @@ export function postlist(site: SiteConfig, posts: Post[]): Raw {
         const url = postPath(post);
         const linkTitle = html`<a href="${url}">${post.title}</a>`;
         return html`<div class="postlist">
-          ${headline(site, linkTitle, post.date, post.tags)}
+          ${headline(site, linkTitle, post.date, post.type, post.tags)}
           <p>${post.rssDescription}</p>
           <a class="read-more" href="${url}">Read more →</a>
         </div> `.html;
@@ -236,7 +245,7 @@ export function postPage(site: SiteConfig, post: Post): string {
     ...(post.style && { stylesheet: postStyleUrl(post) }),
   };
   const body = html`<div class="reading-progress"></div>
-    ${headline(site, post.title, post.date, post.tags, true)} ${toc(post.html)}
+    ${headline(site, post.title, post.date, post.type, post.tags, true)} ${toc(post.html)}
     <div class="franklin-content">${raw(enhanceFootnotes(post.html))} ${pageFoot(site, post)}</div>
     ${post.script && html`<script type="module" src="${postScriptUrl(post)}"></script>`}`;
   return layout(site, meta, body);
@@ -308,18 +317,44 @@ export function tagTable(site: SiteConfig, posts: Post[]): Raw {
   return raw(out);
 }
 
-export function tagsIndexPage(site: SiteConfig, posts: Post[]): string {
+/** Types are a closed set, so the landing page defines each one rather than just counting it. */
+export function typeTable(site: SiteConfig, posts: Post[]): Raw {
+  return html`<table class="typepage">
+    <tr>
+      <th>count</th>
+      <th>name</th>
+      <th>meaning</th>
+    </tr>
+    ${site.postTypes.map(
+      ({ name, description }) => html`<tr>
+        <td class="count">${posts.filter((p) => p.type === name).length}</td>
+        <td><a href="${typePath(site, name)}">${name}</a></td>
+        <td>${description}</td>
+      </tr>`,
+    )}
+  </table>`;
+}
+
+function facetIndexPage(site: SiteConfig, name: string, ogUrl: string, table: Raw): string {
   const meta: PageMeta = {
-    title: `Tags :: ${site.title}`,
+    title: `${name} :: ${site.title}`,
     description: site.description,
     ogType: "website",
-    ogUrl: tagsIndexFullUrl(site),
+    ogUrl,
     ogImage: `${site.siteUrl}/assets/2f2f2f.jpg`,
     twitterCard: "summary",
   };
-  const body = html`${headline(site, "Tags", null, [])}
-    <div class="franklin-content">${tagTable(site, posts)} ${pageFoot(site)}</div>`;
+  const body = html`${headline(site, name, null, null, [])}
+    <div class="franklin-content">${table} ${pageFoot(site)}</div>`;
   return layout(site, meta, body);
+}
+
+export function tagsIndexPage(site: SiteConfig, posts: Post[]): string {
+  return facetIndexPage(site, "Tags", tagsIndexFullUrl(site), tagTable(site, posts));
+}
+
+export function typesIndexPage(site: SiteConfig, posts: Post[]): string {
+  return facetIndexPage(site, "Types", typesIndexFullUrl(site), typeTable(site, posts));
 }
 
 export function notFoundPage(site: SiteConfig): string {
@@ -331,7 +366,7 @@ export function notFoundPage(site: SiteConfig): string {
     ogImage: `${site.siteUrl}/assets/2f2f2f.jpg`,
     twitterCard: "summary",
   };
-  const body = html`${headline(site, "404", null, [])}
+  const body = html`${headline(site, "404", null, null, [])}
     <div class="franklin-content">
       <h1>404: File not found</h1>
       <p>The requested file was not found.</p>

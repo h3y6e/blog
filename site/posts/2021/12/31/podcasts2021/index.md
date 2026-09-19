@@ -1,6 +1,7 @@
 ---
 title: "2021年に聴いていたPodcast"
 date: 2021-12-31
+type: "Essay"
 aliases: ["/posts/podcasts2021/"]
 tags: ["podcast"]
 rss_description: "今年聴いたPodcastで勧めたいやつを雑に紹介する。"

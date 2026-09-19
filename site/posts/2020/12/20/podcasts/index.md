@@ -1,6 +1,7 @@
 ---
 title: "ITエンジニア志望の学生が聴くべきPodcast"
 date: 2020-12-20
+type: "Essay"
 aliases: ["/posts/podcasts/"]
 tags: ["camphor", "adventcalendar", "podcast"]
 rss_description: "おすすめのPodcast番組を紹介して皆んなとPodcastトークがしたい。"

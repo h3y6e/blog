@@ -1,8 +1,9 @@
 ---
 title: "gh-awでProjectの手入れをGitHub Actionsに乗せる"
 date: 2026-04-27
+type: "Report"
 aliases: ["/posts/20260427-gh-aw-project-triage/"]
-tags: ["github", "copilot", "gh-aw"]
+tags: ["copilot", "gha"]
 rss_description: "MarkdownワークフローでProjectの空欄を安全に埋める"
 ---
 

@@ -10,6 +10,7 @@ describe("parseFrontmatter", () => {
       [
         'title: "A2ネットを改善しよう"',
         "date: 2020-12-18",
+        'type: "Report"',
         'tags: ["kmnac", "adventcalendar"]',
         'rss_description: "寮のネットワークを改善している話。"',
         'cover: "rack.jpg"',
@@ -22,6 +23,7 @@ describe("parseFrontmatter", () => {
     expect(frontmatter).toEqual({
       title: "A2ネットを改善しよう",
       date: "2020-12-18",
+      type: "Report",
       tags: ["kmnac", "adventcalendar"],
       rss_description: "寮のネットワークを改善している話。",
       cover: "rack.jpg",
@@ -33,9 +35,15 @@ describe("parseFrontmatter", () => {
   it("when tags are written as a dash list, parses them in order", () => {
     // Arrange
     const source = fm(
-      ['title: "t"', "date: 2026-01-01", "tags:", "  - a", '  - "b"', 'rss_description: "d"'].join(
-        "\n",
-      ),
+      [
+        'title: "t"',
+        "date: 2026-01-01",
+        'type: "Report"',
+        "tags:",
+        "  - a",
+        '  - "b"',
+        'rss_description: "d"',
+      ].join("\n"),
     );
     // Act
     const { frontmatter } = parseFrontmatter(source);
@@ -46,7 +54,13 @@ describe("parseFrontmatter", () => {
   it("when a scalar is unquoted, returns it verbatim", () => {
     // Arrange
     const source = fm(
-      ["title: plain title", "date: 2026-01-01", "tags: []", "rss_description: desc"].join("\n"),
+      [
+        "title: plain title",
+        "date: 2026-01-01",
+        'type: "Report"',
+        "tags: []",
+        "rss_description: desc",
+      ].join("\n"),
     );
     // Act
     const { frontmatter } = parseFrontmatter(source);
@@ -62,6 +76,7 @@ describe("parseFrontmatter", () => {
       [
         'title: "[論文読み] How: Do? "',
         "date: 2019-10-24",
+        'type: "Report"',
         'tags: ["paper"]',
         'rss_description: "x"',
       ].join("\n"),
@@ -79,7 +94,7 @@ describe("parseFrontmatter", () => {
 
   it("when a required key is missing, throws naming the key", () => {
     // Arrange
-    const source = fm(['title: "t"', "date: 2026-01-01", "tags: []"].join("\n"));
+    const source = fm(['title: "t"', "date: 2026-01-01", 'type: "Report"', "tags: []"].join("\n"));
     // Act & Assert
     expect(() => parseFrontmatter(source)).toThrow(/missing key: rss_description/);
   });
@@ -87,9 +102,14 @@ describe("parseFrontmatter", () => {
   it("when an unknown key appears, throws", () => {
     // Arrange
     const source = fm(
-      ['title: "t"', "date: 2026-01-01", "tags: []", 'rss_description: "d"', "draft: true"].join(
-        "\n",
-      ),
+      [
+        'title: "t"',
+        "date: 2026-01-01",
+        'type: "Report"',
+        "tags: []",
+        'rss_description: "d"',
+        "draft: true",
+      ].join("\n"),
     );
     // Act & Assert
     expect(() => parseFrontmatter(source)).toThrow(/unknown key: draft/);
@@ -98,7 +118,9 @@ describe("parseFrontmatter", () => {
   it("when the date is not YYYY-MM-DD, throws", () => {
     // Arrange
     const source = fm(
-      ['title: "t"', "date: 2026/01/01", "tags: []", 'rss_description: "d"'].join("\n"),
+      ['title: "t"', "date: 2026/01/01", 'type: "Report"', "tags: []", 'rss_description: "d"'].join(
+        "\n",
+      ),
     );
     // Act & Assert
     expect(() => parseFrontmatter(source)).toThrow(/date must be YYYY-MM-DD/);
@@ -107,7 +129,13 @@ describe("parseFrontmatter", () => {
   it("when tags is a bare scalar, throws", () => {
     // Arrange
     const source = fm(
-      ['title: "t"', "date: 2026-01-01", "tags: a, b", 'rss_description: "d"'].join("\n"),
+      [
+        'title: "t"',
+        "date: 2026-01-01",
+        'type: "Report"',
+        "tags: a, b",
+        'rss_description: "d"',
+      ].join("\n"),
     );
     // Act & Assert
     expect(() => parseFrontmatter(source)).toThrow(/tags must be a list/);
@@ -116,7 +144,13 @@ describe("parseFrontmatter", () => {
   it("when a tag contains a comma, keeps it as one item instead of splitting on the quoted comma", () => {
     // Arrange
     const source = fm(
-      ['title: "t"', "date: 2026-01-01", 'tags: ["a, b", "c"]', 'rss_description: "d"'].join("\n"),
+      [
+        'title: "t"',
+        "date: 2026-01-01",
+        'type: "Report"',
+        'tags: ["a, b", "c"]',
+        'rss_description: "d"',
+      ].join("\n"),
     );
     // Act
     const { frontmatter } = parseFrontmatter(source);
@@ -127,9 +161,14 @@ describe("parseFrontmatter", () => {
   it("when a key is repeated, throws naming the key even for names shared with Object.prototype", () => {
     // Arrange
     const source = fm(
-      ['title: "t"', "date: 2026-01-01", "tags: []", 'rss_description: "d"', "title: dup"].join(
-        "\n",
-      ),
+      [
+        'title: "t"',
+        "date: 2026-01-01",
+        'type: "Report"',
+        "tags: []",
+        'rss_description: "d"',
+        "title: dup",
+      ].join("\n"),
     );
     // Act & Assert
     expect(() => parseFrontmatter(source)).toThrow(/duplicate key: title/);
@@ -141,6 +180,7 @@ describe("parseFrontmatter", () => {
       [
         'title: "t"',
         "date: 2026-01-01",
+        'type: "Report"',
         "tags: []",
         'rss_description: "d"',
         "constructor: foo",
@@ -156,6 +196,7 @@ describe("parseFrontmatter", () => {
       [
         'title: "t"',
         "date: 2020-12-18",
+        'type: "Report"',
         "tags: []",
         'rss_description: "d"',
         'aliases: ["/posts/a2net"]',

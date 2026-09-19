@@ -1,6 +1,7 @@
 ---
 title: "Nostrを用いてblogとmicrobloggingの中間的存在が作れるのでは無いか、という思考と実験"
 date: 2023-02-08
+type: "Essay"
 aliases: ["/posts/comment-on-nostr/"]
 tags: ["nostr", "blog"]
 rss_description: "Comment on Nostrをこのブログに試験的に導入してみる。"

@@ -1,6 +1,7 @@
 ---
 title: "RaycastでPLaMo翻訳を使う"
 date: 2025-06-21
+type: "Guide"
 aliases: ["/posts/raycast-plamo-translate/"]
 tags: ["raycast"]
 rss_description: "Script Command機能を使ってPLaMo翻訳CLIをRaycastから呼び出せるようにした"

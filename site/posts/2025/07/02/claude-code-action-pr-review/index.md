@@ -1,8 +1,9 @@
 ---
 title: "Claude Code ActionでPRレビューを自動化"
 date: 2025-07-02
+type: "Report"
 aliases: ["/posts/20250702-claude-code-action-pr-review/"]
-tags: ["github", "claude"]
+tags: ["claude", "review", "gha"]
 rss_description: "Claude Code ActionとAWS Bedrockを使って、GitHub ActionsでPRの自動レビューシステムを構築した"
 ---
 

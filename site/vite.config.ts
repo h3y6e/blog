@@ -15,6 +15,13 @@ export default defineConfig({
       postsDir: "posts",
       embedsFile: "embeds.json",
       tagPath: "tags",
+      typePath: "types",
+      postTypes: [
+        { name: "Build", description: "組み立てた記録" },
+        { name: "Guide", description: "読者が再現するための手順" },
+        { name: "Report", description: "作った・運用した・読んだものの報告" },
+        { name: "Essay", description: "主張と考察" },
+      ],
       originTrials: [
         {
           feature: "WebMCP",

@@ -11,6 +11,7 @@ import {
   tagPath,
   tagsIndexFullUrl,
   tagsIndexPath,
+  typePath,
 } from "./urls.ts";
 
 const site: SiteConfig = {
@@ -22,6 +23,11 @@ const site: SiteConfig = {
   postsDir: "posts",
   embedsFile: "embeds.json",
   tagPath: "tags",
+  typePath: "types",
+  postTypes: [
+    { name: "Report", description: "r" },
+    { name: "Essay", description: "e" },
+  ],
 };
 
 describe("postPath / postFullUrl / tagPath", () => {
@@ -53,6 +59,14 @@ describe("archivePaths / tagsIndexPath / tagsIndexFullUrl", () => {
     // Act & Assert
     expect(tagsIndexPath(site)).toBe("/tags/");
     expect(tagsIndexFullUrl(site)).toBe("https://blog.h3y6e.com/tags/index.html");
+  });
+});
+
+describe("typePath", () => {
+  it("when given a type name, lowercases it into the types landing path", () => {
+    // Act & Assert
+    expect(typePath(site, "Build")).toBe("/types/build/");
+    expect(typePath(site, "Guide")).toBe("/types/guide/");
   });
 });
 

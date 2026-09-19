@@ -1,6 +1,7 @@
 ---
 title: "Eigenvectors from EigenvaluesをJuliaで検証する"
 date: 2019-11-19
+type: "Report"
 aliases: ["/posts/eigenvectors-from-eigenvalues-julia/"]
 tags: ["julia"]
 rss_description: "Twitterで話題になったり、研究室のslackで話されたりしていたのでJuliaで書いてみた。"

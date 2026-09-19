@@ -1,8 +1,9 @@
 ---
 title: "Karabinerでfnキーに3つの機能を持たせた"
 date: 2023-04-30
+type: "Guide"
 aliases: ["/posts/karabiner-fn-key-customization/"]
-tags: ["karabiner", "macos"]
+tags: ["macos", "karabiner"]
 rss_description: "fnキーを単体押し・組み合わせ・長押しで異なる動作をさせる設定を作った"
 ---
 

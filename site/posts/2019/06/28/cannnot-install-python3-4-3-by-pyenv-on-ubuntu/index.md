@@ -1,8 +1,9 @@
 ---
 title: "pyenvでPython 3.4.3がインストールできない（Ubuntu 18.04）"
 date: 2019-06-28
+type: "Guide"
 aliases: ["/posts/cannnot-install-python3-4-3-by-pyenv-on-ubuntu/"]
-tags: ["python","pyenv","ubuntu"]
+tags: ["linux", "python"]
 rss_description: "Ubuntu18.04のpyenvでPython 3.4.3がインストールできなかったのでその解決法。"
 ---
 

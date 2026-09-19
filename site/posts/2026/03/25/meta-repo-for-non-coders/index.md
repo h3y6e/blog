@@ -1,8 +1,9 @@
 ---
 title: "普段コードを書かない人が働きやすいようにメタリポジトリを整える"
 date: 2026-03-25
+type: "Report"
 aliases: ["/posts/20260325-meta-repo-for-non-coders/"]
-tags: ["git", "claude", "codex"]
+tags: ["codex", "agentskills", "git"]
 rss_description: "普段コードを書かない人がCodex Appから仕様書作成や横断調査を進めやすくするために、メタリポジトリとskillsを整えている。submoduleで集約しているが難しさも残る"
 ---
 

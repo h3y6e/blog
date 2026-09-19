@@ -1,6 +1,7 @@
 ---
 title: "球化するUI"
 date: 2025-07-03
+type: "Essay"
 aliases: ["/posts/20250703-spherical-ui/"]
 tags: ["ui"]
 rss_description: "UIはあらゆる入力を受け止める球となり、ユーザーを取り巻く球状の空間へと拡張していく"

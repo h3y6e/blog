@@ -1,6 +1,7 @@
 ---
 title: "Samsung Galaxyのカメラシャッター音を消す"
 date: 2025-12-13
+type: "Guide"
 aliases: ["/posts/20251213-samsung-shutter-sound/"]
 tags: ["android"]
 rss_description: "adb shell settings put system csc_pref_camera_forced_shuttersound_key 0"

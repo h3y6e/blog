@@ -1,6 +1,7 @@
 ---
 title: "ssh keys"
 date: 2019-10-08
+type: "Guide"
 aliases: ["/posts/ssh-keys/"]
 tags: ["ssh"]
 rss_description: "何回やっても覚えられないので自分用に。"

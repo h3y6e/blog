@@ -1,6 +1,7 @@
 ---
 title: "PrusaSlicerで印刷速度を爆速に"
 date: 2023-10-14
+type: "Guide"
 aliases: ["/posts/prusaslicer-speed-optimization/"]
 tags: ["3dprinting"]
 rss_description: "PrusaSlicerでgcode生成してから印刷してみたらめちゃくちゃ速くなった話"

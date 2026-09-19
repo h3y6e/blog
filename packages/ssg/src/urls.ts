@@ -34,6 +34,18 @@ export function tagsIndexFullUrl(site: SiteConfig): string {
   return `${site.siteUrl}${tagsIndexPath(site)}index.html`;
 }
 
+export function typePath(site: SiteConfig, type: string): string {
+  return `/${site.typePath}/${type.toLowerCase()}/`;
+}
+
+export function typesIndexPath(site: SiteConfig): string {
+  return `/${site.typePath}/`;
+}
+
+export function typesIndexFullUrl(site: SiteConfig): string {
+  return `${site.siteUrl}${typesIndexPath(site)}index.html`;
+}
+
 /** `/posts/`, `/posts/YYYY/`, `/posts/YYYY/MM/` and `/posts/YYYY/MM/DD/` for a date. */
 export function archivePaths(date: string): string[] {
   const parts = date.split("-");

@@ -1,8 +1,9 @@
 ---
 title: "[論文読み] Neural Inverse Rendering of an Indoor Scene From a Single Image"
 date: 2019-05-17
+type: "Report"
 aliases: ["/posts/neural-inverse-rendering-of-an-indoor-scene-from-a-single-image/"]
-tags: ["paper", "cv", "inverserendering"]
+tags: ["cv"]
 rss_description: "論文読み：単一画像からの屋内シーンのニューラルインバースレンダリング"
 ---
 

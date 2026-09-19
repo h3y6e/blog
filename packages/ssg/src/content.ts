@@ -6,7 +6,7 @@ import { render } from "@blog/md";
 import { ensureEmbeds } from "./embeds.ts";
 import { parseFrontmatter } from "./frontmatter.ts";
 import { collectEmbedUrls, type EmbedMap, expandShortcodes } from "./shortcodes.ts";
-import type { Post } from "./types.ts";
+import type { Post, PostType } from "./types.ts";
 import { postDir, postPath } from "./urls.ts";
 
 const RELATIVE_SRC = /\ssrc="(?![a-z]+:|\/|#)([^"]*)"/g;
@@ -18,13 +18,25 @@ function absolutizeMedia(html: string, dir: string, urlDir: string): string {
   });
 }
 
-function parsePost(postsDir: string, path: string, source: string, embeds: EmbedMap): Post {
+function parsePost(
+  postsDir: string,
+  path: string,
+  source: string,
+  embeds: EmbedMap,
+  postTypes: PostType[],
+): Post {
   const dir = dirname(path);
   const { frontmatter, body } = parseFrontmatter(source);
   const ref = { date: frontmatter.date, slug: basename(dir) };
   const actual = relative(postsDir, dir).split(sep).join("/");
   if (actual !== postDir(ref)) {
     throw new Error(`${path}: date ${frontmatter.date} does not match directory ${actual}`);
+  }
+  if (!postTypes.some((t) => t.name === frontmatter.type)) {
+    throw new Error(`${path}: unknown type: ${frontmatter.type}`);
+  }
+  for (const tag of frontmatter.tags) {
+    if (!/^[a-z0-9]+$/.test(tag)) throw new Error(`${path}: tag is not one lowercase word: ${tag}`);
   }
   if (frontmatter.cover !== undefined && !existsSync(join(dir, frontmatter.cover))) {
     throw new Error(`${path}: cover not found: ${frontmatter.cover}`);
@@ -38,6 +50,7 @@ function parsePost(postsDir: string, path: string, source: string, embeds: Embed
   return {
     ...ref,
     title: frontmatter.title,
+    type: frontmatter.type,
     tags: frontmatter.tags,
     rssDescription: frontmatter.rss_description,
     ...(frontmatter.cover !== undefined && { cover: frontmatter.cover }),
@@ -74,10 +87,17 @@ export function postEntries(postsDir: string): PostEntry[] {
   });
 }
 
-export async function loadPosts(postsDir: string, embedsFile: string): Promise<Post[]> {
+export async function loadPosts(
+  postsDir: string,
+  embedsFile: string,
+  postTypes: PostType[],
+): Promise<Post[]> {
+  for (const { name } of postTypes)
+    if (!/^[A-Z][a-z]+$/.test(name))
+      throw new Error(`postTypes: not one capitalized word: ${name}`);
   const paths = postPaths(postsDir);
   const sources = paths.map((p) => readFileSync(p, "utf8"));
   const urls = sources.flatMap((s) => collectEmbedUrls(s));
   const embeds = await ensureEmbeds(urls, embedsFile);
-  return paths.map((p, i) => parsePost(postsDir, p, sources[i]!, embeds));
+  return paths.map((p, i) => parsePost(postsDir, p, sources[i]!, embeds, postTypes));
 }

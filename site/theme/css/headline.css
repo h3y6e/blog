@@ -28,6 +28,35 @@
   & .date {
     font-size: 1rem;
     color: var(--date-color);
+
+    & .type {
+      &::before,
+      &::after {
+        display: inline-block;
+        color: var(--accent);
+        /* Identity value, so :hover is not what creates the stacking context. */
+        translate: 0;
+      }
+      &::before {
+        content: "[";
+      }
+      &::after {
+        content: "]";
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        &::before,
+        &::after {
+          transition: translate 220ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        &:is(:hover, :focus-visible)::before {
+          translate: -0.3ch;
+        }
+        &:is(:hover, :focus-visible)::after {
+          translate: 0.3ch;
+        }
+      }
+    }
   }
 
   & .tags {
