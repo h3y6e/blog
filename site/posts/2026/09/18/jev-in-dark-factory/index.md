@@ -2,10 +2,10 @@
 title: "JevをDark Factoryに組み込む"
 date: 2026-09-18
 tags: ["jev", "flue"]
-rss_description: "if文では書けないがLLMに任せるには重い判定をTypeSafeのJevに答えさせた。Flueで組んだDark Factoryのトリアージ・出力検証・リスク分類で検証。危険側の誤りは一件も出なかったが、合否を一発で答えさせると精度が伸びず、狭い質問に分解して答えを組み合わせる必要があった"
+rss_description: "if文では書けないがLLMに任せるには重い判定をTypeSafe AIのJevに答えさせた。Flueで組んだDark Factoryのトリアージ・出力検証・リスク分類で検証。危険側の誤りは一件も出なかったが、合否を一発で答えさせると精度が伸びず、狭い質問に分解して答えを組み合わせる必要があった"
 ---
 
-[TypeSafe](https://typesafe.ai)のJevを、[Flue](https://flueframework.com/)で組んだDark Factoryに組み込んで検証しました。
+[TypeSafe AI](https://typesafe.ai)のJevを、[Flue](https://flueframework.com/)で組んだDark Factoryに組み込んで検証しました。
 
 {{ embed https://typesafe.ai/blog/introducing-system-one-models-and-jev }}
 
@@ -44,7 +44,7 @@ Dark Factoryは、もともと無人で稼働する製造工場を指す言葉�
 
 ## Jevとは何か
 
-JevはTypeSafeが「[System Oneモデル](https://docs.typesafe.ai/concepts/system-one)」と呼ぶ分類の第一弾です。名前はDaniel Kahneman氏の『[Thinking, Fast and Slow](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow)』にある「速い直感的思考（System 1）」に由来します。LLMのように文章を生成するのではなく、あらかじめ定義した選択肢や確率だけを返します。質問の型は次の3種類。
+JevはTypeSafe AIが「[System Oneモデル](https://docs.typesafe.ai/concepts/system-one)」と呼ぶ分類の第一弾です。名前はDaniel Kahneman氏の『[Thinking, Fast and Slow](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow)』にある「速い直感的思考（System 1）」に由来します。LLMのように文章を生成するのではなく、あらかじめ定義した選択肢や確率だけを返します。質問の型は次の3種類。
 
 ```ts
 import { choice, score, noul } from "@typesafe-ai/sdk";
@@ -70,11 +70,11 @@ const questions = {
 
 LLMが答えと一緒に返す自己申告の確信度は、根拠に乏しいことがあります。Jevの確信度は較正されており、実際の正答率と対応します。また、1リクエストに含めた質問は、同じ入力に対して独立に並列評価されます。質問を増やしても応答時間はほとんど変わらず、数百ミリ秒程度です。
 
-TypeSafeは「Jevはエージェントを作るためのモデルではない」と明言しています。コードが制御フローと副作用を持ち、モデルは非構造データの解釈と常識的な判定だけを担う構成のための部品、という位置づけです。TypeSafeはこの構成をAI-powered softwareと呼んでいます。LLMエージェントが毎ターン次の一手を自分で選ぶ構成とは対をなします。
+TypeSafe AIは「Jevはエージェントを作るためのモデルではない」と明言しています。コードが制御フローと副作用を持ち、モデルは非構造データの解釈と常識的な判定だけを担う構成のための部品、という位置づけです。TypeSafe AIはこの構成をAI-powered softwareと呼んでいます。LLMエージェントが毎ターン次の一手を自分で選ぶ構成とは対をなします。
 
 Jevについては、既存のLLMを工夫しても同等の高速化は可能で、専用モデルとしての優位性は不透明だと指摘する[記事](https://zenn.dev/nwn/articles/824026c76116e0)があります。その記事も、確率の較正にこそ価値があるとしています。今回の検証で危険側の誤りが一件も出なかったのは、この較正の効果によるものだと考えています。
 
-TypeSafeはJevのユースケースを5つに整理しています。
+TypeSafe AIはJevのユースケースを5つに整理しています。
 
 {{ embed https://docs.typesafe.ai/concepts/use-case-map }}
 
@@ -149,6 +149,6 @@ PRを開く前の出力検証は、説明と差分の不一致・スコープ逸
 
 もう1つはWorkerがリポジトリを調査する際のガードレールと、コンテキストの絞り込みです。fxは別のPRで、危険な操作をしてよいかを判定する権限レビューにJevを使えるようにしています。[レビューモデルとしてJevを指定すると](https://github.com/vercel-labs/fx/pull/916)、較正済みの確率と確信度が判断の根拠として記録されます。
 
-TypeSafeのcookbook「[Classifying RAG passages](https://docs.typesafe.ai/cookbooks/classifying_rag_passages)」も同じ構造です。RAGで取得した各パッセージの関連性をJevに答えさせ、閾値を下回るものを除きます。Workerが読むファイルの絞り込みに使えば、コンテキストの消費を減らせそうです。
+TypeSafe AIのcookbook「[Classifying RAG passages](https://docs.typesafe.ai/cookbooks/classifying_rag_passages)」も同じ構造です。RAGで取得した各パッセージの関連性をJevに答えさせ、閾値を下回るものを除きます。Workerが読むファイルの絞り込みに使えば、コンテキストの消費を減らせそうです。
 
 コンテキストの節約は、読み込む前だけでなく会話履歴の圧縮でも可能です。[tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction)は履歴をLLMに要約させません。各ツール呼び出しとその結果について「まだ必要か」「結果を原文のまま残すべきか」をJevに並列で答えさせ、不要と判定されたものだけを削除または切り詰めます。要約はファイルパスやエラー文のような後で必要になる細部を落とすことがあります。この方式なら、ユーザーとアシスタントの発言は原文のまま順序も保たれます。Workerの長い調査セッションにも、同じ構造で持ち込めるはずです。
