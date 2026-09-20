@@ -171,6 +171,6 @@ $ brew bundle --global
 Launchpad から起動する
 
 ## ssh
-https://blog.5ebec.dev/posts/ssh-keys/
+https://blog.h3y6e.com/posts/ssh-keys/
 
 
