@@ -19,7 +19,7 @@ export function postStyleUrl(post: PostRef): string {
 }
 
 export function postFullUrl(site: SiteConfig, post: PostRef): string {
-  return `${site.siteUrl}${postPath(post)}index.html`;
+  return `${site.siteUrl}${postPath(post)}`;
 }
 
 export function tagPath(site: SiteConfig, tag: string): string {
@@ -30,20 +30,12 @@ export function tagsIndexPath(site: SiteConfig): string {
   return `/${site.tagPath}/`;
 }
 
-export function tagsIndexFullUrl(site: SiteConfig): string {
-  return `${site.siteUrl}${tagsIndexPath(site)}index.html`;
-}
-
 export function typePath(site: SiteConfig, type: string): string {
   return `/${site.typePath}/${type.toLowerCase()}/`;
 }
 
 export function typesIndexPath(site: SiteConfig): string {
   return `/${site.typePath}/`;
-}
-
-export function typesIndexFullUrl(site: SiteConfig): string {
-  return `${site.siteUrl}${typesIndexPath(site)}index.html`;
 }
 
 /** `/posts/`, `/posts/YYYY/`, `/posts/YYYY/MM/` and `/posts/YYYY/MM/DD/` for a date. */

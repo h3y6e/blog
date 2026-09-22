@@ -20,7 +20,7 @@ export type SsgOptions = SiteConfig;
 const CSS_ENTRY = "theme/css/a5ebec.css";
 const CSS_URL = "/css/a5ebec.css";
 
-const SCRIPT_NAMES = ["switcher", "vt", "webmcp"] as const;
+const SCRIPT_NAMES = ["switcher", "vt", "webmcp", "webmentions"] as const;
 const SCRIPTS: [url: string, path: string][] = SCRIPT_NAMES.map((name) => [
   `/libs/client/${name}.js`,
   fileURLToPath(import.meta.resolve(`@blog/client/${name}.ts`)),
@@ -258,6 +258,9 @@ export function ssg(options: SsgOptions): Plugin {
             .split(sep)
             .join("/");
           assets.set(urlPrefix + relUrl, `/${this.getFileName(ref)}`);
+          if (relUrl === "favicon/favicon.ico") {
+            this.emitFile({ type: "asset", fileName: "favicon.ico", source });
+          }
           const dims = imageSize(source);
           if (dims) imageDims.set(urlPrefix + relUrl, dims);
         }
@@ -281,10 +284,13 @@ export function ssg(options: SsgOptions): Plugin {
       const ownPost = new Map(posts.map((post) => [pageFile(postPath(post)), post]));
       const inline = (fileName: string, page: string): string => {
         const post = ownPost.get(fileName);
+        const scripts = SCRIPTS.map(([u]) => u).filter(
+          (u) => post !== undefined || u !== "/libs/client/webmentions.js",
+        );
         return inlineAssets(
           page,
           pick([CSS_URL, ...(post?.style ? [postStyleUrl(post)] : [])]),
-          pick([...SCRIPTS.map(([u]) => u), ...(post?.script ? [postScriptUrl(post)] : [])]),
+          pick([...scripts, ...(post?.script ? [postScriptUrl(post)] : [])]),
         );
       };
       for (const [fileName, source] of pageMap) {
@@ -352,6 +358,10 @@ export function ssg(options: SsgOptions): Plugin {
                   const path = resolve(root, dir, url.slice(urlPrefix.length));
                   if (existsSync(path) && statSync(path).isFile()) return sendFile(res, path, 3600);
                 }
+              }
+              if (url === "/favicon.ico") {
+                const path = resolve(root, "_assets/favicon/favicon.ico");
+                if (existsSync(path) && statSync(path).isFile()) return sendFile(res, path, 3600);
               }
 
               const pagesMap = await pages();

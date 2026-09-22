@@ -6,7 +6,7 @@
   - Exception: a ponyfill polluting no globals; global-mutating polyfills never adopted, at any Baseline level.
 - Origin Trials encouraged, if the page works after token expiry. Tokens live in `originTrials` in `site/vite.config.ts`; build warns near expiry, fails on expired.
 
-- `feed.xml` must stay byte-identical to the live feed; `rss.ts` uses plain string literals since the `html` tagged template gets reformatted by oxfmt.
+- Public page URLs use a trailing slash (`/posts/YYYY/MM/DD/<slug>/`, not `index.html`). RSS `<link>`/`<guid>`, `og:url`, and `<link rel="canonical">` use the same form. `rss.ts` uses plain string literals since the `html` tagged template gets reformatted by oxfmt.
 - Posts live at `site/posts/YYYY/MM/DD/<slug>/index.md` with their media beside them, referenced relatively; the directory must match `date`.
 - Posts are the corpus the textlint style thresholds are calibrated from: after adding or editing one, run `vp run calibrate-style`.
 - A post's interactive parts are Custom Elements in an `index.ts` beside `index.md` (styles in `index.css`); both are bundled and inlined into that page only. Every `.ts`/`.css` under a post directory is source for that bundle, never published as media. The element's light DOM holds a static fallback that shows until upgrade.

@@ -130,12 +130,12 @@ describe("buildPages", () => {
     expect(tagB).not.toContain("/posts/2026/01/02/two/");
   });
 
-  it("when the feed is generated, each item carries the canonical index.html GUID", () => {
+  it("when the feed is generated, each item carries the public trailing-slash GUID", () => {
     // Act
     const feed = buildPages(site, posts).get("feed.xml")!;
     // Assert
-    expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/2026/01/01/one/index.html </guid>");
-    expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/2026/01/02/two/index.html </guid>");
+    expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/2026/01/01/one/ </guid>");
+    expect(feed).toContain("<guid> https://blog.h3y6e.com/posts/2026/01/02/two/ </guid>");
   });
 
   it("when posts share a month, the month archive lists them and the day archive lists only its own", () => {

@@ -71,8 +71,8 @@ describe("renderItem", () => {
         "  <title>\n" +
         "    <![CDATA[  gh-awでProjectの手入れをGitHub Actionsに乗せる  ]]>\n" +
         "  </title>\n" +
-        "  <link> https://blog.h3y6e.com/posts/2026/04/27/gh-aw-project-triage/index.html </link>\n" +
-        "  <guid> https://blog.h3y6e.com/posts/2026/04/27/gh-aw-project-triage/index.html </guid>\n" +
+        "  <link> https://blog.h3y6e.com/posts/2026/04/27/gh-aw-project-triage/ </link>\n" +
+        "  <guid> https://blog.h3y6e.com/posts/2026/04/27/gh-aw-project-triage/ </guid>\n" +
         "  <description>\n" +
         "    <![CDATA[  Markdown workflowでProjectの空欄を安全に埋める  ]]>\n" +
         "  </description>  \n" +

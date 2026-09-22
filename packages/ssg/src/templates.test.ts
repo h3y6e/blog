@@ -51,7 +51,8 @@ describe("headline", () => {
     // Assert
     expect(out).toBe(
       '<div class="franklin-headline"> <h1 class="title">T</h1> ' +
-        '<div class="date">2020-12-18 <a class="type" href="/types/build/">Build</a></div>' +
+        '<div class="date"> <time class="dt-published" datetime="2020-12-18">2020-12-18</time> ' +
+        '<a class="type" href="/types/build/">Build</a> </div>' +
         '<span class="tags"><a href="/tags/kmnac/">#kmnac</a> </span> </div>',
     );
   });
@@ -127,7 +128,10 @@ describe("postPage", () => {
     expect(page).toContain("<title>A2ネットを改善しよう :: #a5ebec</title>");
     expect(page).toContain('<meta property="og:type" content="article" />');
     expect(page).toContain(
-      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/18/a2net/index.html" />',
+      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/18/a2net/" />',
+    );
+    expect(page).toContain(
+      '<link rel="canonical" href="https://blog.h3y6e.com/posts/2020/12/18/a2net/" />',
     );
     expect(page).toContain("res.cloudinary.com");
     expect(page).toContain('<meta name="twitter:card" content="summary_large_image" />');
@@ -177,12 +181,13 @@ describe("postPage", () => {
     expect(page).not.toContain('rel="preconnect"');
   });
 
-  it("when rendering any page, preloads the woff2 fonts, links the png favicon, and allows pinch zoom", () => {
+  it("when rendering any page, preloads the woff2 fonts, links the root and png favicons, and allows pinch zoom", () => {
     // Act
     const page = postPage(site, post());
     // Assert
     expect(page).toContain('href="/fonts/a5ebecMono-Regular.woff2"');
     expect(page).toContain('type="font/woff2"');
+    expect(page).toContain('<link rel="icon" href="/favicon.ico" sizes="any" />');
     expect(page).toContain(
       '<link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />',
     );
@@ -206,13 +211,39 @@ describe("postPage", () => {
     expect(themeScript).toBeGreaterThan(-1);
     expect(themeScript).toBeLessThan(page.indexOf('rel="stylesheet"'));
     expect(page).toContain(
-      "https://twitter.com/intent/tweet?text=Reading%20%40h3y6e%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2Findex.html",
+      "https://x.com/intent/tweet?text=Reading%20%40h3y6e%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2F",
     );
     expect(page).toContain(
-      "https://elk.zone/intent/post?text=Reading%20%40h3y6e%40threads.net%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2Findex.html",
+      "https://elk.zone/intent/post?text=Reading%20%40h3y6e%40fedibird.com%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2F",
     );
     expect(page).toContain(
       "https://github.com/h3y6e/blog/blob/master/site/posts/2020/12/18/a2net/index.md",
+    );
+  });
+
+  it("when rendering a post, discovers webmentions and identity links for IndieAuth", () => {
+    // Act
+    const page = postPage(site, post());
+    // Assert
+    expect(page).toContain(
+      '<link rel="webmention" href="https://webmention.io/h3y6e.com/webmention" />',
+    );
+    expect(page).toContain('<link rel="me" href="https://github.com/h3y6e" />');
+    expect(page).toContain(
+      '<link rel="me atproto" href="https://bsky.app/profile/h3y6e.bsky.social" />',
+    );
+    expect(page).toContain('<meta name="fediverse:creator" content="@h3y6e@fedibird.com" />');
+    expect(page).toContain(
+      'data-webmention-target="https://blog.h3y6e.com/posts/2020/12/18/a2net/"',
+    );
+    expect(page).toContain('href="https://blog.h3y6e.com/posts/2020/12/18/a2net/" hidden');
+    expect(page).toContain('src="/libs/client/webmentions.js"');
+    expect(page).toContain('"@type":"Person"');
+    expect(page).toMatch(/class="franklin-content h-entry"[\s\S]*class="p-name"/);
+    expect(page).toContain(`datetime="${post().date}"`);
+    expect(page).toContain('class="dt-published"');
+    expect(page).toMatch(
+      /class="franklin-content h-entry"[\s\S]*class="p-author h-card"[\s\S]*heyhoe/,
     );
   });
 
@@ -221,7 +252,7 @@ describe("postPage", () => {
     const page = postPage(site, post());
     // Assert
     expect(norm(page)).toContain(
-      '<h1 class="title"><span style="view-transition-name: post-title">A2ネットを改善しよう</span></h1>',
+      '<h1 class="title"><span class="p-name" style="view-transition-name: post-title">A2ネットを改善しよう</span></h1>',
     );
     expect(page).toContain('<div class="reading-progress"></div>');
   });
@@ -315,7 +346,7 @@ describe("listPage", () => {
     // Assert
     expect(page).toContain("<title>2020/12</title>");
     expect(page).toContain(
-      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/index.html" />',
+      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/" />',
     );
   });
 });
@@ -352,13 +383,12 @@ describe("typeTable", () => {
 });
 
 describe("tagsIndexPage", () => {
-  it("when rendering the tags landing page, og:url is the tags landing page's canonical index.html URL", () => {
+  it("when rendering the tags landing page, og:url and canonical use the trailing-slash public URL", () => {
     // Act
     const page = tagsIndexPage(site, [post()]);
     // Assert
-    expect(page).toContain(
-      '<meta property="og:url" content="https://blog.h3y6e.com/tags/index.html" />',
-    );
+    expect(page).toContain('<meta property="og:url" content="https://blog.h3y6e.com/tags/" />');
+    expect(page).toContain('<link rel="canonical" href="https://blog.h3y6e.com/tags/" />');
   });
 });
 
