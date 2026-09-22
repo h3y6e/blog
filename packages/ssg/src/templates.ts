@@ -15,6 +15,20 @@ import {
   typesIndexPath,
 } from "./urls.ts";
 
+const identityLinks = [
+  { href: "https://x.com/h3y6e", rel: "me" },
+  { href: "https://github.com/h3y6e", rel: "me" },
+  { href: "https://gitlab.com/h3y6e", rel: "me" },
+  { href: "https://codeberg.org/h3y6e", rel: "me" },
+  { href: "https://h3y6e.com", rel: "me" },
+  { href: "https://fedibird.com/@h3y6e", rel: "me" },
+  { href: "https://bsky.app/profile/h3y6e.bsky.social", rel: "me atproto" },
+  { href: "https://www.threads.com/@h3y6e", rel: "me" },
+  { href: "https://njump.me/_@h3y6e.com", rel: "me" },
+  { href: "https://mixi.social/@h3y6e", rel: "me" },
+  { href: "https://www.instagram.com/h3y6e/", rel: "me" },
+] as const;
+
 type PageMeta = {
   title: string;
   description: string;
@@ -68,11 +82,11 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
       document.documentElement.style.colorScheme = localStorage.getItem("theme") || "dark";
     </script>
     <meta name="author" content="${site.author}" />
+    <meta name="fediverse:creator" content="@h3y6e@fedibird.com" />
     <link type="text/plain" rel="author" href="https://h3y6e.com/humans.txt" />
     <link rel="webmention" href="https://webmention.io/h3y6e.com/webmention" />
     <link rel="pingback" href="https://webmention.io/h3y6e.com/xmlrpc" />
-    <link rel="me" href="https://fedibird.com/@h3y6e" />
-    <link rel="me" href="https://www.threads.net/@h3y6e" />
+    ${identityLinks.map((link) => html`<link rel="${link.rel}" href="${link.href}" />`)}
     <meta name="theme-color" content="#2f2f2f" />
     ${(meta.preconnect ?? []).map((origin) => html`<link rel="preconnect" href="${origin}" />`)}
     ${PRELOADED_FONTS.map(
@@ -103,6 +117,18 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
     ${(site.originTrials ?? []).map(
       (t) => html`<meta http-equiv="origin-trial" content="${t.token}" />`,
     )}
+    <script type="application/ld+json">
+      ${raw(
+        JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: site.author,
+          alternateName: ["heyhoe", "へいほぅ", "h3y6e"],
+          url: site.authorUrl,
+          sameAs: identityLinks.map((link) => link.href),
+        }),
+      )}
+    </script>
     <script src="/libs/client/vt.js"></script>
     <script type="speculationrules">
       {
@@ -127,16 +153,20 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
 function header(site: SiteConfig): Raw {
   return html`<header>
     <div class="header-inner">
-      <div class="header-logo">
-        <a href="/"><div class="logo">${site.title}</div></a>
+      <div class="header-logo h-card">
+        <a class="u-url u-uid p-name" href="${site.siteUrl}/" rel="me"
+          ><div class="logo">${site.title}</div></a
+        >
+        <a class="p-author h-card" href="${site.authorUrl}" hidden>${site.author}</a>
       </div>
       <label for="menu-trigger" class="menu">menu</label>
     </div>
     <input type="checkbox" id="menu-trigger" />
     <nav>
       <ul>
-        <li><a href="https://twitter.com/h3y6e" rel="me">Twitter</a></li>
+        <li><a href="https://x.com/h3y6e" rel="me">X</a></li>
         <li><a href="https://github.com/h3y6e" rel="me">GitHub</a></li>
+        <li><a href="${site.authorUrl}" rel="me">About</a></li>
         <li><a href="/feed.xml">RSS</a></li>
         <li class="theme-switcher"><button id="theme-switcher">Theme</button></li>
       </ul>
@@ -192,14 +222,12 @@ function pageFoot(site: SiteConfig, post?: Post): Raw {
     post &&
     ((): Raw => {
       const url = postFullUrl(site, post);
-      const twitter = `https://twitter.com/intent/tweet?text=${escapeUri(
-        `Reading @h3y6e's ${url}`,
-      )}`;
+      const twitter = `https://x.com/intent/tweet?text=${escapeUri(`Reading @h3y6e's ${url}`)}`;
       const elk = `https://elk.zone/intent/post?text=${escapeUri(
-        `Reading @h3y6e@threads.net's ${url}`,
+        `Reading @h3y6e@fedibird.com's ${url}`,
       )}`;
       return html`<p>
-          Comment on <a href="${twitter}">Twitter</a> /
+          Comment on <a href="${twitter}">X</a> /
           <a href="${elk}">Mastodon</a>
         </p>
         <p>
@@ -212,10 +240,10 @@ function pageFoot(site: SiteConfig, post?: Post): Raw {
     })();
   return html`<footer class="page-foot">
     ${intents}
-    <div class="copyright">
+    <div class="copyright h-card">
       <span>
         ${raw("&copy;")} 2019-${new Date().getFullYear()}
-        <a href="${site.authorUrl}">${site.author}</a>
+        <a class="p-name u-url" href="${site.authorUrl}" rel="me">${site.author}</a>
       </span>
     </div>
   </footer>`;
@@ -244,9 +272,17 @@ export function postPage(site: SiteConfig, post: Post): string {
     preconnect: scriptOrigins(post.html),
     ...(post.style && { stylesheet: postStyleUrl(post) }),
   };
+  const mentionsTarget = postFullUrl(site, post);
   const body = html`<div class="reading-progress"></div>
     ${headline(site, post.title, post.date, post.type, post.tags, true)} ${toc(post.html)}
-    <div class="franklin-content">${raw(enhanceFootnotes(post.html))} ${pageFoot(site, post)}</div>
+    <div class="franklin-content h-entry">
+      <span class="p-name" hidden>${post.title}</span>
+      <a class="u-url" href="${mentionsTarget}" hidden>${mentionsTarget}</a>
+      <div class="e-content">${raw(enhanceFootnotes(post.html))}</div>
+      <div data-webmention-target="${mentionsTarget}"></div>
+      ${pageFoot(site, post)}
+    </div>
+    <script type="module" src="/libs/client/webmentions.js"></script>
     ${post.script && html`<script type="module" src="${postScriptUrl(post)}"></script>`}`;
   return layout(site, meta, body);
 }

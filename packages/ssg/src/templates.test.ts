@@ -209,14 +209,34 @@ describe("postPage", () => {
     expect(themeScript).toBeGreaterThan(-1);
     expect(themeScript).toBeLessThan(page.indexOf('rel="stylesheet"'));
     expect(page).toContain(
-      "https://twitter.com/intent/tweet?text=Reading%20%40h3y6e%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2F",
+      "https://x.com/intent/tweet?text=Reading%20%40h3y6e%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2F",
     );
     expect(page).toContain(
-      "https://elk.zone/intent/post?text=Reading%20%40h3y6e%40threads.net%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2F",
+      "https://elk.zone/intent/post?text=Reading%20%40h3y6e%40fedibird.com%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2F",
     );
     expect(page).toContain(
       "https://github.com/h3y6e/blog/blob/master/site/posts/2020/12/18/a2net/index.md",
     );
+  });
+
+  it("when rendering a post, discovers webmentions and identity links for IndieAuth", () => {
+    // Act
+    const page = postPage(site, post());
+    // Assert
+    expect(page).toContain(
+      '<link rel="webmention" href="https://webmention.io/h3y6e.com/webmention" />',
+    );
+    expect(page).toContain('<link rel="me" href="https://github.com/h3y6e" />');
+    expect(page).toContain(
+      '<link rel="me atproto" href="https://bsky.app/profile/h3y6e.bsky.social" />',
+    );
+    expect(page).toContain('<meta name="fediverse:creator" content="@h3y6e@fedibird.com" />');
+    expect(page).toContain(
+      'data-webmention-target="https://blog.h3y6e.com/posts/2020/12/18/a2net/"',
+    );
+    expect(page).toContain('href="https://blog.h3y6e.com/posts/2020/12/18/a2net/" hidden');
+    expect(page).toContain('src="/libs/client/webmentions.js"');
+    expect(page).toContain('"@type":"Person"');
   });
 
   it("when rendering any post, names an inline title span for view transitions and adds the reading progress bar", () => {
