@@ -127,7 +127,10 @@ describe("postPage", () => {
     expect(page).toContain("<title>A2ネットを改善しよう :: #a5ebec</title>");
     expect(page).toContain('<meta property="og:type" content="article" />');
     expect(page).toContain(
-      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/18/a2net/index.html" />',
+      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/18/a2net/" />',
+    );
+    expect(page).toContain(
+      '<link rel="canonical" href="https://blog.h3y6e.com/posts/2020/12/18/a2net/" />',
     );
     expect(page).toContain("res.cloudinary.com");
     expect(page).toContain('<meta name="twitter:card" content="summary_large_image" />');
@@ -206,10 +209,10 @@ describe("postPage", () => {
     expect(themeScript).toBeGreaterThan(-1);
     expect(themeScript).toBeLessThan(page.indexOf('rel="stylesheet"'));
     expect(page).toContain(
-      "https://twitter.com/intent/tweet?text=Reading%20%40h3y6e%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2Findex.html",
+      "https://twitter.com/intent/tweet?text=Reading%20%40h3y6e%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2F",
     );
     expect(page).toContain(
-      "https://elk.zone/intent/post?text=Reading%20%40h3y6e%40threads.net%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2Findex.html",
+      "https://elk.zone/intent/post?text=Reading%20%40h3y6e%40threads.net%27s%20https%3A%2F%2Fblog.h3y6e.com%2Fposts%2F2020%2F12%2F18%2Fa2net%2F",
     );
     expect(page).toContain(
       "https://github.com/h3y6e/blog/blob/master/site/posts/2020/12/18/a2net/index.md",
@@ -315,7 +318,7 @@ describe("listPage", () => {
     // Assert
     expect(page).toContain("<title>2020/12</title>");
     expect(page).toContain(
-      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/index.html" />',
+      '<meta property="og:url" content="https://blog.h3y6e.com/posts/2020/12/" />',
     );
   });
 });
@@ -352,13 +355,12 @@ describe("typeTable", () => {
 });
 
 describe("tagsIndexPage", () => {
-  it("when rendering the tags landing page, og:url is the tags landing page's canonical index.html URL", () => {
+  it("when rendering the tags landing page, og:url and canonical use the trailing-slash public URL", () => {
     // Act
     const page = tagsIndexPage(site, [post()]);
     // Assert
-    expect(page).toContain(
-      '<meta property="og:url" content="https://blog.h3y6e.com/tags/index.html" />',
-    );
+    expect(page).toContain('<meta property="og:url" content="https://blog.h3y6e.com/tags/" />');
+    expect(page).toContain('<link rel="canonical" href="https://blog.h3y6e.com/tags/" />');
   });
 });
 

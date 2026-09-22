@@ -10,9 +10,9 @@ import {
   postScriptUrl,
   postStyleUrl,
   tagPath,
-  tagsIndexFullUrl,
+  tagsIndexPath,
   typePath,
-  typesIndexFullUrl,
+  typesIndexPath,
 } from "./urls.ts";
 
 type PageMeta = {
@@ -90,7 +90,7 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
     <meta name="twitter:creator" content="@h3y6e" />
     ${
       meta.redirect === undefined
-        ? ""
+        ? html`<link rel="canonical" href="${meta.ogUrl}" />`
         : html`<link rel="canonical" href="${meta.redirect}" />
             <meta http-equiv="refresh" content="0; url=${meta.redirect}" />`
     }
@@ -274,7 +274,7 @@ export function indexPage(site: SiteConfig, posts: Post[]): string {
     title: site.title,
     description: site.description,
     ogType: "website",
-    ogUrl: `${site.siteUrl}/index.html`,
+    ogUrl: `${site.siteUrl}/`,
     ogImage: `${site.siteUrl}/assets/2f2f2f.jpg`,
     twitterCard: "summary",
   };
@@ -288,7 +288,7 @@ export function listPage(site: SiteConfig, title: string, path: string, posts: P
     description: `${site.description} :: ${site.title}`,
     ogDescription: site.description,
     ogType: "website",
-    ogUrl: `${site.siteUrl}${path}index.html`,
+    ogUrl: `${site.siteUrl}${path}`,
     ogImage: `${site.siteUrl}/assets/2f2f2f.jpg`,
     twitterCard: "summary",
   };
@@ -350,11 +350,21 @@ function facetIndexPage(site: SiteConfig, name: string, ogUrl: string, table: Ra
 }
 
 export function tagsIndexPage(site: SiteConfig, posts: Post[]): string {
-  return facetIndexPage(site, "Tags", tagsIndexFullUrl(site), tagTable(site, posts));
+  return facetIndexPage(
+    site,
+    "Tags",
+    `${site.siteUrl}${tagsIndexPath(site)}`,
+    tagTable(site, posts),
+  );
 }
 
 export function typesIndexPage(site: SiteConfig, posts: Post[]): string {
-  return facetIndexPage(site, "Types", typesIndexFullUrl(site), typeTable(site, posts));
+  return facetIndexPage(
+    site,
+    "Types",
+    `${site.siteUrl}${typesIndexPath(site)}`,
+    typeTable(site, posts),
+  );
 }
 
 export function notFoundPage(site: SiteConfig): string {

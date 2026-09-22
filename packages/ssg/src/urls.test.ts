@@ -9,7 +9,6 @@ import {
   postPath,
   archivePaths,
   tagPath,
-  tagsIndexFullUrl,
   tagsIndexPath,
   typePath,
 } from "./urls.ts";
@@ -31,20 +30,18 @@ const site: SiteConfig = {
 };
 
 describe("postPath / postFullUrl / tagPath", () => {
-  it("when given a dated post, builds the YYYY/MM/DD/slug page path and the index.html canonical URL", () => {
+  it("when given a dated post, builds the YYYY/MM/DD/slug page path and the public trailing-slash URL", () => {
     // Arrange
     const post = { date: "2020-12-18", slug: "a2net" };
     // Act & Assert
     expect(postDir(post)).toBe("2020/12/18/a2net");
     expect(postPath(post)).toBe("/posts/2020/12/18/a2net/");
-    expect(postFullUrl(site, post)).toBe(
-      "https://blog.h3y6e.com/posts/2020/12/18/a2net/index.html",
-    );
+    expect(postFullUrl(site, post)).toBe("https://blog.h3y6e.com/posts/2020/12/18/a2net/");
     expect(tagPath(site, "kmnac")).toBe("/tags/kmnac/");
   });
 });
 
-describe("archivePaths / tagsIndexPath / tagsIndexFullUrl", () => {
+describe("archivePaths / tagsIndexPath", () => {
   it("when given a date, lists the posts root and its year, month and day archive paths", () => {
     // Act & Assert
     expect(archivePaths("2020-12-18")).toEqual([
@@ -55,10 +52,9 @@ describe("archivePaths / tagsIndexPath / tagsIndexFullUrl", () => {
     ]);
   });
 
-  it("when given the site config, builds the tags landing page path and canonical URL", () => {
+  it("when given the site config, builds the tags landing page path", () => {
     // Act & Assert
     expect(tagsIndexPath(site)).toBe("/tags/");
-    expect(tagsIndexFullUrl(site)).toBe("https://blog.h3y6e.com/tags/index.html");
   });
 });
 
