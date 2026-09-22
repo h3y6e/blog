@@ -258,6 +258,9 @@ export function ssg(options: SsgOptions): Plugin {
             .split(sep)
             .join("/");
           assets.set(urlPrefix + relUrl, `/${this.getFileName(ref)}`);
+          if (relUrl === "favicon/favicon.ico") {
+            this.emitFile({ type: "asset", fileName: "favicon.ico", source });
+          }
           const dims = imageSize(source);
           if (dims) imageDims.set(urlPrefix + relUrl, dims);
         }
@@ -356,6 +359,11 @@ export function ssg(options: SsgOptions): Plugin {
                   if (existsSync(path) && statSync(path).isFile()) return sendFile(res, path, 3600);
                 }
               }
+              if (url === "/favicon.ico") {
+                const path = resolve(root, "_assets/favicon/favicon.ico");
+                if (existsSync(path) && statSync(path).isFile()) return sendFile(res, path, 3600);
+              }
+
               const pagesMap = await pages();
               const match = pageKeys(url)
                 .map((key): [string, string | undefined] => [key, pagesMap.get(key.slice(1))])

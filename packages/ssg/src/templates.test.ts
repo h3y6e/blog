@@ -180,12 +180,13 @@ describe("postPage", () => {
     expect(page).not.toContain('rel="preconnect"');
   });
 
-  it("when rendering any page, preloads the woff2 fonts, links the png favicon, and allows pinch zoom", () => {
+  it("when rendering any page, preloads the woff2 fonts, links the root and png favicons, and allows pinch zoom", () => {
     // Act
     const page = postPage(site, post());
     // Assert
     expect(page).toContain('href="/fonts/a5ebecMono-Regular.woff2"');
     expect(page).toContain('type="font/woff2"');
+    expect(page).toContain('<link rel="icon" href="/favicon.ico" sizes="any" />');
     expect(page).toContain(
       '<link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />',
     );

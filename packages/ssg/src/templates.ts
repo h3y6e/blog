@@ -95,6 +95,7 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
     )}
     <link rel="stylesheet" href="/css/a5ebec.css" />
     ${meta.stylesheet && html`<link rel="stylesheet" href="${meta.stylesheet}" />`}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />
     <meta property="og:site_name" content="${site.title}" />
