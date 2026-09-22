@@ -184,12 +184,17 @@ export function headline(
   named = false,
 ): Raw {
   const titleHtml = named
-    ? html`<span style="view-transition-name: post-title">${title}</span>`
+    ? html`<span class="p-name" style="view-transition-name: post-title">${title}</span>`
     : title;
   const typeLink = type && html` <a class="type" href="${typePath(site, type)}">${type}</a>`;
   return html`<div class="franklin-headline">
     <h1 class="title">${titleHtml}</h1>
-    ${date && html`<div class="date">${date}${typeLink}</div>`}<span class="tags"
+    ${
+      date &&
+      html`<div class="date">
+        <time class="dt-published" datetime="${date}">${date}</time>${typeLink}
+      </div>`
+    }<span class="tags"
       >${tags.map((tag) => html`<a href="${tagPath(site, tag)}">#${tag}</a> `)}</span
     >
   </div>`;
@@ -275,9 +280,9 @@ export function postPage(site: SiteConfig, post: Post): string {
   };
   const mentionsTarget = postFullUrl(site, post);
   const body = html`<div class="reading-progress"></div>
-    ${headline(site, post.title, post.date, post.type, post.tags, true)} ${toc(post.html)}
     <div class="franklin-content h-entry">
-      <span class="p-name" hidden>${post.title}</span>
+      ${headline(site, post.title, post.date, post.type, post.tags, true)} ${toc(post.html)}
+      <a class="p-author h-card" href="${site.authorUrl}" hidden>${site.author}</a>
       <a class="u-url" href="${mentionsTarget}" hidden>${mentionsTarget}</a>
       <div class="e-content">${raw(enhanceFootnotes(post.html))}</div>
       <div data-webmention-target="${mentionsTarget}"></div>

@@ -51,7 +51,8 @@ describe("headline", () => {
     // Assert
     expect(out).toBe(
       '<div class="franklin-headline"> <h1 class="title">T</h1> ' +
-        '<div class="date">2020-12-18 <a class="type" href="/types/build/">Build</a></div>' +
+        '<div class="date"> <time class="dt-published" datetime="2020-12-18">2020-12-18</time> ' +
+        '<a class="type" href="/types/build/">Build</a> </div>' +
         '<span class="tags"><a href="/tags/kmnac/">#kmnac</a> </span> </div>',
     );
   });
@@ -238,6 +239,12 @@ describe("postPage", () => {
     expect(page).toContain('href="https://blog.h3y6e.com/posts/2020/12/18/a2net/" hidden');
     expect(page).toContain('src="/libs/client/webmentions.js"');
     expect(page).toContain('"@type":"Person"');
+    expect(page).toMatch(/class="franklin-content h-entry"[\s\S]*class="p-name"/);
+    expect(page).toContain(`datetime="${post().date}"`);
+    expect(page).toContain('class="dt-published"');
+    expect(page).toMatch(
+      /class="franklin-content h-entry"[\s\S]*class="p-author h-card"[\s\S]*heyhoe/,
+    );
   });
 
   it("when rendering any post, names an inline title span for view transitions and adds the reading progress bar", () => {
@@ -245,7 +252,7 @@ describe("postPage", () => {
     const page = postPage(site, post());
     // Assert
     expect(norm(page)).toContain(
-      '<h1 class="title"><span style="view-transition-name: post-title">A2ネットを改善しよう</span></h1>',
+      '<h1 class="title"><span class="p-name" style="view-transition-name: post-title">A2ネットを改善しよう</span></h1>',
     );
     expect(page).toContain('<div class="reading-progress"></div>');
   });
