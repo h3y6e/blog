@@ -28,10 +28,9 @@ const SCRIPTS: [url: string, path: string][] = SCRIPT_NAMES.map((name) => [
 
 const SOURCE_EXTS = new Set([".ts", ".css"]);
 
-const ASSET_DIRS: [urlPrefix: string, dir: string][] = [["/assets/", "_assets"]];
+const PUBLIC_DIR = "public";
 
 const devStaticDirs = (postsDir: string): [urlPrefix: string, dir: string][] => [
-  ...ASSET_DIRS,
   ["/posts/", postsDir],
   ["/fonts/", "theme/fonts"],
 ];
@@ -139,13 +138,7 @@ type Plugin = {
   resolveId: (id: string) => string | undefined;
   generateBundle: (
     this: {
-      emitFile: (file: {
-        type: "asset";
-        fileName?: string;
-        name?: string;
-        source: string | Uint8Array;
-      }) => string;
-      getFileName: (referenceId: string) => string;
+      emitFile: (file: { type: "asset"; fileName: string; source: string | Uint8Array }) => void;
     },
     options: unknown,
     bundle: Record<string, BundleEntry>,
@@ -219,6 +212,7 @@ export function ssg(options: SsgOptions): Plugin {
       entries = postEntries(resolve(config.root ?? ".", options.postsDir));
       return {
         appType: "custom",
+        publicDir: PUBLIC_DIR,
         build: {
           rollupOptions: {
             input: Object.fromEntries([
@@ -248,21 +242,12 @@ export function ssg(options: SsgOptions): Plugin {
         urls.map((u) => [u, inlined.get(u)!]);
       const assets = new Map(fonts);
       const imageDims = new Map<string, Dims>();
-      for (const [urlPrefix, dir] of ASSET_DIRS) {
-        const abs = resolve(root, dir);
-        for (const file of walk(abs)) {
-          const source = readFileSync(file);
-          const ref = this.emitFile({ type: "asset", name: basename(file), source });
-          const relUrl = file
-            .slice(abs.length + 1)
-            .split(sep)
-            .join("/");
-          assets.set(urlPrefix + relUrl, `/${this.getFileName(ref)}`);
-          if (relUrl === "favicon/favicon.ico") {
-            this.emitFile({ type: "asset", fileName: "favicon.ico", source });
-          }
-          const dims = imageSize(source);
-          if (dims) imageDims.set(urlPrefix + relUrl, dims);
+      const publicDir = resolve(root, PUBLIC_DIR);
+      if (existsSync(publicDir)) {
+        for (const file of walk(publicDir)) {
+          const url = `/${relative(publicDir, file).split(sep).join("/")}`;
+          const dims = imageSize(readFileSync(file));
+          if (dims) imageDims.set(url, dims);
         }
       }
 
@@ -309,7 +294,7 @@ export function ssg(options: SsgOptions): Plugin {
     },
 
     configureServer(server) {
-      for (const dir of [options.postsDir, options.embedsFile, "theme", "_assets"]) {
+      for (const dir of [options.postsDir, options.embedsFile, "theme", PUBLIC_DIR]) {
         server.watcher.add(resolve(server.config.root, dir));
       }
       for (const [, path] of scriptList()) server.watcher.add(path);
@@ -358,10 +343,6 @@ export function ssg(options: SsgOptions): Plugin {
                   const path = resolve(root, dir, url.slice(urlPrefix.length));
                   if (existsSync(path) && statSync(path).isFile()) return sendFile(res, path, 3600);
                 }
-              }
-              if (url === "/favicon.ico") {
-                const path = resolve(root, "_assets/favicon/favicon.ico");
-                if (existsSync(path) && statSync(path).isFile()) return sendFile(res, path, 3600);
               }
 
               const pagesMap = await pages();

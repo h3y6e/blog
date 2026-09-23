@@ -74,11 +74,18 @@ describe("rewriteAssetUrls", () => {
     expect(rewriteAssetUrls(html, assets)).toBe(html);
   });
 
-  it("when an attribute references an asset path with no emitted file, rewriting throws", () => {
+  it("when an attribute references an unmapped public path, it passes through", () => {
+    // Arrange
+    const html = '<img src="/2f2f2f.jpg"><link rel="icon" href="/favicon.png" />';
     // Act & Assert
-    expect(() => rewriteAssetUrls('<img src="/assets/missing.png">', assets)).toThrow(
-      "/assets/missing.png",
-    );
+    expect(rewriteAssetUrls(html, assets)).toBe(html);
+  });
+
+  it("when an attribute references /css/ or /libs/ with no emitted file, rewriting throws", () => {
+    // Act & Assert
+    expect(() =>
+      rewriteAssetUrls('<link rel="stylesheet" href="/css/missing.css" />', assets),
+    ).toThrow("/css/missing.css");
     expect(() => rewriteAssetUrls('<script src="/libs/client/gone.js"></script>', assets)).toThrow(
       "/libs/client/gone.js",
     );
