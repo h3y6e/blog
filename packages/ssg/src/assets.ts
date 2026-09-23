@@ -1,4 +1,4 @@
-const ASSET_URL_PREFIXES = ["/assets/", "/css/", "/libs/"];
+const ASSET_URL_PREFIXES = ["/css/", "/libs/"];
 
 function rewriteOne(value: string, assets: Map<string, string>, siteUrl: string): string {
   const origin = siteUrl && value.startsWith(`${siteUrl}/`) ? siteUrl : "";

@@ -96,8 +96,8 @@ function head(site: SiteConfig, meta: PageMeta): Raw {
     <link rel="stylesheet" href="/css/a5ebec.css" />
     ${meta.stylesheet && html`<link rel="stylesheet" href="${meta.stylesheet}" />`}
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:site_name" content="${site.title}" />
     <meta property="og:image" content="${meta.ogImage}" />
     <meta name="twitter:card" content="${meta.twitterCard}" />
@@ -317,7 +317,7 @@ export function indexPage(site: SiteConfig, posts: Post[]): string {
     description: site.description,
     ogType: "website",
     ogUrl: `${site.siteUrl}/`,
-    ogImage: `${site.siteUrl}/assets/2f2f2f.jpg`,
+    ogImage: `${site.siteUrl}/2f2f2f.jpg`,
     twitterCard: "summary",
   };
   const body = html`<div class="franklin-content">${postlist(site, posts)} ${pageFoot(site)}</div>`;
@@ -331,7 +331,7 @@ export function listPage(site: SiteConfig, title: string, path: string, posts: P
     ogDescription: site.description,
     ogType: "website",
     ogUrl: `${site.siteUrl}${path}`,
-    ogImage: `${site.siteUrl}/assets/2f2f2f.jpg`,
+    ogImage: `${site.siteUrl}/2f2f2f.jpg`,
     twitterCard: "summary",
   };
   const body = html`<div class="franklin-content">${postlist(site, posts)} ${pageFoot(site)}</div>`;
@@ -383,7 +383,7 @@ function facetIndexPage(site: SiteConfig, name: string, ogUrl: string, table: Ra
     description: site.description,
     ogType: "website",
     ogUrl,
-    ogImage: `${site.siteUrl}/assets/2f2f2f.jpg`,
+    ogImage: `${site.siteUrl}/2f2f2f.jpg`,
     twitterCard: "summary",
   };
   const body = html`${headline(site, name, null, null, [])}
@@ -415,7 +415,7 @@ export function notFoundPage(site: SiteConfig): string {
     description: site.description,
     ogType: "website",
     ogUrl: `${site.siteUrl}/404.html`,
-    ogImage: `${site.siteUrl}/assets/2f2f2f.jpg`,
+    ogImage: `${site.siteUrl}/2f2f2f.jpg`,
     twitterCard: "summary",
   };
   const body = html`${headline(site, "404", null, null, [])}

@@ -188,9 +188,8 @@ describe("postPage", () => {
     expect(page).toContain('href="/fonts/a5ebecMono-Regular.woff2"');
     expect(page).toContain('type="font/woff2"');
     expect(page).toContain('<link rel="icon" href="/favicon.ico" sizes="any" />');
-    expect(page).toContain(
-      '<link rel="icon" href="/assets/favicon/favicon.png" type="image/png" />',
-    );
+    expect(page).toContain('<link rel="icon" href="/favicon.png" type="image/png" />');
+    expect(page).toContain('<link rel="apple-touch-icon" href="/apple-touch-icon.png" />');
     expect(page).toContain('content="width=device-width, initial-scale=1"');
     expect(page).not.toContain("maximum-scale");
   });
@@ -323,7 +322,7 @@ describe("indexPage", () => {
     expect(page).toContain("<title>#a5ebec</title>");
     expect(page).toContain('<meta property="og:type" content="website" />');
     expect(page).toContain(
-      '<meta property="og:image" content="https://blog.h3y6e.com/assets/2f2f2f.jpg" />',
+      '<meta property="og:image" content="https://blog.h3y6e.com/2f2f2f.jpg" />',
     );
     expect(page).toContain('<link rel="stylesheet" href="/css/a5ebec.css" />');
   });
