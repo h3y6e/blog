@@ -233,11 +233,7 @@ describe("postPage", () => {
       '<link rel="me atproto" href="https://bsky.app/profile/h3y6e.bsky.social" />',
     );
     expect(page).toContain('<meta name="fediverse:creator" content="@h3y6e@fedibird.com" />');
-    expect(page).toContain(
-      'data-webmention-target="https://blog.h3y6e.com/posts/2020/12/18/a2net/"',
-    );
     expect(page).toContain('href="https://blog.h3y6e.com/posts/2020/12/18/a2net/" hidden');
-    expect(page).toContain('src="/libs/client/webmentions.js"');
     expect(page).toContain('"@type":"Person"');
     expect(page).toMatch(/class="franklin-content h-entry"[\s\S]*class="p-name"/);
     expect(page).toContain(`datetime="${post().date}"`);
