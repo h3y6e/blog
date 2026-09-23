@@ -278,17 +278,15 @@ export function postPage(site: SiteConfig, post: Post): string {
     preconnect: scriptOrigins(post.html),
     ...(post.style && { stylesheet: postStyleUrl(post) }),
   };
-  const mentionsTarget = postFullUrl(site, post);
+  const url = postFullUrl(site, post);
   const body = html`<div class="reading-progress"></div>
     <div class="franklin-content h-entry">
       ${headline(site, post.title, post.date, post.type, post.tags, true)} ${toc(post.html)}
       <a class="p-author h-card" href="${site.authorUrl}" hidden>${site.author}</a>
-      <a class="u-url" href="${mentionsTarget}" hidden>${mentionsTarget}</a>
+      <a class="u-url" href="${url}" hidden>${url}</a>
       <div class="e-content">${raw(enhanceFootnotes(post.html))}</div>
-      <div data-webmention-target="${mentionsTarget}"></div>
       ${pageFoot(site, post)}
     </div>
-    <script type="module" src="/libs/client/webmentions.js"></script>
     ${post.script && html`<script type="module" src="${postScriptUrl(post)}"></script>`}`;
   return layout(site, meta, body);
 }
