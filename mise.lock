@@ -54,6 +54,6 @@ provenance = "github-attestations"
 
 [[tools.vp]]
 version = "0.3.0"
-aube = { path = ".mise/locks/vp/0.3.0", digest = "sha256:e14f85f7a603228346c496491143708e8dc19e3349ea9ced3029931014f0e551" }
+aube = { path = ".mise/locks/vp/0.3.0", digest = "sha256:2a134db99aa24338b486aa7025082ecc153ed75de45836b2a5a5c58d6955fe7b" }
 backend = "npm:vite-plus"
 specifiers = ["0.3.0"]
