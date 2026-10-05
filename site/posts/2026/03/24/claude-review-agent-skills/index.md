@@ -24,7 +24,7 @@ rss_description: "Claudeレビューの自己改善ループをAgent Skills中�
 - `claude-review` が自動レビューだけでなく、PR上での対話や修正依頼の窓口にもなった
 - contextをむやみに増やさず、最小限のskillに責務を分ける方向に変わった
 
-前回の記事の末尾では、「`direct_prompt` と `custom_instructions` が `prompt` に統合されたら工夫が必要そう」と書いていたが、知識や判断基準をskillへ分離する形に進んだため、この懸念はかなり薄くなっている。
+前回の記事の末尾では、「`direct_prompt` と `custom_instructions` が `prompt` に統合されたら工夫が必要そう」と書いていた。知識や判断基準をskillへ分離する形に進んだため、この懸念はかなり薄くなっている。
 
 ## 以前の構成で課題だったこと
 
@@ -81,7 +81,7 @@ PR作成や更新時にはこちらが動作する。
 トップレベルの要約コメントは必ず残し、具体的な問題はinline commentで返す。
 一方で `git add` / `git commit` / `git push` は禁止しており、あくまでレビュアーとして振る舞わせている。
 
-対話モードは、たとえば `@claude` のような専用メンションで起動する。
+対話モードは、例えば `@claude` のような専用メンションで起動する。
 
 ```yaml
 trigger_phrase: "@claude"
@@ -110,8 +110,7 @@ trigger_phrase: "@claude"
 3. `sync-skills.sh` で `.agents/skills` の体裁を揃える
 4. Claudeがskillを更新するPRを作り、自動マージする
 
-収集スクリプトが前回のtuning PR以降だけを見るようになっているため、毎回「最近の運用で実際に起きたこと」だけを材料にできる。
-毎回のチューニングで、直近の運用変化をそのまま取り込める。
+収集スクリプトは前回のtuning PR以降だけを見るため、毎回「最近の運用で実際に起きたこと」だけを材料にでき、直近の運用変化をそのまま取り込める。
 
 更新前には必ず `sync-skills.sh` を通す。
 これにより、`.agents/skills/<name>/SKILL.md` を正規形に保ちつつ、`.claude/skills` 側からも参照できる状態を維持できる。

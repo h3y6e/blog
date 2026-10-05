@@ -11,6 +11,10 @@ rules:
     pattern: 先ず
   - expected: $1ずつ
     patterns: /(\d+[個つ]?)づつ/
+  - expected: 例えば
+    pattern: たとえば
+  - expected: 一番
+    pattern: いちばん
   - expected: 箇所
     patterns: /[ヶか]所/
   - expected: 見てい$1

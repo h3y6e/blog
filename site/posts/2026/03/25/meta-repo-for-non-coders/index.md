@@ -15,7 +15,7 @@ rss_description: "普段コードを書かない人がCodex Appから仕様書�
 
 仕様書を書きたい、文言の差分を見たい、データを分析したい、といった仕事はある。ただ、そのたびに「このrepoを見て、その次にこのrepoも見て、必要ならこのドキュメントも見てください」と説明する負担は大きい。gitやshellに慣れていない人には、そこが最初の壁になる。
 
-やりたいのは、gitを覚えてもらうことではなく、Codex Appから自然言語で仕事を依頼できる状態を作ることにある。そのためにメタリポジトリを作り、横断で見る必要のあるrepoと `.agents/skills/` を1箇所に集めている。
+やりたいのはgitを覚えてもらうことではなく、Codex Appから自然言語で仕事を依頼できる状態を作ることだ。そのためにメタリポジトリを作り、横断で見る必要のあるrepoと `.agents/skills/` を1箇所に集めている。
 
 ## 何を置いているか
 
@@ -35,11 +35,11 @@ rss_description: "普段コードを書かない人がCodex Appから仕様書�
 └── 🐚 setup.sh
 ```
 
-client、server、protoなどのrepoをsubmoduleとしてぶら下げている。仕様書はメタリポジトリの `specs/` に置いていて、skillが実装や会話ログを参照しながらここに書き出す。初回セットアップや更新は `./setup.sh` と[mise tasks](https://mise.jdx.dev/tasks/)に寄せている。
+client、server、protoなどのrepoをsubmoduleとしてぶら下げている。仕様書はメタリポジトリの `specs/` に置いていて、skillが実装や会話ログを参照しながらここに書き出す。初回セットアップや更新の処理は `./setup.sh` と[mise tasks](https://mise.jdx.dev/tasks/)にまとめている。
 
 `AGENTS.md` では、メタリポジトリのスコープを「横断調査・情報整理・意思決定支援」に限定し、実装は対象repoで行うと明記している。第一の想定読者は普段コードを書かない人。説明もできるだけシンプルに保つよう指示している。
 
-skillsとしては、たとえば次のようなものを置いている。実際にはプロダクト名をプレフィックスにしている。
+skillsとしては、例えば次のようなものを置いている。実際にはプロダクト名をプレフィックスにしている。
 
 - `<project-name>-setup`: Codex Appでの初回セットアップや更新を進める
 - `<project-name>-spec-writer`: `specs/` に仕様書を書く
@@ -47,7 +47,7 @@ skillsとしては、たとえば次のようなものを置いている。実�
 - `<project-name>-bq-analysis`: BigQueryでの調査を安全に進める
 - `<project-name>-grafana-analysis`: 障害調査を進める
 
-setupスキルを例に見ると、想定ユーザーをCLIに不慣れな人と定義し、Codex App経由でのセットアップを前提にしている。skillが自分で実行し、権限ダイアログやSSHアクセスの問題など自分ではできないことだけユーザーに止めてもらう設計にしている。
+setupスキルを例に見ると、想定ユーザーをCLIに不慣れな人と定義し、Codex App経由でのセットアップを前提にしている。基本はskillが自分で実行し、権限ダイアログやSSHアクセスの問題などskillにはできない操作のときだけ止まってユーザーを待つ設計にしている。
 
 <details><summary><b>setupスキル抜粋</b></summary>
 
@@ -84,7 +84,7 @@ Assumed user: A non-engineer who primarily uses Japanese and is unfamiliar with 
 
 普段コードを書かない人にコマンド操作を理解してもらうより、Codexに仕事を渡す方が現実的だからだ。
 
-たとえば、次のように頼める状態を作りたい。
+例えば、次のように頼める状態を作りたい。
 
 - 「この機能の仕様書を書いて」
 - 「mobileとwebで文言がずれていないか見て」
