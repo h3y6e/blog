@@ -9,11 +9,11 @@ rss_description: "1Passwordでcredential_processを使う際は、op pluginを�
 
 ## はじめに
 
-1PasswordでAWSクレデンシャルを管理する際は[公式のop plugin](https://developer.1password.com/docs/cli/shell-plugins/aws/)の利用が一般的だが、`credential_process` を使う場合は素の `op` コマンドを直接使うことで、より高い柔軟性を得られる。
+1PasswordでAWSクレデンシャルを管理するなら、[公式のop plugin](https://developer.1password.com/docs/cli/shell-plugins/aws/)を使うのが一般的だ。ただ、`credential_process` を使う場合は素の `op` コマンドを直接使う方が柔軟に扱える。
 
 ## op pluginを使わない理由
 
-op pluginは独自の認証メカニズムを使用しており、AWS CLIの標準的な `credential_process` との併用が難しい。特にgit-remote-s3など `credential_process` を必要とするツールとの組み合わせで使いにくい。
+op pluginは独自の認証の仕組みを使っており、AWS CLIの標準的な `credential_process` との併用が難しい。特にgit-remote-s3など `credential_process` を必要とするツールとの組み合わせで使いにくい。
 
 {{ embed https://github.com/1Password/shell-plugins/issues/213 }}
 
@@ -35,7 +35,7 @@ credential_process=sh -c "op --account=my.1password.com --vault='env' item get -
 
 ### 設定の詳細
 
-コマンドの構成:
+コマンドの構成は次のとおり。
 
 1. `op --account=my.1password.com --vault='env' item get --format=json --fields=label=AccessKeyId,label=SecretAccessKey aws-dev`
    - 1Passwordの `env` vaultから `aws-dev` というアイテムを取得

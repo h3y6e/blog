@@ -13,7 +13,7 @@ GitHub Projectsにissueを集める運用は重宝している。複数リポジ
 
 ただ、issueを集めるだけだと、Priority、Size、Statusなどのフィールドがすぐ空になる。人間が毎回埋めるには細かすぎるし、放っておくとProjectが単なる一覧になる。
 
-ここは特定のProjectだけの問題ではないと思う。Projectをタスク管理の中心に置くと、同じような手入れが発生する。
+ここは特定のProjectだけの問題ではないと思う。Projectをタスク管理の中心に置くと、同じような手入れが必要になる。
 
 そこで、Project上の既存アイテムを定期的に見て、未設定のフィールドだけを埋めるワークフローを作った。
 
@@ -116,7 +116,7 @@ Projectやissueを読む、safe outputでProjectを更新する、といったGi
 - GitHubのAPI操作: GitHub Appでよい。むしろAppの方がスコープと失効が扱いやすい
 - Copilotエンジンの実行: 現状は個人PATが必要。GitHub Appでは置き換えられない
 
-ワークフローを組むときは、`APP_ID` / `APP_PRIVATE_KEY` と `COPILOT_GITHUB_TOKEN` を別物として扱う必要がある。
+ワークフローを組むときは、`APP_ID` / `APP_PRIVATE_KEY` と `COPILOT_GITHUB_TOKEN` を別のものとして扱う必要がある。
 
 ## 停止条件
 
@@ -138,7 +138,7 @@ Projectやissueを読む、safe outputでProjectを更新する、といったGi
 
 これは普通のActionsだけで書くなら、APIの戻り値と条件分岐を細かく実装するところだと思う。
 
-gh-awでは、エージェントが判断する部分を自然言語で書き、書き込みだけはsafe outputに閉じ込める。今回でいうと、エージェントはProjectのアイテムやissueを読んで「何を更新したいか」を出す。実際にProjectを更新するのはsafe outputsジョブで、`update-project` の許可範囲と `max` に縛られる。
+gh-awでは、エージェントが判断する部分を自然言語で書き、書き込みだけはsafe outputに限る。今回でいうと、エージェントはProjectのアイテムやissueを読んで「何を更新したいか」を出す。実際にProjectを更新するのはsafe outputsジョブで、`update-project` の許可範囲と `max` で制限される。
 
 この分離が扱いやすかった。
 
@@ -150,7 +150,7 @@ gh-awでは、エージェントが判断する部分を自然言語で書き、
 
 gh-awの面白さは、AIが賢くissueを読んでくれることだけではなかった。
 
-むしろ、既存のGitHub運用を壊さずに差し込める。issueはissueのまま、ProjectはProjectのまま、実行基盤はActionsのまま。その上に、フロントマター付きMarkdownと生成されたワークフローを1枚挟む。
+むしろ、既存のGitHub運用をそのままにして組み込める。issueはissueのまま、ProjectはProjectのまま、実行基盤はActionsのまま。その上に、フロントマター付きMarkdownと生成されたワークフローを1枚挟む。
 
 名前はGitHub Agentic Workflowsで、仰々しい。ただ、自分の理解では、これは「MarkdownからGitHub Actionsを生成し、エージェントの読み取りとsafe outputの書き込みを分けるツール」である。
 

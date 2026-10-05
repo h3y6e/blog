@@ -29,7 +29,7 @@ RaycastのScript Command機能は、任意のスクリプトをRaycastから実�
 
 {{ embed https://github.com/raycast/script-commands }}
 
-主要なパラメータ: 
+主要なパラメータは次のとおり。
 - `@raycast.title`: Raycastで表示されるコマンド名
 - `@raycast.mode`: 出力モード（fullOutput, compact, silent, inline）
 - `@raycast.argument1`: コマンドの引数定義
@@ -95,11 +95,11 @@ Raycastから実行される際は[PATHが通っていない](https://github.com
 
 #### Raycast Script Commandの設定
   1. スクリプトを `~/.config/raycast-script/` ディレクトリ（任意）に配置
-  2. 実行権限を付与: `chmod +x plamo-translate.sh`
+  2. `chmod +x plamo-translate.sh` で実行権限を付与
   3. Raycastで `Extensions → Script Commands → Add Directories` を選択し、上記ディレクトリを追加
 
 #### plamo-translate-cliのインストール
-mise設定ファイル（`~/.config/mise/config.toml`）に以下を追加: 
+mise設定ファイル（`~/.config/mise/config.toml`）に以下を追加する。
 ```toml
 "pipx:pfnet/plamo-translate-cli" = { version = "latest", uvx_args = "-p 3.12" }
 ```
