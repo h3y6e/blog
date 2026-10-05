@@ -320,6 +320,8 @@ const DEL = /~~(?=\S)([\s\S]*?\S)~~/y;
 const ESCAPE = /\\([!-/:-@[-`{-~])/y;
 const TEXT = /[^ `<[!*_~$\\]+/y;
 
+const linkTitle = (link: Link): string => (link.title ? ` title="${escapeText(link.title)}"` : "");
+
 function parseInline(src: string, ctx: Ctx): string {
   let out = "";
   let text = "";
@@ -339,8 +341,6 @@ function parseInline(src: string, ctx: Ctx): string {
     i += length;
     return true;
   };
-  const linkTitle = (link: Link): string =>
-    link.title ? ` title="${escapeText(link.title)}"` : "";
   // Openers whose closer scan hit end of src; rescanning later can only fail again.
   const dead = new Set<string>();
   while (i < src.length) {

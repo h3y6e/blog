@@ -75,8 +75,13 @@ export default defineConfig({
       textlint: "textlint 'site/posts/**/index.md'",
       "calibrate-style": {
         command: "calibrate-style",
-        input: ["site/posts/**/index.md", "packages/textlint-rule-preset-style/{src,bin}/**/*.ts"],
-        output: ["packages/textlint-rule-preset-style/generated/thresholds.json"],
+        cache: {
+          input: [
+            "site/posts/**/index.md",
+            "packages/textlint-rule-preset-style/{src,bin}/**/*.ts",
+          ],
+          output: ["packages/textlint-rule-preset-style/generated/thresholds.json"],
+        },
       },
       lint: {
         command: "vp lint",
