@@ -10,7 +10,7 @@ PLaMo翻訳モデルをローカルで動かすことで、ネットワーク接
 <p>RaycastのScript Command機能は、任意のスクリプトをRaycastから実行できる機能である。shell script以外にも対応している。
 メタデータをスクリプトのコメントとして埋め込み、フォルダを登録しておくことでRaycastが認識してくれる。</p>
 <p>EMBED3</p>
-<p>主要なパラメータ: </p>
+<p>主要なパラメータは次のとおり。</p>
 <ul>
 <li><code>@raycast.title</code>: Raycastで表示されるコマンド名</li>
 <li><code>@raycast.mode</code>: 出力モード（fullOutput, compact, silent, inline）</li>
@@ -61,11 +61,11 @@ Raycastから実行される際は<a href="https://github.com/raycast/script-com
 <h4>Raycast Script Commandの設定</h4>
 <ol>
 <li>スクリプトを <code>~/.config/raycast-script/</code> ディレクトリ（任意）に配置</li>
-<li>実行権限を付与: <code>chmod +x plamo-translate.sh</code></li>
+<li><code>chmod +x plamo-translate.sh</code> で実行権限を付与</li>
 <li>Raycastで <code>Extensions → Script Commands → Add Directories</code> を選択し、上記ディレクトリを追加</li>
 </ol>
 <h4>plamo-translate-cliのインストール</h4>
-<p>mise設定ファイル（<code>~/.config/mise/config.toml</code>）に以下を追加: </p>
+<p>mise設定ファイル（<code>~/.config/mise/config.toml</code>）に以下を追加する。</p>
 <pre><code class="language-toml">&quot;pipx:pfnet/plamo-translate-cli&quot; = { version = &quot;latest&quot;, uvx_args = &quot;-p 3.12&quot; }
 </code></pre>
 <p>そして <code>mise install</code> を実行</p>
