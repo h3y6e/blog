@@ -31,7 +31,7 @@ describe("highlight", () => {
     expect(html).toContain('<span class="b">echo</span>');
     expect(html).toContain('<span class="v">$HOME</span>');
     expect(html).toContain('<span class="s">&#39;empty&#39;</span>');
-    expect(html).toContain('<span class="c"># note</span>');
+    expect(html).toContain('<span class="c" translate="yes"># note</span>');
   });
 
   it("when highlighting sh and shell, produces the same output as bash", () => {
@@ -53,7 +53,7 @@ describe("highlight", () => {
     expect(html).toContain('<span class="u">-</span>');
     expect(html).toContain('<span class="s">&quot;build&quot;</span>');
     expect(html).toContain('<span class="l">true</span>');
-    expect(html).toContain('<span class="c"># ok</span>');
+    expect(html).toContain('<span class="c" translate="yes"># ok</span>');
   });
 
   it("when a yaml value is a block scalar, treats the indented block as a string, not yaml", () => {
@@ -62,7 +62,7 @@ describe("highlight", () => {
     // Act
     const html = highlight(code, "yaml");
     // Assert
-    expect(html).not.toContain('<span class="c">');
+    expect(html).not.toContain('<span class="c" translate="yes">');
     expect(html).toContain('<span class="s">  # not a comment</span>');
     expect(html).toContain('<span class="a">next</span>');
   });
@@ -78,7 +78,7 @@ describe("highlight", () => {
     expect(html).toContain('<span class="m">@test</span>');
     expect(html).toContain('<span class="s">&quot;x&quot;</span>');
     expect(html).toContain('<span class="n">2.5</span>');
-    expect(html).toContain('<span class="c"># ok</span>');
+    expect(html).toContain('<span class="c" translate="yes"># ok</span>');
   });
 
   it("when highlighting cxx, marks preprocessor lines, types, keywords and comments", () => {
@@ -90,7 +90,7 @@ describe("highlight", () => {
     expect(html).toContain('<span class="m">#include &lt;stdio.h&gt;</span>');
     expect(html).toContain('<span class="t">int</span>');
     expect(html).toContain('<span class="k">return</span>');
-    expect(html).toContain('<span class="c">/* done */</span>');
+    expect(html).toContain('<span class="c" translate="yes">/* done */</span>');
   });
 
   it("when highlighting markdown, marks headings, bullets, emphasis and code spans", () => {
@@ -127,7 +127,7 @@ describe("highlight", () => {
     expect(html).toContain('<span class="k">const</span>');
     expect(html).toContain('<span class="s">&quot;hi&quot;</span>');
     expect(html).toContain('<span class="b">console</span>');
-    expect(html).toContain('<span class="c">// done</span>');
+    expect(html).toContain('<span class="c" translate="yes">// done</span>');
     expect(highlight(code, "typescript")).toBe(html);
     expect(highlight("var a = 1", "js")).toBe(highlight("var a = 1", "javascript"));
   });
@@ -153,7 +153,7 @@ describe("highlight", () => {
     expect(html).toContain('<span class="g">&lt;a</span>');
     expect(html).toContain('<span class="a">href</span>');
     expect(html).toContain('<span class="s">&quot;https://x.test&quot;</span>');
-    expect(html).toContain('<span class="c">&lt;!-- c --&gt;</span>');
+    expect(html).toContain('<span class="c" translate="yes">&lt;!-- c --&gt;</span>');
     expect(highlight(code, "xml")).toBe(html);
   });
 
@@ -163,7 +163,7 @@ describe("highlight", () => {
     // Act
     const html = highlight(code, "vim");
     // Assert
-    expect(html).toContain('<span class="c">&quot; my config</span>');
+    expect(html).toContain('<span class="c" translate="yes">&quot; my config</span>');
     expect(html).toContain('<span class="k">set</span>');
     expect(html).toContain('<span class="s">&#39;y&#39;</span>');
   });
@@ -196,7 +196,9 @@ describe("highlight", () => {
     // Act
     const html = highlight(code, "cxx");
     // Assert
-    expect(html).toBe('<span class="c">/* one</span>\n<span class="c">two */</span>');
+    expect(html).toBe(
+      '<span class="c" translate="yes">/* one</span>\n<span class="c" translate="yes">two */</span>',
+    );
   });
 });
 

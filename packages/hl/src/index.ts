@@ -212,7 +212,11 @@ const esc = (s: string): string =>
 const span = (text: string, cls?: string): string =>
   text
     .split("\n")
-    .map((t) => (t && cls ? `<span class="${cls}">${esc(t)}</span>` : esc(t)))
+    .map((t) =>
+      t && cls
+        ? `<span class="${cls}"${cls === "c" ? ' translate="yes"' : ""}>${esc(t)}</span>`
+        : esc(t),
+    )
     .join("\n");
 
 export function highlight(code: string, lang: string): string {

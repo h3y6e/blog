@@ -13,6 +13,7 @@ export function normalize(html: string): string {
   return (
     html
       .replace(/<(h[23]) id="[^"]*"/g, "<$1")
+      .replace(/<(pre|code) translate="no">/g, "<$1>")
       // marked rejects ** flanked by CJK punctuation; compare content only.
       .replace(/<\/?strong>|\*\*/g, "")
       // Goldens predate the dated layout.

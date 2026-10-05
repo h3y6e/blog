@@ -20,9 +20,12 @@ export type SsgOptions = SiteConfig;
 const CSS_ENTRY = "theme/css/a5ebec.css";
 const CSS_URL = "/css/a5ebec.css";
 
-const SCRIPT_NAMES = ["switcher", "vt", "webmcp"] as const;
+const PAGE_SCRIPT_NAMES = ["switcher", "vt", "webmcp"];
+const POST_SCRIPT_NAMES = ["translate"];
+const SCRIPT_NAMES = [...PAGE_SCRIPT_NAMES, ...POST_SCRIPT_NAMES];
+const scriptUrl = (name: string): string => `/libs/client/${name}.js`;
 const SCRIPTS: [url: string, path: string][] = SCRIPT_NAMES.map((name) => [
-  `/libs/client/${name}.js`,
+  scriptUrl(name),
   fileURLToPath(import.meta.resolve(`@blog/client/${name}.ts`)),
 ]);
 
@@ -272,7 +275,11 @@ export function ssg(options: SsgOptions): Plugin {
         return inlineAssets(
           page,
           pick([CSS_URL, ...(post?.style ? [postStyleUrl(post)] : [])]),
-          pick([...SCRIPTS.map(([u]) => u), ...(post?.script ? [postScriptUrl(post)] : [])]),
+          pick([
+            ...PAGE_SCRIPT_NAMES.map(scriptUrl),
+            ...(post ? POST_SCRIPT_NAMES.map(scriptUrl) : []),
+            ...(post?.script ? [postScriptUrl(post)] : []),
+          ]),
         );
       };
       for (const [fileName, source] of pageMap) {

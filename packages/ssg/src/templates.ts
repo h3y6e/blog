@@ -181,9 +181,9 @@ export function headline(
   date: string | null,
   type: string | null,
   tags: string[],
-  named = false,
+  ownPage = false,
 ): Raw {
-  const titleHtml = named
+  const titleHtml = ownPage
     ? html`<span class="p-name" style="view-transition-name: post-title">${title}</span>`
     : title;
   const typeLink = type && html` <a class="type" href="${typePath(site, type)}">${type}</a>`;
@@ -191,10 +191,11 @@ export function headline(
     <h1 class="title">${titleHtml}</h1>
     ${
       date &&
-      html`<div class="date">
+      html`<div class="date" translate="no">
         <time class="dt-published" datetime="${date}">${date}</time>${typeLink}
+        ${ownPage && html`<translate-post><button hidden>🌐</button></translate-post>`}
       </div>`
-    }<span class="tags"
+    }<span class="tags" translate="no"
       >${tags.map((tag) => html`<a href="${tagPath(site, tag)}">#${tag}</a> `)}</span
     >
   </div>`;
@@ -282,11 +283,12 @@ export function postPage(site: SiteConfig, post: Post): string {
   const body = html`<div class="reading-progress"></div>
     <div class="franklin-content h-entry">
       ${headline(site, post.title, post.date, post.type, post.tags, true)} ${toc(post.html)}
-      <a class="p-author h-card" href="${site.authorUrl}" hidden>${site.author}</a>
-      <a class="u-url" href="${url}" hidden>${url}</a>
+      <a class="p-author h-card" href="${site.authorUrl}" hidden translate="no">${site.author}</a>
+      <a class="u-url" href="${url}" hidden translate="no">${url}</a>
       <div class="e-content">${raw(enhanceFootnotes(post.html))}</div>
       ${pageFoot(site, post)}
     </div>
+    <script type="module" src="/libs/client/translate.js"></script>
     ${post.script && html`<script type="module" src="${postScriptUrl(post)}"></script>`}`;
   return layout(site, meta, body);
 }
