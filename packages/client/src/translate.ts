@@ -24,26 +24,27 @@ const Translator = self.Translator;
 const source = document.documentElement.lang;
 const target = navigator.languages.find((l) => new Intl.Locale(l).language !== source);
 
-const translatable = (node: Node): node is Text => {
+const translatable = (node: Node, root: Element): node is Text => {
   const parent = node.parentElement;
+  const scope = parent?.closest("[lang]");
   return (
     node instanceof Text &&
     parent instanceof HTMLElement &&
     parent.translate &&
+    (scope === root || scope?.getAttribute("lang") === source) &&
     !(parent instanceof HTMLScriptElement || parent instanceof HTMLStyleElement) &&
     node.data.trim() !== ""
   );
 };
 
-const textNodes = (root: Node): Text[] => {
-  if (root instanceof Text) return translatable(root) ? [root] : [];
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode: (node) =>
-      translatable(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
+const textNodes = (node: Node, root: Element): Text[] => {
+  if (node instanceof Text) return translatable(node, root) ? [node] : [];
+  const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) =>
+      translatable(n, root) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
   });
   const nodes: Text[] = [];
-  for (let node = walker.nextNode(); node instanceof Text; node = walker.nextNode())
-    nodes.push(node);
+  for (let n = walker.nextNode(); n instanceof Text; n = walker.nextNode()) nodes.push(n);
   return nodes;
 };
 
@@ -52,13 +53,16 @@ class TranslatePost extends HTMLElement {
   #label = `Translate to ${new Intl.DisplayNames(["en"], { type: "language" }).of(target!)}`;
   #button = this.querySelector("button")!;
   #root = this.closest(".h-entry")!;
-  #translator: Promise<TranslatorInstance> | undefined;
+  #translated = false;
+  #translator: TranslatorInstance | undefined;
   #cache = new Map<string, Promise<string>>();
   #applied = new WeakMap<Text, { original: string; translated: string }>();
   #observer = new MutationObserver((records) => {
     void this.#translate(
       records.flatMap((r) =>
-        r.type === "characterData" ? textNodes(r.target) : [...r.addedNodes].flatMap(textNodes),
+        r.type === "characterData"
+          ? textNodes(r.target, this.#root)
+          : [...r.addedNodes].flatMap((n) => textNodes(n, this.#root)),
       ),
     );
   });
@@ -77,25 +81,35 @@ class TranslatePost extends HTMLElement {
   }
 
   async #toggle(): Promise<void> {
-    if (this.#root.hasAttribute("lang")) {
-      this.#observer.disconnect();
-      for (const node of textNodes(this.#root)) {
-        const applied = this.#applied.get(node);
-        if (applied?.translated === node.data) node.data = applied.original;
-      }
-      this.#root.removeAttribute("lang");
-      this.#show(false, this.#label);
+    if (this.#translated) {
+      this.#restore();
       return;
     }
     this.#button.disabled = true;
     try {
+      this.#translator ??= await this.#createTranslator();
+      this.#translated = true;
       this.#observer.observe(this.#root, { subtree: true, childList: true, characterData: true });
-      await this.#translate(textNodes(this.#root));
+      await this.#translate(textNodes(this.#root, this.#root));
       this.#root.setAttribute("lang", target!);
       this.#show(true, "Show original");
+    } catch (error) {
+      this.#restore();
+      throw error;
     } finally {
       this.#button.disabled = false;
     }
+  }
+
+  #restore(): void {
+    this.#translated = false;
+    this.#observer.disconnect();
+    for (const node of textNodes(this.#root, this.#root)) {
+      const applied = this.#applied.get(node);
+      if (applied?.translated === node.data) node.data = applied.original;
+    }
+    this.#root.removeAttribute("lang");
+    this.#show(false, this.#label);
   }
 
   async #translate(nodes: Text[]): Promise<void> {
@@ -104,7 +118,7 @@ class TranslatePost extends HTMLElement {
       .map((node) => ({ node, original: node.data }));
     const translations = await Promise.all(jobs.map((job) => this.#translateText(job.original)));
     for (const [i, { node, original }] of jobs.entries()) {
-      if (node.data !== original) continue;
+      if (!this.#translated || node.data !== original) continue;
       const translated = translations[i]!;
       this.#applied.set(node, { original, translated });
       node.data = translated;
@@ -112,15 +126,17 @@ class TranslatePost extends HTMLElement {
   }
 
   #translateText(text: string): Promise<string> {
-    const translated = this.#cache.get(text) ?? this.#translateBody(text);
+    const cached = this.#cache.get(text);
+    if (cached) return cached;
+    const translated = this.#translateBody(text);
     this.#cache.set(text, translated);
+    translated.catch(() => this.#cache.delete(text));
     return translated;
   }
 
   async #translateBody(text: string): Promise<string> {
-    this.#translator ??= this.#createTranslator();
     const [, lead, body, trail] = /^(\s*)([\s\S]*?)(\s*)$/.exec(text)!;
-    return lead + (await (await this.#translator).translate(body!)) + trail;
+    return lead + (await this.#translator!.translate(body!)) + trail;
   }
 
   async #createTranslator(): Promise<TranslatorInstance> {
