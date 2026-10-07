@@ -1,0 +1,26 @@
+translate-post {
+  float: inline-end;
+
+  & button {
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--date-color);
+    &:is(:hover, :focus-visible, [aria-pressed="true"]) {
+      background: none;
+      color: var(--accent);
+    }
+    &:disabled {
+      cursor: progress;
+      @media (prefers-reduced-motion: no-preference) {
+        animation: translate-busy 1s ease-in-out infinite alternate;
+      }
+    }
+  }
+}
+
+@keyframes translate-busy {
+  to {
+    opacity: 0.3;
+  }
+}

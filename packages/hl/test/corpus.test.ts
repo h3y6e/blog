@@ -55,12 +55,18 @@ describe("highlighting the full post corpus", () => {
       const label = `${file} (${lang || "plain"})`;
       // Assert
       for (const line of html.split("\n")) {
-        expect(line.match(/<span class="[a-z]">/g)?.length ?? 0, label).toBe(
+        expect(line.match(/<span class="(?:[a-z]|c" translate="yes)">/g)?.length ?? 0, label).toBe(
           line.match(/<\/span>/g)?.length ?? 0,
         );
       }
-      expect(html.replace(/<span class="[a-z]">|<\/span>/g, ""), label).not.toMatch(/[<>]/);
-      expect(unescape(html.replace(/<span class="[a-z]">|<\/span>/g, "")), label).toBe(code);
+      expect(
+        html.replace(/<span class="(?:[a-z]|c" translate="yes)">|<\/span>/g, ""),
+        label,
+      ).not.toMatch(/[<>]/);
+      expect(
+        unescape(html.replace(/<span class="(?:[a-z]|c" translate="yes)">|<\/span>/g, "")),
+        label,
+      ).toBe(code);
     }
   });
 
@@ -84,7 +90,9 @@ describe("highlighting the full post corpus", () => {
     for (const [lang, codes] of byLang) {
       // Act & Assert
       expect(
-        codes.some((code) => /<span class="[a-z]">/.test(highlight(code, lang))),
+        codes.some((code) =>
+          /<span class="(?:[a-z]|c" translate="yes)">/.test(highlight(code, lang)),
+        ),
         lang,
       ).toBe(true);
     }

@@ -15,7 +15,7 @@ describe("escaping", () => {
     expect(render("A&mdash;B &c")).toBe("<p>A&mdash;B &amp;c</p>\n");
   });
   it("when code contains an entity, its ampersand is escaped", () => {
-    expect(render("`&amp;`")).toBe("<p><code>&amp;amp;</code></p>\n");
+    expect(render("`&amp;`")).toBe('<p><code translate="no">&amp;amp;</code></p>\n');
   });
 });
 
@@ -48,24 +48,28 @@ describe("headings", () => {
 describe("code", () => {
   it("when a fenced block has a language, the class names it and content is escaped verbatim", () => {
     expect(render('```html\n<a href="x">&\n```')).toBe(
-      '<pre><code class="language-html">&lt;a href=&quot;x&quot;&gt;&amp;\n</code></pre>\n',
+      '<pre translate="no"><code class="language-html">&lt;a href=&quot;x&quot;&gt;&amp;\n</code></pre>\n',
     );
   });
   it("when a fenced block has no language, no class is emitted", () => {
-    expect(render("```\nx\n```")).toBe("<pre><code>x\n</code></pre>\n");
+    expect(render("```\nx\n```")).toBe('<pre translate="no"><code>x\n</code></pre>\n');
   });
   it("when a highlight option is given, fenced content uses its html verbatim", () => {
     // Act / Assert
     expect(render("```sh\na < b\n```", { highlight })).toBe(
-      '<pre><code class="language-sh">[sh]a < b\n</code></pre>\n',
+      '<pre translate="no"><code class="language-sh">[sh]a < b\n</code></pre>\n',
     );
-    expect(render("```\nx\n```", { highlight })).toBe("<pre><code>[]x\n</code></pre>\n");
+    expect(render("```\nx\n```", { highlight })).toBe(
+      '<pre translate="no"><code>[]x\n</code></pre>\n',
+    );
   });
   it("when an inline code span contains markdown syntax, it stays literal", () => {
-    expect(render("`**not bold** $x$`")).toBe("<p><code>**not bold** $x$</code></p>\n");
+    expect(render("`**not bold** $x$`")).toBe(
+      '<p><code translate="no">**not bold** $x$</code></p>\n',
+    );
   });
   it("when a code span is delimited by double backticks, single backticks survive inside", () => {
-    expect(render("`` a`b ``")).toBe("<p><code>a`b</code></p>\n");
+    expect(render("`` a`b ``")).toBe('<p><code translate="no">a`b</code></p>\n');
   });
 });
 
@@ -210,7 +214,7 @@ describe("math", () => {
   });
   it("when a dollar sign sits inside code, the math handler is not invoked", () => {
     expect(render('`echo $A $B`\n\n```sh\nj = "$j $k"\n```', { math })).toBe(
-      '<p><code>echo $A $B</code></p>\n<pre><code class="language-sh">j = &quot;$j $k&quot;\n</code></pre>\n',
+      '<p><code translate="no">echo $A $B</code></p>\n<pre translate="no"><code class="language-sh">j = &quot;$j $k&quot;\n</code></pre>\n',
     );
   });
 });

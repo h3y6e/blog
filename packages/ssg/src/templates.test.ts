@@ -51,9 +51,9 @@ describe("headline", () => {
     // Assert
     expect(out).toBe(
       '<div class="franklin-headline"> <h1 class="title">T</h1> ' +
-        '<div class="date"> <time class="dt-published" datetime="2020-12-18">2020-12-18</time> ' +
+        '<div class="date" translate="no"> <time class="dt-published" datetime="2020-12-18">2020-12-18</time> ' +
         '<a class="type" href="/types/build/">Build</a> </div>' +
-        '<span class="tags"><a href="/tags/kmnac/">#kmnac</a> </span> </div>',
+        '<span class="tags" translate="no"><a href="/tags/kmnac/">#kmnac</a> </span> </div>',
     );
   });
 
@@ -62,7 +62,7 @@ describe("headline", () => {
     const out = norm(headline(site, "T", null, null, []).html);
     // Assert
     expect(out).not.toContain('class="date"');
-    expect(out).toContain('<span class="tags"></span>');
+    expect(out).toContain('<span class="tags" translate="no"></span>');
   });
 });
 
@@ -172,6 +172,31 @@ describe("postPage", () => {
     expect(both).toContain('<link rel="stylesheet" href="/posts/2020/12/18/a2net/index.css" />');
     expect(neither).not.toContain("/posts/2020/12/18/a2net/index.js");
     expect(neither).not.toContain("/posts/2020/12/18/a2net/index.css");
+  });
+
+  it("when rendering a post, offers the translate-post element and keeps hidden microformats and English chrome untranslated", () => {
+    // Act
+    const page = norm(postPage(site, post()));
+    // Assert
+    expect(page).toMatch(
+      /<div class="date" translate="no">.*<translate-post><button hidden>🌐<\/button><\/translate-post> <\/div>/,
+    );
+    expect(page).toContain('<script type="module" src="/libs/client/translate.js"></script>');
+    expect(page).toContain(
+      '<a class="p-author h-card" href="https://h3y6e.com" hidden translate="no">',
+    );
+    expect(page).toContain(
+      '<a class="u-url" href="https://blog.h3y6e.com/posts/2020/12/18/a2net/" hidden translate="no">',
+    );
+    expect(page).toContain('<footer class="page-foot" lang="en">');
+  });
+
+  it("when rendering a list page, neither offers translate-post nor loads its script", () => {
+    // Act
+    const page = indexPage(site, [post()]);
+    // Assert
+    expect(page).not.toContain("<translate-post>");
+    expect(page).not.toContain("translate.js");
   });
 
   it("when the post embeds no third-party script, emits no preconnect", () => {

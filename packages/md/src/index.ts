@@ -89,7 +89,7 @@ function parseBlocks(lines: string[], ctx: Ctx): string {
       i++;
       const cls = lang ? ` class="language-${escapeAll(lang)}"` : "";
       const body = ctx.highlight?.(code.join("\n"), lang) ?? escapeAll(code.join("\n"));
-      out.push(`<pre><code${cls}>${body}\n</code></pre>\n`);
+      out.push(`<pre translate="no"><code${cls}>${body}\n</code></pre>\n`);
       continue;
     }
     if (line.startsWith("<!--")) {
@@ -364,7 +364,7 @@ function parseInline(src: string, ctx: Ctx): string {
         if ((m = at(CODESPAN))) {
           let code = m[2]!.replace(/\n/g, " ");
           if (/^ .*[^ ].* $/.test(code)) code = code.slice(1, -1);
-          token(m[0].length, `<code>${escapeAll(code)}</code>`);
+          token(m[0].length, `<code translate="no">${escapeAll(code)}</code>`);
           continue;
         }
         dead.add(`\`${run}`);
