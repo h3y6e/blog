@@ -245,7 +245,7 @@ function pageFoot(site: SiteConfig, post?: Post): Raw {
           </a>
         </p> `;
     })();
-  return html`<footer class="page-foot">
+  return html`<footer class="page-foot" lang="en">
     ${intents}
     <div class="copyright h-card">
       <span>

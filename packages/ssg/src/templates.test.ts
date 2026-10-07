@@ -174,7 +174,7 @@ describe("postPage", () => {
     expect(neither).not.toContain("/posts/2020/12/18/a2net/index.css");
   });
 
-  it("when rendering a post, offers the translate-post element and keeps hidden microformats untranslated", () => {
+  it("when rendering a post, offers the translate-post element and keeps hidden microformats and English chrome untranslated", () => {
     // Act
     const page = norm(postPage(site, post()));
     // Assert
@@ -188,6 +188,7 @@ describe("postPage", () => {
     expect(page).toContain(
       '<a class="u-url" href="https://blog.h3y6e.com/posts/2020/12/18/a2net/" hidden translate="no">',
     );
+    expect(page).toContain('<footer class="page-foot" lang="en">');
   });
 
   it("when rendering a list page, neither offers translate-post nor loads its script", () => {
