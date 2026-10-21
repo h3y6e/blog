@@ -50,7 +50,7 @@ url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/659693635"
 provenance = "github-attestations"
 
 [[tools.vp]]
-version = "1.0.0"
-aube = { path = ".mise/locks/vp/1.0.0", digest = "sha256:4724c2d3f62664b834ab30cfdbe5aaa2d58d704b97453bd3585876b7a8601435" }
+version = "1.1.0"
+aube = { path = ".mise/locks/vp/1.1.0", digest = "sha256:50d7cdea2cffec179a7d9194584310d8fad1ff3f1ccc6367c348264495ac92cb" }
 backend = "npm:vite-plus"
-specifiers = ["1.0.0"]
+specifiers = ["1.1.0"]
