@@ -21,7 +21,7 @@
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "textlint-rule-prh": "6.1.0",
     "typescript": "7.0.2",
-    "vite-plus": "1.0.0"
+    "vite-plus": "1.3.0"
   },
   "devEngines": {
     "packageManager": {
