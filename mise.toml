@@ -2,5 +2,5 @@
 _.path = ["{{config_root}}/node_modules/.bin"]
 
 [tools]
-uv = "0.13.4"
+uv = "0.13.8"
 vp = "1.0.0"
